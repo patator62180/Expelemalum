@@ -18,7 +18,7 @@ var CurrentDifficulty : float = 0 #de 0 à 1
 var DifficultyPromptCount : int = 0
 var GameProgress : float = 0 #de 0 à 1
 var GameProgressPromptCount : int = 0
-enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress}
+enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress, filler}
 
 func _ready():
 	GameState.updatedKill.connect(_on_game_state_kill)
@@ -96,27 +96,52 @@ func _on_last_line_spoken_timeout():
 	
 	GameState.update_indicators()
 	update_indicators()
+	var chosen_indicator = choose_indicator()
 	
+	match chosen_indicator[1] :
+		
+		INDICATORS.curseActivity:
+			if chosen_indicator[0] > 0 :
+				_play_line(AUDIO_LINE.Everyday)
+			else :
+				_play_line(AUDIO_LINE.Everyday)
+				
+		INDICATORS.curseEvilness:
+			if chosen_indicator[0] > 0 :
+				_play_line(AUDIO_LINE.Everyday)
+			else :
+				_play_line(AUDIO_LINE.Everyday)
+				
+		INDICATORS.currentDifficulty:
+			if chosen_indicator[0] > 0 :
+				_play_line(AUDIO_LINE.Everyday)
+			else :
+				_play_line(AUDIO_LINE.Everyday)
+				
+		INDICATORS.gameProgress:
+			if chosen_indicator[0] > 0 :
+				_play_line(AUDIO_LINE.Everyday)
+			else :
+				_play_line(AUDIO_LINE.Everyday)
+				
+		INDICATORS.filler:
+			if chosen_indicator[0] > 0 :
+				_play_line(AUDIO_LINE.Everyday)
+			else :
+				_play_line(AUDIO_LINE.Everyday)
 
-func choose_indicator():
+
+func choose_indicator() -> Array :
 	
 	var indicators : Array = [[CurseActivity-0.5,INDICATORS.curseActivity],
 		[CurseEvilness-0.5,INDICATORS.curseEvilness],
 		[CurrentDifficulty-0.5, INDICATORS.currentDifficulty],
-		[GameProgress-0.5, INDICATORS.gameProgress]]
+		[GameProgress-0.5, INDICATORS.gameProgress],
+		[0.2, INDICATORS.filler]]
 	
-	indicators.sort_custom(func(a,b): return abs(a[0] > b[0]) )
+	indicators.sort_custom(func(a,b): return abs(a[0]) > abs(b[0]) )
 	
-	match indicators[0][1] :
-		INDICATORS.curseActivity:
-				pass
-		INDICATORS.curseEvilness:
-				pass
-		INDICATORS.currentDifficulty:
-				pass
-		INDICATORS.gameProgress:
-				pass
-
+	return indicators[0]
 
 func update_indicators():
 	CurseEvilness = GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)
