@@ -16,6 +16,14 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 75.0
 offset_top = 40.0
-offset_right = 342.0
-offset_bottom = 137.0
+offset_right = 244.0
+offset_bottom = 97.0
 text = "Kill"
+
+[node name="ButtonTransfWw" type="Button" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 103.0
+offset_right = 242.0
+offset_bottom = 173.0
+text = "Transform WW"
