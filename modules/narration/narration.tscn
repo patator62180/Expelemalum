@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=5 format=3 uid="uid://b855xyyw4k76w"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
-[ext_resource type="AudioStream" uid="uid://b3rhwilgp1a7l" path="res://modules/narration/Audio/Intro.wav" id="2_6ykfq"]
+[ext_resource type="AudioStream" uid="uid://b3rhwilgp1a7l" path="res://modules/narration/Audio/AudioSource/Intro.wav" id="2_5w13a"]
 [ext_resource type="Script" path="res://modules/narration/NarratorAudioStreamPlayer.gd" id="3_eytij"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
+font_size = 20
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -14,6 +17,19 @@ grow_vertical = 2
 script = ExtResource("1_kif28")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_6ykfq")
+stream = ExtResource("2_5w13a")
 volume_db = 1.0
 script = ExtResource("3_eytij")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 546.0
+offset_right = 783.0
+offset_bottom = 572.0
+label_settings = SubResource("LabelSettings_uweh6")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -9,7 +9,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _play_line(lineName : String):
-	var audioStream = load("res://modules/narration/Audio/"+lineName+".wav")
+func _play_line(audioStream : AudioStream):
 	stream = audioStream
 	play()
