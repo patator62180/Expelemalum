@@ -93,7 +93,6 @@ func _on_audio_stream_player_finished():
 
 
 func _on_last_line_spoken_timeout():
-	GameState.update_indicators()
 	update_indicators()
 	var chosen_indicator = choose_indicator()
 	
@@ -101,33 +100,33 @@ func _on_last_line_spoken_timeout():
 		
 		INDICATORS.curseActivity:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 			else :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 				
 		INDICATORS.curseEvilness:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 			else :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 				
 		INDICATORS.currentDifficulty:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 			else :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 				
 		INDICATORS.gameProgress:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 			else :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 				
 		INDICATORS.filler:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 			else :
-				_play_line(AUDIO_LINE.Everyday)
+				_play_line(AUDIO_LINE.narration_ww_intro)
 
 
 func choose_indicator() -> Array :
