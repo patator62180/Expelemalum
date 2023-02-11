@@ -4,16 +4,18 @@ extends Node2D
 @export_node_path("Node2D") var INITIALLY_CURSED_CHARACTER : NodePath
 var cursed_character : Node2D = null
 
-@export var JUMP_RANGE : float:
+signal curse
+
+@export var CURSE_RANGE : float:
 	get:
-		return JUMP_RANGE
+		return CURSE_RANGE
 	set(value):
-		JUMP_RANGE = value
+		CURSE_RANGE = value
 		if Engine.is_editor_hint():
-			$Area2DUp/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(-JUMP_RANGE, -JUMP_RANGE), Vector2(JUMP_RANGE, -JUMP_RANGE)]
-			$Area2DDown/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(JUMP_RANGE, JUMP_RANGE), Vector2(-JUMP_RANGE, JUMP_RANGE)]
-			$Area2DLeft/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(-JUMP_RANGE, -JUMP_RANGE), Vector2(-JUMP_RANGE, JUMP_RANGE)]
-			$Area2DRight/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(JUMP_RANGE, JUMP_RANGE), Vector2(JUMP_RANGE, -JUMP_RANGE)]
+			$Area2DUp/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(-CURSE_RANGE, -CURSE_RANGE), Vector2(CURSE_RANGE, -CURSE_RANGE)]
+			$Area2DDown/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(CURSE_RANGE, CURSE_RANGE), Vector2(-CURSE_RANGE, CURSE_RANGE)]
+			$Area2DLeft/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(-CURSE_RANGE, -CURSE_RANGE), Vector2(-CURSE_RANGE, CURSE_RANGE)]
+			$Area2DRight/CollisionPolygon2D.polygon = [Vector2.ZERO, Vector2(CURSE_RANGE, CURSE_RANGE), Vector2(CURSE_RANGE, -CURSE_RANGE)]
 
 # internal
 
@@ -23,11 +25,12 @@ func _ready():
 func _curse(character : Node2D):
 	if not Engine.is_editor_hint():
 		if cursed_character:
-			cursed_character.is_cursed = false
+			cursed_character.is_cursed = true
 			cursed_character.tree_exiting.disconnect(queue_free)
 		cursed_character = character
 		cursed_character.tree_exiting.connect(queue_free)
-		cursed_character.is_cursed = true
+		cursed_character.is_cursed = false
+		emit_signal("curse")
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():
