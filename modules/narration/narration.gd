@@ -9,6 +9,17 @@ var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 var narratorSubtitleLabel : Label = get_node("Label")
 enum AUDIO_LINE {Everyday , Exorcism, Intro, TooMuchTrigger, narration_ww_intro}
 
+#indicators : they need to be updated before use
+var CurseActivity : float = 0.0 #de 0 à 1
+var CurseActivityPromptCount : int = 0
+var CurseEvilness : float = 0.5 #de 0 à 1
+var CurseEvilnessPromptCount : int = 0
+var CurrentDifficulty : float = 0 #de 0 à 1
+var DifficultyPromptCount : int = 0
+var GameProgress : float = 0 #de 0 à 1
+var GameProgressPromptCount : int = 0
+enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress}
+
 func _ready():
 	GameState.updatedKill.connect(_on_game_state_kill)
 	GameState.updatedTransformation.connect(_on_game_state_metamorph)
@@ -84,7 +95,36 @@ func _on_audio_stream_player_finished():
 func _on_last_line_spoken_timeout():
 	
 	GameState.update_indicators()
+	update_indicators()
 	
+
+func choose_indicator():
 	
+	var indicators : Array = [[CurseActivity-0.5,INDICATORS.curseActivity],
+		[CurseEvilness-0.5,INDICATORS.curseEvilness],
+		[CurrentDifficulty-0.5, INDICATORS.currentDifficulty],
+		[GameProgress-0.5, INDICATORS.gameProgress]]
 	
+	indicators.sort_custom(func(a,b): return abs(a[0] > b[0]) )
 	
+	match indicators[0][1] :
+		INDICATORS.curseActivity:
+				pass
+		INDICATORS.curseEvilness:
+				pass
+		INDICATORS.currentDifficulty:
+				pass
+		INDICATORS.gameProgress:
+				pass
+
+
+func update_indicators():
+	CurseEvilness = GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)
+	CurrentDifficulty = GameState.CurrentExorcistCount / (GameState.CurrentExorcistCount + GameState.CurrentPeasantCount)
+	
+	var currentDate : float = Time.get_ticks_msec()/1000
+	
+	while(GameState.SwipeEvents[0] < currentDate - 20) :
+		GameState.SwipeEvents.remove_at(0)
+	
+	CurseActivity = GameState.SwipeEvents.size() / 20
