@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=7 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="2_wpapm"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
+[ext_resource type="PackedScene" uid="uid://bvcqarlylqhe4" path="res://modules/gameState/gameState.tscn" id="5_3bjda"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
 radius = 128.39
@@ -24,3 +25,25 @@ position = Vector2(548, 314)
 shape = SubResource("CircleShape2D_pk6sr")
 
 [node name="Narration" parent="." instance=ExtResource("4_4m0pc")]
+
+[node name="gameState" parent="." instance=ExtResource("5_3bjda")]
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Debug"]
+offset_left = 75.0
+offset_top = 40.0
+offset_right = 342.0
+offset_bottom = 137.0
+text = "Trigger Everyday Line"
+
+[connection signal="TriggerIntroLine" from="gameState" to="Narration" method="_on_game_state_trigger_intro_line"]
+[connection signal="TriggerIntroLineTooMuch" from="gameState" to="Narration" method="_on_game_state_trigger_intro_line_too_much"]
+[connection signal="pressed" from="Debug/Button" to="gameState" method="_on_button_pressed"]
