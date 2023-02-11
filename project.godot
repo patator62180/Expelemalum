@@ -13,3 +13,12 @@ config_version=5
 config/name="gdwj_54"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_1="character_body"
+2d_physics/layer_2="character_vision"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

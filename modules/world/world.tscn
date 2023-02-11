@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://utlxqfpsr0mb"]
+
+[ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
+[ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="2_wpapm"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_cquyq")
+
+[node name="Character" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(462, 306)
+
+[node name="Character2" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(432, 329)
+
+[node name="Character3" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(494, 331)
+
+[node name="Character4" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(498, 290)
+
+[node name="Character5" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(456, 272)
+
+[node name="Character6" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(491, 247)
+
+[node name="Character7" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(667, 277)
+
+[node name="Character8" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(597, 307)
+
+[node name="Character9" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(541, 336)
