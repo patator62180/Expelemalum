@@ -4,8 +4,10 @@ const PERSONALITY_SUSPECTIVE : float = 10.0
 
 const SUPICION_THRESHOLD_TO_KILL : float = 0.8
 
-# internal
+func _ready():
+	GameState.RemainingExorcistsCount += 1
 
+# internal
 func _choose_moving_direction():
 	moving_direction = Vector2.ZERO
 	for character in visible_characters:
@@ -25,3 +27,7 @@ func _on_character_got_at_close_range(character : Node2D):
 	else:
 		super._on_character_got_at_close_range(character)
 	
+
+
+func _on_tree_exiting():
+	GameState.RemainingExorcistsCount -= 1

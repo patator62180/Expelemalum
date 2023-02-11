@@ -48,41 +48,35 @@ color = Color(0.760784, 0.552941, 1, 1)
 polygon = PackedVector2Array(-2, 5, -6, 2, -5, -5, 4, -5, 6, 2)
 
 [node name="Area2DUp" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DUp"]
-visible = false
 polygon = PackedVector2Array(0, 0, -70, -70, 70, -70)
 
 [node name="Area2DDown" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DDown"]
-visible = false
 polygon = PackedVector2Array(0, 0, 70, 70, -70, 70)
 
 [node name="Area2DLeft" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DLeft"]
-visible = false
 polygon = PackedVector2Array(0, 0, -70, -70, -70, 70)
 
 [node name="Area2DRight" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DRight"]
-visible = false
 polygon = PackedVector2Array(0, 0, 70, 70, 70, -70)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

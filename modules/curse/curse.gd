@@ -21,8 +21,13 @@ func _ready():
 	_curse(get_node(INITIALLY_CURSED_CHARACTER))
 
 func _curse(character : Node2D):
-	cursed_character = character
-	cursed_character.is_cursed = true
+	if not Engine.is_editor_hint():
+		if cursed_character:
+			cursed_character.is_cursed = false
+			cursed_character.tree_exiting.disconnect(queue_free)
+		cursed_character = character
+		cursed_character.tree_exiting.connect(queue_free)
+		cursed_character.is_cursed = true
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():
@@ -67,3 +72,7 @@ func _get_closest_character(area_array : Array) -> Node2D:
 				closest_character = character
 				closest_character_distance = character_distance
 	return closest_character
+
+
+func _on_tree_exiting():
+	GameState.IsCurseAlive= false
