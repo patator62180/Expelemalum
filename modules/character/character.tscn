@@ -16,20 +16,9 @@ RADIUS_VISION = 80.0
 [node name="BehaviorRules" type="Node" parent="."]
 
 [node name="BehaviorRuleLove" parent="BehaviorRules" instance=ExtResource("2_a21rm")]
-PERSONAL_SPACE = 20.0
-LOVING_POWER_RATE = 0.5
-LOVING_INCREMENT_RATE = 0.01
-HATING_POWER_RATE = 1.5
-HATING_INCREMENT_RATE = -0.01
-FORGETTING_POWER_RATE = 0.25
-FORGETTING_INCREMENT_RATE = 0.01
 CHARACTER_PATH = NodePath("../..")
 
 [node name="BehaviorRuleKnow" parent="BehaviorRules" instance=ExtResource("3_x6vut")]
-KNOWING_POWER_RATE = 0.3
-KNOWING_INCREMENT_RATE = 0.01
-FORGETTING_POWER_RATE = 0.3
-FORGETTING_INCREMENT_RATE = 0.01
 CHARACTER_PATH = NodePath("../..")
 
 [node name="Area2DVision" type="Area2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=5 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
 [ext_resource type="AudioStream" uid="uid://b3rhwilgp1a7l" path="res://modules/narration/Audio/Intro.wav" id="2_6ykfq"]
@@ -6,42 +6,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
 font_size = 20
-
-[sub_resource type="Animation" id="Animation_30xtv"]
-resource_name = "Test_Subtitle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1.07177),
-"update": 0,
-"values": [0, 20]
-}
-
-[sub_resource type="Animation" id="Animation_6441c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjdj7"]
-_data = {
-"RESET": SubResource("Animation_6441c"),
-"Test_Subtitle": SubResource("Animation_30xtv")
-}
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -68,12 +32,3 @@ label_settings = SubResource("LabelSettings_uweh6")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_sjdj7")
-}
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
