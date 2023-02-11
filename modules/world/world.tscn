@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duorymmu3je4v" path="res://modules/debug/debug.tscn" id="6_lkg72"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
-radius = 128.39
+radius = 245.098
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cquyq")
@@ -17,7 +17,43 @@ script = ExtResource("1_cquyq")
 position = Vector2(462, 306)
 
 [node name="Character2" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(602, 301)
+position = Vector2(533, 308)
+
+[node name="Character3" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(513, 414)
+
+[node name="Character4" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(650, 413)
+
+[node name="Character5" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(714, 298)
+
+[node name="Character6" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(616, 206)
+
+[node name="Character7" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(518, 162)
+
+[node name="Character8" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(395, 207)
+
+[node name="Character9" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(381, 365)
+
+[node name="Character10" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(493, 509)
+
+[node name="Character11" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(623, 512)
+
+[node name="Character12" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(615, 318)
+
+[node name="Character13" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(686, 186)
+
+[node name="Character14" parent="." instance=ExtResource("2_wpapm")]
+position = Vector2(424, 429)
 
 [node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
 position = Vector2(548, 314)

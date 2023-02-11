@@ -1,31 +1,28 @@
 extends "res://modules/character/behavior/rules/behavior_rule.gd"
 
-@export var PERSONAL_SPACE : float = 20.0
+@export var LOVING_DISTANCE_FUNC : Curve
+@export var LOVING_LOVE_FUNC : Curve
+@export var FORGETTING_LOVE_FUNC : Curve
 
-@export var LOVING_POWER_RATE : float = 0.5
-@export var LOVING_INCREMENT_RATE : float = 0.01
-
-@export var HATING_POWER_RATE : float = 1.5
-@export var HATING_INCREMENT_RATE : float = -0.01
-
-@export var FORGETTING_POWER_RATE : float = 0.25
-@export var FORGETTING_INCREMENT_RATE : float = 0.01
+const TIME : float = 1.0
+const TEMPERATURE : float = 0.01
 
 func update_memory(delta : float, visible_characters : Array):
 	super.update_memory(delta, visible_characters)
 	# compute updating rule
 	var character : Node2D = get_node(CHARACTER_PATH)
-	for other_character in visible_characters:
-		other_character = other_character as Node2D
-		var direction_to_other_character : Vector2 = other_character.global_position - character.global_position
-		var distance_to_other_character : float = direction_to_other_character.length()
-		direction_to_other_character /= distance_to_other_character
-		if distance_to_other_character > 0.0:
-			if distance_to_other_character > PERSONAL_SPACE:
-				character.memory[other_character]["love"] += (LOVING_INCREMENT_RATE + pow(character.memory[other_character]["love"], LOVING_POWER_RATE)) * ((character.RADIUS_VISION - PERSONAL_SPACE) / (distance_to_other_character - PERSONAL_SPACE)) * delta
-			else:
-				character.memory[other_character]["love"] += (HATING_INCREMENT_RATE + pow(character.memory[other_character]["love"], HATING_POWER_RATE)) * ((distance_to_other_character - PERSONAL_SPACE) / PERSONAL_SPACE) * delta
 	for other_character in character.memory:
-		if not other_character in visible_characters:
+		if other_character in visible_characters:
+			other_character = other_character as Node2D
+			var distance_to_other_character : float = (other_character.global_position - character.global_position).length()
+			var x_distance : float = distance_to_other_character / character.RADIUS_VISION
+			var x_love : float = (1.0 + character.memory[other_character]["love"]) / 2.0
+			if distance_to_other_character > 0.0:
+				character.memory[other_character]["love"] += LOVING_LOVE_FUNC.sample_baked(x_love) * LOVING_DISTANCE_FUNC.sample_baked(x_distance) * delta / TIME
+		else:
 			character = character as Node2D
-			character.memory[other_character]["love"] -= sign(character.memory[other_character]["love"]) * (FORGETTING_INCREMENT_RATE + pow(character.memory[other_character]["know"] * abs(character.memory[other_character]["love"]), FORGETTING_POWER_RATE)) * delta
+			var x_love : float = abs(character.memory[other_character]["love"])
+			character.memory[other_character]["love"] -= sign(character.memory[other_character]["love"]) * FORGETTING_LOVE_FUNC.sample_baked(x_love) * delta / TIME
+		# temperature and clamp
+		character.memory[other_character]["love"] += TEMPERATURE * delta / TIME * randf_range(-1.0, 1.0)
+		character.memory[other_character]["love"] = clamp(character.memory[other_character]["love"], -1.0, 1.0)
