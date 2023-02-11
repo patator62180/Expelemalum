@@ -9,7 +9,7 @@ func metamorphose():
 	for area in $Area2DCloseRange.get_overlapping_areas():
 		var character : Node2D = area.get_parent()
 		if character != self:
-			_on_character_got_at_close_range_metamorphosed(character)
+			_on_character_got_at_close_range(character)
 
 func unmetamorphose():
 	is_metamorphosed = false

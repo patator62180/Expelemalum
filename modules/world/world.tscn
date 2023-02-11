@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
+[ext_resource type="PackedScene" uid="uid://vt8sb23a8psq" path="res://modules/character/exorcists/exorcist.tscn" id="7_dbc4m"]
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
@@ -48,6 +49,9 @@ position = Vector2(486, 475)
 
 [node name="Lumberjack12" parent="." instance=ExtResource("6_c61lt")]
 position = Vector2(638, 265)
+
+[node name="Exorcist" parent="." instance=ExtResource("7_dbc4m")]
+position = Vector2(427, 189)
 
 [node name="Lumberjack13" parent="." instance=ExtResource("6_c61lt")]
 position = Vector2(467, 252)

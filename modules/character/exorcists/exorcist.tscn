@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://vt8sb23a8psq"]
+
+[ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="1_tcyie"]
+[ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_4kv0o"]
+[ext_resource type="PackedScene" uid="uid://b7eqh5ia4brbi" path="res://modules/character/behavior/rules/behavior_rule_suspicion.tscn" id="3_mg8rx"]
+
+[node name="Exorcist" instance=ExtResource("1_tcyie")]
+script = ExtResource("2_4kv0o")
+RADIUS_VISION = 40.0
+
+[node name="BehaviorRuleSuspicion" parent="BehaviorRules" index="2" instance=ExtResource("3_mg8rx")]
+CHARACTER_PATH = NodePath("../..")
+
+[node name="Polygon2D" parent="." index="6"]
+color = Color(0.243137, 0.772549, 1, 1)

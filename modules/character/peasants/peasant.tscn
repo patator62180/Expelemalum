@@ -6,7 +6,6 @@
 [node name="Peasant" instance=ExtResource("1_phawp")]
 script = ExtResource("2_mspoe")
 RADIUS_VISION = 40.0
-RADIUS_CLOSE_RANGE = 15.0
 
 [node name="Area2DBody" parent="." index="2"]
 collision_layer = 9

@@ -1,11 +1,13 @@
 extends "res://modules/character/peasants/peasant.gd"
 
 func metamorphose():
-	super.metamorphose()
 	# visual
 	$Polygon2D.color = Color.SADDLE_BROWN
+	# proper metamorphosis
+	super.metamorphose()
 
 func unmetamorphose():
+	# unmetamorphosis
 	super.unmetamorphose()
 	# visual
 	$Polygon2D.color = Color.WHITE

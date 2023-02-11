@@ -48,7 +48,8 @@ func _input(event : InputEvent):
 						area_array = $Area2DRight.get_overlapping_areas().duplicate()
 						area_array.erase(cursed_character.get_node("Area2DBody"))
 					elif event.is_action("activate"):
-						cursed_character.metamorphose()
+						if not cursed_character.is_metamorphosed:
+							cursed_character.metamorphose()
 					# CHANGE CHARACTER IF NECESSARY
 					if area_array:
 						_curse(_get_closest_character(area_array))

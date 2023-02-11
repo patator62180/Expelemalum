@@ -14,7 +14,6 @@ radius = 80.0
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
 RADIUS_VISION = 80.0
-RADIUS_CLOSE_RANGE = null
 
 [node name="BehaviorRules" type="Node" parent="."]
 
