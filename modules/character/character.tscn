@@ -19,7 +19,6 @@ RADIUS_VISION = 80.0
 CHARACTER_PATH = NodePath("../..")
 
 [node name="BehaviorRuleKnow" parent="BehaviorRules" instance=ExtResource("3_x6vut")]
-KNOWING_POWER_RATE = 0.3
 CHARACTER_PATH = NodePath("../..")
 
 [node name="Area2DVision" type="Area2D" parent="."]

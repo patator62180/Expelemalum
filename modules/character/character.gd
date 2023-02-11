@@ -1,11 +1,15 @@
 @tool
 extends Node2D
 
-# TODO: MEMORY SYSTEM (should not be that hard I guess)
+# TODO: ADD PERSONALITY (CURIOSITY, SOCIABILITY, ...)
+
+const PERSONALITY_SOCIABILITY : float = 1.0
+const PERSONALITY_CURIOSITY : float = 0.5
 
 # testing interface (assuming this is only changed in the editor)
 
-@export var SPEED : float = 40.0
+const SPEED : float = 40.0
+
 @export var RADIUS_BODY : float = 10.0:
 	get:
 		return RADIUS_BODY
@@ -61,9 +65,8 @@ func _choose_moving_direction():
 				var distance_to_character : float = direction_to_character.length()
 				direction_to_character /= distance_to_character
 				if distance_to_character > 0.0:
-					moving_direction += memory[character]["love"] * direction_to_character / distance_to_character
-					print(memory[character]["love"])
-					moving_direction -= memory[character]["know"] * direction_to_character / distance_to_character
+					moving_direction += PERSONALITY_SOCIABILITY * memory[character]["love"] * direction_to_character / distance_to_character
+					moving_direction -= PERSONALITY_CURIOSITY * memory[character]["know"] * direction_to_character / distance_to_character
 			moving_direction = moving_direction.normalized()
 			curiosity_direction = moving_direction
 		else:
