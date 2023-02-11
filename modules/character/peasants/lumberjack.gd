@@ -18,7 +18,7 @@ func _choose_moving_direction_metamorphosed():
 	moving_direction = (_get_less_loved_character(visible_characters).global_position - global_position).normalized()
 
 func _on_character_got_at_close_range_metamorphosed(character : Node2D):
-	character.die()
+	character.die(DIE_TYPE.Werewolf)
 	unmetamorphose()
 
 # util

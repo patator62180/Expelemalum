@@ -33,7 +33,6 @@ turbulence_enabled = true
 
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
-CURSE_RANGE = null
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50

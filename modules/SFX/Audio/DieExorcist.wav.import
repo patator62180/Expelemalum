@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cmx14in3whoj6"
-path="res://.godot/imported/Die.wav-cfcfde900ad973293327d847aa5c7f61.sample"
+path="res://.godot/imported/DieExorcist.wav-725e57a879defcf4036d79c4030a20f9.sample"
 
 [deps]
 
-source_file="res://modules/SFX/Audio/Die.wav"
-dest_files=["res://.godot/imported/Die.wav-cfcfde900ad973293327d847aa5c7f61.sample"]
+source_file="res://modules/SFX/Audio/DieExorcist.wav"
+dest_files=["res://.godot/imported/DieExorcist.wav-725e57a879defcf4036d79c4030a20f9.sample"]
 
 [params]
 

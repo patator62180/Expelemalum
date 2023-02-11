@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
-[ext_resource type="PackedScene" uid="uid://b855xyyw4k76w" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
+[ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://vt8sb23a8psq" path="res://modules/character/exorcists/exorcist.tscn" id="7_dbc4m"]
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
@@ -121,10 +121,10 @@ script = ExtResource("8_dyidt")
 
 [node name="Curse" parent="." instance=ExtResource("2_ghruk")]
 INITIALLY_CURSED_CHARACTER = NodePath("../Lumberjack")
-CURSE_RANGE = 0.0
 
 [node name="SFXPlayer" parent="." instance=ExtResource("10_0oxl2")]
 
 [connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
 [connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
+[connection signal="cantCurse" from="Curse" to="SFXPlayer" method="_on_curse_cant_curse"]
 [connection signal="curse" from="Curse" to="SFXPlayer" method="_on_curse_curse"]

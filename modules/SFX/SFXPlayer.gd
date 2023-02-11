@@ -11,6 +11,14 @@ func _on_curse_curse():
 
 func _on_peasant_metamorphosed():
 	_play("Metamorph")
+	GameState.ExorcistKillCount
 
-func _on_character_died():
-	_play("Die")
+func _on_character_died(dieType):
+	match (dieType):
+		DIE_TYPE.Exorcist:
+			_play("DieExorcist")
+		DIE_TYPE.Werewolf:
+			_play("DieWerewolf")
+
+func _on_curse_cant_curse():
+	_play("CantCurse") # Replace with function body.
