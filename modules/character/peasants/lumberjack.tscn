@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://duro6yranibfi"]
+
+[ext_resource type="PackedScene" uid="uid://bxksnys6iqsx7" path="res://modules/character/peasants/peasant.tscn" id="1_toxem"]
+[ext_resource type="Script" path="res://modules/character/peasants/lumberjack.gd" id="2_p8iip"]
+
+[node name="Lumberjack" instance=ExtResource("1_toxem")]
+script = ExtResource("2_p8iip")

@@ -10,8 +10,10 @@ var SwipeCount : int = 0
 
 func _on_transf_debug():
 	_on_metamorph("Ww")
+######################################################
 
-####################################################
+var RemainingExorcistsCount : int = 0
+var IsCurseAlive : bool = true
 
 func _on_kill():
 	KillCount += 1

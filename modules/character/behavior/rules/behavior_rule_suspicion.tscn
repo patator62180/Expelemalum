@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7eqh5ia4brbi"]
+
+[ext_resource type="PackedScene" uid="uid://66q4mn76i611" path="res://modules/character/behavior/rules/behavior_rule.tscn" id="1_c8gji"]
+[ext_resource type="Script" path="res://modules/character/behavior/rules/behavior_rule_suspicion.gd" id="2_3qpej"]
+
+[sub_resource type="Curve" id="Curve_yu1dy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_g71m6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fuo3o"]
+_data = [Vector2(0, 0.02), 0.0, 0.0, 0, 0, Vector2(1, 0.01), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BehaviorRuleSuspicion" instance=ExtResource("1_c8gji")]
+script = ExtResource("2_3qpej")
+SUPECTING_DISTANCE_FUNC = SubResource("Curve_yu1dy")
+SUSPECTING_SUSPICION_FUNC = SubResource("Curve_g71m6")
+FORGETTING_SUSPICION_FUNC = SubResource("Curve_fuo3o")
+NAME = "suspicion"

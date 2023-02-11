@@ -18,7 +18,16 @@ var cursed_character : Node2D = null
 # internal
 
 func _ready():
-	cursed_character = get_node(INITIALLY_CURSED_CHARACTER)
+	_curse(get_node(INITIALLY_CURSED_CHARACTER))
+
+func _curse(character : Node2D):
+	if not Engine.is_editor_hint():
+		if cursed_character:
+			cursed_character.is_cursed = false
+			cursed_character.tree_exiting.disconnect(queue_free)
+		cursed_character = character
+		cursed_character.tree_exiting.connect(queue_free)
+		cursed_character.is_cursed = true
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():
@@ -44,12 +53,13 @@ func _input(event : InputEvent):
 						area_array = $Area2DRight.get_overlapping_areas().duplicate()
 						area_array.erase(cursed_character.get_node("Area2DBody"))
 					elif event.is_action("activate"):
-						pass # TODO: OBVIOUSLY
+						if not cursed_character.is_metamorphosed:
+							cursed_character.metamorphose()
 					# CHANGE CHARACTER IF NECESSARY
 					if area_array:
-						cursed_character = _get_closest_character(area_array)
+						_curse(_get_closest_character(area_array))
 					else:
-						pass # TODO FEEDBACK IF CANCEL
+						pass
 
 func _get_closest_character(area_array : Array) -> Node2D:
 	var closest_character : Node2D = null
@@ -62,3 +72,7 @@ func _get_closest_character(area_array : Array) -> Node2D:
 				closest_character = character
 				closest_character_distance = character_distance
 	return closest_character
+
+
+func _on_tree_exiting():
+	GameState.IsCurseAlive= false
