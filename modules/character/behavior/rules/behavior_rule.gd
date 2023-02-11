@@ -5,4 +5,4 @@ extends Node
 @export var NAME : String
 
 func update_memory(delta : float, visible_characters : Array):
-	pass
+	pass # TO BE OVERLOADED
