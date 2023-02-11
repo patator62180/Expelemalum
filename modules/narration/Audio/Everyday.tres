@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=3]
-
-[ext_resource type="AudioStream" uid="uid://pyn0gqrxyv0j" path="res://modules/narration/Audio/AudioSource/Everyday.wav" id="1_02dub"]
-[ext_resource type="Script" path="res://modules/narration/SubtitledAudioStreamWav.gd" id="2_43bdn"]
-
-[resource]
-script = ExtResource("2_43bdn")
-Audio = ExtResource("1_02dub")
-SubtitleText = "Everyday, People were walking in the street"

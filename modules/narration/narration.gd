@@ -7,7 +7,7 @@ var subtitles : Dictionary = parseSubtitles()
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
 var narratorSubtitleLabel : Label = get_node("Label")
-enum AUDIO_LINE {Everyday , Exorcism, Intro, TooMuchTrigger, narration_ww_intro}
+enum AUDIO_LINE {narration_ww_intro, narration_firstKill_exorcist, narration_firstKill_peasant, narration_fewKills_exorcist, narration_fewKills_peasant, narration_gameLaunch}
 
 func _ready():
 	GameState.updatedKill.connect(_on_game_state_kill)
@@ -15,6 +15,7 @@ func _ready():
 	
 	var subtitles : Dictionary = parseSubtitles()
 	lastLineSpoken.start()
+	_play_line(AUDIO_LINE.narration_gameLaunch)
 
 func parseSubtitles(
 	id_column: String = "id",
@@ -62,14 +63,13 @@ func _play_line(lineName : AUDIO_LINE):
 	else:
 		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".wav")
 		narratorStreamPlayer.stream = audioStream
-		print(subtitles[lineNameStr]["subtitle"])
-		narratorSubtitleLabel.text = subtitles[lineNameStr]["subtitle"]
+		#narratorSubtitleLabel.text = subtitles[lineNameStr]["subtitle"]
 	narratorStreamPlayer.play()
 	
 	lastLineSpoken.start()
 
 func _on_game_state_kill():
-		_play_line(AUDIO_LINE.Everyday)
+		_play_line(AUDIO_LINE.narration_firstKill_peasant)
 		
 func _on_game_state_metamorph(curse_nature : String):
 	if(curse_nature == "Ww"):
@@ -82,7 +82,6 @@ func _on_audio_stream_player_finished():
 
 
 func _on_last_line_spoken_timeout():
-	
 	GameState.update_indicators()
 	
 	
