@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=5 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="2_wpapm"]
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
+radius = 128.39
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cquyq")
@@ -10,25 +14,10 @@ script = ExtResource("1_cquyq")
 position = Vector2(462, 306)
 
 [node name="Character2" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(432, 329)
+position = Vector2(602, 301)
 
-[node name="Character3" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(494, 331)
+[node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
+position = Vector2(548, 314)
 
-[node name="Character4" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(498, 290)
-
-[node name="Character5" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(456, 272)
-
-[node name="Character6" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(491, 247)
-
-[node name="Character7" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(667, 277)
-
-[node name="Character8" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(597, 307)
-
-[node name="Character9" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(541, 336)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("CircleShape2D_pk6sr")

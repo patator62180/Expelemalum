@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5j8et7pdvlsu"]
+[gd_scene load_steps=6 format=3 uid="uid://c5j8et7pdvlsu"]
 
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
+[ext_resource type="PackedScene" uid="uid://ccx2f3f6rrl12" path="res://modules/character/behavior/rules/behavior_rule_love.tscn" id="2_a21rm"]
+[ext_resource type="PackedScene" uid="uid://corbd7bhrx1tx" path="res://modules/character/behavior/rules/behavior_rule_know.tscn" id="3_x6vut"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e645k"]
-radius = 40.0
+radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
+RADIUS_VISION = 80.0
+
+[node name="BehaviorRules" type="Node" parent="."]
+
+[node name="BehaviorRuleLove" parent="BehaviorRules" instance=ExtResource("2_a21rm")]
+CHARACTER_PATH = NodePath("../..")
+
+[node name="BehaviorRuleKnow" parent="BehaviorRules" instance=ExtResource("3_x6vut")]
+KNOWING_POWER_RATE = 0.3
+CHARACTER_PATH = NodePath("../..")
 
 [node name="Area2DVision" type="Area2D" parent="."]
 collision_layer = 2
@@ -24,6 +36,14 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DBody"]
 shape = SubResource("CircleShape2D_kbmoq")
 
+[node name="Area2DBoundaryCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DBoundaryCheck"]
+shape = SubResource("CircleShape2D_kbmoq")
+
 [node name="TimerCuriosity" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
@@ -33,4 +53,6 @@ polygon = PackedVector2Array(0, 11, -9, 3, -6, -8, 5, -9, 10, 2)
 
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
 [connection signal="area_exited" from="Area2DVision" to="." method="_on_area_2d_vision_area_exited"]
+[connection signal="area_entered" from="Area2DBoundaryCheck" to="." method="_on_area_2d_boundary_check_area_entered"]
+[connection signal="area_exited" from="Area2DBoundaryCheck" to="." method="_on_area_2d_boundary_check_area_exited"]
 [connection signal="timeout" from="TimerCuriosity" to="." method="_on_timer_curiosity_timeout"]

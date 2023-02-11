@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlef87rcej5ca"]
+
+[ext_resource type="Script" path="res://modules/character/boundary.gd" id="1_8ce65"]
+
+[node name="Boundary" type="Area2D" groups=["character_boundary"]]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_8ce65")
