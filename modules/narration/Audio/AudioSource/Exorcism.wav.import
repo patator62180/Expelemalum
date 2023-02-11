@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bvn4ob6b7jnq5"
-path="res://.godot/imported/Exorcism.wav-2eb892458bb090995f07183afa6c5ce5.sample"
+path="res://.godot/imported/Exorcism.wav-69d0b3d06dcd3d9d8f829e0d16d6a0bc.sample"
 
 [deps]
 
-source_file="res://modules/narration/Audio/Exorcism.wav"
-dest_files=["res://.godot/imported/Exorcism.wav-2eb892458bb090995f07183afa6c5ce5.sample"]
+source_file="res://modules/narration/Audio/AudioSource/Exorcism.wav"
+dest_files=["res://.godot/imported/Exorcism.wav-69d0b3d06dcd3d9d8f829e0d16d6a0bc.sample"]
 
 [params]
 

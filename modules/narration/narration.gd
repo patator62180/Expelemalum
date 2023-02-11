@@ -17,10 +17,15 @@ func _play_line(lineName : AUDIO_LINE):
 		narratorStreamPlayer.stream = subtitledAudioStream.Audio
 		narratorSubtitleLabel.text = subtitledAudioStream.SubtitleText
 	else:
-		var audioStream = load("res://modules/narration/Audio/"+lineNameStr+".wav")
+		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".wav")
 		narratorStreamPlayer.stream = audioStream
+		narratorSubtitleLabel.text = "No Subtitle"
 	narratorStreamPlayer.play()
 
 func _on_game_state_updated():
 	if(GameState.KillCount == 1):
 		_play_line(AUDIO_LINE.Everyday)
+
+
+func _on_audio_stream_player_finished():
+	narratorSubtitleLabel.text = ""

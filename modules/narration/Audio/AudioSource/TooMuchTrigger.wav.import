@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dk1g2smc6accs"
-path="res://.godot/imported/TooMuchTrigger.wav-f1352f111a56ace5f0bc4c39cdc31021.sample"
+path="res://.godot/imported/TooMuchTrigger.wav-0e6014ac24aadc44a067dec6d0ca64c2.sample"
 
 [deps]
 
-source_file="res://modules/narration/Audio/TooMuchTrigger.wav"
-dest_files=["res://.godot/imported/TooMuchTrigger.wav-f1352f111a56ace5f0bc4c39cdc31021.sample"]
+source_file="res://modules/narration/Audio/AudioSource/TooMuchTrigger.wav"
+dest_files=["res://.godot/imported/TooMuchTrigger.wav-0e6014ac24aadc44a067dec6d0ca64c2.sample"]
 
 [params]
 
