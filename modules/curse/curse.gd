@@ -5,6 +5,7 @@ extends Node2D
 var cursed_character : Node2D = null
 
 signal curse
+signal cantCurse
 
 @export var CURSE_RANGE : float:
 	get:
@@ -62,7 +63,7 @@ func _input(event : InputEvent):
 					if area_array:
 						_curse(_get_closest_character(area_array))
 					else:
-						pass
+						emit_signal("cantCurse")
 
 func _get_closest_character(area_array : Array) -> Node2D:
 	var closest_character : Node2D = null

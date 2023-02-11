@@ -36,7 +36,7 @@ const SPEED : float = 40.0
 
 ## signal
 
-signal died
+signal died(dieType)
 
 ## behavior variables
 
@@ -59,8 +59,8 @@ var last_boundary : Area2D = null
 var is_cursed : bool = false
 # interface
 
-func die():
-	emit_signal("died") #need to retest when corpse implemented
+func die(die_type):
+	emit_signal("died", die_type) #need to retest when corpse implemented
 	queue_free()
 
 # internal functions
