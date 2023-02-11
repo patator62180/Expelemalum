@@ -1,12 +1,9 @@
 extends Node
 
-signal TriggerIntroLine
-signal TriggerIntroLineTooMuch
+signal updated
 
-var IntroTriggerCount : int = 0
+var KillCount : int = 0
 
-func _on_button_pressed():
-	IntroTriggerCount += 1
-	emit_signal("TriggerIntroLine")
-	if(IntroTriggerCount == 5):
-		emit_signal("TriggerIntroLineTooMuch")
+func _on_kill():
+	KillCount += 1
+	emit_signal("updated")

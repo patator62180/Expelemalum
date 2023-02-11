@@ -52,14 +52,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kif28")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6ykfq")
 volume_db = 1.0
-autoplay = true
 script = ExtResource("3_eytij")
 
 [node name="Label" type="Label" parent="."]
