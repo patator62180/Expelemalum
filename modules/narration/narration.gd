@@ -82,4 +82,9 @@ func _on_audio_stream_player_finished():
 
 
 func _on_last_line_spoken_timeout():
-	_on_game_state_kill()
+	
+	GameState.update_indicators()
+	
+	
+	
+	
