@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5j8et7pdvlsu"]
+[gd_scene load_steps=8 format=3 uid="uid://c5j8et7pdvlsu"]
 
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
 [ext_resource type="PackedScene" uid="uid://ccx2f3f6rrl12" path="res://modules/character/behavior/rules/behavior_rule_love.tscn" id="2_a21rm"]
 [ext_resource type="PackedScene" uid="uid://corbd7bhrx1tx" path="res://modules/character/behavior/rules/behavior_rule_know.tscn" id="3_x6vut"]
+[ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="4_l1c8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e645k"]
 radius = 80.0
@@ -59,6 +60,9 @@ autostart = true
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, 11, -9, 3, -6, -8, 5, -9, 10, 2)
 
+[node name="SFXPlayer" parent="." instance=ExtResource("4_l1c8b")]
+
+[connection signal="died" from="." to="SFXPlayer" method="_on_character_died"]
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
 [connection signal="area_exited" from="Area2DVision" to="." method="_on_area_2d_vision_area_exited"]
 [connection signal="area_entered" from="Area2DBoundaryCheck" to="." method="_on_area_2d_boundary_check_area_entered"]

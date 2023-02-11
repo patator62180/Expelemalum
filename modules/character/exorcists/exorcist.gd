@@ -26,7 +26,6 @@ func _on_character_got_at_close_range(character : Node2D):
 		character.die()
 	else:
 		super._on_character_got_at_close_range(character)
-	
 
 
 func _on_tree_exiting():
