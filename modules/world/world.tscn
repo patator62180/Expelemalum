@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
-[ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="2_wpapm"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
+[ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
@@ -13,51 +13,66 @@ radius = 245.098
 [node name="World" type="Node2D"]
 script = ExtResource("1_cquyq")
 
-[node name="Character" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(462, 306)
+[node name="Lumberjack" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(421, 385)
 
-[node name="Character2" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(533, 308)
+[node name="Lumberjack2" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(457, 346)
 
-[node name="Character3" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(513, 414)
+[node name="Lumberjack3" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(558, 404)
 
-[node name="Character4" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(650, 413)
+[node name="Lumberjack4" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(565, 353)
 
-[node name="Character5" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(714, 298)
+[node name="Lumberjack5" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(621, 317)
 
-[node name="Character6" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(616, 206)
+[node name="Lumberjack6" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(680, 354)
 
-[node name="Character7" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(518, 162)
+[node name="Lumberjack7" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(697, 402)
 
-[node name="Character8" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(395, 207)
+[node name="Lumberjack8" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(649, 451)
 
-[node name="Character9" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(381, 365)
+[node name="Lumberjack9" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(597, 490)
 
-[node name="Character10" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(493, 509)
+[node name="Lumberjack10" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(538, 499)
 
-[node name="Character11" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(623, 512)
+[node name="Lumberjack11" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(486, 475)
 
-[node name="Character12" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(615, 318)
+[node name="Lumberjack12" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(638, 265)
 
-[node name="Character13" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(686, 186)
+[node name="Lumberjack13" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(467, 252)
 
-[node name="Character14" parent="." instance=ExtResource("2_wpapm")]
-position = Vector2(424, 429)
+[node name="Lumberjack14" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(404, 253)
+
+[node name="Lumberjack15" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(507, 164)
+
+[node name="Lumberjack16" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(617, 172)
+
+[node name="Lumberjack17" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(692, 230)
+
+[node name="Lumberjack18" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(739, 279)
+
+[node name="Lumberjack19" parent="." instance=ExtResource("6_c61lt")]
+position = Vector2(739, 279)
 
 [node name="Curse" parent="." instance=ExtResource("2_ghruk")]
 position = Vector2(530, 208)
-INITIALLY_CURSED_CHARACTER = NodePath("../Character")
+INITIALLY_CURSED_CHARACTER = NodePath("../Lumberjack")
 
 [node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
 position = Vector2(548, 314)

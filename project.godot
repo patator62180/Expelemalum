@@ -56,6 +56,7 @@ activate={
 2d_physics/layer_1="character_body"
 2d_physics/layer_2="character_vision"
 2d_physics/layer_3="character_boundary"
+2d_physics/layer_4="peasant_body"
 
 [rendering]
 
