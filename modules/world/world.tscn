@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
+[ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="2_wpapm"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
@@ -54,6 +55,10 @@ position = Vector2(686, 186)
 
 [node name="Character14" parent="." instance=ExtResource("2_wpapm")]
 position = Vector2(424, 429)
+
+[node name="Curse" parent="." instance=ExtResource("2_ghruk")]
+position = Vector2(530, 208)
+INITIALLY_CURSED_CHARACTER = NodePath("../Character")
 
 [node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
 position = Vector2(548, 314)
