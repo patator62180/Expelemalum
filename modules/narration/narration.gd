@@ -1,10 +1,19 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready
+var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
+enum AUDIO_LINE {Everyday , Exorcism, Intro, TooMuchTrigger}
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+
+func _on_timer_timeout():
+	narratorStreamPlayer._play_line(AUDIO_LINE.keys()[AUDIO_LINE.Exorcism])
+
+
+func _on_game_state_trigger_intro_line():
+	narratorStreamPlayer._play_line(AUDIO_LINE.keys()[AUDIO_LINE.Everyday])
+
+
+func _on_game_state_trigger_intro_line_too_much():
+	narratorStreamPlayer._play_line(AUDIO_LINE.keys()[AUDIO_LINE.TooMuchTrigger])

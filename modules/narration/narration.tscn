@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=4 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
+[ext_resource type="AudioStream" uid="uid://b3rhwilgp1a7l" path="res://modules/narration/Audio/Intro.wav" id="2_6ykfq"]
+[ext_resource type="Script" path="res://modules/narration/NarratorAudioStreamPlayer.gd" id="3_eytij"]
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -10,3 +12,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kif28")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6ykfq")
+autoplay = true
+script = ExtResource("3_eytij")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
