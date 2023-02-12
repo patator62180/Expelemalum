@@ -57,10 +57,11 @@ shape = SubResource("CircleShape2D_rkm4g")
 wait_time = 4.0
 autostart = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 11, -9, 3, -6, -8, 5, -9, 10, 2)
-
 [node name="SFXPlayer" parent="." instance=ExtResource("4_l1c8b")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="died" from="." to="SFXPlayer" method="_on_character_died"]
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]

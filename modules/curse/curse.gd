@@ -62,7 +62,7 @@ func _try_curse(input : InputEvent):
 	elif input.is_action("down"):
 		area2D = $Area2DDown
 	elif input.is_action("left"):
-		area2D = $Area2Dleft
+		area2D = $Area2DLeft
 	elif input.is_action("right"):
 		area2D = $Area2DRight
 	
@@ -106,9 +106,10 @@ func _on_tree_exiting():
 
 func _highlightCursableCharacters(area_array : Array, enable : bool):
 	for area in area_array:
-		var character : Node2D = area.get_parent()
-		if not enable or character != cursed_character:
-			var polygon : Polygon2D = character.get_node("Polygon2D")
-			polygon.color = Color.YELLOW if enable else Color.WHITE
+		if area != null:			
+			var character : Node2D = area.get_parent()
+			if not enable or character != cursed_character:
+				var sprite : Sprite2D = character.get_node("Sprite2D")
+				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
 			
 	
