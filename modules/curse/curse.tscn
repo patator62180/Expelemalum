@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddhnviwyjohqm"]
+[gd_scene load_steps=20 format=3 uid="uid://ddhnviwyjohqm"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
 [ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
@@ -119,6 +120,33 @@ scale_max = 0.15
 scale_curve = SubResource("CurveTexture_sa7vv")
 attractor_interaction_enabled = false
 
+[sub_resource type="Curve" id="Curve_v5ag7"]
+_data = [Vector2(0.00380228, 0.0090909), 0.0, 6.90707, 0, 0, Vector2(0.254753, 1), 0.0, 0.0, 0, 0, Vector2(0.840304, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.0987, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7s7cn"]
+curve = SubResource("Curve_v5ag7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r58wi"]
+emission_shape = 3
+emission_box_extents = Vector3(60, 0, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_7s7cn")
+color = Color(1, 1, 1, 0.803922)
+hue_variation_min = -0.01
+hue_variation_max = 0.01
+
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
 
@@ -177,6 +205,23 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_j46a3")
 texture = ExtResource("4_liph5")
 lifetime = 5.0
+
+[node name="GPUParticles2DStraigthFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = 1
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_r58wi")
+texture = ExtResource("4_5567m")
+preprocess = 2.0
+local_coords = true
+
+[node name="GPUParticles2DStraigthBack" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = -1
+position = Vector2(0, 50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_r58wi")
+texture = ExtResource("4_5567m")
+preprocess = 2.0
+local_coords = true
 
 [node name="Lumberjack" type="Sprite2D" parent="."]
 visible = false
