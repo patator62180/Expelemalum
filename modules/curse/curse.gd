@@ -65,15 +65,15 @@ func _try_curse(input : InputEvent):
 		area2D = $Area2Dleft
 	elif input.is_action("right"):
 		area2D = $Area2DRight
-			
-	area_array = area2D.get_overlapping_areas().duplicate()
-	area_array.erase(cursed_character.get_node("Area2DBody"))
 	
 	# CHANGE CHARACTER IF POSSIBLE
-	if area_array:
-		_curse(_get_closest_character(area_array))
-	else:
-		emit_signal("cantCurse")
+	if area2D:
+		area_array = area2D.get_overlapping_areas().duplicate()
+		area_array.erase(cursed_character.get_node("Area2DBody"))
+		if area_array:
+			_curse(_get_closest_character(area_array))
+		else:
+			emit_signal("cantCurse")
 
 func _process_area_array() -> Array:
 	if not Engine.is_editor_hint():
