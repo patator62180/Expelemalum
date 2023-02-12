@@ -5,3 +5,8 @@
 
 [node name="Lumberjack" instance=ExtResource("1_toxem")]
 script = ExtResource("2_p8iip")
+
+[node name="Sprite2D" parent="." index="7"]
+position = Vector2(0, -14)
+rotation = -0.261799
+scale = Vector2(0.15, 0.15)

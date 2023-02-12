@@ -2,7 +2,7 @@ extends "res://modules/character/peasants/peasant.gd"
 
 func metamorphose():
 	# visual
-	$Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack_metamorphosed.svg")
+	$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack_metamorphosed.svg")
 	# proper metamorphosis
 	super.metamorphose()
 
@@ -10,7 +10,7 @@ func unmetamorphose():
 	# unmetamorphosis
 	super.unmetamorphose()
 	# visual
-	$Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack.svg")
+	$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack.svg")
 
 # werewolf
 

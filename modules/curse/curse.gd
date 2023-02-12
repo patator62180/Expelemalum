@@ -109,7 +109,7 @@ func _highlightCursableCharacters(area_array : Array, enable : bool):
 		if area != null:			
 			var character : Node2D = area.get_parent()
 			if not enable or character != cursed_character:
-				var sprite : Sprite2D = character.get_node("Sprite2D")
+				var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
 				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
 			
 	
