@@ -93,6 +93,8 @@ func _on_audio_stream_player_finished():
 
 
 func _on_last_line_spoken_timeout():
+
+	
 	update_indicators()
 	var chosen_indicator = choose_indicator()
 	
@@ -128,9 +130,10 @@ func _on_last_line_spoken_timeout():
 			else :
 				_play_line(AUDIO_LINE.narration_ww_intro)
 
+	
 
 func choose_indicator() -> Array :
-	
+
 	var indicators : Array = [[CurseActivity-0.5,INDICATORS.curseActivity],
 		[CurseEvilness-0.5,INDICATORS.curseEvilness],
 		[CurrentDifficulty-0.5, INDICATORS.currentDifficulty],
@@ -142,12 +145,20 @@ func choose_indicator() -> Array :
 	return indicators[0]
 
 func update_indicators():
-	CurseEvilness = GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)
+
+	
+	if ((GameState.PeasantKillCount + GameState.ExorcistKillCount) == 0) :
+		CurseEvilness = 0.5
+	else :
+		CurseEvilness = GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)
+	
 	CurrentDifficulty = GameState.CurrentExorcistCount / (GameState.CurrentExorcistCount + GameState.CurrentPeasantCount)
 	
 	var currentDate : float = Time.get_ticks_msec()/1000
 	
-	while(GameState.SwipeEvents[0] < currentDate - 20) :
-		GameState.SwipeEvents.remove_at(0)
-	
-	CurseActivity = GameState.SwipeEvents.size() / 20
+	if (GameState.SwipeEvents.size() == 0) :
+		CurseActivity = 0
+	else :
+		while(GameState.SwipeEvents[0] < currentDate - 20) :
+			GameState.SwipeEvents.remove_at(0)
+		CurseActivity = GameState.SwipeEvents.size() / 20
