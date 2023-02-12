@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhnby0t2crryr"
-path="res://.godot/imported/scroll.svg-2c46efa5444f89d978b956984ccd7880.ctex"
+uid="uid://bh3n0uvpwq483"
+path="res://.godot/imported/dialogue_wolf.svg-3310bf956efffe2d1e5778a044f1f077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/world/assets/scroll.svg"
-dest_files=["res://.godot/imported/scroll.svg-2c46efa5444f89d978b956984ccd7880.ctex"]
+source_file="res://modules/character/assets/dialogue_wolf.svg"
+dest_files=["res://.godot/imported/dialogue_wolf.svg-3310bf956efffe2d1e5778a044f1f077.ctex"]
 
 [params]
 

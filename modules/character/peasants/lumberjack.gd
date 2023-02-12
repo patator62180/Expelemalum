@@ -1,16 +1,10 @@
 extends "res://modules/character/peasants/peasant.gd"
 
-func metamorphose():
-	# visual
-	$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack_metamorphosed.svg")
-	# proper metamorphosis
-	super.metamorphose()
-
 func unmetamorphose():
-	# unmetamorphosis
+	if not has_metamorphosed:
+		$AnimRoot/Sprite2D.texture = preload("res://modules/character/peasants/assets/lumberjack_after_metamorphosis.svg")
+	# unmetamorphose
 	super.unmetamorphose()
-	# visual
-	$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/lumberjack.svg")
 
 # werewolf
 
@@ -41,3 +35,10 @@ func _get_less_loved_character(character_array : Array) -> Node2D:
 #			closest_character = character
 #			closest_character_distance = character_distance
 #	return closest_character
+
+func _on_metamorphosed_sprite_changed():
+	if not has_metamorphosed:
+		var axe_node : Node2D = preload("res://modules/character/peasants/droppables/axe.tscn").instantiate()
+		axe_node.position = position
+		axe_node.position.y -= 1
+		get_parent().add_child(axe_node)

@@ -19,6 +19,12 @@ func _choose_moving_direction():
 			moving_direction += PERSONALITY_SUSPECTIVE * memory[character]["suspicion"] * direction_to_character / distance_to_character
 			moving_direction += PERSONALITY_SOCIABILITY * memory[character]["love"] * direction_to_character / distance_to_character
 			moving_direction -= PERSONALITY_CURIOSITY * memory[character]["know"] * direction_to_character / distance_to_character
+	for boundary_exit in boundary_exits:
+		var direction_to_boundary_exit : Vector2 = boundary_exit["position"] - global_position
+		var distance_to_boundary_exit : float = direction_to_boundary_exit.length()
+		direction_to_boundary_exit /= distance_to_boundary_exit
+		if distance_to_boundary_exit > 0.0:
+			moving_direction -= PERSONALITY_BOUNDARY_FEAR * direction_to_boundary_exit / distance_to_boundary_exit
 	moving_direction = moving_direction.normalized()
 
 func _on_character_got_at_close_range(character : Node2D):

@@ -1,672 +1,438 @@
-[gd_scene load_steps=14 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=12 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
+[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="2_cpktn"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
-[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/assets/scroll.svg" id="2_s58ni"]
-[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
+[ext_resource type="PackedScene" uid="uid://spw6olyk1hbi" path="res://modules/world/terrain/scroll.tscn" id="2_qem0d"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
-[ext_resource type="PackedScene" uid="uid://vt8sb23a8psq" path="res://modules/character/exorcists/exorcist.tscn" id="7_dbc4m"]
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
 [ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="8_dyidt"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="8_l6muj"]
 [ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="10_0oxl2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
-radius = 245.098
-
 [sub_resource type="LabelSettings" id="LabelSettings_nphd0"]
 font_size = 50
 
 [node name="World" type="Node2D"]
+modulate = Color(0.6, 0.6, 0.6, 1)
+position = Vector2(-1, 0)
 script = ExtResource("1_cquyq")
+
+[node name="Background3" type="Node2D" parent="."]
+modulate = Color(0.25, 0.25, 0.25, 1)
+
+[node name="Scroll" type="Sprite2D" parent="Background3"]
+modulate = Color(0.969188, 0.969188, 0.969188, 1)
+position = Vector2(-181, -95)
+rotation = 0.0642138
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll2" type="Sprite2D" parent="Background3"]
+modulate = Color(0.932971, 0.932971, 0.932971, 1)
+position = Vector2(-100, -165)
+rotation = -0.044105
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll3" type="Sprite2D" parent="Background3"]
+modulate = Color(0.831722, 0.831722, 0.831722, 1)
+position = Vector2(9, -168)
+rotation = -0.125887
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll4" type="Sprite2D" parent="Background3"]
+modulate = Color(0.976875, 0.976875, 0.976875, 1)
+position = Vector2(115, -137)
+rotation = -0.135325
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll5" type="Sprite2D" parent="Background3"]
+modulate = Color(0.760172, 0.760172, 0.760172, 1)
+position = Vector2(203, -88)
+rotation = -1.00493
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll6" type="Sprite2D" parent="Background3"]
+modulate = Color(0.876617, 0.876617, 0.876617, 1)
+position = Vector2(262, -29)
+rotation = 0.998733
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll7" type="Sprite2D" parent="Background3"]
+modulate = Color(0.879405, 0.879405, 0.879405, 1)
+position = Vector2(272, 73)
+rotation = 2.44552
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll8" type="Sprite2D" parent="Background3"]
+modulate = Color(0.767278, 0.767278, 0.767278, 1)
+position = Vector2(221, 184)
+rotation = 2.33515
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll9" type="Sprite2D" parent="Background3"]
+modulate = Color(0.868188, 0.868188, 0.868188, 1)
+position = Vector2(166, 258)
+rotation = 2.35301
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll10" type="Sprite2D" parent="Background3"]
+modulate = Color(0.91284, 0.91284, 0.91284, 1)
+position = Vector2(105, 328)
+rotation = 0.0639038
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll11" type="Sprite2D" parent="Background3"]
+modulate = Color(0.722093, 0.722093, 0.722093, 1)
+position = Vector2(23, 362)
+rotation = 0.252489
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll12" type="Sprite2D" parent="Background3"]
+modulate = Color(0.755815, 0.755815, 0.755815, 1)
+position = Vector2(-85, 353)
+rotation = 0.0512027
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll13" type="Sprite2D" parent="Background3"]
+modulate = Color(0.729213, 0.729213, 0.729213, 1)
+position = Vector2(-186, 329)
+rotation = 0.553873
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll14" type="Sprite2D" parent="Background3"]
+modulate = Color(0.766074, 0.766074, 0.766074, 1)
+position = Vector2(-296, 308)
+rotation = -0.360754
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll15" type="Sprite2D" parent="Background3"]
+modulate = Color(0.702543, 0.702543, 0.702543, 1)
+position = Vector2(-361, 250)
+rotation = 1.00655
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll16" type="Sprite2D" parent="Background3"]
+modulate = Color(0.994905, 0.994905, 0.994905, 1)
+position = Vector2(-390, 150)
+rotation = 0.70787
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll17" type="Sprite2D" parent="Background3"]
+modulate = Color(0.755884, 0.755884, 0.755884, 1)
+position = Vector2(-404, 41)
+rotation = 2.1147
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll18" type="Sprite2D" parent="Background3"]
+modulate = Color(0.92415, 0.92415, 0.92415, 1)
+position = Vector2(-345, -51)
+rotation = 2.88659
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll19" type="Sprite2D" parent="Background3"]
+modulate = Color(0.91908, 0.91908, 0.91908, 1)
+position = Vector2(-267, -80)
+rotation = 0.802796
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Background2" type="Node2D" parent="."]
+modulate = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Scroll" type="Sprite2D" parent="Background2"]
+modulate = Color(0.735663, 0.735663, 0.735663, 1)
+position = Vector2(-153, -37)
+rotation = 0.00989718
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll2" type="Sprite2D" parent="Background2"]
+modulate = Color(0.814378, 0.814378, 0.814378, 1)
+position = Vector2(-255, -28)
+rotation = 0.57281
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll3" type="Sprite2D" parent="Background2"]
+modulate = Color(0.898193, 0.898193, 0.898193, 1)
+position = Vector2(-330, 7)
+rotation = -0.322577
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll4" type="Sprite2D" parent="Background2"]
+modulate = Color(0.824201, 0.824201, 0.824201, 1)
+position = Vector2(-349, 84)
+rotation = -2.69054
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll5" type="Sprite2D" parent="Background2"]
+modulate = Color(0.858905, 0.858905, 0.858905, 1)
+position = Vector2(-338, 165)
+rotation = -1.32676
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll6" type="Sprite2D" parent="Background2"]
+modulate = Color(0.751759, 0.751759, 0.751759, 1)
+position = Vector2(-285, 243)
+rotation = -2.41155
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll7" type="Sprite2D" parent="Background2"]
+modulate = Color(0.919568, 0.919568, 0.919568, 1)
+position = Vector2(-204, 278)
+rotation = -2.99411
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll8" type="Sprite2D" parent="Background2"]
+modulate = Color(0.928938, 0.928938, 0.928938, 1)
+position = Vector2(-106, 304)
+rotation = -2.25625
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll9" type="Sprite2D" parent="Background2"]
+modulate = Color(0.800528, 0.800528, 0.800528, 1)
+position = Vector2(7.00001, 314)
+rotation = -3.16427
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll10" type="Sprite2D" parent="Background2"]
+modulate = Color(0.913465, 0.913465, 0.913465, 1)
+position = Vector2(98, 257)
+rotation = -3.74663
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll11" type="Sprite2D" parent="Background2"]
+modulate = Color(0.767125, 0.767125, 0.767125, 1)
+position = Vector2(156, 179)
+rotation = -3.86535
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll12" type="Sprite2D" parent="Background2"]
+modulate = Color(0.726152, 0.726152, 0.726152, 1)
+position = Vector2(164, 71)
+rotation = -4.06254
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll13" type="Sprite2D" parent="Background2"]
+modulate = Color(0.814782, 0.814782, 0.814782, 1)
+position = Vector2(222, 106)
+rotation = -5.09075
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll14" type="Sprite2D" parent="Background2"]
+modulate = Color(0.872832, 0.872832, 0.872832, 1)
+position = Vector2(211, -2)
+rotation = -5.58468
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll15" type="Sprite2D" parent="Background2"]
+modulate = Color(0.806966, 0.806966, 0.806966, 1)
+position = Vector2(136, -67)
+rotation = -5.52432
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll16" type="Sprite2D" parent="Background2"]
+modulate = Color(0.960536, 0.960536, 0.960536, 1)
+position = Vector2(38, -115)
+rotation = -6.08393
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll17" type="Sprite2D" parent="Background2"]
+modulate = Color(0.769161, 0.769161, 0.769161, 1)
+position = Vector2(-70, -108)
+rotation = -6.25865
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll18" type="Sprite2D" parent="Background2"]
+modulate = Color(0.921277, 0.921277, 0.921277, 1)
+position = Vector2(-179, 152)
+rotation = -6.66882
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
+
+[node name="Scroll19" type="Sprite2D" parent="Background2"]
+modulate = Color(0.775108, 0.775108, 0.775108, 1)
+position = Vector2(-196, 77)
+rotation = -7.3407
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cpktn")
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="Scroll" type="Sprite2D" parent="Background"]
-position = Vector2(529, 91)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Scroll" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.966149, 0.966149, 0.966149, 1)
+rotation = -1.83259
+
+[node name="Scroll2" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.877978, 0.877978, 0.877978, 1)
+position = Vector2(-82, 17)
+rotation = -0.598432
+
+[node name="Scroll3" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.923688, 0.923688, 0.923688, 1)
+position = Vector2(-25, 74)
+rotation = -2.87979
+
+[node name="Scroll5" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.927204, 0.927204, 0.927204, 1)
+position = Vector2(82, 46)
+rotation = 0.192282
+
+[node name="Scroll6" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.85875, 0.85875, 0.85875, 1)
+position = Vector2(57, 106)
+rotation = -0.69667
+
+[node name="Scroll7" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.820566, 0.820566, 0.820566, 1)
+position = Vector2(104, -24)
+rotation = -0.565924
+
+[node name="Scroll8" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.873344, 0.873344, 0.873344, 1)
+position = Vector2(-19, 149)
+rotation = 0.523598
+
+[node name="Scroll9" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.856257, 0.856257, 0.856257, 1)
+position = Vector2(-164, 31)
+rotation = -3.40339
+
+[node name="Scroll10" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.856475, 0.856475, 0.856475, 1)
+position = Vector2(-72, -58)
+rotation = -4.0089
+
+[node name="Scroll11" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.88581, 0.88581, 0.88581, 1)
+position = Vector2(-111, 182)
+rotation = -4.11269
+
+[node name="Scroll12" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.84493, 0.84493, 0.84493, 1)
+position = Vector2(-42, 213)
+rotation = -0.785397
+
+[node name="Scroll13" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.969402, 0.969402, 0.969402, 1)
+position = Vector2(61, 163)
+rotation = -3.40339
+
+[node name="Scroll14" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.925101, 0.925101, 0.925101, 1)
+position = Vector2(150, 118)
+rotation = -3.79011
+
+[node name="Scroll15" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.829176, 0.829176, 0.829176, 1)
+position = Vector2(175, 16)
+rotation = -3.64036
+
+[node name="Scroll16" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.883274, 0.883274, 0.883274, 1)
+position = Vector2(29, -68)
+rotation = -2.465
+
+[node name="Scroll17" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.877765, 0.877765, 0.877765, 1)
+position = Vector2(-262, 25)
+rotation = -3.14159
+
+[node name="Scroll18" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.960536, 0.960536, 0.960536, 1)
+position = Vector2(-276, 87)
+rotation = -1.83259
+
+[node name="Scroll19" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.954293, 0.954293, 0.954293, 1)
+position = Vector2(-228, 192)
+rotation = -1.16908
+
+[node name="Scroll20" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.83836, 0.83836, 0.83836, 1)
+position = Vector2(-167, 230)
+rotation = -1.33542
+
+[node name="Scroll21" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.8628, 0.8628, 0.8628, 1)
+position = Vector2(-284, 160)
+rotation = -2.57612
+
+[node name="Scroll22" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.904512, 0.904512, 0.904512, 1)
+position = Vector2(-86, 263)
+rotation = -1.89992
 
-[node name="Scroll2" type="Sprite2D" parent="Background"]
-position = Vector2(622, 124)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Scroll23" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.810647, 0.810647, 0.810647, 1)
+position = Vector2(11, 258)
+rotation = -3.57279
 
-[node name="Scroll3" type="Sprite2D" parent="Background"]
-position = Vector2(672, 188)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Scroll24" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.891282, 0.891282, 0.891282, 1)
+position = Vector2(87, 217)
+rotation = -3.42241
 
-[node name="Scroll4" type="Sprite2D" parent="Background"]
-position = Vector2(721, 262)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Scroll4" parent="Background" instance=ExtResource("2_qem0d")]
+modulate = Color(0.924673, 0.924673, 0.924673, 1)
+position = Vector2(-108, 101)
+rotation = 0.721983
 
-[node name="Scroll5" type="Sprite2D" parent="Background"]
-position = Vector2(725, 331)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Playground" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Scroll6" type="Sprite2D" parent="Background"]
-position = Vector2(701, 407)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Lumberjack" parent="Playground" instance=ExtResource("6_c61lt")]
 
-[node name="Scroll7" type="Sprite2D" parent="Background"]
-position = Vector2(457.975, 152.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Lumberjack2" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(58, 20)
 
-[node name="Scroll8" type="Sprite2D" parent="Background"]
-position = Vector2(550.975, 185.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Lumberjack3" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(1, 63)
 
-[node name="Scroll9" type="Sprite2D" parent="Background"]
-position = Vector2(600.975, 249.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Lumberjack4" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(-70, 21)
 
-[node name="Scroll10" type="Sprite2D" parent="Background"]
-position = Vector2(649.975, 323.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Lumberjack5" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(-51, -62)
 
-[node name="Scroll11" type="Sprite2D" parent="Background"]
-position = Vector2(653.975, 392.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
+[node name="Foreground" type="Node2D" parent="."]
 
-[node name="Scroll12" type="Sprite2D" parent="Background"]
-position = Vector2(629.975, 468.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll13" type="Sprite2D" parent="Background"]
-position = Vector2(408, 209.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll14" type="Sprite2D" parent="Background"]
-position = Vector2(501, 242.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll15" type="Sprite2D" parent="Background"]
-position = Vector2(551, 306.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll16" type="Sprite2D" parent="Background"]
-position = Vector2(600, 380.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll17" type="Sprite2D" parent="Background"]
-position = Vector2(604, 449.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll18" type="Sprite2D" parent="Background"]
-position = Vector2(580, 525.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll19" type="Sprite2D" parent="Background"]
-position = Vector2(336.975, 271.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll20" type="Sprite2D" parent="Background"]
-position = Vector2(429.975, 304.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll21" type="Sprite2D" parent="Background"]
-position = Vector2(479.975, 368.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll22" type="Sprite2D" parent="Background"]
-position = Vector2(528.975, 442.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll23" type="Sprite2D" parent="Background"]
-position = Vector2(532.975, 511.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll24" type="Sprite2D" parent="Background"]
-position = Vector2(448, 516)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll25" type="Sprite2D" parent="Background"]
-position = Vector2(424, 460)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll26" type="Sprite2D" parent="Background"]
-position = Vector2(433, 417)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll27" type="Sprite2D" parent="Background"]
-position = Vector2(365, 372)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll28" type="Sprite2D" parent="Background"]
-position = Vector2(316, 330)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll29" type="Sprite2D" parent="Background"]
-position = Vector2(536, 138)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll30" type="Sprite2D" parent="Background"]
-position = Vector2(480, 184)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll31" type="Sprite2D" parent="Background"]
-position = Vector2(441, 254)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll32" type="Sprite2D" parent="Background"]
-position = Vector2(812.975, 337.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll33" type="Sprite2D" parent="Background"]
-position = Vector2(905.975, 370.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll34" type="Sprite2D" parent="Background"]
-position = Vector2(955.975, 434.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll38" type="Sprite2D" parent="Background"]
-position = Vector2(741.95, 399.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll39" type="Sprite2D" parent="Background"]
-position = Vector2(834.95, 432.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll40" type="Sprite2D" parent="Background"]
-position = Vector2(884.95, 496.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll44" type="Sprite2D" parent="Background"]
-position = Vector2(691.975, 456.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll45" type="Sprite2D" parent="Background"]
-position = Vector2(784.975, 489.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll46" type="Sprite2D" parent="Background"]
-position = Vector2(834.975, 553.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll50" type="Sprite2D" parent="Background"]
-position = Vector2(620.95, 518.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll51" type="Sprite2D" parent="Background"]
-position = Vector2(713.95, 551.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll52" type="Sprite2D" parent="Background"]
-position = Vector2(763.95, 615.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll58" type="Sprite2D" parent="Background"]
-position = Vector2(648.975, 618.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll59" type="Sprite2D" parent="Background"]
-position = Vector2(599.975, 576.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll60" type="Sprite2D" parent="Background"]
-position = Vector2(819.975, 384.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll61" type="Sprite2D" parent="Background"]
-position = Vector2(763.975, 430.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll62" type="Sprite2D" parent="Background"]
-position = Vector2(724.975, 500.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll71" type="Sprite2D" parent="Background"]
-position = Vector2(914.95, 11.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll72" type="Sprite2D" parent="Background"]
-position = Vector2(963.95, 85.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll73" type="Sprite2D" parent="Background"]
-position = Vector2(967.95, 154.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll74" type="Sprite2D" parent="Background"]
-position = Vector2(943.95, 230.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll75" type="Sprite2D" parent="Background"]
-position = Vector2(721.975, -28.6)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll76" type="Sprite2D" parent="Background"]
-position = Vector2(814.975, 4.40002)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll77" type="Sprite2D" parent="Background"]
-position = Vector2(864.975, 68.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll78" type="Sprite2D" parent="Background"]
-position = Vector2(913.975, 142.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll79" type="Sprite2D" parent="Background"]
-position = Vector2(917.975, 211.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll80" type="Sprite2D" parent="Background"]
-position = Vector2(893.975, 287.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll81" type="Sprite2D" parent="Background"]
-position = Vector2(650.95, 33.1001)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll82" type="Sprite2D" parent="Background"]
-position = Vector2(743.95, 66.1001)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll83" type="Sprite2D" parent="Background"]
-position = Vector2(793.95, 130.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll84" type="Sprite2D" parent="Background"]
-position = Vector2(842.95, 204.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll85" type="Sprite2D" parent="Background"]
-position = Vector2(846.95, 273.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll86" type="Sprite2D" parent="Background"]
-position = Vector2(761.975, 277.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll87" type="Sprite2D" parent="Background"]
-position = Vector2(737.975, 221.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll88" type="Sprite2D" parent="Background"]
-position = Vector2(746.975, 178.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll89" type="Sprite2D" parent="Background"]
-position = Vector2(678.975, 133.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll90" type="Sprite2D" parent="Background"]
-position = Vector2(629.975, 91.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll93" type="Sprite2D" parent="Background"]
-position = Vector2(754.975, 15.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll94" type="Sprite2D" parent="Background"]
-position = Vector2(291.975, 333.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll95" type="Sprite2D" parent="Background"]
-position = Vector2(384.975, 366.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll96" type="Sprite2D" parent="Background"]
-position = Vector2(434.975, 430.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll97" type="Sprite2D" parent="Background"]
-position = Vector2(483.975, 504.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll98" type="Sprite2D" parent="Background"]
-position = Vector2(487.975, 573.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll99" type="Sprite2D" parent="Background"]
-position = Vector2(463.975, 649.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll100" type="Sprite2D" parent="Background"]
-position = Vector2(220.95, 395.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll101" type="Sprite2D" parent="Background"]
-position = Vector2(313.95, 428.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll102" type="Sprite2D" parent="Background"]
-position = Vector2(363.95, 492.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll103" type="Sprite2D" parent="Background"]
-position = Vector2(412.95, 566.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll104" type="Sprite2D" parent="Background"]
-position = Vector2(416.95, 635.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll106" type="Sprite2D" parent="Background"]
-position = Vector2(170.975, 452.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll107" type="Sprite2D" parent="Background"]
-position = Vector2(263.975, 485.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll108" type="Sprite2D" parent="Background"]
-position = Vector2(313.975, 549.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll109" type="Sprite2D" parent="Background"]
-position = Vector2(362.975, 623.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll122" type="Sprite2D" parent="Background"]
-position = Vector2(298.975, 380.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll123" type="Sprite2D" parent="Background"]
-position = Vector2(242.975, 426.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll124" type="Sprite2D" parent="Background"]
-position = Vector2(203.975, 496.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll127" type="Sprite2D" parent="Background"]
-position = Vector2(428.975, -28.3)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll128" type="Sprite2D" parent="Background"]
-position = Vector2(477.975, 45.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll129" type="Sprite2D" parent="Background"]
-position = Vector2(481.975, 114.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll130" type="Sprite2D" parent="Background"]
-position = Vector2(457.975, 190.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll132" type="Sprite2D" parent="Background"]
-position = Vector2(307.95, -30.6)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll133" type="Sprite2D" parent="Background"]
-position = Vector2(357.95, 33.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll134" type="Sprite2D" parent="Background"]
-position = Vector2(406.95, 107.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll135" type="Sprite2D" parent="Background"]
-position = Vector2(410.95, 176.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll136" type="Sprite2D" parent="Background"]
-position = Vector2(386.95, 252.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll137" type="Sprite2D" parent="Background"]
-position = Vector2(164.975, -6.59998)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll138" type="Sprite2D" parent="Background"]
-position = Vector2(257.975, 26.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll139" type="Sprite2D" parent="Background"]
-position = Vector2(307.975, 90.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll140" type="Sprite2D" parent="Background"]
-position = Vector2(356.975, 164.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll141" type="Sprite2D" parent="Background"]
-position = Vector2(360.975, 233.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll142" type="Sprite2D" parent="Background"]
-position = Vector2(336.975, 309.4)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll143" type="Sprite2D" parent="Background"]
-position = Vector2(93.95, 55.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll144" type="Sprite2D" parent="Background"]
-position = Vector2(186.95, 88.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll145" type="Sprite2D" parent="Background"]
-position = Vector2(236.95, 152.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll146" type="Sprite2D" parent="Background"]
-position = Vector2(285.95, 226.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll147" type="Sprite2D" parent="Background"]
-position = Vector2(289.95, 295.1)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll148" type="Sprite2D" parent="Background"]
-position = Vector2(204.975, 299.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll149" type="Sprite2D" parent="Background"]
-position = Vector2(180.975, 243.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll150" type="Sprite2D" parent="Background"]
-position = Vector2(189.975, 200.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll151" type="Sprite2D" parent="Background"]
-position = Vector2(121.975, 155.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll152" type="Sprite2D" parent="Background"]
-position = Vector2(72.975, 113.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll154" type="Sprite2D" parent="Background"]
-position = Vector2(236.975, -32.3)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Scroll155" type="Sprite2D" parent="Background"]
-position = Vector2(197.975, 37.7)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_s58ni")
-
-[node name="Lumberjack" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(421, 385)
-
-[node name="Lumberjack2" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(457, 346)
-
-[node name="Lumberjack3" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(558, 404)
-
-[node name="Lumberjack4" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(565, 353)
-
-[node name="Lumberjack5" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(621, 317)
-
-[node name="Lumberjack6" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(680, 354)
-
-[node name="Lumberjack7" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(697, 402)
-
-[node name="Lumberjack8" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(649, 451)
-
-[node name="Lumberjack9" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(597, 490)
-
-[node name="Lumberjack10" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(538, 499)
-
-[node name="Lumberjack11" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(486, 475)
-
-[node name="Lumberjack12" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(638, 265)
-
-[node name="Exorcist" parent="." instance=ExtResource("7_dbc4m")]
-position = Vector2(427, 189)
-
-[node name="Exorcist2" parent="." instance=ExtResource("7_dbc4m")]
-position = Vector2(678, 285)
-
-[node name="Exorcist3" parent="." instance=ExtResource("7_dbc4m")]
-position = Vector2(494, 428)
-
-[node name="Exorcist4" parent="." instance=ExtResource("7_dbc4m")]
-position = Vector2(340, 322)
-
-[node name="Lumberjack13" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(467, 252)
-
-[node name="Lumberjack14" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(404, 253)
-
-[node name="Lumberjack15" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(507, 164)
-
-[node name="Lumberjack16" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(617, 172)
-
-[node name="Lumberjack17" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(692, 230)
-
-[node name="Lumberjack18" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(739, 279)
-
-[node name="Lumberjack19" parent="." instance=ExtResource("6_c61lt")]
-position = Vector2(739, 279)
-
-[node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
-position = Vector2(548, 314)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
-shape = SubResource("CircleShape2D_pk6sr")
+[node name="Curse" parent="Foreground" instance=ExtResource("2_ghruk")]
+INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Lumberjack")
 
 [node name="Narration" parent="." instance=ExtResource("4_4m0pc")]
 metadata/_edit_use_anchors_ = true
@@ -693,12 +459,9 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("8_dyidt")
 
-[node name="Curse" parent="." instance=ExtResource("2_ghruk")]
-INITIALLY_CURSED_CHARACTER = NodePath("../Lumberjack")
-
 [node name="SFXPlayer" parent="." instance=ExtResource("10_0oxl2")]
 
+[connection signal="cantCurse" from="Foreground/Curse" to="SFXPlayer" method="_on_curse_cant_curse"]
+[connection signal="curse" from="Foreground/Curse" to="SFXPlayer" method="_on_curse_curse"]
 [connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
 [connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
-[connection signal="cantCurse" from="Curse" to="SFXPlayer" method="_on_curse_cant_curse"]
-[connection signal="curse" from="Curse" to="SFXPlayer" method="_on_curse_curse"]

@@ -1,12 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://duro6yranibfi"]
+[gd_scene load_steps=5 format=3 uid="uid://duro6yranibfi"]
 
 [ext_resource type="PackedScene" uid="uid://bxksnys6iqsx7" path="res://modules/character/peasants/peasant.tscn" id="1_toxem"]
 [ext_resource type="Script" path="res://modules/character/peasants/lumberjack.gd" id="2_p8iip"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2g0w"]
+resource_local_to_scene = true
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkm4g"]
+
 [node name="Lumberjack" instance=ExtResource("1_toxem")]
 script = ExtResource("2_p8iip")
 
-[node name="Sprite2D" parent="." index="7"]
-position = Vector2(0, -14)
-rotation = -0.261799
-scale = Vector2(0.15, 0.15)
+[node name="CollisionShape2D" parent="Area2DBody" index="0"]
+shape = SubResource("CircleShape2D_n2g0w")
+
+[node name="CollisionShape2D" parent="Area2DBoundaryCheck" index="0"]
+shape = SubResource("CircleShape2D_n2g0w")
+
+[node name="CollisionShape2D" parent="Area2DCloseRange" index="0"]
+shape = SubResource("CircleShape2D_rkm4g")
+
+[node name="Sprite2D" parent="AnimRoot" index="0"]
+position = Vector2(0.392591, -14)

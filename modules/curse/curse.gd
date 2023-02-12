@@ -52,7 +52,7 @@ func _input(event : InputEvent):
 					var area_array : Array = []
 					_try_curse(event)
 					if event.is_action("activate"):
-						if not cursed_character.is_metamorphosed:
+						if not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
 							cursed_character.metamorphose()
 
 func _try_curse(input : InputEvent):
@@ -111,5 +111,3 @@ func _highlightCursableCharacters(area_array : Array, enable : bool):
 			if not enable or character != cursed_character:
 				var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
 				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
-			
-	

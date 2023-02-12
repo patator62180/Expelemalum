@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://br2flpqng7wus"]
+
+[ext_resource type="Texture2D" uid="uid://1e150klism6" path="res://modules/character/peasants/assets/lumberjack_axe.svg" id="1_3pnjv"]
+
+[node name="Axe" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_3pnjv")

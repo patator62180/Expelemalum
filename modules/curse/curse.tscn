@@ -81,9 +81,5 @@ polygon = PackedVector2Array(0, 0, 100, 100, 100, -100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.8, 2.8)
-limit_left = 303
-limit_top = 69
-limit_right = 793
-limit_bottom = 559
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gdwj_54"
-run/main_scene="res://modules/world/world.tscn"
+run/main_scene="res://modules/game/game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -70,3 +70,4 @@ activate={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

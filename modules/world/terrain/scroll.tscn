@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://spw6olyk1hbi"]
+
+[ext_resource type="Script" path="res://modules/world/terrain/scroll.gd" id="1_47dxc"]
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="2_35psx"]
+[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="3_s7lam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64nq0"]
+size = Vector2(105, 70)
+
+[node name="Scroll" type="Node2D"]
+script = ExtResource("1_47dxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_s7lam")
+
+[node name="Boundary" parent="." instance=ExtResource("2_35psx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("RectangleShape2D_64nq0")
