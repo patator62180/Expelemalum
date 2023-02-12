@@ -33,7 +33,7 @@ turbulence_enabled = true
 
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
-CURSE_RANGE = 300.0
+CURSE_RANGE = 100.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 50
@@ -53,7 +53,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DUp"]
-polygon = PackedVector2Array(0, 0, -300, -300, 300, -300)
+polygon = PackedVector2Array(0, 0, -100, -100, 100, -100)
 
 [node name="Area2DDown" type="Area2D" parent="."]
 collision_layer = 0
@@ -61,7 +61,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DDown"]
-polygon = PackedVector2Array(0, 0, 300, 300, -300, 300)
+polygon = PackedVector2Array(0, 0, 100, 100, -100, 100)
 
 [node name="Area2DLeft" type="Area2D" parent="."]
 collision_layer = 0
@@ -69,7 +69,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DLeft"]
-polygon = PackedVector2Array(0, 0, -300, -300, -300, 300)
+polygon = PackedVector2Array(0, 0, -100, -100, -100, 100)
 
 [node name="Area2DRight" type="Area2D" parent="."]
 collision_layer = 0
@@ -77,7 +77,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DRight"]
-polygon = PackedVector2Array(0, 0, 300, 300, 300, -300)
+polygon = PackedVector2Array(0, 0, 100, 100, 100, -100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
