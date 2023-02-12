@@ -67,14 +67,9 @@ func _play_line(lineName : AUDIO_LINE):
 	lastLineSpoken.stop()
 	
 	var lineNameStr = AUDIO_LINE.keys()[lineName]
-	var subtitledAudioStream = load("res://modules/narration/Audio/"+lineNameStr+".tres")
-	if subtitledAudioStream != null:
-		narratorStreamPlayer.stream = subtitledAudioStream.Audio
-		narratorSubtitleLabel.text = subtitledAudioStream.SubtitleText
-	else:
-		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".wav")
-		narratorStreamPlayer.stream = audioStream
-		#narratorSubtitleLabel.text = subtitles[lineNameStr]["subtitle"]
+	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".wav")
+	narratorStreamPlayer.stream = audioStream
+	#narratorSubtitleLabel.text = subtitles[lineNameStr]["subtitle"]
 	narratorStreamPlayer.play()
 	
 	lastLineSpoken.start()
