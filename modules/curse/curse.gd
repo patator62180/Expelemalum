@@ -103,7 +103,7 @@ func _on_tree_exiting():
 func _highlightCursableCharacters(area_array : Array, enable : bool):
 	for area in area_array:
 		var character : Node2D = area.get_parent()
-		if character != cursed_character:
+		if not enable or character != cursed_character:
 			var polygon : Polygon2D = character.get_node("Polygon2D")
 			polygon.color = Color.YELLOW if enable else Color.WHITE
 			
