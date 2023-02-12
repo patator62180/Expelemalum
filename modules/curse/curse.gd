@@ -4,6 +4,8 @@ extends Node2D
 @export_node_path("Node2D") var INITIALLY_CURSED_CHARACTER : NodePath
 var cursed_character : Node2D = null
 
+var area_array : Array
+
 signal curse
 signal cantCurse
 
@@ -36,6 +38,10 @@ func _curse(character : Node2D):
 func _process(delta : float):
 	if not Engine.is_editor_hint():
 		global_position = cursed_character.global_position
+		if area_array:
+			_highlightCursableCharacters(area_array, false)
+		area_array = _process_area_array()
+		_highlightCursableCharacters(area_array, true)
 
 func _input(event : InputEvent):
 	if not Engine.is_editor_hint():
@@ -65,6 +71,19 @@ func _input(event : InputEvent):
 					else:
 						emit_signal("cantCurse")
 
+func _process_area_array() -> Array:
+	if not Engine.is_editor_hint():
+		var area_array : Array = []
+		area_array.append_array($Area2DUp.get_overlapping_areas().duplicate())
+		area_array.append_array($Area2DDown.get_overlapping_areas().duplicate())
+		area_array.append_array($Area2DLeft.get_overlapping_areas().duplicate())
+		area_array.append_array($Area2DRight.get_overlapping_areas().duplicate())
+		area_array.erase(cursed_character.get_node("Area2DBody"))
+		
+		return area_array
+	else:
+		return []
+
 func _get_closest_character(area_array : Array) -> Node2D:
 	var closest_character : Node2D = null
 	var closest_character_distance : float = INF
@@ -80,3 +99,12 @@ func _get_closest_character(area_array : Array) -> Node2D:
 
 func _on_tree_exiting():
 	GameState.IsCurseAlive= false
+
+func _highlightCursableCharacters(area_array : Array, enable : bool):
+	for area in area_array:
+		var character : Node2D = area.get_parent()
+		if character != cursed_character:
+			var polygon : Polygon2D = character.get_node("Polygon2D")
+			polygon.color = Color.YELLOW if enable else Color.WHITE
+			
+	
