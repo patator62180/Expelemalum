@@ -37,8 +37,23 @@ func _get_less_loved_character(character_array : Array) -> Node2D:
 #	return closest_character
 
 func _on_metamorphosed_sprite_changed():
+	$Area2DBody/CollisionShape2D.shape.radius = 12
+	SPEED *= 1.5
+	$AnimationPlayerMove.speed_scale *= 1.5
 	if not has_metamorphosed:
 		var axe_node : Node2D = preload("res://modules/character/peasants/droppables/axe.tscn").instantiate()
 		axe_node.position = position
 		axe_node.position.y -= 1
 		get_parent().add_child(axe_node)
+
+func _on_unmetamorphosed_sprite_changed():
+	$Area2DBody/CollisionShape2D.shape.radius = 8
+	SPEED /= 1.5
+	$AnimationPlayerMove.speed_scale /= 1.5
+
+func _on_animation_die_red():
+	if has_metamorphosed:
+		$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/dead_lumberjack_after_metamorphosis.svg")
+	else:
+		$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/dead_lumberjack.svg")
+	$AnimRoot/Sprite2D.rotation = 0.5 * PI

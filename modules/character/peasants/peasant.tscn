@@ -2,36 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="1_phawp"]
 [ext_resource type="Script" path="res://modules/character/peasants/peasant.gd" id="2_mspoe"]
-[ext_resource type="Texture2D" uid="uid://clckou6k6lyy8" path="res://modules/curse/assets/cloud.svg" id="3_1ghii"]
+[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="3_1ghii"]
 [ext_resource type="Texture2D" uid="uid://bw5y2a87ndhhu" path="res://modules/character/peasants/assets/lumberjack_metamorphosed.svg" id="3_2pbwm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovh4o"]
 resource_local_to_scene = true
 radius = 8.0
-
-[sub_resource type="Curve" id="Curve_ackoi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153153, 1), 0.0, 0.0, 0, 0, Vector2(0.594595, 0.763636), -0.955981, -0.955981, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_u8ewd"]
-curve = SubResource("Curve_ackoi")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45h2u"]
-lifetime_randomness = 0.1
-emission_shape = 1
-emission_sphere_radius = 25.0
-particle_flag_disable_z = true
-spread = 180.0
-gravity = Vector3(0, -100, 0)
-initial_velocity_min = 20.0
-initial_velocity_max = 50.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-damping_min = 1.0
-damping_max = 10.0
-scale_min = 0.15
-scale_max = 0.15
-scale_curve = SubResource("CurveTexture_u8ewd")
 
 [sub_resource type="Animation" id="Animation_vky44"]
 length = 0.001
@@ -86,22 +62,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Area2DBody/CollisionShape2D:shape:radius")
+tracks/4/path = NodePath("AnimRoot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimRoot:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -161,34 +125,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Area2DBody/CollisionShape2D:shape:radius")
+tracks/4/path = NodePath("AnimRoot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [8.0, 12.0]
+"values": [Vector2(0, 4), Vector2(0, 9)]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimRoot:position")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, 4), Vector2(0, 9)]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -250,26 +202,28 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Area2DBody/CollisionShape2D:shape:radius")
+tracks/4/path = NodePath("AnimRoot:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [12.0, 8.0]
+"values": [Vector2(0, 9), Vector2(0, 4)]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimRoot:position")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, 9), Vector2(0, 4)]
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_unmetamorphosed_sprite_changed"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o34an"]
@@ -278,6 +232,30 @@ _data = {
 "metamorphose": SubResource("Animation_ya4ia"),
 "unmetamorphose": SubResource("Animation_25s6g")
 }
+
+[sub_resource type="Curve" id="Curve_ackoi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.153153, 1), 0.0, 0.0, 0, 0, Vector2(0.594595, 0.763636), -0.955981, -0.955981, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_u8ewd"]
+curve = SubResource("Curve_ackoi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_45h2u"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 25.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, -100, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 1.0
+damping_max = 10.0
+scale_min = 0.15
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_u8ewd")
 
 [node name="Peasant" instance=ExtResource("1_phawp")]
 script = ExtResource("2_mspoe")
@@ -295,13 +273,18 @@ shape = SubResource("CircleShape2D_ovh4o")
 [node name="CollisionShape2D" parent="Area2DCloseRange" index="0"]
 shape = SubResource("CircleShape2D_ovh4o")
 
+[node name="AnimationPlayerMetamorphose" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_o34an")
+}
+
 [node name="Sprite2DMetamorphosed" type="Sprite2D" parent="AnimRoot" index="1"]
 visible = false
 position = Vector2(0, -15)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_2pbwm")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="9"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="11"]
 position = Vector2(0, -7)
 emitting = false
 amount = 64
@@ -311,10 +294,5 @@ lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 visibility_rect = Rect2(0, 0, 0, 0)
-
-[node name="AnimationPlayerMetamorphose" type="AnimationPlayer" parent="." index="10"]
-libraries = {
-"": SubResource("AnimationLibrary_o34an")
-}
 
 [connection signal="animation_finished" from="AnimationPlayerMetamorphose" to="." method="_on_animation_player_metamorphose_animation_finished"]

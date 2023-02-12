@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://br2flpqng7wus"]
+[gd_scene load_steps=3 format=3 uid="uid://br2flpqng7wus"]
 
 [ext_resource type="Texture2D" uid="uid://1e150klism6" path="res://modules/character/peasants/assets/lumberjack_axe.svg" id="1_3pnjv"]
+[ext_resource type="Script" path="res://modules/character/peasants/droppables/axe.gd" id="1_74ie3"]
 
 [node name="Axe" type="Node2D"]
+script = ExtResource("1_74ie3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)

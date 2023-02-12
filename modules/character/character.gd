@@ -8,7 +8,7 @@ const PERSONALITY_CURIOSITY : float = 0.5
 const PERSONALITY_BOUNDARY_FEAR : float = 10.0
 
 # testing interface (assuming this is only changed in the editor)
-const SPEED : float = 40.0
+var SPEED : float = 40.0
 @export var ANIMATION_SPEED_FACTOR : float = 0.0
 
 @export var RADIUS_BODY : float = 10.0:
@@ -37,7 +37,7 @@ const SPEED : float = 40.0
 
 ## signal
 
-signal died(dieType)
+signal dying(dieType)
 
 ## behavior variables
 
@@ -47,10 +47,10 @@ var curiosity_direction : Vector2
 var visible_characters : Array
 var memory : Dictionary
 
+## SFX
+
 @onready
 var SFXPlayer = $SFXPlayer
-
-var rng = RandomNumberGenerator.new()
 
 ## boundary variables
 
@@ -61,12 +61,35 @@ var boundary_exits : Array = []
 ## cursed variables
 
 var is_cursed : bool = false
+var is_dying : bool = false
 
 # interface
 
 func die(die_type):
-	emit_signal("died", die_type) #need to retest when corpse implemented
-	queue_free()
+	if not is_dying:
+		match die_type:
+			DIE_TYPE.Exorcist:
+				assert(false, "TODO: DIE BY EXORCIST")
+			_:
+				$AnimationPlayerMove.stop()
+				$AnimationPlayerDie.play("die")
+		is_dying = true
+		emit_signal("dying", die_type) #need to retest when corpse implemented
+
+func _die():
+	if not Engine.is_editor_hint():
+		# create corps
+		var corps_node : Node2D = preload("res://modules/character/corps.tscn").instantiate()
+		get_parent().add_child(corps_node)
+		var sprite_2d : Sprite2D = $AnimRoot/Sprite2D
+		corps_node.global_position = sprite_2d.global_position
+		corps_node.global_rotation = sprite_2d.global_rotation
+		$AnimRoot.remove_child(sprite_2d)
+		sprite_2d.position = Vector2.ZERO
+		sprite_2d.rotation = 0.0
+		corps_node.add_child(sprite_2d)
+		# self free
+		queue_free()
 
 # internal functions
 
@@ -76,10 +99,8 @@ func _ready():
 	_randomize_animation()
 
 func _randomize_animation():
-	var rng_pos = rng.randf_range(0, 1)
-	
 	var animationPlayer : AnimationPlayer = get_node("AnimationPlayerMove")
-	animationPlayer.seek(rng_pos) 
+	animationPlayer.seek(randf_range(0, 1)) 
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():
@@ -163,3 +184,10 @@ func _on_area_2d_boundary_check_area_exited(area : Area2D):
 func _on_area_2d_close_range_area_entered(area : Area2D):
 	if not area == $Area2DBody:
 		_on_character_got_at_close_range(area.get_parent())
+
+func _on_animation_player_die_animation_finished(anim_name : String):
+	if anim_name == "die":
+		_die()
+
+func _on_animation_die_red():
+	pass # TO BE OVERLOADED
