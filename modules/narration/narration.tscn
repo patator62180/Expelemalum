@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b855xyyw4k76w"]
+[gd_scene load_steps=5 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
-[ext_resource type="AudioStream" uid="uid://b3rhwilgp1a7l" path="res://modules/narration/Audio/AudioSource/Intro.wav" id="2_5w13a"]
+[ext_resource type="AudioStream" uid="uid://cqcslyqwx0c3w" path="res://modules/narration/Audio/AudioSource/narration_gameLaunch.wav" id="2_bwrcv"]
 [ext_resource type="Script" path="res://modules/narration/NarratorAudioStreamPlayer.gd" id="3_eytij"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
@@ -17,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_kif28")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_5w13a")
+stream = ExtResource("2_bwrcv")
 volume_db = 1.0
 script = ExtResource("3_eytij")
 
@@ -32,4 +32,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="LastLineSpoken" type="Timer" parent="."]
+wait_time = 30.0
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="LastLineSpoken" to="." method="_on_last_line_spoken_timeout"]

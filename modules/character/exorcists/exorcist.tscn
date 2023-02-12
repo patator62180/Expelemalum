@@ -13,3 +13,5 @@ CHARACTER_PATH = NodePath("../..")
 
 [node name="Polygon2D" parent="." index="6"]
 color = Color(0.243137, 0.772549, 1, 1)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

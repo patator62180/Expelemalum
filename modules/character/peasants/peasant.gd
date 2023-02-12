@@ -2,6 +2,9 @@ extends "res://modules/character/character.gd"
 
 var is_metamorphosed : bool = false
 
+signal metamorphosed
+signal cursed
+
 # interface
 
 func metamorphose():
@@ -10,11 +13,16 @@ func metamorphose():
 		var character : Node2D = area.get_parent()
 		if character != self:
 			_on_character_got_at_close_range(character)
+	emit_signal("metamorphosed")
 
 func unmetamorphose():
 	is_metamorphosed = false
 
 # internal
+
+func _ready():
+	super._ready()
+	metamorphosed.connect(SFXPlayer._on_peasant_metamorphosed)
 
 func _choose_moving_direction():
 	if is_metamorphosed:

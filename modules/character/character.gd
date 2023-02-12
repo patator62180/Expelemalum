@@ -34,6 +34,10 @@ const SPEED : float = 40.0
 		if Engine.is_editor_hint():
 			$Area2DCloseRange/CollisionShape2D.shape.radius = RADIUS_CLOSE_RANGE
 
+## signal
+
+signal died(dieType)
+
 ## behavior variables
 
 var moving_direction : Vector2
@@ -41,6 +45,9 @@ var moving_direction : Vector2
 var curiosity_direction : Vector2
 var visible_characters : Array
 var memory : Dictionary
+
+@onready
+var SFXPlayer = $SFXPlayer
 
 ## boundary variables
 
@@ -50,10 +57,10 @@ var last_boundary : Area2D = null
 ## cursed variables
 
 var is_cursed : bool = false
-
 # interface
 
-func die():
+func die(die_type):
+	emit_signal("died", die_type) #need to retest when corpse implemented
 	queue_free()
 
 # internal functions

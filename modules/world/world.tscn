@@ -1,15 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=13 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
+[ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://vt8sb23a8psq" path="res://modules/character/exorcists/exorcist.tscn" id="7_dbc4m"]
-[ext_resource type="PackedScene" uid="uid://b855xyyw4k76w" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
+[ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="8_dyidt"]
+[ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="8_l6muj"]
+[ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="10_0oxl2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pk6sr"]
 radius = 245.098
+
+[sub_resource type="LabelSettings" id="LabelSettings_nphd0"]
+font_size = 50
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cquyq")
@@ -53,6 +59,15 @@ position = Vector2(638, 265)
 [node name="Exorcist" parent="." instance=ExtResource("7_dbc4m")]
 position = Vector2(427, 189)
 
+[node name="Exorcist2" parent="." instance=ExtResource("7_dbc4m")]
+position = Vector2(678, 285)
+
+[node name="Exorcist3" parent="." instance=ExtResource("7_dbc4m")]
+position = Vector2(494, 428)
+
+[node name="Exorcist4" parent="." instance=ExtResource("7_dbc4m")]
+position = Vector2(340, 322)
+
 [node name="Lumberjack13" parent="." instance=ExtResource("6_c61lt")]
 position = Vector2(467, 252)
 
@@ -74,10 +89,6 @@ position = Vector2(739, 279)
 [node name="Lumberjack19" parent="." instance=ExtResource("6_c61lt")]
 position = Vector2(739, 279)
 
-[node name="Curse" parent="." instance=ExtResource("2_ghruk")]
-position = Vector2(530, 208)
-INITIALLY_CURSED_CHARACTER = NodePath("../Lumberjack")
-
 [node name="Boundary" parent="." instance=ExtResource("3_g23c7")]
 position = Vector2(548, 314)
 
@@ -87,3 +98,33 @@ shape = SubResource("CircleShape2D_pk6sr")
 [node name="Narration" parent="." instance=ExtResource("4_4m0pc")]
 
 [node name="Debug" parent="." instance=ExtResource("7_m21dr")]
+
+[node name="gameLoop" parent="." instance=ExtResource("8_l6muj")]
+
+[node name="EndGameLabel" type="Label" parent="gameLoop"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.0
+offset_top = 467.0
+offset_right = 321.0
+offset_bottom = 539.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_nphd0")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("8_dyidt")
+
+[node name="Curse" parent="." instance=ExtResource("2_ghruk")]
+INITIALLY_CURSED_CHARACTER = NodePath("../Lumberjack")
+
+[node name="SFXPlayer" parent="." instance=ExtResource("10_0oxl2")]
+
+[connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
+[connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
+[connection signal="cantCurse" from="Curse" to="SFXPlayer" method="_on_curse_cant_curse"]
+[connection signal="curse" from="Curse" to="SFXPlayer" method="_on_curse_curse"]

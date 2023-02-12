@@ -19,3 +19,11 @@ offset_top = 40.0
 offset_right = 342.0
 offset_bottom = 137.0
 text = "Kill"
+
+[node name="ButtonTransfWw" type="Button" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 147.0
+offset_right = 343.0
+offset_bottom = 246.0
+text = "TransWw"
