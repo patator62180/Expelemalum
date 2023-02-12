@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddhnviwyjohqm"]
+[gd_scene load_steps=20 format=3 uid="uid://ddhnviwyjohqm"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
-[ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="2_yn2ro"]
+[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
-_data = [Vector2(0, 1), 0.0, 0.077126, 0, 0, Vector2(0.992395, 0.0181818), 0.0398487, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_228wp"]
 curve = SubResource("Curve_56xj1")
@@ -20,19 +23,129 @@ particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 0.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 75.0
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-angle_max = 720.0
-scale_min = 0.04
-scale_max = 0.06
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+angle_min = -5.0
+angle_max = 5.0
+scale_min = 0.1
+scale_max = 0.2
 scale_curve = SubResource("CurveTexture_228wp")
-color = Color(1, 0.0705882, 0.643137, 0.313726)
-turbulence_enabled = true
+color = Color(1, 1, 1, 0.784314)
+turbulence_noise_strength = 13.31
+turbulence_noise_speed_random = 4.5
+turbulence_influence_min = 0.04
+turbulence_influence_max = 0.31
+turbulence_initial_displacement_min = -15.8
+turbulence_initial_displacement_max = 22.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
 radius = 100.0
+
+[sub_resource type="Animation" id="Animation_cxsjx"]
+resource_name = "Skull_Idle"
+length = 2.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_24j2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f32hy"]
+_data = {
+"RESET": SubResource("Animation_24j2i"),
+"Skull_Idle": SubResource("Animation_cxsjx")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_34fca"]
+bake_interval = 100.0
+_data = {
+"points": PackedVector2Array(0, 0, 1, 1, 0, -35, -1, 0, 1, 0, 5, -30, 0, -1, 0, 1, 10, -35, -1, 0, 1, 0, 5, -40, 1, -1, -1, 1, 0, -35, -1, 0, 1, 0, -5, -30, 0, -1, 0, 1, -10, -35, -1, 0, 1, 0, -5, -40, -1, -1, -1.368, -0.929846, 0, -35)
+}
+point_count = 9
+
+[sub_resource type="Curve" id="Curve_hsout"]
+_data = [Vector2(0, 0), 0.0, 10.0, 0, 1, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.9, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -10.0, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_sa7vv"]
+curve = SubResource("Curve_hsout")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j46a3"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 20.0
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_min = -60.0
+radial_accel_max = -40.0
+damping_min = 15.0
+damping_max = 20.0
+scale_min = 0.15
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_sa7vv")
+attractor_interaction_enabled = false
+
+[sub_resource type="Curve" id="Curve_v5ag7"]
+_data = [Vector2(0.00380228, 0.0090909), 0.0, 6.90707, 0, 0, Vector2(0.254753, 1), 0.0, 0.0, 0, 0, Vector2(0.840304, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.0987, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7s7cn"]
+curve = SubResource("Curve_v5ag7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r58wi"]
+emission_shape = 3
+emission_box_extents = Vector3(60, 0, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -180.0
+angle_max = 180.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_7s7cn")
+color = Color(1, 1, 1, 0.803922)
+hue_variation_min = -0.01
+hue_variation_max = 0.01
 
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
@@ -42,10 +155,10 @@ points = PackedVector2Array(45, 13, 84, 143)
 default_color = Color(0.654902, 0.439216, 0.760784, 0.705882)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 50
+visible = false
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_rwft5")
-texture = ExtResource("2_yn2ro")
-lifetime = 0.5
+texture = ExtResource("4_liph5")
 preprocess = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -58,5 +171,62 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d4kpx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Path2D/PathFollow2D/Skull")
+autoplay = "Skull_Idle"
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_f32hy")
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_34fca")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -35)
+rotates = false
+
+[node name="Skull" type="Sprite2D" parent="Path2D/PathFollow2D"]
+z_index = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_s5wb8")
+
+[node name="GPUParticles2DBack" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = -1
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_j46a3")
+texture = ExtResource("4_liph5")
+lifetime = 5.0
+
+[node name="GPUParticles2DFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = 1
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_j46a3")
+texture = ExtResource("4_liph5")
+lifetime = 5.0
+
+[node name="GPUParticles2DStraigthFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = 1
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_r58wi")
+texture = ExtResource("4_5567m")
+preprocess = 2.0
+local_coords = true
+
+[node name="GPUParticles2DStraigthBack" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+z_index = -1
+position = Vector2(0, 50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_r58wi")
+texture = ExtResource("4_5567m")
+preprocess = 2.0
+local_coords = true
+
+[node name="Lumberjack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2, -13)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_mwtne")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
