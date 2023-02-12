@@ -50,26 +50,30 @@ func _input(event : InputEvent):
 		elif event is InputEventKey:
 				if not event.pressed:
 					var area_array : Array = []
-					if event.is_action("up"):
-						area_array = $Area2DUp.get_overlapping_areas().duplicate()
-						area_array.erase(cursed_character.get_node("Area2DBody"))
-					elif event.is_action("down"):
-						area_array = $Area2DDown.get_overlapping_areas().duplicate()
-						area_array.erase(cursed_character.get_node("Area2DBody"))
-					elif event.is_action("left"):
-						area_array = $Area2DLeft.get_overlapping_areas().duplicate()
-						area_array.erase(cursed_character.get_node("Area2DBody"))
-					elif event.is_action("right"):
-						area_array = $Area2DRight.get_overlapping_areas().duplicate()
-						area_array.erase(cursed_character.get_node("Area2DBody"))
-					elif event.is_action("activate"):
+					_try_curse(event)
+					if event.is_action("activate"):
 						if not cursed_character.is_metamorphosed:
 							cursed_character.metamorphose()
-					# CHANGE CHARACTER IF NECESSARY
-					if area_array:
-						_curse(_get_closest_character(area_array))
-					else:
-						emit_signal("cantCurse")
+
+func _try_curse(input : InputEvent):
+	var area2D
+	if input.is_action("up"):
+		area2D = $Area2DUp
+	elif input.is_action("down"):
+		area2D = $Area2DDown
+	elif input.is_action("left"):
+		area2D = $Area2DLeft
+	elif input.is_action("right"):
+		area2D = $Area2DRight
+	
+	# CHANGE CHARACTER IF POSSIBLE
+	if area2D:
+		area_array = area2D.get_overlapping_areas().duplicate()
+		area_array.erase(cursed_character.get_node("Area2DBody"))
+		if area_array:
+			_curse(_get_closest_character(area_array))
+		else:
+			emit_signal("cantCurse")
 
 func _process_area_array() -> Array:
 	if not Engine.is_editor_hint():
@@ -102,9 +106,10 @@ func _on_tree_exiting():
 
 func _highlightCursableCharacters(area_array : Array, enable : bool):
 	for area in area_array:
-		var character : Node2D = area.get_parent()
-		if character != cursed_character:
-			var polygon : Polygon2D = character.get_node("Polygon2D")
-			polygon.color = Color.YELLOW if enable else Color.WHITE
+		if area != null:			
+			var character : Node2D = area.get_parent()
+			if not enable or character != cursed_character:
+				var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
+				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
 			
 	

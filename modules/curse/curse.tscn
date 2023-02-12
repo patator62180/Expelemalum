@@ -43,7 +43,7 @@ lifetime = 0.5
 preprocess = 2.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(1, -41)
 color = Color(0.760784, 0.552941, 1, 1)
 polygon = PackedVector2Array(-2, 5, -6, 2, -5, -5, 4, -5, 6, 2)
 
@@ -80,7 +80,7 @@ monitorable = false
 polygon = PackedVector2Array(0, 0, 100, 100, 100, -100)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.8, 2.8)
 limit_left = 303
 limit_top = 69
 limit_right = 793

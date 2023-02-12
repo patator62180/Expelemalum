@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5j8et7pdvlsu"]
+[gd_scene load_steps=12 format=3 uid="uid://c5j8et7pdvlsu"]
 
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
 [ext_resource type="PackedScene" uid="uid://ccx2f3f6rrl12" path="res://modules/character/behavior/rules/behavior_rule_love.tscn" id="2_a21rm"]
 [ext_resource type="PackedScene" uid="uid://corbd7bhrx1tx" path="res://modules/character/behavior/rules/behavior_rule_know.tscn" id="3_x6vut"]
 [ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="4_l1c8b"]
+[ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="5_uxq2a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e645k"]
 radius = 100.0
@@ -11,6 +12,41 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkm4g"]
+
+[sub_resource type="Animation" id="Animation_e4xfs"]
+resource_name = "Moving"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(-0.1, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_bxq23"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2si0"]
+_data = {
+"Moving": SubResource("Animation_e4xfs"),
+"RESET": SubResource("Animation_bxq23")
+}
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
@@ -57,10 +93,20 @@ shape = SubResource("CircleShape2D_rkm4g")
 wait_time = 4.0
 autostart = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 11, -9, 3, -6, -8, 5, -9, 10, 2)
-
 [node name="SFXPlayer" parent="." instance=ExtResource("4_l1c8b")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Moving"
+libraries = {
+"": SubResource("AnimationLibrary_h2si0")
+}
+
+[node name="AnimRoot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimRoot"]
+position = Vector2(0.392591, -14)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_uxq2a")
 
 [connection signal="died" from="." to="SFXPlayer" method="_on_character_died"]
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]

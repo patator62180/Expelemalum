@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=14 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
+[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/assets/scroll.svg" id="2_s58ni"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="3_g23c7"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
@@ -19,6 +20,578 @@ font_size = 50
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cquyq")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Scroll" type="Sprite2D" parent="Background"]
+position = Vector2(529, 91)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll2" type="Sprite2D" parent="Background"]
+position = Vector2(622, 124)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll3" type="Sprite2D" parent="Background"]
+position = Vector2(672, 188)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll4" type="Sprite2D" parent="Background"]
+position = Vector2(721, 262)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll5" type="Sprite2D" parent="Background"]
+position = Vector2(725, 331)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll6" type="Sprite2D" parent="Background"]
+position = Vector2(701, 407)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll7" type="Sprite2D" parent="Background"]
+position = Vector2(457.975, 152.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll8" type="Sprite2D" parent="Background"]
+position = Vector2(550.975, 185.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll9" type="Sprite2D" parent="Background"]
+position = Vector2(600.975, 249.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll10" type="Sprite2D" parent="Background"]
+position = Vector2(649.975, 323.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll11" type="Sprite2D" parent="Background"]
+position = Vector2(653.975, 392.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll12" type="Sprite2D" parent="Background"]
+position = Vector2(629.975, 468.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll13" type="Sprite2D" parent="Background"]
+position = Vector2(408, 209.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll14" type="Sprite2D" parent="Background"]
+position = Vector2(501, 242.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll15" type="Sprite2D" parent="Background"]
+position = Vector2(551, 306.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll16" type="Sprite2D" parent="Background"]
+position = Vector2(600, 380.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll17" type="Sprite2D" parent="Background"]
+position = Vector2(604, 449.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll18" type="Sprite2D" parent="Background"]
+position = Vector2(580, 525.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll19" type="Sprite2D" parent="Background"]
+position = Vector2(336.975, 271.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll20" type="Sprite2D" parent="Background"]
+position = Vector2(429.975, 304.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll21" type="Sprite2D" parent="Background"]
+position = Vector2(479.975, 368.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll22" type="Sprite2D" parent="Background"]
+position = Vector2(528.975, 442.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll23" type="Sprite2D" parent="Background"]
+position = Vector2(532.975, 511.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll24" type="Sprite2D" parent="Background"]
+position = Vector2(448, 516)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll25" type="Sprite2D" parent="Background"]
+position = Vector2(424, 460)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll26" type="Sprite2D" parent="Background"]
+position = Vector2(433, 417)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll27" type="Sprite2D" parent="Background"]
+position = Vector2(365, 372)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll28" type="Sprite2D" parent="Background"]
+position = Vector2(316, 330)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll29" type="Sprite2D" parent="Background"]
+position = Vector2(536, 138)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll30" type="Sprite2D" parent="Background"]
+position = Vector2(480, 184)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll31" type="Sprite2D" parent="Background"]
+position = Vector2(441, 254)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll32" type="Sprite2D" parent="Background"]
+position = Vector2(812.975, 337.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll33" type="Sprite2D" parent="Background"]
+position = Vector2(905.975, 370.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll34" type="Sprite2D" parent="Background"]
+position = Vector2(955.975, 434.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll38" type="Sprite2D" parent="Background"]
+position = Vector2(741.95, 399.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll39" type="Sprite2D" parent="Background"]
+position = Vector2(834.95, 432.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll40" type="Sprite2D" parent="Background"]
+position = Vector2(884.95, 496.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll44" type="Sprite2D" parent="Background"]
+position = Vector2(691.975, 456.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll45" type="Sprite2D" parent="Background"]
+position = Vector2(784.975, 489.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll46" type="Sprite2D" parent="Background"]
+position = Vector2(834.975, 553.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll50" type="Sprite2D" parent="Background"]
+position = Vector2(620.95, 518.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll51" type="Sprite2D" parent="Background"]
+position = Vector2(713.95, 551.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll52" type="Sprite2D" parent="Background"]
+position = Vector2(763.95, 615.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll58" type="Sprite2D" parent="Background"]
+position = Vector2(648.975, 618.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll59" type="Sprite2D" parent="Background"]
+position = Vector2(599.975, 576.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll60" type="Sprite2D" parent="Background"]
+position = Vector2(819.975, 384.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll61" type="Sprite2D" parent="Background"]
+position = Vector2(763.975, 430.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll62" type="Sprite2D" parent="Background"]
+position = Vector2(724.975, 500.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll71" type="Sprite2D" parent="Background"]
+position = Vector2(914.95, 11.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll72" type="Sprite2D" parent="Background"]
+position = Vector2(963.95, 85.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll73" type="Sprite2D" parent="Background"]
+position = Vector2(967.95, 154.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll74" type="Sprite2D" parent="Background"]
+position = Vector2(943.95, 230.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll75" type="Sprite2D" parent="Background"]
+position = Vector2(721.975, -28.6)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll76" type="Sprite2D" parent="Background"]
+position = Vector2(814.975, 4.40002)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll77" type="Sprite2D" parent="Background"]
+position = Vector2(864.975, 68.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll78" type="Sprite2D" parent="Background"]
+position = Vector2(913.975, 142.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll79" type="Sprite2D" parent="Background"]
+position = Vector2(917.975, 211.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll80" type="Sprite2D" parent="Background"]
+position = Vector2(893.975, 287.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll81" type="Sprite2D" parent="Background"]
+position = Vector2(650.95, 33.1001)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll82" type="Sprite2D" parent="Background"]
+position = Vector2(743.95, 66.1001)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll83" type="Sprite2D" parent="Background"]
+position = Vector2(793.95, 130.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll84" type="Sprite2D" parent="Background"]
+position = Vector2(842.95, 204.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll85" type="Sprite2D" parent="Background"]
+position = Vector2(846.95, 273.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll86" type="Sprite2D" parent="Background"]
+position = Vector2(761.975, 277.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll87" type="Sprite2D" parent="Background"]
+position = Vector2(737.975, 221.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll88" type="Sprite2D" parent="Background"]
+position = Vector2(746.975, 178.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll89" type="Sprite2D" parent="Background"]
+position = Vector2(678.975, 133.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll90" type="Sprite2D" parent="Background"]
+position = Vector2(629.975, 91.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll93" type="Sprite2D" parent="Background"]
+position = Vector2(754.975, 15.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll94" type="Sprite2D" parent="Background"]
+position = Vector2(291.975, 333.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll95" type="Sprite2D" parent="Background"]
+position = Vector2(384.975, 366.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll96" type="Sprite2D" parent="Background"]
+position = Vector2(434.975, 430.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll97" type="Sprite2D" parent="Background"]
+position = Vector2(483.975, 504.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll98" type="Sprite2D" parent="Background"]
+position = Vector2(487.975, 573.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll99" type="Sprite2D" parent="Background"]
+position = Vector2(463.975, 649.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll100" type="Sprite2D" parent="Background"]
+position = Vector2(220.95, 395.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll101" type="Sprite2D" parent="Background"]
+position = Vector2(313.95, 428.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll102" type="Sprite2D" parent="Background"]
+position = Vector2(363.95, 492.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll103" type="Sprite2D" parent="Background"]
+position = Vector2(412.95, 566.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll104" type="Sprite2D" parent="Background"]
+position = Vector2(416.95, 635.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll106" type="Sprite2D" parent="Background"]
+position = Vector2(170.975, 452.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll107" type="Sprite2D" parent="Background"]
+position = Vector2(263.975, 485.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll108" type="Sprite2D" parent="Background"]
+position = Vector2(313.975, 549.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll109" type="Sprite2D" parent="Background"]
+position = Vector2(362.975, 623.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll122" type="Sprite2D" parent="Background"]
+position = Vector2(298.975, 380.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll123" type="Sprite2D" parent="Background"]
+position = Vector2(242.975, 426.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll124" type="Sprite2D" parent="Background"]
+position = Vector2(203.975, 496.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll127" type="Sprite2D" parent="Background"]
+position = Vector2(428.975, -28.3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll128" type="Sprite2D" parent="Background"]
+position = Vector2(477.975, 45.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll129" type="Sprite2D" parent="Background"]
+position = Vector2(481.975, 114.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll130" type="Sprite2D" parent="Background"]
+position = Vector2(457.975, 190.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll132" type="Sprite2D" parent="Background"]
+position = Vector2(307.95, -30.6)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll133" type="Sprite2D" parent="Background"]
+position = Vector2(357.95, 33.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll134" type="Sprite2D" parent="Background"]
+position = Vector2(406.95, 107.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll135" type="Sprite2D" parent="Background"]
+position = Vector2(410.95, 176.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll136" type="Sprite2D" parent="Background"]
+position = Vector2(386.95, 252.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll137" type="Sprite2D" parent="Background"]
+position = Vector2(164.975, -6.59998)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll138" type="Sprite2D" parent="Background"]
+position = Vector2(257.975, 26.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll139" type="Sprite2D" parent="Background"]
+position = Vector2(307.975, 90.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll140" type="Sprite2D" parent="Background"]
+position = Vector2(356.975, 164.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll141" type="Sprite2D" parent="Background"]
+position = Vector2(360.975, 233.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll142" type="Sprite2D" parent="Background"]
+position = Vector2(336.975, 309.4)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll143" type="Sprite2D" parent="Background"]
+position = Vector2(93.95, 55.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll144" type="Sprite2D" parent="Background"]
+position = Vector2(186.95, 88.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll145" type="Sprite2D" parent="Background"]
+position = Vector2(236.95, 152.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll146" type="Sprite2D" parent="Background"]
+position = Vector2(285.95, 226.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll147" type="Sprite2D" parent="Background"]
+position = Vector2(289.95, 295.1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll148" type="Sprite2D" parent="Background"]
+position = Vector2(204.975, 299.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll149" type="Sprite2D" parent="Background"]
+position = Vector2(180.975, 243.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll150" type="Sprite2D" parent="Background"]
+position = Vector2(189.975, 200.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll151" type="Sprite2D" parent="Background"]
+position = Vector2(121.975, 155.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll152" type="Sprite2D" parent="Background"]
+position = Vector2(72.975, 113.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll154" type="Sprite2D" parent="Background"]
+position = Vector2(236.975, -32.3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
+
+[node name="Scroll155" type="Sprite2D" parent="Background"]
+position = Vector2(197.975, 37.7)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_s58ni")
 
 [node name="Lumberjack" parent="." instance=ExtResource("6_c61lt")]
 position = Vector2(421, 385)
@@ -96,6 +669,7 @@ position = Vector2(548, 314)
 shape = SubResource("CircleShape2D_pk6sr")
 
 [node name="Narration" parent="." instance=ExtResource("4_4m0pc")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Debug" parent="." instance=ExtResource("7_m21dr")]
 

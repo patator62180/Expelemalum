@@ -49,6 +49,8 @@ var memory : Dictionary
 @onready
 var SFXPlayer = $SFXPlayer
 
+var rng = RandomNumberGenerator.new()
+
 ## boundary variables
 
 var containing_boundaries : Array
@@ -68,6 +70,13 @@ func die(die_type):
 func _ready():
 	# randomize curiosity direction
 	_on_timer_curiosity_timeout()
+	_randomize_animation()
+
+func _randomize_animation():
+	var rng_pos = rng.randf_range(0, 1)
+	
+	var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
+	animationPlayer.seek(rng_pos) 
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():

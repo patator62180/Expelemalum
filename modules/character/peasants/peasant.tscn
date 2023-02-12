@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxksnys6iqsx7"]
+[gd_scene load_steps=4 format=3 uid="uid://bxksnys6iqsx7"]
 
 [ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="1_phawp"]
 [ext_resource type="Script" path="res://modules/character/peasants/peasant.gd" id="2_mspoe"]
+[ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="3_4xiqi"]
 
 [node name="Peasant" instance=ExtResource("1_phawp")]
 script = ExtResource("2_mspoe")
@@ -9,3 +10,7 @@ RADIUS_VISION = 40.0
 
 [node name="Area2DBody" parent="." index="2"]
 collision_layer = 9
+
+[node name="Sprite2D" parent="." index="7"]
+position = Vector2(1, -11)
+texture = ExtResource("3_4xiqi")
