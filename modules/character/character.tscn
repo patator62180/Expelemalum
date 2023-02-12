@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="4_l1c8b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e645k"]
-radius = 80.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 
@@ -14,7 +14,7 @@ radius = 80.0
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
-RADIUS_VISION = 80.0
+RADIUS_VISION = 100.0
 
 [node name="BehaviorRules" type="Node" parent="."]
 
