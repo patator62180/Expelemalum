@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://drf2pnaplvuf6"]
+
+[ext_resource type="Shader" path="res://modules/post_processing/pass_0.gdshader" id="1_50jxc"]
+[ext_resource type="Script" path="res://modules/post_processing/post_processing.gd" id="1_oe44j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kr2c"]
+shader = ExtResource("1_50jxc")
+shader_parameter/brightness = -0.1
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/saturation_red_factor = 1.0
+shader_parameter/saturation_green_factor = 1.0
+shader_parameter/saturation_blue_factor = 1.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_effect_factor = 1.0
+
+[node name="PostProcessing" type="Node"]
+script = ExtResource("1_oe44j")
+CONTRAST = 1.0
+SATURATION = 1.0
+SATURATION_RED_FACTOR = 1.0
+SATURATION_GREEN_FACTOR = 1.0
+SATURATION_BLUE_FACTOR = 1.0
+TINT_COLOR = Color(1, 1, 1, 1)
+TINT_EFFECT_FACTOR = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_3kr2c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

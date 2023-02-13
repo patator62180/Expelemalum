@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://ddhnviwyjohqm"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
-[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
-[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
-[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Texture2D" uid="uid://rf0h2crfaot4" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://c70s0i5j7llf2" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
@@ -45,6 +45,21 @@ turbulence_initial_displacement_max = 22.3
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
 radius = 100.0
 
+[sub_resource type="Animation" id="Animation_24j2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_cxsjx"]
 resource_name = "Skull_Idle"
 length = 2.0
@@ -61,21 +76,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_24j2i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f32hy"]

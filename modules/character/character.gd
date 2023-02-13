@@ -16,7 +16,7 @@ var SPEED : float = 40.0
 		return RADIUS_BODY
 	set(value):
 		RADIUS_BODY = value
-		if Engine.is_editor_hint():
+		if is_inside_tree():
 			$Area2DBody/CollisionShape2D.shape.radius = RADIUS_BODY
 		
 @export var RADIUS_VISION : float = 40.0:
@@ -24,16 +24,8 @@ var SPEED : float = 40.0
 		return RADIUS_VISION
 	set(value):
 		RADIUS_VISION = value
-		if Engine.is_editor_hint():
+		if is_inside_tree():
 			$Area2DVision/CollisionShape2D.shape.radius = RADIUS_VISION
-
-@export var RADIUS_CLOSE_RANGE : float = 15.0:
-	get:
-		return RADIUS_CLOSE_RANGE
-	set(value):
-		RADIUS_CLOSE_RANGE = value
-		if Engine.is_editor_hint():
-			$Area2DCloseRange/CollisionShape2D.shape.radius = RADIUS_CLOSE_RANGE
 
 ## signal
 
@@ -97,6 +89,9 @@ func _ready():
 	# randomize curiosity direction
 	_on_timer_curiosity_timeout()
 	_randomize_animation()
+	# sets
+	set("RADIUS_BODY", RADIUS_BODY)
+	set("RADIUS_VISION", RADIUS_VISION)
 
 func _randomize_animation():
 	var animationPlayer : AnimationPlayer = get_node("AnimationPlayerMove")

@@ -1,21 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=7 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="2_cpktn"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="PackedScene" uid="uid://spw6olyk1hbi" path="res://modules/world/terrain/scroll.tscn" id="2_qem0d"]
-[ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_4m0pc"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
-[ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="7_m21dr"]
-[ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="8_dyidt"]
-[ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="8_l6muj"]
-[ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="10_0oxl2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_nphd0"]
-font_size = 50
+[ext_resource type="PackedScene" uid="uid://drf2pnaplvuf6" path="res://modules/post_processing/post_processing.tscn" id="6_utf88"]
 
 [node name="World" type="Node2D"]
-modulate = Color(0.6, 0.6, 0.6, 1)
 position = Vector2(-1, 0)
 script = ExtResource("1_cquyq")
 
@@ -434,34 +426,4 @@ position = Vector2(-51, -62)
 [node name="Curse" parent="Foreground" instance=ExtResource("2_ghruk")]
 INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Lumberjack")
 
-[node name="Narration" parent="." instance=ExtResource("4_4m0pc")]
-metadata/_edit_use_anchors_ = true
-
-[node name="Debug" parent="." instance=ExtResource("7_m21dr")]
-
-[node name="gameLoop" parent="." instance=ExtResource("8_l6muj")]
-
-[node name="EndGameLabel" type="Label" parent="gameLoop"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 176.0
-offset_top = 467.0
-offset_right = 321.0
-offset_bottom = 539.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_nphd0")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("8_dyidt")
-
-[node name="SFXPlayer" parent="." instance=ExtResource("10_0oxl2")]
-
-[connection signal="cantCurse" from="Foreground/Curse" to="SFXPlayer" method="_on_curse_cant_curse"]
-[connection signal="curse" from="Foreground/Curse" to="SFXPlayer" method="_on_curse_curse"]
-[connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
-[connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
+[node name="PostProcessing" parent="." instance=ExtResource("6_utf88")]

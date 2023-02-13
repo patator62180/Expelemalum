@@ -1,6 +1,6 @@
 extends Node2D
 
-#Editor var
+# editor var
 
 @export_node_path("Node2D") var INITIALLY_CURSED_CHARACTER : NodePath
 @onready var curse_area : Area2D = get_node("Area2D")
@@ -43,19 +43,23 @@ func _try_curse(character : Node2D):
 func _highlightCursableCharacter(character : Node2D):
 	_freeCursableCharacter()
 	cursable_character = character
-	if cursable_character:
-		var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
-		sprite.modulate = Color.hex(0xa770c2ff)
-		line.show()
-		line.points[0] = _get_input_vector()*line_circle_radius
-		line.points[line.points.size()-1] = cursable_character.global_position - global_position
+	if cursable_character != null:
+		if cursable_character.is_queued_for_deletion():
+			cursable_character = null
+		else:
+			var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
+			sprite.modulate = Color.hex(0xa770c2ff)
+			line.show()
+			line.points[0] = _get_input_vector()*line_circle_radius
+			line.points[line.points.size()-1] = cursable_character.global_position - global_position
 
 func _freeCursableCharacter():
-	if cursable_character == null:
-		return
-	var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
-	sprite.modulate = Color.WHITE
-	cursable_character = null
+	if cursable_character != null:
+		if cursable_character.is_queued_for_deletion():
+			cursable_character = null
+		else:
+			var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
+			sprite.modulate = Color.WHITE
 	line.hide()
 
 func _process(delta : float):
@@ -67,7 +71,9 @@ func _update_Cursable_Character():
 	if cursable_character != null and not curse_area.overlaps_area(cursable_character.get_node("Area2DBody")):
 		_freeCursableCharacter()
 
-	var inputVector = (get_global_mouse_position()-global_position).normalized()
+	var inputVector : Vector2 = (get_global_mouse_position()-global_position)
+	if inputVector != Vector2.ZERO:
+		inputVector = inputVector.normalized()
 	
 	var overlapping_areas = curse_area.get_overlapping_areas()
 	var cursable_candidates : Array
@@ -88,7 +94,7 @@ func _dist_to_cursable_character()-> float :
 func _input(event : InputEvent):
 	if event.is_action_released("curse"):
 		_try_curse(cursable_character)
-	if event.is_action_released("activate") and not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
+	if event.is_action_released("metamorphose") and not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
 		cursed_character.metamorphose()
 
 func _on_tree_exiting():
