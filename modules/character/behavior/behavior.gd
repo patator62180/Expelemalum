@@ -9,6 +9,8 @@ extends Node
 @export var TIMER_CURIOSITY_WAIT_TIME : float
 @export_range(0.0, 1.0) var TIMER_CURIOSITY_WAIT_TIME_RANDOM : float
 
+@export var SPEED_FACTOR : float
+
 func get_character() -> Node2D:
 	return get_node(CHARACTER_PATH)
 
@@ -44,17 +46,24 @@ var curiosity_direction : Vector2 = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
 var memory : Dictionary
 
 func _ready():
+	# randomize moving animation
+	$AnimationPlayerMove.seek(randf_range(0, 1))
 	# start curiosity
 	_on_timer_curiosity_timeout()
 	# connect
-	get_character().get_node("Area2DVision").area_entered.connect(_on_character_area_2d_vision_area_entered)
+	var character : Node2D = get_character()
+	character.get_node("Area2DVision").area_entered.connect(_on_character_area_2d_vision_area_entered)
+	character.dying.connect(_on_character_dying)
 
 func _process(delta : float):
 	# update boundary exits
 	for boundary_exit in boundary_exits.duplicate():
-		boundary_exit["know"] -= 0.1 * delta
+		boundary_exit["know"] -= delta
 		if boundary_exit["know"] < 0.0:
 			boundary_exits.erase(boundary_exit)
+	# movement
+	var character : Node2D = get_character()
+	character.position += (character.SPEED * SPEED_FACTOR) * character.moving_direction * delta
 
 func _get_moving_direction() -> Vector2:
 	# init
@@ -82,11 +91,13 @@ func _get_moving_direction() -> Vector2:
 func _on_character_area_2d_vision_area_entered(area : Area2D):
 	if not area == get_character().get_node("Area2DBody"):
 		var character : Node2D = area.get_parent()
-		if not character in memory:
+		if not character in memory: 
 			memory[character] = {}
 			for behavior_rule in $MemoryRules.get_children():
 				memory[character][behavior_rule.NAME] = 0.0
 
+func _on_character_dying(killer : Node2D):
+	$AnimationPlayerMove.stop()
 
 func _on_timer_curiosity_timeout():
 	curiosity_direction.rotated(randf_range(0.0, TAU))

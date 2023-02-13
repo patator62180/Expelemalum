@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bocfd3u5o522i"]
+[gd_scene load_steps=4 format=3 uid="uid://bocfd3u5o522i"]
 
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
 
@@ -8,43 +8,6 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 resource_local_to_scene = true
 radius = 8.0
-
-[sub_resource type="Animation" id="Animation_g1xg3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character:SPEED_FACTOR")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_504l6"]
-resource_name = "move"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character:SPEED_FACTOR")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2si0"]
-_data = {
-"RESET": SubResource("Animation_g1xg3"),
-"move": SubResource("Animation_504l6")
-}
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
@@ -87,13 +50,6 @@ one_shot = true
 
 [node name="TimerDieDelay" type="Timer" parent="."]
 one_shot = true
-
-[node name="AnimationPlayerMove" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-autoplay = "move"
-libraries = {
-"": SubResource("AnimationLibrary_h2si0")
-}
 
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
 [connection signal="area_exited" from="Area2DVision" to="." method="_on_area_2d_vision_area_exited"]

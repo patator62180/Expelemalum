@@ -11,8 +11,8 @@ func get_character() -> Node2D:
 func _ready():
 	var character : Node2D = get_character()
 	# init
-	$AnimationPlayerMove.seek(character.get_node("AnimationPlayerMove").current_animation_position)
-	$AnimationPlayerMove.speed_scale = character.get_node("AnimationPlayerMove").speed_scale
+	$AnimationPlayerMove.seek(character.get_node("Behavior/AnimationPlayerMove").current_animation_position)
+	$AnimationPlayerMove.speed_scale = character.get_node("Behavior/AnimationPlayerMove").speed_scale
 	# connect
 	character.killing.connect(_on_character_killing)
 	character.dying.connect(_on_character_dying)
