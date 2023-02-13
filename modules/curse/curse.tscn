@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddhnviwyjohqm"]
+[gd_scene load_steps=23 format=3 uid="uid://x1w45mnn0ifb"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
-[ext_resource type="Texture2D" uid="uid://rf0h2crfaot4" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
-[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
-[ext_resource type="Texture2D" uid="uid://c70s0i5j7llf2" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Script" path="res://modules/curse/curvedLine.gd" id="2_6w35m"]
+[ext_resource type="Texture2D" uid="uid://b53pl41iuxhyw" path="res://modules/curse/assets/arrow_right.svg" id="2_kl1pe"]
+[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
@@ -43,7 +45,7 @@ turbulence_initial_displacement_min = -15.8
 turbulence_initial_displacement_max = 22.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
-radius = 100.0
+radius = 200.0
 
 [sub_resource type="Animation" id="Animation_24j2i"]
 length = 0.001
@@ -120,6 +122,8 @@ scale_max = 0.15
 scale_curve = SubResource("CurveTexture_sa7vv")
 attractor_interaction_enabled = false
 
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_l5gas"]
+
 [sub_resource type="Curve" id="Curve_v5ag7"]
 _data = [Vector2(0.00380228, 0.0090909), 0.0, 6.90707, 0, 0, Vector2(0.254753, 1), 0.0, 0.0, 0, 0, Vector2(0.840304, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.0987, 0.0, 0, 0]
 point_count = 4
@@ -128,20 +132,19 @@ point_count = 4
 curve = SubResource("Curve_v5ag7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r58wi"]
-emission_shape = 3
-emission_box_extents = Vector3(60, 0, 1)
+emission_shape = 4
+emission_point_texture = SubResource("CurveXYZTexture_l5gas")
+emission_point_count = 508
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 30.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 angle_min = -180.0
 angle_max = 180.0
-scale_min = 0.1
-scale_max = 0.2
+scale_min = 0.02
+scale_max = 0.03
 scale_curve = SubResource("CurveTexture_7s7cn")
 color = Color(1, 1, 1, 0.803922)
 hue_variation_min = -0.01
@@ -150,9 +153,16 @@ hue_variation_max = 0.01
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="CurvedLine" type="Line2D" parent="."]
 points = PackedVector2Array(45, 13, 84, 143)
+width = 5.0
 default_color = Color(0.654902, 0.439216, 0.760784, 0.705882)
+script = ExtResource("2_6w35m")
+
+[node name="ArrowDown" type="Sprite2D" parent="."]
+position = Vector2(50, -10)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_kl1pe")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
@@ -205,20 +215,18 @@ lifetime = 5.0
 
 [node name="GPUParticles2DStraigthFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = 1
-amount = 5
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_r58wi")
 texture = ExtResource("4_5567m")
 preprocess = 2.0
-local_coords = true
 
 [node name="GPUParticles2DStraigthBack" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = -1
 position = Vector2(0, 50)
-amount = 20
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_r58wi")
 texture = ExtResource("4_5567m")
 preprocess = 2.0
-local_coords = true
 
 [node name="Lumberjack" type="Sprite2D" parent="."]
 visible = false
