@@ -1,5 +1,7 @@
 extends "res://modules/character/peasants/peasant.gd"
 
+const PERSONALITY_AGRESSIVITY : float = 10.0
+
 func unmetamorphose():
 	if not has_metamorphosed:
 		$AnimRoot/Sprite2D.texture = preload("res://modules/character/peasants/assets/lumberjack_after_metamorphosis.svg")
@@ -9,7 +11,21 @@ func unmetamorphose():
 # werewolf
 
 func _choose_moving_direction_metamorphosed():
-	moving_direction = (_get_less_loved_character(visible_characters).global_position - global_position).normalized()
+	moving_direction = Vector2.ZERO
+	for character in visible_characters:
+		character = character as Node2D
+		var direction_to_character : Vector2 = character.global_position - global_position
+		var distance_to_character : float = direction_to_character.length()
+		direction_to_character /= distance_to_character
+		if distance_to_character > 0.0:
+			moving_direction += PERSONALITY_AGRESSIVITY * (1.0 / (2.1 + memory[character]["love"])) * direction_to_character / distance_to_character
+	for boundary_exit in boundary_exits:
+		var direction_to_boundary_exit : Vector2 = boundary_exit["position"] - global_position
+		var distance_to_boundary_exit : float = direction_to_boundary_exit.length()
+		direction_to_boundary_exit /= distance_to_boundary_exit
+		if distance_to_boundary_exit > 0.0:
+			moving_direction -= PERSONALITY_BOUNDARY_FEAR * boundary_exit["know"] * direction_to_boundary_exit / distance_to_boundary_exit
+	moving_direction = moving_direction.normalized()
 
 func _on_character_got_at_close_range_metamorphosed(character : Node2D):
 	character.die(DIE_TYPE.Werewolf)
