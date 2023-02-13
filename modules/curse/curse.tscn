@@ -147,7 +147,7 @@ color = Color(1, 1, 1, 0.803922)
 hue_variation_min = -0.01
 hue_variation_max = 0.01
 
-[node name="Curse" type="Node2D"]
+[node name="Curse" type="Node2D" groups=["camera_focus"]]
 script = ExtResource("1_cbkdp")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -160,9 +160,6 @@ amount = 20
 process_material = SubResource("ParticleProcessMaterial_rwft5")
 texture = ExtResource("4_liph5")
 preprocess = 2.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.8, 2.8)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
