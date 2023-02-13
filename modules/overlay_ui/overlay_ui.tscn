@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cswujfrnarjpr"]
+
+[ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
+[ext_resource type="Shader" path="res://modules/overlay_ui/vignette_curse.gdshader" id="2_7ijyp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vakr"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a76or"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_3vakr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ljl8"]
+shader = ExtResource("2_7ijyp")
+shader_parameter/distortion = 2.024
+shader_parameter/zoom = 0.566
+shader_parameter/gooeyness = 1.154
+shader_parameter/wibble = -0.014
+shader_parameter/saturation = 1.976
+shader_parameter/primary_color = Color(0.721569, 0, 0.109804, 0.235294)
+shader_parameter/secondary_color = Color(0.301961, 0, 1, 0.501961)
+shader_parameter/speed = 0.1
+shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
+size = Vector2(100, 100)
+
+[node name="overlay_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(574.5, 326)
+scale = Vector2(8.97656, 5.0625)
+texture = ExtResource("1_sq413")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_0ljl8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_sgnlk")
