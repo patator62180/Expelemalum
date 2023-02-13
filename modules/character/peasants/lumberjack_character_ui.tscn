@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvq6sk3bf84g"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="PackedScene" uid="uid://dfq7j8wlgk670" path="res://modules/character/peasants/peasant_character_ui.tscn" id="1_cmj1x"]
 [ext_resource type="Script" path="res://modules/character/peasants/lumberjack_character_ui.gd" id="2_yb8dt"]
+[ext_resource type="AudioStream" uid="uid://bc8y1m5id1lyq" path="res://modules/curse/assets/audio/sfx_curse_jump_enter.mp3" id="3_aisb1"]
+[ext_resource type="AudioStream" uid="uid://dt5rn50rdyki3" path="res://modules/curse/assets/audio/sfx_curse_jump_forbidden.mp3" id="5_br7ar"]
+[ext_resource type="PackedScene" uid="uid://chctg1fphq6d7" path="res://modules/character/peasants/droppables/scratch.tscn" id="5_nrr2e"]
 
 [node name="CharacterUI" instance=ExtResource("1_cmj1x")]
 script = ExtResource("2_yb8dt")
+
+[node name="AudioStreamPlayer2DCurse" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("3_aisb1")
+
+[node name="AudioStreamPlayer2DCantCurse" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource("5_br7ar")
+
+[node name="Scratch" parent="." index="12" instance=ExtResource("5_nrr2e")]
+visible = false

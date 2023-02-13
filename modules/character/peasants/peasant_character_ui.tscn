@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfq7j8wlgk670"]
+[gd_scene load_steps=13 format=3 uid="uid://dfq7j8wlgk670"]
 
 [ext_resource type="PackedScene" uid="uid://bf1xdcm02sonr" path="res://modules/character/character_ui.tscn" id="1_k43xr"]
 [ext_resource type="Script" path="res://modules/character/peasants/peasant_character_ui.gd" id="2_8cbq1"]
 [ext_resource type="Texture2D" uid="uid://bw5y2a87ndhhu" path="res://modules/character/peasants/assets/lumberjack_metamorphosed.svg" id="2_62vss"]
 [ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="3_b28rt"]
+[ext_resource type="AudioStream" uid="uid://57sgyhfllf4j" path="res://modules/character/assets/audio/sfx_cursed_werewolf_transformStarting.mp3" id="4_56ob3"]
 
 [sub_resource type="Animation" id="Animation_vky44"]
 length = 0.001
@@ -267,7 +268,10 @@ position = Vector2(0, -16)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_62vss")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="11"]
+[node name="AudioStreamPlayer2DMetamorphose" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("4_56ob3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="9"]
 position = Vector2(0, -3)
 emitting = false
 amount = 64

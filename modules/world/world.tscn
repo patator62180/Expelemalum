@@ -413,6 +413,15 @@ y_sort_enabled = true
 [node name="Character2" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-64, 55)
 
+[node name="Character3" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(-72, -28)
+
+[node name="Character4" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(-13, 60)
+
+[node name="Character5" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(75, -13)
+
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="Curse" parent="Foreground" instance=ExtResource("2_ghruk")]
@@ -422,4 +431,5 @@ INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Character")
 
 [node name="Camera2DFocus" parent="." instance=ExtResource("7_m4srl")]
 ZOOM_MIN = 0.0
-ZOOM_MAX = inf
+ZOOM_MAX = 3.0
+ZOOM_MARGING = 10.0

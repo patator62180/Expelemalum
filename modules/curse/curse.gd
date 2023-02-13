@@ -21,10 +21,6 @@ const skullSpeed = 10 #pixel/second
 var cursed_character : Node2D = null
 var cursable_character : Node2D = null
 
-#Signal
-signal curse
-signal cantCurse
-
 # internal
 
 func _ready():
@@ -38,13 +34,14 @@ func _curse(character : Node2D):
 	cursed_character.tree_exiting.connect(queue_free)
 	cursed_character.is_cursed = true
 	_freeCursableCharacter()
-	emit_signal("curse")
+	$Sfx/AudioStreamPlayer2DJump.play()
 
 func _try_curse(character : Node2D):
 	if character != null:
 		_curse(character)
 	else:
-		emit_signal("cantCurse")
+		$AnimationPlayerForbidden.play("forbidden")
+		$Sfx/AudioStreamPlayerJumpForbidden.play()
 
 func _highlightCursableCharacter(character : Node2D):
 	_freeCursableCharacter()
@@ -97,8 +94,12 @@ func _dist_to_cursable_character()-> float :
 func _input(event : InputEvent):
 	if event.is_action_released("curse"):
 		_try_curse(cursable_character)
-	if event.is_action_released("metamorphose") and not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
-		cursed_character.metamorphose()
+	if event.is_action_released("metamorphose"):
+		if not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
+			cursed_character.metamorphose()
+		else:
+			$AnimationPlayerForbidden.play("forbidden")
+			$Sfx/AudioStreamPlayerTransformForbidden.play()
 
 func _on_tree_exiting():
 	GameState.IsCurseAlive= false

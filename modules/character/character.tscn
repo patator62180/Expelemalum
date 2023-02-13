@@ -46,9 +46,11 @@ monitorable = false
 shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="TimerKillDelay" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [node name="TimerDieDelay" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
