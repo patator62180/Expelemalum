@@ -3,13 +3,16 @@ extends Node2D
 # editor var
 
 @export_node_path("Node2D") var INITIALLY_CURSED_CHARACTER : NodePath
+
 @onready var curse_area : Area2D = get_node("Area2D")
 @onready var curse_range : float = get_node("Area2D/CollisionShape2D").shape.radius
 @onready var line : Line2D = get_node("Line2D")
+@onready var arrow : Sprite2D = get_node("ArrowDown")
 
 #const var
 const target_angle_epsilon = 0.1* TAU
-const line_circle_radius = 20
+const line_circle_radius = 20 #pixel
+const arrowSpeed = 0.2 #second
 
 #ingame var
 var cursed_character : Node2D = null
@@ -49,9 +52,7 @@ func _highlightCursableCharacter(character : Node2D):
 		else:
 			var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
 			sprite.modulate = Color.hex(0xa770c2ff)
-			line.show()
-			line.points[0] = _get_input_vector()*line_circle_radius
-			line.points[line.points.size()-1] = cursable_character.global_position - global_position
+			_update_line(cursable_character.global_position - global_position)
 
 func _freeCursableCharacter():
 	if cursable_character != null:
@@ -60,7 +61,7 @@ func _freeCursableCharacter():
 		else:
 			var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
 			sprite.modulate = Color.WHITE
-	line.hide()
+	_update_line(_get_input_vector()*line_circle_radius)
 
 func _process(delta : float):
 	_update_Cursable_Character()
@@ -122,3 +123,9 @@ func _highlightCursableCharacters(area_array : Array, enable : bool):
 func _get_input_vector() -> Vector2:
 	return (get_global_mouse_position()-global_position).normalized()
 
+func _update_line(target : Vector2):
+	var tween = create_tween()
+	tween.tween_property(arrow, "position", target, 0.1)
+	
+	line.points[0] = _get_input_vector()*line_circle_radius
+	line.points[line.points.size()-1] = arrow.global_position - global_position

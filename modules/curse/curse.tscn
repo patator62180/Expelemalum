@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddhnviwyjohqm"]
+[gd_scene load_steps=21 format=3 uid="uid://ddhnviwyjohqm"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
-[ext_resource type="Texture2D" uid="uid://rf0h2crfaot4" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
-[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
-[ext_resource type="Texture2D" uid="uid://c70s0i5j7llf2" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
+[ext_resource type="Texture2D" uid="uid://7rabgw76io5m" path="res://modules/curse/assets/arrow_down.svg" id="6_nx20r"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
 _data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
@@ -153,6 +154,11 @@ script = ExtResource("1_cbkdp")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(45, 13, 84, 143)
 default_color = Color(0.654902, 0.439216, 0.760784, 0.705882)
+
+[node name="ArrowDown" type="Sprite2D" parent="."]
+position = Vector2(50, -10)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_nx20r")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
