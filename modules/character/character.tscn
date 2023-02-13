@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5j8et7pdvlsu"]
+[gd_scene load_steps=14 format=3 uid="uid://c5j8et7pdvlsu"]
 
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
 [ext_resource type="PackedScene" uid="uid://ccx2f3f6rrl12" path="res://modules/character/behavior/rules/behavior_rule_love.tscn" id="2_a21rm"]
@@ -12,34 +12,6 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 resource_local_to_scene = true
 radius = 8.0
-
-[sub_resource type="Animation" id="Animation_e4xfs"]
-resource_name = "Moving"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimRoot:rotation")
-tracks/0/interp = 4
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3333, 0.6667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.261799, -0.261799]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:ANIMATION_SPEED_FACTOR")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="Animation" id="Animation_bxq23"]
 length = 0.001
@@ -67,15 +39,131 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimRoot:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_krr1u"]
+resource_name = "Moving"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRoot:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3333, 0.6667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.261799, -0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:ANIMATION_SPEED_FACTOR")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2si0"]
 _data = {
-"Moving": SubResource("Animation_e4xfs"),
+"Moving": SubResource("Animation_krr1u"),
 "RESET": SubResource("Animation_bxq23")
+}
+
+[sub_resource type="Animation" id="Animation_dgm0n"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRoot:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimRoot:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -1.5708]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_animation_die_red"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6dhei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimRoot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimRoot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6brh"]
+_data = {
+"RESET": SubResource("Animation_6dhei"),
+"die": SubResource("Animation_dgm0n")
 }
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_dknqd")
+ANIMATION_SPEED_FACTOR = 1.0
 RADIUS_VISION = 100.0
 
 [node name="BehaviorRules" type="Node" parent="."]
@@ -127,6 +215,11 @@ libraries = {
 "": SubResource("AnimationLibrary_h2si0")
 }
 
+[node name="AnimationPlayerDie" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q6brh")
+}
+
 [node name="AnimRoot" type="Node2D" parent="."]
 position = Vector2(0, 4)
 
@@ -135,10 +228,11 @@ position = Vector2(1, -15)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("5_uxq2a")
 
-[connection signal="died" from="." to="SFXPlayer" method="_on_character_died"]
+[connection signal="dying" from="." to="SFXPlayer" method="_on_character_dying"]
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
 [connection signal="area_exited" from="Area2DVision" to="." method="_on_area_2d_vision_area_exited"]
 [connection signal="area_entered" from="Area2DBoundaryCheck" to="." method="_on_area_2d_boundary_check_area_entered"]
 [connection signal="area_exited" from="Area2DBoundaryCheck" to="." method="_on_area_2d_boundary_check_area_exited"]
 [connection signal="area_entered" from="Area2DCloseRange" to="." method="_on_area_2d_close_range_area_entered"]
 [connection signal="timeout" from="TimerCuriosity" to="." method="_on_timer_curiosity_timeout"]
+[connection signal="animation_finished" from="AnimationPlayerDie" to="." method="_on_animation_player_die_animation_finished"]

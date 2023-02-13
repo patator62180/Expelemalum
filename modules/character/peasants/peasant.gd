@@ -77,4 +77,6 @@ func _on_animation_player_metamorphose_animation_finished(anim_name : String):
 
 func _on_metamorphosed_sprite_changed():
 	pass
-	
+
+func _on_unmetamorphosed_sprite_changed():
+	pass
