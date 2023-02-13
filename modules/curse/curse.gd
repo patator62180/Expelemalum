@@ -53,7 +53,7 @@ func _highlightCursableCharacter(character : Node2D):
 		if cursable_character.is_queued_for_deletion():
 			cursable_character = null
 		else:
-			var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
+			var sprite : Sprite2D = character.get_node("CharacterUI/AnimRoot/Sprite2D")
 			sprite.modulate = Color.hex(0xa770c2ff)
 
 func _freeCursableCharacter():
@@ -61,7 +61,7 @@ func _freeCursableCharacter():
 		if cursable_character.is_queued_for_deletion():
 			cursable_character = null
 		else:
-			var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
+			var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
 			sprite.modulate = Color.WHITE
 
 func _process(delta : float):
@@ -119,7 +119,7 @@ func _highlightCursableCharacters(area_array : Array, enable : bool):
 		if area != null:			
 			var character : Node2D = area.get_parent()
 			if not enable or character != cursed_character:
-				var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
+				var sprite : Sprite2D = character.get_node("CharacterUI/AnimRoot/Sprite2D")
 				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
 
 func _get_input_vector() -> Vector2:
@@ -134,7 +134,7 @@ func _update_line(delta : float):
 
 func _get_arrow_target():
 	if cursable_character:
-		var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
+		var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
 		return sprite.global_position + arrowOffset
 	else:
 		return _get_input_vector()*line_circle_radius + skullPathFollow.global_position
