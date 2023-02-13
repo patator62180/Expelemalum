@@ -41,12 +41,6 @@ func _ready():
 	GameState.updatedKill.connect(_on_game_state_kill)
 	GameState.updatedTransformation.connect(_on_game_state_metamorph)
 	
-#	var expression = Expression.new()
-#	expression.parse("INDICATORS.curseEvilness")
-#	var result = expression.execute()
-#	print(result)  
-	
-	
 	# Init
 	prompt_dict = parse_csv_database("res://modules/narration/Audio/Audio - narrationDictionnary.csv")
 	initiate_indicators() #with every indicator to 0 
@@ -54,7 +48,8 @@ func _ready():
 	
 	# Début de la narration :
 #	lastLineSpoken.start() # Optionnel si play_line après
-	_play_line(AUDIO_LINE.narration_trigger_gameLaunch_1)
+	$MonitorLabel.text = ""
+	_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_1)
 
 func initiate_indicators() :
 	
@@ -143,14 +138,32 @@ func parse_csv_database(
 	return dict_data
 
 
-#NARRATION TRACKING & AUDIO
+#NARRATION TRACKING 
 ############################################################################
+
+func set_monitor(prefix : String = "", reset : bool = true, suffix : String = "") :
+	
+	if reset :
+		var monitor : String = ""
+		for i in indicators :
+			monitor += str(INDICATORS.keys()[i]) + " val: " + str(indicators[i][0]) +" prompts : "
+			for t in PLAYTYPES :
+				monitor += str(get_indicators_remaining_prompts(i,PLAYTYPES[t]))
+				monitor += "|"
+			monitor += "\n"
+		$MonitorLabel.text = prefix + "\n" + monitor + suffix
+	else :
+		$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
+	
 
 func play_situation_line(
 	indicator : INDICATORS,
 	playType : PLAYTYPES,
 	prompt_id : int = -1 #if -1 the func takes the highest priority at random
 	) -> bool :
+	
+	set_monitor("play line", false,"chosen situation :" + INDICATORS.keys()[indicator] + 	" - " + PLAYTYPES.keys()[playType] + "\n")
+
 	
 	var enough_prompt_remaining : bool
 	
@@ -196,19 +209,19 @@ func play_best_line_by_indicator() -> bool:
 			if studied_array[2][PLAYTYPES.highIndicator]["remaining_prompts"] > 0 :
 				error = not(play_situation_line(studied_array[1],PLAYTYPES.highIndicator))
 				prompt_found = true
-				print("high found")
+				
 			else :
 				change_indicators_remaining_prompts(studied_array[1],PLAYTYPES.highIndicator,-1)
 		else :
 			if studied_array[2][PLAYTYPES.lowIndicator]["remaining_prompts"] > 0 :
 				error = not(play_situation_line(studied_array[1],PLAYTYPES.lowIndicator))
 				prompt_found = true
-				print("low found")
+	
 			else :
 				change_indicators_remaining_prompts(studied_array[1],PLAYTYPES.lowIndicator,-1)
 				
 		iterator += 1
-	print("ERROR ? ",error)
+
 	return prompt_found and not(error)
 
 func update_indicators():
@@ -220,19 +233,25 @@ func update_indicators():
 		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)) - 1.0
 	
 	#DIFFICULTY
-	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.CurrentExorcistCount / (GameState.CurrentExorcistCount + GameState.CurrentPeasantCount)) - 1.0
+	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.RemainingExorcistsCount / (GameState.RemainingExorcistsCount + GameState.CurrentPeasantCount)) - 1.0
 	
 	#GAME PROGRESS
-	indicators[INDICATORS.gameProgress][0] = 2*(GameState.ExorcistKillCount / (GameState.ExorcistKillCount + GameState.CurrentExorcistCount)) - 1.0
+	indicators[INDICATORS.gameProgress][0] = 2*(GameState.ExorcistKillCount / (GameState.ExorcistKillCount + GameState.RemainingExorcistsCount)) - 1.0
 	
 	#ACTIVITY
-	var currentDate : float = Time.get_ticks_msec()/1000
-	if (GameState.SwipeEvents.size() == 0) :
-		indicators[INDICATORS.curseActivity][0] = -1.0
-	else :
-		while(GameState.SwipeEvents[0] < currentDate - 20) :
-			GameState.SwipeEvents.remove_at(0)
-		indicators[INDICATORS.curseActivity][0] = 2 *(GameState.SwipeEvents.size() / 20) - 1.0
+#	var currentDate : float = Time.get_ticks_msec()/1000
+#	if (GameState.SwipeEvents.size() == 0) :
+#		indicators[INDICATORS.curseActivity][0] = -1.0
+#	else :
+#		while(GameState.SwipeEvents[0] < currentDate - 20) :
+#			GameState.SwipeEvents.remove_at(0)
+#		indicators[INDICATORS.curseActivity][0] = 2 *(GameState.SwipeEvents.size() / 20) - 1.0
+	var number_of_swipes_done = GameState.get_updated_swipeEvents().size()
+	indicators[INDICATORS.curseActivity][0] = 2 *(GameState.SwipeEvents.size() / GameState.SwipeMemory) - 1.0
+	
+	
+	set_monitor("update indicator")
+	
 
 func change_indicators_remaining_prompts(
 	indicator : INDICATORS,
@@ -248,51 +267,47 @@ func get_indicators_remaining_prompts(
 			
 	return indicators[indicator][2][playtype]["remaining_prompts"]
 
+# PLAYER MANAGEMENT
+############################################################################
+
 func _play_line_str(lineNameStr : String) :
+	
+	_play_line_checker()
 	
 	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
 	narratorStreamPlayer.stream = audioStream
 	narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
+	$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	narratorStreamPlayer.play()
-	
-	lastLineSpoken.start()
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
 
-func _play_line(lineName : AUDIO_LINE):
-	lastLineSpoken.stop()
-	
+func _play_line_checker() :
 	if narratorStreamPlayer.playing :
 		await get_tree().create_timer(5.0).timeout
-		_play_line(lineName)
-	else :
-		_play_line_direct(lineName)
+		_play_line_checker()
 
+
+func _on_audio_stream_player_finished():
+	lastLineSpoken.start()
+	narratorStreamPlayer.stop()
+	narratorSubtitleLabel.text = ""
+#	lastLineSpoken.stop()
 
 #EVENT MANAGEMENT
 ############################################################################
 
 func _on_game_state_kill():
 	lastLineSpoken.stop()
-	_play_line(AUDIO_LINE.narration_trigger_firstKill_exorcist)
+	_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
 		
 func _on_game_state_metamorph(curse_nature : String):
 	lastLineSpoken.stop()
 	if(curse_nature == "Ww"):
-		_play_line(AUDIO_LINE.narration_trigger_ww_intro)
-
-func _on_audio_stream_player_finished():
-	narratorStreamPlayer.stop()
-#	lastLineSpoken.stop()
-	pass
+		_play_line_direct(AUDIO_LINE.narration_trigger_ww_intro)
 
 func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
-	
-	print("Get Ready !")
-	if not(play_best_line_by_indicator()) :
-		print("it did not happen... :(")
-	else :
-		print("supposed to work ;)")
-	
+	play_best_line_by_indicator()
+

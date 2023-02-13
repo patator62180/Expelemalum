@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=8 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
-[ext_resource type="Script" path="res://modules/character/peasants/lumberjack.gd" id="4_6xnwp"]
-[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
+[ext_resource type="PackedScene" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://drf2pnaplvuf6" path="res://modules/post_processing/post_processing.tscn" id="6_utf88"]
 [ext_resource type="PackedScene" uid="uid://jm02uma7ha5r" path="res://modules/camera/Camera2DFocus.tscn" id="7_m4srl"]
@@ -27,261 +26,101 @@ y_sort_enabled = true
 
 [node name="Character" parent="Playground" instance=ExtResource("6_c61lt")]
 
-[node name="@Character@119288" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119288" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(214.457, -36.7349)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119289" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119289" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(30.072, 143.545)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119290" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119290" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-100.724, -2.21509)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119291" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119291" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(168.025, -106.365)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119292" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119292" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(82.6761, -0.699122)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119293" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119293" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-34.7466, -89.091)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119294" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119294" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(199.951, -45.4001)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119295" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119295" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-259.2, -105.504)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119296" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119296" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-269.171, -41.1884)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119297" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119297" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-201.527, -48.8872)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119298" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119298" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(8.59974, -56.4354)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119299" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119299" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-10.6411, -127.543)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119300" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119300" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(168, 47.9988)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119301" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119301" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(218.155, -106.284)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119302" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119302" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-31.1018, -94.6426)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119303" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119303" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-7.68845, 42.7524)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119304" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119304" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-178.633, 68.2317)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119305" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119305" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(170.156, 8.14645)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119306" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119306" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-217.45, 132.977)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119307" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119307" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(36.818, 54.8694)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119308" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119308" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-198.604, -38.7417)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119309" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119309" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(15.4725, -87.8049)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119310" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119310" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-37.1218, -154.687)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119311" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119311" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-70.5657, -110.757)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119312" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119312" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(191.17, 167.741)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119313" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119313" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(2.57335, -88.2261)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119314" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119314" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(126.114, -137.814)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119315" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119315" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(228.461, 103.914)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119316" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119316" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(171.527, -168.318)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119317" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119317" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-47.2447, -39.782)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119318" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119318" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-139.811, 16.3491)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
-[node name="@Character@119319" type="Node2D" parent="Playground" groups=["character"] instance=ExtResource("6_c61lt")]
+[node name="@Character@119319" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-112.912, -121.544)
-script = ExtResource("4_6xnwp")
-SPEED = 40.0
-RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
-character_type = 0
 
 [node name="Foreground" type="Node2D" parent="."]
 
