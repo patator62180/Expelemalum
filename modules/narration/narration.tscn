@@ -32,5 +32,6 @@ wait_time = 30.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_6bnsj")
+autoplay = true
 
 [connection signal="timeout" from="LastLineSpoken" to="." method="_on_last_line_spoken_timeout"]

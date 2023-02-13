@@ -7,7 +7,7 @@ var subtitles : Dictionary = parseSubtitles()
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
 var narratorSubtitleLabel : Label = get_node("Label")
-enum AUDIO_LINE {narration_ww_intro, narration_firstKill_exorcist, narration_firstKill_peasant, narration_fewKills_exorcist, narration_fewKills_peasant, narration_gameLaunch}
+enum AUDIO_LINE {narration_timer_activity_high, narration_timer_activity_low, narration_timer_difficulty_high, narration_timer_difficulty_low, narration_timer_evilness_high, narration_timer_evilness_low, narration_timer_filler_1, narration_timer_filler_2, narration_timer_filler_3, narration_timer_progress_high, narration_timer_progress_low, narration_trigger_fewKills_exorcist, narration_trigger_fewKills_peasant, narration_trigger_firstKill_exorcist, narration_trigger_firstKill_peasant, narration_trigger_gameLaunch_1, narration_trigger_gameLaunch_2, narration_trigger_manaLack, narration_trigger_ww_intro}
 
 #indicators : they need to be updated before use
 var CurseActivity : float = 0.0 #de 0 à 1
@@ -26,7 +26,7 @@ func _ready():
 	
 	var subtitles : Dictionary = parseSubtitles()
 	lastLineSpoken.start()
-	_play_line(AUDIO_LINE.narration_gameLaunch)
+	_play_line(AUDIO_LINE.narration_trigger_gameLaunch_1)
 
 func parseSubtitles(
 	id_column: String = "id",
@@ -67,7 +67,7 @@ func _play_line(lineName : AUDIO_LINE):
 	lastLineSpoken.stop()
 	
 	var lineNameStr = AUDIO_LINE.keys()[lineName]
-	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".wav")
+	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
 	narratorStreamPlayer.stream = audioStream
 	#narratorSubtitleLabel.text = subtitles[lineNameStr]["subtitle"]
 	narratorStreamPlayer.play()
@@ -75,11 +75,11 @@ func _play_line(lineName : AUDIO_LINE):
 	lastLineSpoken.start()
 
 func _on_game_state_kill():
-		_play_line(AUDIO_LINE.narration_firstKill_peasant)
+		_play_line(AUDIO_LINE.narration_trigger_firstKill_exorcist)
 		
 func _on_game_state_metamorph(curse_nature : String):
 	if(curse_nature == "Ww"):
-		_play_line(AUDIO_LINE.narration_ww_intro)
+		_play_line(AUDIO_LINE.narration_trigger_ww_intro)
 
 
 func _on_audio_stream_player_finished():
@@ -97,33 +97,33 @@ func _on_last_line_spoken_timeout():
 		
 		INDICATORS.curseActivity:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 			else :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 				
 		INDICATORS.curseEvilness:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 			else :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 				
 		INDICATORS.currentDifficulty:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 			else :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 				
 		INDICATORS.gameProgress:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 			else :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 				
 		INDICATORS.filler:
 			if chosen_indicator[0] > 0 :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 			else :
-				_play_line(AUDIO_LINE.narration_ww_intro)
+				_play_line(AUDIO_LINE.narration_timer_filler_3)
 
 	
 
