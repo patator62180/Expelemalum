@@ -13,7 +13,6 @@ signal horizontal_direction_changed_to_left
 
 # testing interface (assuming this is only changed in the editor)
 @export var SPEED : float
-@export var SPEED_FACTOR : float
 
 @export var RADIUS_BODY : float:
 	get:
@@ -37,6 +36,7 @@ enum CHARACTER_TYPE { Lumberjack, Exorcist}
 
 ## movement variables
 var moving_direction : Vector2 = Vector2.ZERO
+var is_moving_to_the_right : bool = true
 
 ## dying variables
 var is_dying : bool = false
@@ -75,7 +75,6 @@ func die(killer_character : Node2D):
 	if not is_dying:
 		is_dying = true
 		killer = killer_character
-		$AnimationPlayerMove.stop()
 		emit_signal("dying", killer)
 
 func _on_timer_die_delay_timeout():
@@ -98,23 +97,19 @@ func _on_timer_die_delay_timeout():
 func _ready():
 	set("RADIUS_BODY", RADIUS_BODY)
 	set("RADIUS_VISION", RADIUS_VISION)
-	# randomize moving animation
-	$AnimationPlayerMove.seek(randf_range(0, 1))
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():
 		moving_direction = $Behavior.get_moving_direction()
 		# animation
 		if moving_direction.dot(Vector2.RIGHT) > 0.0:
-			if $AnimationPlayerMove.speed_scale < 0.0:
-				$AnimationPlayerMove.speed_scale = -$AnimationPlayerMove.speed_scale
+			if not is_moving_to_the_right:
 				emit_signal("horizontal_direction_changed_to_right")
+			is_moving_to_the_right = true
 		else:
-			if $AnimationPlayerMove.speed_scale > 0.0:
-				$AnimationPlayerMove.speed_scale = -$AnimationPlayerMove.speed_scale
+			if is_moving_to_the_right:
 				emit_signal("horizontal_direction_changed_to_left")
-		# move
-		position += (SPEED * SPEED_FACTOR) * moving_direction * delta
+			is_moving_to_the_right = false
 
 func _on_character_got_at_close_range(character : Node2D):
 	pass # TO BE OVERLOADED

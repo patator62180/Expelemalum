@@ -22,10 +22,10 @@ shape = SubResource("CircleShape2D_ovh4o")
 [node name="CollisionShape2D" parent="Area2DCloseRange" index="0"]
 shape = SubResource("CircleShape2D_ovh4o")
 
-[node name="TimerMetamorphose" type="Timer" parent="." index="7"]
+[node name="TimerMetamorphose" type="Timer" parent="." index="6"]
 one_shot = true
 
-[node name="TimerUnmetamorphose" type="Timer" parent="." index="8"]
+[node name="TimerUnmetamorphose" type="Timer" parent="." index="7"]
 one_shot = true
 
 [connection signal="timeout" from="TimerMetamorphose" to="." method="_on_timer_metamorphose_timeout"]
