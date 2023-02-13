@@ -52,17 +52,11 @@ func _highlightCursableCharacter(character : Node2D):
 	if cursable_character != null:
 		if cursable_character.is_queued_for_deletion():
 			cursable_character = null
-		else:
-			var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
-			sprite.modulate = Color.hex(0xa770c2ff)
 
 func _freeCursableCharacter():
 	if cursable_character != null:
 		if cursable_character.is_queued_for_deletion():
 			cursable_character = null
-		else:
-			var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
-			sprite.modulate = Color.WHITE
 
 func _process(delta : float):
 	_update_Cursable_Character()
@@ -113,14 +107,6 @@ func _get_closest_character(characters : Array) -> Node2D:
 				closest_character = character
 				closest_character_distance = character_distance
 	return closest_character
-
-func _highlightCursableCharacters(area_array : Array, enable : bool):
-	for area in area_array:
-		if area != null:			
-			var character : Node2D = area.get_parent()
-			if not enable or character != cursed_character:
-				var sprite : Sprite2D = character.get_node("AnimRoot/Sprite2D")
-				sprite.modulate = Color.hex(0xa770c2ff) if enable else Color.WHITE
 
 func _get_input_vector() -> Vector2:
 	return (get_global_mouse_position()-global_position).normalized()

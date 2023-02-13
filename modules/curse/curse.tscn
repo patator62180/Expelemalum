@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://x1w45mnn0ifb"]
+[gd_scene load_steps=20 format=3 uid="uid://x1w45mnn0ifb"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="Script" path="res://modules/curse/curvedLine.gd" id="2_6w35m"]
@@ -8,41 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
-[sub_resource type="Curve" id="Curve_56xj1"]
-_data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_228wp"]
-curve = SubResource("Curve_56xj1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rwft5"]
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 15.0
-emission_ring_inner_radius = 5.0
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 25.0
-initial_velocity_max = 50.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-angle_min = -5.0
-angle_max = 5.0
-scale_min = 0.1
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_228wp")
-color = Color(1, 1, 1, 0.784314)
-turbulence_noise_strength = 13.31
-turbulence_noise_speed_random = 4.5
-turbulence_influence_min = 0.04
-turbulence_influence_max = 0.31
-turbulence_initial_displacement_min = -15.8
-turbulence_initial_displacement_max = 22.3
+[sub_resource type="Gradient" id="Gradient_lbnmw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.509202, 1)
+colors = PackedColorArray(0.654902, 0.439216, 0.760784, 0, 0.654902, 0.439216, 0.760784, 0.638009, 0.654902, 0.439216, 0.760784, 0.705882)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
 radius = 200.0
@@ -109,20 +78,16 @@ emission_ring_inner_radius = 20.0
 particle_flag_disable_z = true
 spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 25.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-radial_accel_min = -60.0
-radial_accel_max = -40.0
-damping_min = 15.0
-damping_max = 20.0
-scale_min = 0.15
-scale_max = 0.15
+initial_velocity_min = 250.0
+initial_velocity_max = 350.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+radial_accel_min = -350.0
+radial_accel_max = -250.0
+damping_min = 30.0
+damping_max = 30.0
 scale_curve = SubResource("CurveTexture_sa7vv")
 attractor_interaction_enabled = false
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_l5gas"]
 
 [sub_resource type="Curve" id="Curve_v5ag7"]
 _data = [Vector2(0.00380228, 0.0090909), 0.0, 6.90707, 0, 0, Vector2(0.254753, 1), 0.0, 0.0, 0, 0, Vector2(0.840304, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.0987, 0.0, 0, 0]
@@ -132,13 +97,15 @@ point_count = 4
 curve = SubResource("Curve_v5ag7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r58wi"]
-emission_shape = 4
-emission_point_texture = SubResource("CurveXYZTexture_l5gas")
-emission_point_count = 508
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(80, 80, 1)
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 30.0
 gravity = Vector3(0, 0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 angle_min = -180.0
@@ -154,22 +121,17 @@ hue_variation_max = 0.01
 script = ExtResource("1_cbkdp")
 
 [node name="CurvedLine" type="Line2D" parent="."]
-points = PackedVector2Array(45, 13, 84, 143)
+points = PackedVector2Array(45, 13, 127, 101)
 width = 5.0
-default_color = Color(0.654902, 0.439216, 0.760784, 0.705882)
+gradient = SubResource("Gradient_lbnmw")
+begin_cap_mode = 2
+end_cap_mode = 2
 script = ExtResource("2_6w35m")
 
 [node name="ArrowDown" type="Sprite2D" parent="."]
 position = Vector2(50, -10)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_kl1pe")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_rwft5")
-texture = ExtResource("4_liph5")
-preprocess = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -205,6 +167,7 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_j46a3")
 texture = ExtResource("4_liph5")
 lifetime = 5.0
+local_coords = true
 
 [node name="GPUParticles2DFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = 1
@@ -212,6 +175,7 @@ amount = 2
 process_material = SubResource("ParticleProcessMaterial_j46a3")
 texture = ExtResource("4_liph5")
 lifetime = 5.0
+local_coords = true
 
 [node name="GPUParticles2DStraigthFront" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = 1
@@ -222,10 +186,11 @@ preprocess = 2.0
 
 [node name="GPUParticles2DStraigthBack" type="GPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = -1
-position = Vector2(0, 50)
-amount = 50
+position = Vector2(0, -20)
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_r58wi")
 texture = ExtResource("4_5567m")
+lifetime = 0.5
 preprocess = 2.0
 
 [node name="Lumberjack" type="Sprite2D" parent="."]
