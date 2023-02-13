@@ -107,7 +107,7 @@ func _get_closest_character(characters : Array) -> Node2D:
 				closest_character = character
 				closest_character_distance = character_distance
 	return closest_character
-
+	
 func _get_input_vector() -> Vector2:
 	return (get_global_mouse_position()-global_position).normalized()
 
@@ -120,7 +120,7 @@ func _update_line(delta : float):
 
 func _get_arrow_target():
 	if cursable_character:
-		var sprite : Sprite2D = cursable_character.get_node("AnimRoot/Sprite2D")
+		var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
 		return sprite.global_position + arrowOffset
 	else:
 		return _get_input_vector()*line_circle_radius + skullPathFollow.global_position

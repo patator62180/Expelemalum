@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://wvnqfu10qqgb"]
+
+[ext_resource type="Script" path="res://modules/character/behavior/behavior_lumberjack.gd" id="1_ci8fm"]
+[ext_resource type="PackedScene" uid="uid://byc0b87sco5sy" path="res://modules/character/behavior/behavior.tscn" id="1_kamjw"]
+
+[node name="Behavior" instance=ExtResource("1_kamjw")]
+script = ExtResource("1_ci8fm")

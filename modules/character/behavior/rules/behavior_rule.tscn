@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://66q4mn76i611"]
-
-[ext_resource type="Script" path="res://modules/character/behavior/rules/behavior_rule.gd" id="1_8jmip"]
-
-[node name="BehaviorRule" type="Node"]
-script = ExtResource("1_8jmip")

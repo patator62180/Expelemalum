@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=8 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="2_cpktn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://spw6olyk1hbi" path="res://modules/world/terrain/scroll.tscn" id="2_qem0d"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://drf2pnaplvuf6" path="res://modules/post_processing/post_processing.tscn" id="6_utf88"]
+[ext_resource type="PackedScene" uid="uid://jm02uma7ha5r" path="res://modules/camera/Camera2DFocus.tscn" id="7_m4srl"]
 
 [node name="World" type="Node2D"]
 position = Vector2(-1, 0)
@@ -407,23 +408,18 @@ rotation = 0.721983
 [node name="Playground" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Lumberjack" parent="Playground" instance=ExtResource("6_c61lt")]
+[node name="Character" parent="Playground" instance=ExtResource("6_c61lt")]
 
-[node name="Lumberjack2" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(58, 20)
-
-[node name="Lumberjack3" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(1, 63)
-
-[node name="Lumberjack4" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(-70, 21)
-
-[node name="Lumberjack5" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(-51, -62)
+[node name="Character2" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(-64, 55)
 
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="Curse" parent="Foreground" instance=ExtResource("2_ghruk")]
-INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Lumberjack")
+INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Character")
 
 [node name="PostProcessing" parent="." instance=ExtResource("6_utf88")]
+
+[node name="Camera2DFocus" parent="." instance=ExtResource("7_m4srl")]
+ZOOM_MIN = 0.0
+ZOOM_MAX = inf

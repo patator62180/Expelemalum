@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvq6sk3bf84g"]
+
+[ext_resource type="PackedScene" uid="uid://dfq7j8wlgk670" path="res://modules/character/peasants/peasant_character_ui.tscn" id="1_cmj1x"]
+[ext_resource type="Script" path="res://modules/character/peasants/lumberjack_character_ui.gd" id="2_yb8dt"]
+
+[node name="CharacterUI" instance=ExtResource("1_cmj1x")]
+script = ExtResource("2_yb8dt")

@@ -29,7 +29,7 @@ func _choose_moving_direction():
 
 func _on_character_got_at_close_range(character : Node2D):
 	if memory[character]["suspicion"] > SUPICION_THRESHOLD_TO_KILL:
-		character.die(DIE_TYPE)
+		character.die(self)
 	else:
 		super._on_character_got_at_close_range(character)
 
