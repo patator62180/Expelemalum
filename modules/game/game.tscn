@@ -43,5 +43,8 @@ script = ExtResource("6_y0nix")
 
 [node name="SFXPlayer" parent="." instance=ExtResource("7_4dkw6")]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.8, 2.8)
+
 [connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
 [connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
