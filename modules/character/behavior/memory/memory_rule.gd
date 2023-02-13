@@ -1,6 +1,6 @@
 extends Node
 
-@export_node_path("Node2D") var BEHAVIOR_PATH : NodePath = NodePath("..")
+@export_node_path("Node") var BEHAVIOR_PATH : NodePath = NodePath("../..")
 @export var NAME : String
 
 func get_behavior() -> Node:

@@ -42,6 +42,8 @@ func _try_curse(character : Node2D):
 	else:
 		$AnimationPlayerForbidden.play("forbidden")
 		$Sfx/AudioStreamPlayerJumpForbidden.play()
+		$Path2D/PathFollow2D/Skull/Sprite2DForbidden/Sprite2DLeft.show()
+		$Path2D/PathFollow2D/Skull/Sprite2DForbidden/Sprite2DRight.hide()
 
 func _highlightCursableCharacter(character : Node2D):
 	_freeCursableCharacter()
@@ -94,6 +96,8 @@ func _input(event : InputEvent):
 		else:
 			$AnimationPlayerForbidden.play("forbidden")
 			$Sfx/AudioStreamPlayerTransformForbidden.play()
+			$Path2D/PathFollow2D/Skull/Sprite2DForbidden/Sprite2DLeft.hide()
+			$Path2D/PathFollow2D/Skull/Sprite2DForbidden/Sprite2DRight.show()
 
 func _on_tree_exiting():
 	GameState.IsCurseAlive= false

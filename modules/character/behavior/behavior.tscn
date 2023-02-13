@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://byc0b87sco5sy"]
+[gd_scene load_steps=8 format=3 uid="uid://byc0b87sco5sy"]
 
 [ext_resource type="Script" path="res://modules/character/behavior/behavior.gd" id="1_npgrb"]
 [ext_resource type="PackedScene" uid="uid://d3ehamp3spykj" path="res://modules/character/behavior/memory/memory_rule_love.tscn" id="2_gagjs"]
 [ext_resource type="PackedScene" uid="uid://d2oryu32gdpmj" path="res://modules/character/behavior/memory/memory_rule_know.tscn" id="3_pwrhs"]
+[ext_resource type="PackedScene" uid="uid://rn3dd1fl8uug" path="res://modules/character/behavior/memory/memory_rule_fear.tscn" id="4_fpvmt"]
 
 [sub_resource type="Animation" id="Animation_g8i4d"]
 length = 0.001
@@ -44,17 +45,18 @@ _data = {
 script = ExtResource("1_npgrb")
 PERSONALITY_SOCIABILITY = 1.0
 PERSONALITY_CURIOSITY = 0.5
-PERSONALITY_BOUNDARY_FEAR = 10.0
-TIMER_CURIOSITY_WAIT_TIME = 3.0
+PERSONALITY_BOUNDARY_FEAR = 5.0
+PERSONALITY_COWARD = 4.0
+TIMER_CURIOSITY_WAIT_TIME = 1.0
 TIMER_CURIOSITY_WAIT_TIME_RANDOM = 0.25
 
 [node name="MemoryRules" type="Node" parent="."]
 
 [node name="MemoryRuleLove" parent="MemoryRules" instance=ExtResource("2_gagjs")]
-BEHAVIOR_PATH = NodePath("../..")
 
 [node name="MemoryRuleKnow" parent="MemoryRules" instance=ExtResource("3_pwrhs")]
-BEHAVIOR_PATH = NodePath("../..")
+
+[node name="MemoryRuleFear" parent="MemoryRules" instance=ExtResource("4_fpvmt")]
 
 [node name="TimerCuriosity" type="Timer" parent="."]
 one_shot = true

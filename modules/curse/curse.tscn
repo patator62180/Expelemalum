@@ -1,14 +1,16 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddhnviwyjohqm"]
+[gd_scene load_steps=31 format=3 uid="uid://ddhnviwyjohqm"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="Script" path="res://modules/curse/curvedLine.gd" id="2_6w35m"]
-[ext_resource type="Texture2D" uid="uid://b53pl41iuxhyw" path="res://modules/curse/assets/arrow_right.svg" id="2_kl1pe"]
-[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
-[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
-[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Texture2D" uid="uid://6vcm6pum0inq" path="res://modules/curse/assets/arrow_right.svg" id="2_kl1pe"]
+[ext_resource type="Texture2D" uid="uid://rf0h2crfaot4" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://c70s0i5j7llf2" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
+[ext_resource type="Texture2D" uid="uid://bgpriigldnovo" path="res://modules/curse/assets/mouse_button_left.svg" id="8_8ctjx"]
 [ext_resource type="AudioStream" uid="uid://djm1ont6e5bxi" path="res://modules/curse/assets/audio/sfx_curse_jump_exit.mp3" id="8_sivdo"]
 [ext_resource type="Texture2D" uid="uid://d2pntsflbkqbj" path="res://modules/curse/assets/forbidden.svg" id="9_kgp4y"]
+[ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="9_pp52w"]
 [ext_resource type="AudioStream" uid="uid://b7mvkak62ln5t" path="res://modules/curse/assets/audio/sfx_curse_transform_forbidden.mp3" id="9_r8p68"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
@@ -153,33 +155,6 @@ color = Color(1, 1, 1, 0.803922)
 hue_variation_min = -0.01
 hue_variation_max = 0.01
 
-[sub_resource type="Animation" id="Animation_f32is"]
-resource_name = "forbidden"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Path2D/PathFollow2D/Skull/Sprite2DForbidden:modulate")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Path2D/PathFollow2D/Skull/Sprite2DForbidden:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
 [sub_resource type="Animation" id="Animation_pn3hd"]
 length = 0.001
 tracks/0/type = "value"
@@ -205,6 +180,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f32is"]
+resource_name = "forbidden"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/Skull/Sprite2DForbidden:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.784314), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/Skull/Sprite2DForbidden:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uplu4"]
@@ -295,6 +297,18 @@ preprocess = 2.0
 visible = false
 position = Vector2(0, -106.667)
 texture = ExtResource("9_kgp4y")
+
+[node name="Sprite2DLeft" type="Sprite2D" parent="Path2D/PathFollow2D/Skull/Sprite2DForbidden"]
+visible = false
+show_behind_parent = true
+position = Vector2(0, -6.66632)
+texture = ExtResource("8_8ctjx")
+
+[node name="Sprite2DRight" type="Sprite2D" parent="Path2D/PathFollow2D/Skull/Sprite2DForbidden"]
+visible = false
+show_behind_parent = true
+position = Vector2(6.66667, -6.66632)
+texture = ExtResource("9_pp52w")
 
 [node name="Lumberjack" type="Sprite2D" parent="."]
 visible = false

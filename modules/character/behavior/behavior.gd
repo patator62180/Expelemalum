@@ -5,6 +5,7 @@ extends Node
 @export var PERSONALITY_SOCIABILITY : float
 @export var PERSONALITY_CURIOSITY : float
 @export var PERSONALITY_BOUNDARY_FEAR : float
+@export var PERSONALITY_COWARD : float
 
 @export var TIMER_CURIOSITY_WAIT_TIME : float
 @export_range(0.0, 1.0) var TIMER_CURIOSITY_WAIT_TIME_RANDOM : float
@@ -79,6 +80,7 @@ func _get_moving_direction() -> Vector2:
 			if distance_to_other_character > 0.0:
 				moving_direction += PERSONALITY_SOCIABILITY * memory[other_character]["love"] * direction_to_other_character / distance_to_other_character
 				moving_direction -= PERSONALITY_CURIOSITY * memory[other_character]["know"] * direction_to_other_character / distance_to_other_character
+				moving_direction -= PERSONALITY_COWARD * memory[other_character]["fear"] * direction_to_other_character / distance_to_other_character
 	for boundary_exit in boundary_exits:
 		var direction_to_boundary_exit : Vector2 = boundary_exit["position"] - character.global_position
 		var distance_to_boundary_exit : float = direction_to_boundary_exit.length()
@@ -101,6 +103,8 @@ func _on_character_dying(killer : Node2D):
 	$AnimationPlayerMove.stop()
 
 func _on_timer_curiosity_timeout():
-	curiosity_direction.rotated(randf_range(0.0, TAU))
+	curiosity_direction = (CharacterCenter.global_position - get_character().global_position).rotated(0.1 * TAU * randf_range(-1.0, 1.0))
+	if curiosity_direction == Vector2.ZERO:
+		curiosity_direction = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
 	$TimerCuriosity.wait_time = TIMER_CURIOSITY_WAIT_TIME * randf_range((1.01 - TIMER_CURIOSITY_WAIT_TIME_RANDOM), (1.0 + TIMER_CURIOSITY_WAIT_TIME_RANDOM))
 	$TimerCuriosity.start()

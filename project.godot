@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://modules/gameState/gameState.tscn"
+CharacterCenter="*res://modules/character/character_center.tscn"
 
 [display]
 
@@ -78,4 +79,4 @@ curse={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.65, 0.62725, 0.585, 1)
