@@ -5,3 +5,4 @@
 
 [node name="Behavior" instance=ExtResource("1_kamjw")]
 script = ExtResource("1_ci8fm")
+PERSONALITY_METAMORPHOSED_AGRESSIVITY = 10.0

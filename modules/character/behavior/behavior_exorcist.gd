@@ -1,16 +1,8 @@
-extends "res://modules/character/behavior/behavior_peasant.gd"
+extends "res://modules/character/behavior/behavior.gd"
 
-const PERSONALITY_METAMORPHOSED_AGRESSIVITY : float = 10.0
+@export var PERSONALITY_SUSPECTIVE : float
 
-func _on_character_metamorphosed():
-	$AnimationPlayerMove.speed_scale *= 1.5
-	super._on_character_metamorphosed()
-
-func _on_character_unmetamorphosed():
-	$AnimationPlayerMove.speed_scale /= 1.5
-	super._on_character_unmetamorphosed()
-
-func _get_moving_direction_metamorphosed():
+func _get_moving_direction():
 	# init
 	var character : Node2D = get_character()
 	var moving_direction : Vector2 = Vector2.ZERO
@@ -22,7 +14,10 @@ func _get_moving_direction_metamorphosed():
 			var distance_to_other_character : float = direction_to_other_character.length()
 			direction_to_other_character /= distance_to_other_character
 			if distance_to_other_character > 0.0:
-				moving_direction += PERSONALITY_METAMORPHOSED_AGRESSIVITY * (1.0 / (2.1 + memory[other_character]["love"])) * direction_to_other_character / distance_to_other_character
+				moving_direction += PERSONALITY_SUSPECTIVE * memory[other_character]["suspicion"] * direction_to_other_character / distance_to_other_character
+				moving_direction += PERSONALITY_SOCIABILITY * memory[other_character]["love"] * direction_to_other_character / distance_to_other_character
+				moving_direction -= PERSONALITY_CURIOSITY * memory[other_character]["know"] * direction_to_other_character / distance_to_other_character
+				moving_direction -= PERSONALITY_COWARD * memory[other_character]["fear"] * direction_to_other_character / distance_to_other_character
 	if moving_direction == Vector2.ZERO:
 		moving_direction = curiosity_direction
 	for boundary_exit in boundary_exits:

@@ -1,6 +1,6 @@
 extends "res://modules/character/behavior/behavior_peasant.gd"
 
-const PERSONALITY_METAMORPHOSED_AGRESSIVITY : float = 10.0
+@export var PERSONALITY_METAMORPHOSED_AGRESSIVITY : float
 
 func _on_character_metamorphosed():
 	$AnimationPlayerMove.speed_scale *= 1.5

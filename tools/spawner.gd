@@ -1,10 +1,11 @@
 @tool
 extends EditorScript
 
-const spawning_scene_path : String = "res://modules/character/peasants/lumberjack.tscn"
+# const spawning_scene_path : String = "res://modules/character/peasants/lumberjack.tscn"
+const spawning_scene_path : String = "res://modules/character/exorcists/exorcist.tscn"
 const parent_path : NodePath = NodePath("Playground")
 const spawn_area_path : NodePath = NodePath("Boundary/CollisionShape2D")
-const spawn_number : int = 32
+const spawn_number : int = 8
 
 func _run():
 	var spawning_scene : PackedScene = load(spawning_scene_path)

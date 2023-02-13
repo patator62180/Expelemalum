@@ -18,6 +18,7 @@ character_type = 0
 
 [node name="Area2DVision" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, -4)
 collision_layer = 2
 monitorable = false
 
@@ -26,6 +27,7 @@ shape = SubResource("CircleShape2D_e645k")
 
 [node name="Area2DBody" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, -4)
 collision_mask = 0
 monitoring = false
 
@@ -34,6 +36,7 @@ shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="Area2DBoundaryCheck" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -43,6 +46,7 @@ shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="Area2DCloseRange" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, -4)
 collision_layer = 0
 monitorable = false
 

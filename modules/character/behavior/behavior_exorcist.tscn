@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvchtauv3t1em"]
+[gd_scene load_steps=4 format=3 uid="uid://dvchtauv3t1em"]
 
 [ext_resource type="PackedScene" uid="uid://byc0b87sco5sy" path="res://modules/character/behavior/behavior.tscn" id="1_s3djc"]
 [ext_resource type="Script" path="res://modules/character/behavior/behavior_exorcist.gd" id="2_1kojf"]
+[ext_resource type="PackedScene" uid="uid://dfquyx6w6cth5" path="res://modules/character/behavior/memory/memory_rule_suspicion.tscn" id="3_4trp5"]
 
 [node name="Behavior" instance=ExtResource("1_s3djc")]
 script = ExtResource("2_1kojf")
-PERSONALITY_SOCIABILITY = 0.0
-PERSONALITY_CURIOSITY = 0.0
-PERSONALITY_BOUNDARY_FEAR = 0.0
-PERSONALITY_COWARD = 0.0
-TIMER_CURIOSITY_WAIT_TIME = 0.0
-TIMER_CURIOSITY_WAIT_TIME_RANDOM = 0.0
+PERSONALITY_SUSPECTIVE = 2.0
+
+[node name="MemoryRuleSuspicion" parent="MemoryRules" index="3" instance=ExtResource("3_4trp5")]
