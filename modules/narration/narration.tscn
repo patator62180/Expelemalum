@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=4 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
-[ext_resource type="AudioStream" uid="uid://cqcslyqwx0c3w" path="res://modules/narration/Audio/AudioSource/narration_gameLaunch.wav" id="2_bwrcv"]
-[ext_resource type="Script" path="res://modules/narration/NarratorAudioStreamPlayer.gd" id="3_eytij"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
 font_size = 20
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_6bnsj"]
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -15,11 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kif28")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_bwrcv")
-volume_db = 1.0
-script = ExtResource("3_eytij")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -35,5 +30,7 @@ uppercase = true
 [node name="LastLineSpoken" type="Timer" parent="."]
 wait_time = 30.0
 
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMP3_6bnsj")
+
 [connection signal="timeout" from="LastLineSpoken" to="." method="_on_last_line_spoken_timeout"]
