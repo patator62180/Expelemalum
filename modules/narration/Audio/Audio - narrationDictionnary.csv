@@ -1,3 +1,20 @@
 id,subtitle
-narration_ww_intro,Do you feel this tingle in your nose ? I think its your hair growing. It'll go well with your new werewolf fangs
-narration_firstKill_exorcist,Well you know who your enemies are… keep it up champ
+narration_timer_activity_high,"Jumping around like hell on wheels! Keep it cool, but not too much..."
+narration_timer_activity_low,"Don’t get too attached to this poor soul, if you do well, none will be left."
+narration_timer_difficulty_high,"By god’s nails, don’t let those prayers beat us"
+narration_timer_difficulty_low,"I know you’re a beginner, but I still think that it’s too easy"
+narration_timer_evilness_high,"They had a family you know, the last one had a baby girl named Beatrice, nice"
+narration_timer_evilness_low,Why so serious? Those priest deserved it but live a little! kill a lot
+narration_timer_filler_1,"hm hm hm that’s nice stroll, don’t forget to take some time to yourself"
+narration_timer_filler_2,"I was thinking of having my horns trimmed, what do you think? "
+narration_timer_filler_3,What a cute village *evil laugh*
+narration_timer_progress_high,"Soon none will stand in your way, to Hell they come"
+narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse"
+narration_trigger_fewKills_exorcist,You’re doing good ! maybe a bit too good now that I think of it
+narration_trigger_fewKills_peasant,"Well you are still alive, that’s something, maybe it’ll be easier to go on a rampage after killing the exorcists though"
+narration_trigger_firstKill_exorcist,Well you know who your enemies are… keep it up champ
+narration_trigger_firstKill_peasant,Ahah! I like the spirit of a free kill… but does it help you?
+narration_trigger_gameLaunch_1,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
+narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
+narration_trigger_manaLack,You don't have enough mana yet
+narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. 
