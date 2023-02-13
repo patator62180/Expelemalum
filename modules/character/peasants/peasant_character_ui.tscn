@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfq7j8wlgk670"]
+[gd_scene load_steps=13 format=3 uid="uid://dfq7j8wlgk670"]
 
 [ext_resource type="PackedScene" uid="uid://bf1xdcm02sonr" path="res://modules/character/character_ui.tscn" id="1_k43xr"]
 [ext_resource type="Script" path="res://modules/character/peasants/peasant_character_ui.gd" id="2_8cbq1"]
 [ext_resource type="Texture2D" uid="uid://bw5y2a87ndhhu" path="res://modules/character/peasants/assets/lumberjack_metamorphosed.svg" id="2_62vss"]
 [ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="3_b28rt"]
+[ext_resource type="AudioStream" uid="uid://57sgyhfllf4j" path="res://modules/character/assets/audio/sfx_cursed_werewolf_transformStarting.mp3" id="4_56ob3"]
 
 [sub_resource type="Animation" id="Animation_vky44"]
 length = 0.001
@@ -55,18 +56,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AnimRoot:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 4)]
-}
 
 [sub_resource type="Animation" id="Animation_ya4ia"]
 resource_name = "metamorphose"
@@ -89,10 +78,10 @@ tracks/1/path = NodePath("GPUParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.25, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -118,25 +107,13 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimRoot:position")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, 4), Vector2(0, 9)]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -195,25 +172,13 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimRoot:position")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(0, 9), Vector2(0, 4)]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -239,7 +204,7 @@ curve = SubResource("Curve_y8owd")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i0wpl"]
 lifetime_randomness = 0.1
 emission_shape = 1
-emission_sphere_radius = 25.0
+emission_sphere_radius = 20.0
 particle_flag_disable_z = true
 spread = 180.0
 gravity = Vector3(0, -100, 0)
@@ -267,8 +232,11 @@ position = Vector2(0, -16)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_62vss")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="11"]
-position = Vector2(0, -3)
+[node name="AudioStreamPlayer2DMetamorphose" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("4_56ob3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="9"]
+position = Vector2(0, -5)
 emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_i0wpl")

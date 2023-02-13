@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://by6nurb5bfs35"]
+
+[ext_resource type="PackedScene" uid="uid://bf1xdcm02sonr" path="res://modules/character/character_ui.tscn" id="1_k242c"]
+[ext_resource type="Script" path="res://modules/character/exorcists/exorcist_character_ui.gd" id="2_thek2"]
+[ext_resource type="Texture2D" uid="uid://cxniwignt2188" path="res://modules/character/exorcists/assets/exorcist.svg" id="3_y7b08"]
+[ext_resource type="AudioStream" uid="uid://do1m1tbw78v41" path="res://modules/character/assets/audio/sfx_exorcist_killAction.mp3" id="4_7dsqo"]
+
+[node name="CharacterUI" instance=ExtResource("1_k242c")]
+script = ExtResource("2_thek2")
+
+[node name="Sprite2D" parent="AnimRoot" index="0"]
+position = Vector2(0, -19)
+texture = ExtResource("3_y7b08")
+
+[node name="AudioStreamPlayer2DKilling" parent="." index="6"]
+stream = ExtResource("4_7dsqo")

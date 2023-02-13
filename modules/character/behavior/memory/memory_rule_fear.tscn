@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://rn3dd1fl8uug"]
+
+[ext_resource type="PackedScene" uid="uid://bf7ro3307ngef" path="res://modules/character/behavior/memory/memory_rule.tscn" id="1_6fknr"]
+[ext_resource type="Script" path="res://modules/character/behavior/memory/memory_rule_fear.gd" id="2_nyyhg"]
+
+[sub_resource type="Curve" id="Curve_mugtp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w4vof"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mxh3p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="MemoryRuleFear" instance=ExtResource("1_6fknr")]
+script = ExtResource("2_nyyhg")
+FEARING_DISTANCE_FUNC = SubResource("Curve_mugtp")
+FEARING_FEAR_FUNC = SubResource("Curve_w4vof")
+FORGETTING_FEAR_FUNC = SubResource("Curve_mxh3p")
+NAME = "fear"

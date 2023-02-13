@@ -4,7 +4,6 @@ extends "res://modules/character/peasants/peasant.gd"
 
 func _on_character_got_at_close_range_metamorphosed(character : Node2D):
 	kill(character)
-	unmetamorphose()
 
 func _on_timer_metamorphose_timeout():
 	$Area2DBody/CollisionShape2D.shape.radius = 12

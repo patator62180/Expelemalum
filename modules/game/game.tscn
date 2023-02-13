@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=8 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_7k12j"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="4_1eg8t"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
 [ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="6_y0nix"]
-[ext_resource type="PackedScene" uid="uid://cswujfrnarjpr" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_kgawr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m05ri"]
 font_size = 50
@@ -16,10 +15,8 @@ script = ExtResource("1_wx0k4")
 
 [node name="World" parent="." instance=ExtResource("2_7k12j")]
 
-[node name="Narration" parent="." instance=ExtResource("3_xawyk")]
-metadata/_edit_use_anchors_ = true
-
 [node name="Debug" parent="." instance=ExtResource("4_1eg8t")]
+visible = false
 
 [node name="gameLoop" parent="." instance=ExtResource("5_56sbj")]
 
@@ -43,7 +40,8 @@ script = ExtResource("6_y0nix")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_kgawr")]
+[node name="Narration" parent="CanvasLayer" instance=ExtResource("3_xawyk")]
+metadata/_edit_use_anchors_ = true
 
 [connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
 [connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]

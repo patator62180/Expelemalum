@@ -59,7 +59,7 @@ var visible_characters : Array = []
 # interface
 
 func kill(victim_character : Node2D):
-	if not is_killing:
+	if not is_killing and (victim_character != null) and (not victim_character.is_queued_for_deletion()):
 		is_killing = true
 		victim = victim_character
 		$TimerKillDelay.start()
@@ -75,6 +75,7 @@ func die(killer_character : Node2D):
 	if not is_dying:
 		is_dying = true
 		killer = killer_character
+		$TimerDieDelay.start()
 		emit_signal("dying", killer)
 
 func _on_timer_die_delay_timeout():
@@ -88,6 +89,7 @@ func _on_timer_die_delay_timeout():
 		$CharacterUI/AnimRoot.remove_child(sprite_2d)
 		sprite_2d.position = Vector2.ZERO
 		sprite_2d.rotation = 0.0
+		sprite_2d.modulate = Color.WHITE
 		corps_node.add_child(sprite_2d)
 		# self free
 		queue_free()

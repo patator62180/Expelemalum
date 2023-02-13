@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bxksnys6iqsx7" path="res://modules/character/peasants/peasant.tscn" id="1_toxem"]
 [ext_resource type="Script" path="res://modules/character/peasants/lumberjack.gd" id="2_p8iip"]
-[ext_resource type="PackedScene" path="res://modules/character/behavior/behavior_lumberjack.tscn" id="3_bvnxr"]
-[ext_resource type="PackedScene" path="res://modules/character/peasants/lumberjack_character_ui.tscn" id="4_cchmb"]
+[ext_resource type="PackedScene" uid="uid://wvnqfu10qqgb" path="res://modules/character/behavior/behavior_lumberjack.tscn" id="3_bvnxr"]
+[ext_resource type="PackedScene" uid="uid://dfhf55vkq8ila" path="res://modules/character/peasants/lumberjack_character_ui.tscn" id="4_cchmb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2g0w"]
 resource_local_to_scene = true
@@ -23,6 +23,6 @@ shape = SubResource("CircleShape2D_n2g0w")
 [node name="CollisionShape2D" parent="Area2DCloseRange" index="0"]
 shape = SubResource("CircleShape2D_rkm4g")
 
-[node name="Behavior" parent="." index="8" instance=ExtResource("3_bvnxr")]
+[node name="Behavior" parent="." index="9" instance=ExtResource("3_bvnxr")]
 
-[node name="CharacterUI" parent="." index="9" instance=ExtResource("4_cchmb")]
+[node name="CharacterUI" parent="." index="10" instance=ExtResource("4_cchmb")]

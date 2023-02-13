@@ -25,6 +25,7 @@ func _on_timer_metamorphose_timeout():
 		var character : Node2D = area.get_parent()
 		if character != self:
 			_on_character_got_at_close_range(character)
+	$TimerMetamorphosisDuration.start()
 	emit_signal("metamorphosed")
 
 func unmetamorphose():
@@ -47,3 +48,6 @@ func _on_character_got_at_close_range(character : Node2D):
 
 func _on_character_got_at_close_range_metamorphosed(character : Node2D):
 	assert(false, "this method should be overloaded")
+
+func _on_timer_metamorphosis_duration_timeout():
+	unmetamorphose()

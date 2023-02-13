@@ -1,10 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf1xdcm02sonr"]
+[gd_scene load_steps=14 format=3 uid="uid://bf1xdcm02sonr"]
 
 [ext_resource type="Script" path="res://modules/character/character_ui.gd" id="1_k0rah"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="2_3ioxj"]
-[ext_resource type="AudioStream" uid="uid://bc8y1m5id1lyq" path="res://modules/character/assets/audio/sfx_curse_jump_enter.mp3" id="3_c47wd"]
-[ext_resource type="AudioStream" uid="uid://57sgyhfllf4j" path="res://modules/character/assets/audio/sfx_cursed_werewolf_transformStarting.mp3" id="4_4v27u"]
-[ext_resource type="AudioStream" uid="uid://dt5rn50rdyki3" path="res://modules/character/assets/audio/sfx_curse_jump_forbidden.mp3" id="5_mw72v"]
 [ext_resource type="AudioStream" uid="uid://lwdho1ggofk5" path="res://modules/character/assets/audio/sfx_exorcist_death.mp3" id="6_ud5fk"]
 [ext_resource type="AudioStream" uid="uid://6vahmv2ttxee" path="res://modules/character/assets/audio/sfx_peasant_death_simple_1.mp3" id="7_t60di"]
 [ext_resource type="AudioStream" uid="uid://tlguti2mme82" path="res://modules/character/assets/audio/sfx_cursed_werewolf_killAction.mp3" id="8_se80v"]
@@ -151,21 +148,11 @@ libraries = {
 }
 
 [node name="AnimRoot" type="Node2D" parent="."]
-position = Vector2(0, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimRoot"]
 position = Vector2(1, -15)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3ioxj")
-
-[node name="AudioStreamPlayer2DCurse" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_c47wd")
-
-[node name="AudioStreamPlayer2DMetamorphose" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_4v27u")
-
-[node name="AudioStreamPlayer2DCantCurse" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_mw72v")
 
 [node name="AudioStreamPlayer2DDyingExorcist" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ud5fk")

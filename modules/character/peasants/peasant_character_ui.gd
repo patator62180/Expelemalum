@@ -13,10 +13,12 @@ func _ready():
 func _on_character_metamorphosing():
 	$AnimationPlayerMove.stop()
 	$AnimationPlayerMetamorphose.play("metamorphose")
+	$AudioStreamPlayer2DMetamorphose.play()
 
 func _on_character_unmetamorphosing():
 	$AnimationPlayerMove.stop()
 	$AnimationPlayerMetamorphose.play("unmetamorphose")
+	$AudioStreamPlayer2DMetamorphose.play()
 
 func _on_character_metamorphosed():
 	$AnimationPlayerMove.play("moving")

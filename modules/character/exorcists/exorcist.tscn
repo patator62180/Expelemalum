@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvvjqxk0venb3"]
+[gd_scene load_steps=6 format=3 uid="uid://bvvjqxk0venb3"]
 
 [ext_resource type="PackedScene" uid="uid://bocfd3u5o522i" path="res://modules/character/character.tscn" id="1_tcyie"]
 [ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_4kv0o"]
-[ext_resource type="PackedScene" uid="uid://dfquyx6w6cth5" path="res://modules/character/behavior/memory/memory_rule_suspicion.tscn" id="3_mg8rx"]
+[ext_resource type="PackedScene" uid="uid://dvchtauv3t1em" path="res://modules/character/behavior/behavior_exorcist.tscn" id="3_cp1p4"]
+[ext_resource type="PackedScene" uid="uid://by6nurb5bfs35" path="res://modules/character/exorcists/exorcist_character_ui.tscn" id="4_q1y4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0wtw"]
 resource_local_to_scene = true
 radius = 8.0
 
-[node name="Exorcist" instance=ExtResource("1_tcyie")]
+[node name="Character" instance=ExtResource("1_tcyie")]
 script = ExtResource("2_4kv0o")
+SUPICION_THRESHOLD_TO_KILL = 0.0
 RADIUS_VISION = 40.0
+character_type = 1
 
 [node name="CollisionShape2D" parent="Area2DBody" index="0"]
 shape = SubResource("CircleShape2D_d0wtw")
-
-[node name="BehaviorRules@BehaviorRuleSuspicion" parent="." index="2" instance=ExtResource("3_mg8rx")]
-CHARACTER_PATH = NodePath("../..")
 
 [node name="CollisionShape2D" parent="Area2DBoundaryCheck" index="0"]
 shape = SubResource("CircleShape2D_d0wtw")
@@ -24,4 +24,6 @@ shape = SubResource("CircleShape2D_d0wtw")
 [node name="CollisionShape2D" parent="Area2DCloseRange" index="0"]
 shape = SubResource("CircleShape2D_d0wtw")
 
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[node name="Behavior" parent="." index="6" instance=ExtResource("3_cp1p4")]
+
+[node name="CharacterUI" parent="." index="7" instance=ExtResource("4_q1y4m")]

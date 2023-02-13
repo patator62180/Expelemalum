@@ -9,7 +9,7 @@ radius = 100.0
 resource_local_to_scene = true
 radius = 8.0
 
-[node name="Character" type="Node2D"]
+[node name="Character" type="Node2D" groups=["character"]]
 script = ExtResource("1_dknqd")
 SPEED = 40.0
 RADIUS_BODY = 8.0
@@ -17,6 +17,8 @@ RADIUS_VISION = 100.0
 character_type = 0
 
 [node name="Area2DVision" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
 collision_layer = 2
 monitorable = false
 
@@ -24,6 +26,8 @@ monitorable = false
 shape = SubResource("CircleShape2D_e645k")
 
 [node name="Area2DBody" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
 collision_mask = 0
 monitoring = false
 
@@ -31,6 +35,8 @@ monitoring = false
 shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="Area2DBoundaryCheck" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -39,6 +45,8 @@ monitorable = false
 shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="Area2DCloseRange" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -4)
 collision_layer = 0
 monitorable = false
 
@@ -46,9 +54,11 @@ monitorable = false
 shape = SubResource("CircleShape2D_kbmoq")
 
 [node name="TimerKillDelay" type="Timer" parent="."]
+wait_time = 0.25
 one_shot = true
 
 [node name="TimerDieDelay" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="area_entered" from="Area2DVision" to="." method="_on_area_2d_vision_area_entered"]
