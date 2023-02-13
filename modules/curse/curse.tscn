@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="Script" path="res://modules/curse/curvedLine.gd" id="2_6w35m"]
-[ext_resource type="Texture2D" uid="uid://6vcm6pum0inq" path="res://modules/curse/assets/arrow_right.svg" id="2_kl1pe"]
-[ext_resource type="Texture2D" uid="uid://rf0h2crfaot4" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
-[ext_resource type="Texture2D" uid="uid://3e0gtwujfax8" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
-[ext_resource type="Texture2D" uid="uid://c70s0i5j7llf2" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
+[ext_resource type="Texture2D" uid="uid://b53pl41iuxhyw" path="res://modules/curse/assets/arrow_right.svg" id="2_kl1pe"]
+[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
+[ext_resource type="Texture2D" uid="uid://daecw8x0eoekn" path="res://modules/curse/assets/cloud.svg" id="4_5567m"]
+[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="4_liph5"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="4_mwtne"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
