@@ -147,7 +147,7 @@ color = Color(1, 1, 1, 0.803922)
 hue_variation_min = -0.01
 hue_variation_max = 0.01
 
-[node name="Curse" type="Node2D" groups=["camera_focus"]]
+[node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -166,7 +166,7 @@ collision_layer = 0
 collision_mask = 8
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["camera_focus"]]
 shape = SubResource("CircleShape2D_d4kpx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

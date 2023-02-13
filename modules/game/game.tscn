@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=8 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_7k12j"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="4_1eg8t"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
 [ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="6_y0nix"]
-[ext_resource type="PackedScene" uid="uid://3y2yrp8kbx5u" path="res://modules/SFX/SFXPlayer.tscn" id="7_4dkw6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m05ri"]
 font_size = 50
@@ -40,11 +39,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 script = ExtResource("6_y0nix")
-
-[node name="SFXPlayer" parent="." instance=ExtResource("7_4dkw6")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.8, 2.8)
 
 [connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
 [connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]

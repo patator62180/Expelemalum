@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vt8sb23a8psq"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="PackedScene" uid="uid://c5j8et7pdvlsu" path="res://modules/character/character.tscn" id="1_tcyie"]
+[ext_resource type="PackedScene" path="res://modules/character/character.tscn" id="1_tcyie"]
 [ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_4kv0o"]
-[ext_resource type="PackedScene" uid="uid://b7eqh5ia4brbi" path="res://modules/character/behavior/rules/behavior_rule_suspicion.tscn" id="3_mg8rx"]
+[ext_resource type="PackedScene" path="res://modules/character/behavior/memory/memory_rule_suspicion.tscn" id="3_mg8rx"]
 [ext_resource type="Texture2D" uid="uid://cxniwignt2188" path="res://modules/character/exorcists/assets/exorcist.svg" id="4_8ti8w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0wtw"]

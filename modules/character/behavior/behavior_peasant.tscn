@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsg5ho1k7x443"]
+
+[ext_resource type="Script" path="res://modules/character/behavior/behavior_peasant.gd" id="1_lj0v1"]
+[ext_resource type="PackedScene" uid="uid://byc0b87sco5sy" path="res://modules/character/behavior/behavior.tscn" id="1_t525t"]
+
+[node name="Behavior" instance=ExtResource("1_t525t")]
+script = ExtResource("1_lj0v1")

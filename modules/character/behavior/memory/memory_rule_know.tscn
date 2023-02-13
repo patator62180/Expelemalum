@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2oryu32gdpmj"]
+
+[ext_resource type="PackedScene" uid="uid://bf7ro3307ngef" path="res://modules/character/behavior/memory/memory_rule.tscn" id="1_8t0qq"]
+[ext_resource type="Script" path="res://modules/character/behavior/memory/memory_rule_know.gd" id="2_0q6d4"]
+
+[sub_resource type="Curve" id="Curve_2jsax"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_k7fm6"]
+_data = [Vector2(0, 0.02), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_n331n"]
+_data = [Vector2(0, 0.04), 0.0, 0.0, 0, 0, Vector2(1, 0.02), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="MemoryRuleKnow" instance=ExtResource("1_8t0qq")]
+script = ExtResource("2_0q6d4")
+KNOWING_DISTANCE_FUNC = SubResource("Curve_2jsax")
+KNOWING_KNOW_FUNC = SubResource("Curve_k7fm6")
+FORGETTING_KNOW_FUNC = SubResource("Curve_n331n")
+NAME = "know"
