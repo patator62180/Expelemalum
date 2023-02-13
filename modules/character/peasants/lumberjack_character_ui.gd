@@ -14,10 +14,13 @@ func _on_character_metamorphosed():
 	$AnimationPlayerMove.speed_scale *= 1.5
 	super._on_character_metamorphosed()
 
-func _on_character_unmetamorphosed():
-	$AnimationPlayerMove.speed_scale /= 1.5
+func _on_character_unmetamorphosing():
 	if not get_character().has_metamorphosed:
 		$AnimRoot/Sprite2D.texture = preload("res://modules/character/peasants/assets/lumberjack_after_metamorphosis.svg")
+	super._on_character_unmetamorphosing()
+
+func _on_character_unmetamorphosed():
+	$AnimationPlayerMove.speed_scale /= 1.5
 	super._on_character_unmetamorphosed()
 
 func _on_metamorphosed_sprite_changed():

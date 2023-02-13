@@ -59,7 +59,7 @@ var visible_characters : Array = []
 # interface
 
 func kill(victim_character : Node2D):
-	if not is_killing:
+	if not is_killing and (victim_character != null) and (not victim_character.is_queued_for_deletion()):
 		is_killing = true
 		victim = victim_character
 		$TimerKillDelay.start()
