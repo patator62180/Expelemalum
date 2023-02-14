@@ -79,6 +79,11 @@ func die(killer_character : Node2D):
 	if not is_dying:
 		is_dying = true
 		killer = killer_character
+		match killer.character_type:
+			CHARACTER_TYPE.Exorcist:
+				$TimerDieDelay.wait_time = 1.5
+			_:
+				$TimerDieDelay.wait_time = 0.5
 		$TimerDieDelay.start()
 		emit_signal("dying", killer)
 

@@ -77,9 +77,6 @@ position = Vector2(116.787, 3.40046)
 [node name="@Character@53550" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(178.989, -17.6673)
 
-[node name="@Character@53551" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(273.163, 126.592)
-
 [node name="@Character@53552" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(193.23, 51.6585)
 
@@ -89,8 +86,8 @@ position = Vector2(79.0845, -127.107)
 [node name="@Character@53554" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(244.552, -13.1335)
 
-[node name="@Character@53555" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(98.381, 73.4694)
+[node name="Character72119" parent="Playground" instance=ExtResource("4_n7ean")]
+position = Vector2(173, -89)
 
 [node name="@Character@53556" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(230.811, 73.9424)
@@ -101,26 +98,17 @@ position = Vector2(-209.296, -27.8288)
 [node name="@Character@72116" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-152.553, 33.6016)
 
-[node name="@Character@72117" parent="Playground" instance=ExtResource("4_n7ean")]
-position = Vector2(-186.886, -41.5002)
-
-[node name="@Character@72118" parent="Playground" instance=ExtResource("4_n7ean")]
-position = Vector2(227.849, 26.3453)
-
 [node name="@Character@72119" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-206.896, 122.447)
-
-[node name="@Character@72120" parent="Playground" instance=ExtResource("4_n7ean")]
-position = Vector2(-242.804, -34.3368)
 
 [node name="@Character@72121" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(26.6797, 168.083)
 
+[node name="Character72121" parent="Playground" instance=ExtResource("4_n7ean")]
+position = Vector2(-67, -87)
+
 [node name="@Character@72122" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-67.6522, 77.4629)
-
-[node name="@Character@72123" parent="Playground" instance=ExtResource("4_n7ean")]
-position = Vector2(-44.8009, 61.8725)
 
 [node name="Foreground" type="Node2D" parent="."]
 

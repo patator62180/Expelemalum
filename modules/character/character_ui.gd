@@ -27,7 +27,8 @@ func _on_character_dying(killer : Node2D):
 	var character : Node2D = get_character()
 	match killer.character_type:
 		character.CHARACTER_TYPE.Exorcist:
-			assert(false, "TODO: DIE BY EXORCIST IN FLAMMES")
+			$AnimationPlayerMove.stop()
+			$AnimationPlayerDie.play("die_exorcist")
 			$AudioStreamPlayer2DDyingExorcist.play()
 		_:
 			$AnimationPlayerMove.stop()
@@ -35,7 +36,16 @@ func _on_character_dying(killer : Node2D):
 			$AudioStreamPlayer2DDyingDefault.play()
 
 func _on_animation_die_red():
-	pass
+	var character : Node2D = get_character()
+	match character.killer.character_type:
+		character.CHARACTER_TYPE.Exorcist:
+			$AnimRoot/Sprite2D.texture = preload("res://modules/character/exorcists/assets/ashes.svg")
+			$AnimRoot/Sprite2D.position = Vector2(0, -2)
+		_:
+			_on_animation_die_red_specific()
+
+func _on_animation_die_red_specific():
+	assert(false, "this method should be overloaded")
 
 func _on_character_horizontal_direction_changed_to_right():
 	$AnimationPlayerMove.speed_scale = -$AnimationPlayerMove.speed_scale

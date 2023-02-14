@@ -68,7 +68,7 @@ func _update_Cursable_Character():
 	if cursable_character != null and not curse_area.overlaps_area(cursable_character.get_node("Area2DBody")):
 		_freeCursableCharacter()
 
-	var inputVector : Vector2 = (get_global_mouse_position()-global_position)
+	var inputVector : Vector2 = (get_global_mouse_position() - global_position)
 	if inputVector != Vector2.ZERO:
 		inputVector = inputVector.normalized()
 	
