@@ -13,13 +13,13 @@ noise = SubResource("FastNoiseLite_3vakr")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ljl8"]
 shader = ExtResource("2_7ijyp")
 shader_parameter/distortion = 2.024
-shader_parameter/zoom = 0.566
+shader_parameter/zoom = 0.502
 shader_parameter/gooeyness = 1.154
 shader_parameter/wibble = -0.014
 shader_parameter/saturation = 1.976
 shader_parameter/primary_color = Color(0.721569, 0, 0.109804, 0.235294)
 shader_parameter/secondary_color = Color(0.301961, 0, 1, 0.501961)
-shader_parameter/speed = 0.1
+shader_parameter/speed = 0.2
 shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
