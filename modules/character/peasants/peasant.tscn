@@ -29,7 +29,7 @@ one_shot = true
 one_shot = true
 
 [node name="TimerMetamorphosisDuration" type="Timer" parent="." index="8"]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [connection signal="timeout" from="TimerMetamorphose" to="." method="_on_timer_metamorphose_timeout"]

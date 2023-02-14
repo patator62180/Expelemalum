@@ -4,7 +4,8 @@ extends "res://modules/character/character.gd"
 
 func _on_character_got_at_close_range(character : Node2D):
 	if character in $Behavior.memory and $Behavior.memory[character]["suspicion"] > SUPICION_THRESHOLD_TO_KILL:
-		if not (("is_metamorphosed" in character) and (character.is_metamorphosed)):
-			kill(character)
+		if character != null and not character.is_queued_for_deletion() and not character.is_dying:
+			if not (("is_metamorphosed" in character) and (character.is_metamorphosed)):
+				kill(character)
 	else:
 		super._on_character_got_at_close_range(character)

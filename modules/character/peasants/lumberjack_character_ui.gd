@@ -2,7 +2,7 @@ extends "res://modules/character/peasants/peasant_character_ui.gd"
 
 func _process(delta : float):
 	var character : Node2D = get_character()
-	if character.is_killing:
+	if character.is_killing and character.victim != null and not character.victim.is_queued_for_deletion():
 		$Scratch.global_position = character.victim.global_position
 
 func _on_character_killing(victim : Node2D):
@@ -31,7 +31,7 @@ func _on_metamorphosed_sprite_changed():
 		axe_node.global_position = global_position
 		axe_node.position.y -= 1
 
-func _on_animation_die_red():
+func _on_animation_die_red_specific():
 	var character : Node2D = get_character()
 	if character.has_metamorphosed:
 		$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/dead_lumberjack_after_metamorphosis.svg")
