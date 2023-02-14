@@ -18,6 +18,8 @@ var metamorphose_count : int = 0
 var curse_events : Array = [] # updated with on_curse func, to link
 const curse_memory_duration : float = 20.0 # number of seconds to remember Events
 
+var player_narration_state : String = "Satanic"
+
 func get_updated_curse_events() -> Array:
 	var current_date : float = Time.get_ticks_msec()/1000.0
 	while(not curse_events.is_empty() and GameState.curse_events[0] < current_date - curse_memory_duration) :
@@ -25,6 +27,9 @@ func get_updated_curse_events() -> Array:
 	return curse_events
 
 # called somewhere else in the code
+func start_game():
+	remaining_exorcists_count = 0
+	exorcist_kill_count = 0
 
 func on_curse_killed():
 	is_curse_alive = false
@@ -56,3 +61,12 @@ func on_metamorphose(character : Node2D): # TODO call on metamorphose
 	metamorphose_count += 1
 	emit_signal("updated_metamorphose_count", character)
 	emit_signal("updated_remaining_count")
+	
+func _input(event : InputEvent):
+	if event is InputEventKey:
+		match event.keycode:
+			KEY_K:
+				emit_signal("curse_killed")
+			KEY_J:
+				remaining_exorcists_count = 0
+				emit_signal("updated_remaining_count")

@@ -126,8 +126,7 @@ func _update_line(delta : float):
 	line.points[line.points.size()-1] = arrow.global_position - global_position
 
 func _get_arrow_target():
-	if cursable_character:
-		if (not cursable_character.is_dying) or (not cursable_character.is_dead):
+	if cursable_character and ((not cursable_character.is_dying) or (not cursable_character.is_dead)):
 			var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
 			return sprite.global_position + arrowOffset
 	else:

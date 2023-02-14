@@ -116,5 +116,5 @@ position = Vector2(-67.6522, 77.4629)
 INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Character")
 
 [node name="Camera2DFocus" parent="." instance=ExtResource("7_m4srl")]
-ZOOM_MIN = 0.0
+ZOOM_MIN = 1.0
 ZOOM_MAX = 3.0
