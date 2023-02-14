@@ -4,7 +4,7 @@
 <svg
    width="46.049171mm"
    height="11.961005mm"
-   viewBox="0 0 46.049172 11.961005"
+   viewBox="0 0 46.049171 11.961005"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
@@ -24,8 +24,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.56569164"
-     inkscape:cx="83.968008"
-     inkscape:cy="53.032426"
+     inkscape:cx="-9.7226114"
+     inkscape:cy="121.97458"
      inkscape:window-width="956"
      inkscape:window-height="1037"
      inkscape:window-x="960"
@@ -40,10 +40,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(85.310848,-134.76919)">
+     transform="translate(60.441909,-116.56123)">
     <g
        id="g70109"
-       transform="rotate(36.575086,-52.555802,-92.401877)">
+       transform="rotate(36.575086,-12.573355,-63.880055)">
       <path
          style="opacity:1;fill:#b0a693;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          d="m 61.681269,114.70888 -1.939557,-1.00476 0.887918,-3.56743 21.409627,-17.365493 6.381684,-6.744972 3.384873,-1.591287 4.883542,2.204165 2.286214,5.409509 -2.387404,2.50028 -5.021819,1.030155 -1.412662,-2.102577 -15.500739,12.07137 -7.947271,7.10059 z"
@@ -65,7 +65,7 @@
          id="path69745"
          sodipodi:nodetypes="caccacc" />
       <path
-         style="opacity:0.5;fill:#b0a693;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:0.5;fill:#b0a693;fill-opacity:1;stroke:#b0a693;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          d="m 61.681269,114.70888 -1.939557,-1.00476 0.887918,-3.56743 21.409627,-17.365493 6.381684,-6.744972 3.384873,-1.591287 4.883542,2.204165 2.286214,5.409509 -2.387404,2.50028 -5.021819,1.030155 -1.412662,-2.102577 -15.500739,12.07137 -7.947271,7.10059 z"
          id="path264599"
          sodipodi:nodetypes="cccccccccccccc" />
