@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://modules/character/character_ui.gd" id="1_k0rah"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="2_3ioxj"]
-[ext_resource type="AudioStream" uid="uid://lwdho1ggofk5" path="res://modules/character/assets/audio/sfx_exorcist_death.mp3" id="6_ud5fk"]
+[ext_resource type="AudioStream" uid="uid://cdgp50hwm0ahs" path="res://modules/character/assets/audio/sfx_peasant_death_torn_1.mp3" id="4_n8vf6"]
 [ext_resource type="AudioStream" uid="uid://6vahmv2ttxee" path="res://modules/character/assets/audio/sfx_peasant_death_simple_1.mp3" id="7_t60di"]
 [ext_resource type="AudioStream" uid="uid://tlguti2mme82" path="res://modules/character/assets/audio/sfx_cursed_werewolf_killAction.mp3" id="8_se80v"]
 
@@ -185,10 +185,10 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_3ioxj")
 
 [node name="AudioStreamPlayer2DDyingExorcist" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ud5fk")
+stream = ExtResource("7_t60di")
 
 [node name="AudioStreamPlayer2DDyingDefault" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_t60di")
+stream = ExtResource("4_n8vf6")
 
 [node name="AudioStreamPlayer2DKilling" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_se80v")

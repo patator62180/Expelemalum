@@ -127,8 +127,9 @@ func _update_line(delta : float):
 
 func _get_arrow_target():
 	if cursable_character:
-		var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
-		return sprite.global_position + arrowOffset
+		if (not cursable_character.is_dying) or (not cursable_character.is_dead):
+			var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
+			return sprite.global_position + arrowOffset
 	else:
 		return _get_input_vector()*line_circle_radius + skullPathFollow.global_position
 

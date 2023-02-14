@@ -40,6 +40,7 @@ var moving_direction : Vector2 = Vector2.ZERO
 var is_moving_to_the_right : bool = true
 
 ## dying variables
+var is_dead : bool = false
 var is_dying : bool = false
 var killer : Node2D = null
 
@@ -88,20 +89,29 @@ func die(killer_character : Node2D):
 		emit_signal("dying", killer)
 
 func _on_timer_die_delay_timeout():
-	if not Engine.is_editor_hint():
-		# create corps
-		var corps_node : Node2D = preload("res://modules/character/corps.tscn").instantiate()
-		get_parent().add_child(corps_node)
-		var sprite_2d : Sprite2D = $CharacterUI/AnimRoot/Sprite2D
-		corps_node.global_position = sprite_2d.global_position
-		corps_node.global_rotation = sprite_2d.global_rotation
-		$CharacterUI/AnimRoot.remove_child(sprite_2d)
-		sprite_2d.position = Vector2.ZERO
-		sprite_2d.rotation = 0.0
-		sprite_2d.modulate = Color.WHITE
-		corps_node.add_child(sprite_2d)
-		# self free
-		queue_free()
+	is_dead = true
+	set_process(false)
+	# free children
+	var exceptions : Array = ["CharacterUI"]
+	for child in get_children():
+		if not child.name in exceptions:
+			child.queue_free()
+	# reparent sprite
+	var corps_node : Node2D = preload("res://modules/character/corps.tscn").instantiate()
+	get_parent().add_child(corps_node)
+	var sprite_2d : Sprite2D = $CharacterUI/AnimRoot/Sprite2D
+	corps_node.global_position = sprite_2d.global_position
+	corps_node.global_rotation = sprite_2d.global_rotation
+	$CharacterUI/AnimRoot.remove_child(sprite_2d)
+	sprite_2d.position = Vector2.ZERO
+	sprite_2d.rotation = 0.0
+	sprite_2d.modulate = Color.WHITE
+	corps_node.add_child(sprite_2d)
+	# free CharacterUI
+	$CharacterUI.queue_free()
+	# self reparent
+	get_parent().remove_child(self)
+	corps_node.add_child(self)
 
 # internal functions
 
