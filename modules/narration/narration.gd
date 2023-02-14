@@ -1,6 +1,7 @@
 extends Control
 
 const audio_source : String = "res://modules/narration/Audio/Audio - narrationDictionnary.csv"
+const subtitle_speed : float = 1.5
 
 var prompt_dict : Dictionary
 
@@ -25,6 +26,9 @@ var queued_prompts : Array
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
 var narratorSubtitleLabel : Label = get_node("Label")
+@onready
+var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
+
 
 enum AUDIO_LINE {narration_timer_activity_high, narration_timer_activity_low, narration_timer_difficulty_high, narration_timer_difficulty_low, narration_timer_evilness_high, narration_timer_evilness_low, narration_timer_filler_1, narration_timer_filler_2, narration_timer_filler_3, narration_timer_progress_high, narration_timer_progress_low, narration_trigger_fewKills_exorcist, narration_trigger_fewKills_peasant, narration_trigger_firstKill_exorcist, narration_trigger_firstKill_peasant, narration_trigger_gameLaunch_1, narration_trigger_gameLaunch_2, narration_trigger_manaLack, narration_trigger_ww_intro}
 
@@ -273,8 +277,7 @@ func get_indicators_remaining_prompts(
 # PLAYER MANAGEMENT
 ############################################################################
 
-func _play_line_str(lineNameStr : String) :
-	
+func _play_line_str(lineNameStr : String) :	
 	if narratorStreamPlayer.playing :
 		queued_prompts.append(lineNameStr)
 		#idea : intégrer un priority accessible par le dico
@@ -288,6 +291,7 @@ func _play_line_str(lineNameStr : String) :
 		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
 		narratorStreamPlayer.play()
+		animationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
