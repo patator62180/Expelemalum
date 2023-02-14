@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfquyx6w6cth5"]
+[gd_scene load_steps=8 format=3 uid="uid://dfquyx6w6cth5"]
 
 [ext_resource type="PackedScene" uid="uid://bf7ro3307ngef" path="res://modules/character/behavior/memory/memory_rule.tscn" id="1_c8gji"]
 [ext_resource type="Script" path="res://modules/character/behavior/memory/memory_rule_suspicion.gd" id="2_3qpej"]
@@ -12,12 +12,22 @@ _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_fuo3o"]
-_data = [Vector2(0, 0.02), 0.0, 0.0, 0, 0, Vector2(1, 0.01), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.08), 0.0, 0.0, 0, 0, Vector2(1, 0.04), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_m7ddp"]
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_asx52"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="MemoryRuleSuspicion" instance=ExtResource("1_c8gji")]
 script = ExtResource("2_3qpej")
-NAME = "suspicion"
 SUPECTING_DISTANCE_FUNC = SubResource("Curve_yu1dy")
 SUSPECTING_SUSPICION_FUNC = SubResource("Curve_g71m6")
 FORGETTING_SUSPICION_FUNC = SubResource("Curve_fuo3o")
+SUSPECTING_PROPAGATION_DISTANCE_FUNC = SubResource("Curve_m7ddp")
+SUSPECTING_PROPAGATION_SUSPICION_FUNC = SubResource("Curve_asx52")
+NAME = "suspicion"

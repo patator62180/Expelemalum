@@ -38,8 +38,8 @@ enum PLAYTYPES {highIndicator, lowIndicator, noIndication}
 func _ready():
 	
 	# Connecting signals
-	GameState.updatedKill.connect(_on_game_state_kill)
-	GameState.updatedTransformation.connect(_on_game_state_metamorph)
+	GameState.updated_kill_count.connect(_on_game_state_kill)
+	GameState.updated_metamorphose_count.connect(_on_game_state_metamorphose)
 	
 	# Init
 	prompt_dict = parse_csv_database("res://modules/narration/Audio/Audio - narrationDictionnary.csv")
@@ -227,27 +227,27 @@ func play_best_line_by_indicator() -> bool:
 func update_indicators():
 	
 	# EVILNESS
-	if ((GameState.PeasantKillCount + GameState.ExorcistKillCount) == 0) :
+	if ((GameState.peasant_kill_count + GameState.exorcist_kill_count) == 0) :
 		indicators[INDICATORS.curseEvilness][0] = 0.0
 	else :
-		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.PeasantKillCount / (GameState.PeasantKillCount + GameState.ExorcistKillCount)) - 1.0
+		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.peasant_kill_count / (GameState.peasant_kill_count + GameState.exorcist_kill_count)) - 1.0
 	
 	#DIFFICULTY
-	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.RemainingExorcistsCount / (GameState.RemainingExorcistsCount + GameState.CurrentPeasantCount)) - 1.0
+	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.remaining_exorcists_count / (GameState.remaining_exorcists_count + GameState.remaining_peasant_count)) - 1.0
 	
 	#GAME PROGRESS
-	indicators[INDICATORS.gameProgress][0] = 2*(GameState.ExorcistKillCount / (GameState.ExorcistKillCount + GameState.RemainingExorcistsCount)) - 1.0
+	indicators[INDICATORS.gameProgress][0] = 2*(GameState.exorcist_kill_count / (GameState.exorcist_kill_count + GameState.remaining_exorcists_count)) - 1.0
 	
 	#ACTIVITY
 #	var currentDate : float = Time.get_ticks_msec()/1000
-#	if (GameState.SwipeEvents.size() == 0) :
+#	if (GameState.curse_events.size() == 0) :
 #		indicators[INDICATORS.curseActivity][0] = -1.0
 #	else :
-#		while(GameState.SwipeEvents[0] < currentDate - 20) :
-#			GameState.SwipeEvents.remove_at(0)
-#		indicators[INDICATORS.curseActivity][0] = 2 *(GameState.SwipeEvents.size() / 20) - 1.0
-	var number_of_swipes_done = GameState.get_updated_swipeEvents().size()
-	indicators[INDICATORS.curseActivity][0] = 2 *(GameState.SwipeEvents.size() / GameState.SwipeMemory) - 1.0
+#		while(GameState.curse_events[0] < currentDate - 20) :
+#			GameState.curse_events.remove_at(0)
+#		indicators[INDICATORS.curseActivity][0] = 2 *(GameState.curse_events.size() / 20) - 1.0
+	var number_of_swipes_done = GameState.get_updated_curse_events().size()
+	indicators[INDICATORS.curseActivity][0] = 2 *(GameState.curse_events.size() / GameState.curse_memory_duration) - 1.0
 	
 	
 	set_monitor("update indicator")
@@ -298,13 +298,14 @@ func _on_audio_stream_player_finished():
 #EVENT MANAGEMENT
 ############################################################################
 
-func _on_game_state_kill():
-	lastLineSpoken.stop()
-	_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
+func _on_game_state_kill(killer : Node2D, victim : Node2D):
+	if victim.character_type == victim.CHARACTER_TYPE.Exorcist: # TODO: Check
+		lastLineSpoken.stop()
+		_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
 		
-func _on_game_state_metamorph(curse_nature : String):
-	lastLineSpoken.stop()
-	if(curse_nature == "Ww"):
+func _on_game_state_metamorphose(character : Node2D):
+	if character.character_type == character.CHARACTER_TYPE.Lumberjack:
+		lastLineSpoken.stop()
 		_play_line_direct(AUDIO_LINE.narration_trigger_ww_intro)
 
 func _on_last_line_spoken_timeout():

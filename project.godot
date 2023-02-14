@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameState="*res://modules/gameState/gameState.tscn"
+GameState="*res://modules/gameState/game_state.tscn"
 CharacterCenter="*res://modules/character/character_center.tscn"
 
 [display]

@@ -38,6 +38,7 @@ func _curse(character : Node2D):
 
 func _try_curse(character : Node2D):
 	if character != null:
+		GameState.on_curse(character)
 		_curse(character)
 	else:
 		$AnimationPlayerForbidden.play("forbidden")
@@ -92,6 +93,7 @@ func _input(event : InputEvent):
 		_try_curse(cursable_character)
 	if event.is_action_released("metamorphose"):
 		if not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
+			GameState.on_metamorphose(cursed_character)
 			cursed_character.metamorphose()
 		else:
 			$AnimationPlayerForbidden.play("forbidden")
@@ -100,7 +102,7 @@ func _input(event : InputEvent):
 			$Path2D/PathFollow2D/Skull/Sprite2DForbidden/Sprite2DRight.show()
 
 func _on_tree_exiting():
-	GameState.IsCurseAlive= false
+	GameState.on_curse_killed()
 
 func _get_closest_character(characters : Array) -> Node2D:
 	var closest_character : Node2D = null
