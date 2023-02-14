@@ -1,5 +1,7 @@
 extends Control
 
+const audio_source : String = "res://modules/narration/Audio/Audio - narrationDictionnary.csv"
+
 var prompt_dict : Dictionary
 
 #Structure of indicators :
@@ -40,9 +42,10 @@ func _ready():
 	# Connecting signals
 	GameState.updated_kill_count.connect(_on_game_state_kill)
 	GameState.updated_metamorphose_count.connect(_on_game_state_metamorphose)
+	GameState.updated_game_phase.connect(_on_game_change)
 	
 	# Init
-	prompt_dict = parse_csv_database("res://modules/narration/Audio/Audio - narrationDictionnary.csv")
+	prompt_dict = parse_csv_database(audio_source)
 	initiate_indicators() #with every indicator to 0 
 	indicators[INDICATORS.filler][0] = 0.2 #setting indicator value
 	
@@ -113,6 +116,9 @@ func parse_csv_database(
 
 				if value is String :
 					if toComputeIdentifier in column_headers[column_index] :
+						
+						assert(value != "","the file contains a blanck cell on a computed column : " + audio_source)
+						
 						var expression = Expression.new()
 						expression.parse(value)
 						value = expression.execute([], self)
@@ -128,8 +134,6 @@ func parse_csv_database(
 							value = true
 						elif value_lower == "false":
 							value = false
-				
-				
 				
 				entry[trimmed_headers[column_index]]	= value
 				if column_headers[column_index] == id_column:
@@ -154,7 +158,6 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 		$MonitorLabel.text = prefix + "\n" + monitor + suffix
 	else :
 		$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
-	
 
 func play_situation_line(
 	indicator : INDICATORS,
@@ -251,7 +254,6 @@ func update_indicators():
 	
 	
 	set_monitor("update indicator")
-	
 
 func change_indicators_remaining_prompts(
 	indicator : INDICATORS,
@@ -278,6 +280,7 @@ func _play_line_str(lineNameStr : String) :
 	narratorStreamPlayer.stream = audioStream
 	narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
 	$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
+	
 	narratorStreamPlayer.play()
 
 func _play_line_direct(lineName : AUDIO_LINE) :
@@ -288,27 +291,41 @@ func _play_line_checker() :
 		await get_tree().create_timer(5.0).timeout
 		_play_line_checker()
 
-
 func _on_audio_stream_player_finished():
-	lastLineSpoken.start()
+	
 	narratorStreamPlayer.stop()
 	narratorSubtitleLabel.text = ""
-#	lastLineSpoken.stop()
+	if GameState.current_game_phase == GameState.GAME_PHASE.Gameplay :
+		lastLineSpoken.start()
+
 
 #EVENT MANAGEMENT
 ############################################################################
 
 func _on_game_state_kill(killer : Node2D, victim : Node2D):
-	if victim.character_type == victim.CHARACTER_TYPE.Exorcist: # TODO: Check
-		lastLineSpoken.stop()
-		_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
-		
+	match victim.character_type :
+		victim.CHARACTER_TYPE.Exorcist: # TODO: Check
+			lastLineSpoken.stop()
+			_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
+		victim.CHARACTER_TYPE.Lumberjack :
+			lastLineSpoken.stop()
+			_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_peasant)
+
 func _on_game_state_metamorphose(character : Node2D):
-	if character.character_type == character.CHARACTER_TYPE.Lumberjack:
+	if character.character_type == character.CHARACTER_TYPE.Lumberjack and GameState.metamorphose_count == 1:
 		lastLineSpoken.stop()
 		_play_line_direct(AUDIO_LINE.narration_trigger_ww_intro)
 
 func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
-	#play_best_line_by_indicator()
+	play_best_line_by_indicator()
+
+func _on_game_change(old, new) :
+	match new :
+		GameState.GAME_PHASE.Intro :
+			pass
+		GameState.GAME_PHASE.Gameplay :
+			lastLineSpoken.start()
+		GameState.GAME_PHASE.Outro :
+			lastLineSpoken.stop()
 
