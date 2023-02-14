@@ -1057,7 +1057,7 @@ grow_vertical = 2
 pivot_offset = Vector2(480, 280)
 text = "Credit:
 Nathan Bernard
-Remi Monthilier
+Remi Monthiller
 Samuel Terras-Viola"
 label_settings = SubResource("LabelSettings_w2apm")
 horizontal_alignment = 1
