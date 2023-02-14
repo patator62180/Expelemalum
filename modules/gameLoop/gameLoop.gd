@@ -20,11 +20,11 @@ func on_game_state_cursed_killed():
 func on_restart():
 	start_gameplay()
 
-func start_gameplay():	
+func start_gameplay():
+	GameState.start_game()	
 	world = world_scene.instantiate()
 	game.add_child(world)
 	game.move_child(world,0)
-	
 	GameState.curse_killed.connect(on_game_state_cursed_killed)
 	GameState.updated_remaining_count.connect(on_game_state_updated_remaining_count)
 

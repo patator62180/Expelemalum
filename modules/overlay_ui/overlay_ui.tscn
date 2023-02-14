@@ -1005,12 +1005,23 @@ text = "EXIT"
 color = Color(0.824342, 0.77199, 0.6424, 1)
 polygon = PackedVector2Array(212.5, 263, 649.5, 247, 646.5, 333, 211.5, 322)
 
-[node name="Label2" type="Label" parent="MenuScreen/Outro/Polygon2D"]
-offset_left = 90.5
-offset_top = 189.0
-offset_right = 752.5
-offset_bottom = 397.0
-text = "You've been : Satanic"
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen/Outro/Polygon2D"]
+offset_left = 221.0
+offset_top = 263.0
+offset_right = 629.0
+offset_bottom = 321.0
+size_flags_horizontal = 4
+
+[node name="Label2" type="Label" parent="MenuScreen/Outro/Polygon2D/HBoxContainer"]
+layout_mode = 2
+text = "You've been : "
+label_settings = SubResource("LabelSettings_rraa5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MenuScreen/Outro/Polygon2D/HBoxContainer"]
+layout_mode = 2
+text = "Michel"
 label_settings = SubResource("LabelSettings_rraa5")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -16,6 +16,3 @@ script = ExtResource("1_wx0k4")
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
-
-[connection signal="game_lost" from="gameLoop" to="CanvasLayer/overlay_ui" method="_on_exit_gameplay"]
-[connection signal="game_won" from="gameLoop" to="CanvasLayer/overlay_ui" method="_on_exit_gameplay"]
