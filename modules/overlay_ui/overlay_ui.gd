@@ -18,6 +18,7 @@ func _ready():
 func _input(event : InputEvent):
 	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && currentScreen == SCREEN_TYPE.Intro:
 		animationPlayer.play("ExitIntro")
+		currentScreen = SCREEN_TYPE.Gameplay
 		gameloop.start_gameplay()
 
 func _on_enter_gameplay():

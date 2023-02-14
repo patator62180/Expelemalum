@@ -21,7 +21,7 @@ func on_restart():
 	start_gameplay()
 
 func start_gameplay():
-	GameState.start_game()	
+	GameState.start_game()
 	world = world_scene.instantiate()
 	game.add_child(world)
 	game.move_child(world,0)
