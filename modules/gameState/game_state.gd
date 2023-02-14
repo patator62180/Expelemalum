@@ -56,3 +56,12 @@ func on_metamorphose(character : Node2D): # TODO call on metamorphose
 	metamorphose_count += 1
 	emit_signal("updated_metamorphose_count", character)
 	emit_signal("updated_remaining_count")
+	
+func _input(event : InputEvent):
+	if event is InputEventKey:
+		match event.keycode:
+			KEY_K:
+				emit_signal("curse_killed")
+			KEY_J:
+				remaining_exorcists_count = 0
+				emit_signal("updated_remaining_count")

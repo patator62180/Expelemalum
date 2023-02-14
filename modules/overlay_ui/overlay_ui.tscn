@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cswujfrnarjpr"]
+[gd_scene load_steps=31 format=3 uid="uid://cswujfrnarjpr"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
@@ -38,9 +38,17 @@ shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
 size = Vector2(100, 100)
 
+[sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_2d3q6"]
 offsets = PackedFloat32Array(0, 0.555874, 1)
 colors = PackedColorArray(0.654902, 0.439216, 0.760784, 0, 0.654902, 0.439216, 0.760784, 0.784314, 0.654902, 0.439216, 0.760784, 0.784314)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbwca"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k25b8"]
 font_size = 125
@@ -48,10 +56,6 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rraa5"]
 font_size = 40
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
-font_size = 150
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_dqdbm"]
@@ -605,6 +609,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_eryqm")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -623,6 +628,107 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_sgnlk")
 
+[node name="GameplayScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlHelper" type="TextureRect" parent="GameplayScreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -251.8
+offset_top = -357.0
+offset_right = 561.2
+offset_bottom = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="LumberjackMetamorphosed" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 243.0
+offset_right = 667.0
+offset_bottom = 500.0
+texture = ExtResource("6_xdyly")
+
+[node name="Skull" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 268.0
+offset_right = 283.0
+offset_bottom = 383.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_c28c4")
+
+[node name="MouseButtonLeft" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 68.0
+offset_right = 245.0
+offset_bottom = 153.0
+scale = Vector2(2, 2)
+texture = ExtResource("9_o00pu")
+
+[node name="MouseButtonRight" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 68.0
+offset_right = 576.0
+offset_bottom = 153.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_uqyrj")
+
+[node name="ExorcistCounter" type="TextureRect" parent="GameplayScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.8
+offset_top = -191.0
+offset_right = 571.2
+offset_bottom = 365.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="DeadExorcist" type="TextureRect" parent="GameplayScreen/ExorcistCounter"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 228.0
+offset_right = 404.0
+offset_bottom = 358.0
+texture = ExtResource("11_8c82g")
+
+[node name="Label" type="Label" parent="GameplayScreen/ExorcistCounter"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -110.0
+offset_right = -131.0
+offset_bottom = 98.0002
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(231, 104)
+text = "0/5"
+label_settings = SubResource("LabelSettings_w2apm")
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="MenuScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -630,6 +736,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Scroll" type="Sprite2D" parent="MenuScreen"]
 position = Vector2(863, 491)
@@ -842,6 +949,15 @@ default_color = Color(0.647059, 0.572549, 0.396078, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Label" type="Label" parent="MenuScreen/Tutorial"]
+layout_mode = 0
+offset_left = 252.5
+offset_top = -36.0
+offset_right = 582.5
+offset_bottom = 36.0
+text = "Expelemalum"
+label_settings = SubResource("LabelSettings_vbwca")
+
 [node name="Outro" type="TextureRect" parent="MenuScreen"]
 layout_mode = 1
 anchors_preset = 8
@@ -899,112 +1015,50 @@ label_settings = SubResource("LabelSettings_rraa5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameplayScreen" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ControlHelper" type="TextureRect" parent="GameplayScreen"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -251.8
-offset_top = -357.0
-offset_right = 561.2
-offset_bottom = 199.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(406, 278)
-texture = ExtResource("3_wcodv")
-
-[node name="LumberjackMetamorphosed" type="TextureRect" parent="GameplayScreen/ControlHelper"]
-layout_mode = 0
-offset_left = 451.0
-offset_top = 243.0
-offset_right = 667.0
-offset_bottom = 500.0
-texture = ExtResource("6_xdyly")
-
-[node name="Skull" type="TextureRect" parent="GameplayScreen/ControlHelper"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 268.0
-offset_right = 283.0
-offset_bottom = 383.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_c28c4")
-
-[node name="MouseButtonLeft" type="TextureRect" parent="GameplayScreen/ControlHelper"]
-layout_mode = 0
-offset_left = 181.0
-offset_top = 68.0
-offset_right = 245.0
-offset_bottom = 153.0
-scale = Vector2(2, 2)
-texture = ExtResource("9_o00pu")
-
-[node name="MouseButtonRight" type="TextureRect" parent="GameplayScreen/ControlHelper"]
-layout_mode = 0
-offset_left = 521.0
-offset_top = 68.0
-offset_right = 576.0
-offset_bottom = 153.0
-scale = Vector2(2, 2)
-texture = ExtResource("10_uqyrj")
-
-[node name="ExorcistCounter" type="TextureRect" parent="GameplayScreen"]
+[node name="Credit" type="TextureRect" parent="MenuScreen/Outro"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -241.8
-offset_top = -191.0
-offset_right = 571.2
-offset_bottom = 365.0
+offset_left = -408.5
+offset_top = -232.0
+offset_right = 404.5
+offset_bottom = 324.0
 grow_horizontal = 0
-scale = Vector2(0.2, 0.2)
+rotation = 0.197272
+scale = Vector2(0.315308, 0.315308)
 pivot_offset = Vector2(406, 278)
 texture = ExtResource("3_wcodv")
 
-[node name="DeadExorcist" type="TextureRect" parent="GameplayScreen/ExorcistCounter"]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 228.0
-offset_right = 404.0
-offset_bottom = 358.0
-texture = ExtResource("11_8c82g")
-
-[node name="Label" type="Label" parent="GameplayScreen/ExorcistCounter"]
+[node name="Label" type="Label" parent="MenuScreen/Outro/Credit"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -362.0
-offset_top = -110.0
-offset_right = -131.0
-offset_bottom = 98.0002
+offset_left = -877.0
+offset_top = -295.0
+offset_right = 83.9995
+offset_bottom = 265.0
 grow_horizontal = 0
 grow_vertical = 2
-pivot_offset = Vector2(231, 104)
-text = "0/5"
+pivot_offset = Vector2(480, 280)
+text = "Credit:
+Nathan Bernard
+Remi Monthilier
+Samuel Terras-Viola"
 label_settings = SubResource("LabelSettings_w2apm")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../MenuScreen")
+autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_hgvx6")
 }
 
 [connection signal="pressed" from="MenuScreen/Outro/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="MenuScreen/Outro/ExitButton" to="." method="_on_exit_game"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

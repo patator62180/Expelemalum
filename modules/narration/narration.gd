@@ -233,10 +233,10 @@ func update_indicators():
 		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.peasant_kill_count / (GameState.peasant_kill_count + GameState.exorcist_kill_count)) - 1.0
 	
 	#DIFFICULTY
-	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.remaining_exorcists_count / (GameState.remaining_exorcists_count + GameState.remaining_peasant_count)) - 1.0
+	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.remaining_exorcists_count / (GameState.remaining_exorcists_count + GameState.remaining_peasant_count)) - 1.0 #can be zero if world not init
 	
 	#GAME PROGRESS
-	indicators[INDICATORS.gameProgress][0] = 2*(GameState.exorcist_kill_count / (GameState.exorcist_kill_count + GameState.remaining_exorcists_count)) - 1.0
+	indicators[INDICATORS.gameProgress][0] = 2*(GameState.exorcist_kill_count / (GameState.exorcist_kill_count + GameState.remaining_exorcists_count)) - 1.0 #can be zero if world not init
 	
 	#ACTIVITY
 #	var currentDate : float = Time.get_ticks_msec()/1000
@@ -310,5 +310,5 @@ func _on_game_state_metamorphose(character : Node2D):
 
 func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
-	play_best_line_by_indicator()
+	#play_best_line_by_indicator()
 
