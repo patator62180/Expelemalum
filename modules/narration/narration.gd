@@ -20,6 +20,7 @@ var indicators : Dictionary
 
 @onready
 var lastLineSpoken : Timer = $LastLineSpoken
+var queued_prompts : Array
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
@@ -274,42 +275,48 @@ func get_indicators_remaining_prompts(
 
 func _play_line_str(lineNameStr : String) :
 	
-	_play_line_checker()
+	if narratorStreamPlayer.playing :
+		queued_prompts.append(lineNameStr)
+		#idea : intégrer un priority accessible par le dico
+		# 1 = priorité faible : will not be queued up
+		# 2 = will be queued up
+		# 3 = will be played next (can discard or pop current queue)
+	else :
+		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
+		narratorStreamPlayer.stream = audioStream
+		narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
+		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
-	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
-	narratorStreamPlayer.stream = audioStream
-	narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
-	$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
-	
-	narratorStreamPlayer.play()
+		narratorStreamPlayer.play()
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
 
-func _play_line_checker() :
-	if narratorStreamPlayer.playing :
-		await get_tree().create_timer(5.0).timeout
-		_play_line_checker()
-
 func _on_audio_stream_player_finished():
-	
 	narratorStreamPlayer.stop()
-	narratorSubtitleLabel.text = ""
+	narratorSubtitleLabel.text =" "
+	
+	if queued_prompts.size() > 0 :
+		await get_tree().create_timer(1.0).timeout
+		_play_line_str(queued_prompts.pop_front())
 	if GameState.current_game_phase == GameState.GAME_PHASE.Gameplay :
 		lastLineSpoken.start()
-
 
 #EVENT MANAGEMENT
 ############################################################################
 
 func _on_game_state_kill(killer : Node2D, victim : Node2D):
-	match victim.character_type :
-		victim.CHARACTER_TYPE.Exorcist: # TODO: Check
-			lastLineSpoken.stop()
-			_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
-		victim.CHARACTER_TYPE.Lumberjack :
-			lastLineSpoken.stop()
-			_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_peasant)
+	
+	if not(killer.character_type == killer.CHARACTER_TYPE.Exorcist) :
+		match victim.character_type :
+			victim.CHARACTER_TYPE.Exorcist: # TODO: Check
+				if GameState.exorcist_kill_count == 1 :
+					lastLineSpoken.stop()
+					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
+			victim.CHARACTER_TYPE.Lumberjack :
+				if GameState.peasant_kill_count == 1 :
+					lastLineSpoken.stop()
+					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_peasant)
 
 func _on_game_state_metamorphose(character : Node2D):
 	if character.character_type == character.CHARACTER_TYPE.Lumberjack and GameState.metamorphose_count == 1:
