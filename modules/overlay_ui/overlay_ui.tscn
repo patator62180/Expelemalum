@@ -1,7 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cswujfrnarjpr"]
+[gd_scene load_steps=23 format=3 uid="uid://cswujfrnarjpr"]
 
+[ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
 [ext_resource type="Shader" path="res://modules/overlay_ui/vignette_curse.gdshader" id="2_7ijyp"]
+[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="3_wcodv"]
+[ext_resource type="Texture2D" uid="uid://cxniwignt2188" path="res://modules/character/exorcists/assets/exorcist.svg" id="4_n0f6v"]
+[ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="5_y4bbh"]
+[ext_resource type="Texture2D" uid="uid://bw5y2a87ndhhu" path="res://modules/character/peasants/assets/lumberjack_metamorphosed.svg" id="6_xdyly"]
+[ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="8_c28c4"]
+[ext_resource type="Texture2D" uid="uid://bgpriigldnovo" path="res://modules/curse/assets/mouse_button_left.svg" id="9_o00pu"]
+[ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="10_uqyrj"]
+[ext_resource type="Texture2D" uid="uid://cucqy0i8cmyiy" path="res://modules/character/exorcists/assets/dead_exorcist.svg" id="11_8c82g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3vakr"]
 
@@ -25,6 +34,397 @@ shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
 size = Vector2(100, 100)
 
+[sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
+font_size = 150
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k25b8"]
+font_size = 125
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rraa5"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_dqdbm"]
+resource_name = "EnterGameplay"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(863, 491), Vector2(863, 491), Vector2(1531, 831)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.346633]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scroll3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(328, 141), Vector2(328, 141), Vector2(-45, -292)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scroll3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.262255]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scroll4:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(971, 148), Vector2(971, 148), Vector2(1307, -295)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scroll4:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scroll2:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(230, 518), Vector2(230, 518), Vector2(-365, 844)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Scroll2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.465849]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(169.5, 46), Vector2(1292, 48)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_icigt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(863, 491)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.346633]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scroll3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(328, 141)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scroll3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.262255]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scroll4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(971, 148)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scroll4:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scroll2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(230, 518)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Scroll2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.465849]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(169.5, 46)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4c1o5"]
+resource_name = "IdleIntro"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(863, 491), Vector2(846, 487)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.346633, 0.219285]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scroll3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(328, 141), Vector2(332, 162)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scroll3:rotation")
+tracks/3/interp = 4
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.262255, -0.105399]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scroll4:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(971, 148), Vector2(1008, 91)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scroll4:rotation")
+tracks/5/interp = 4
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.20606]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scroll2:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(230, 518), Vector2(178, 557)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Scroll2:rotation")
+tracks/7/interp = 4
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.465849, -0.199583]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(169.5, 46)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hgvx6"]
+_data = {
+"EnterGameplay": SubResource("Animation_dqdbm"),
+"IdleIntro": SubResource("Animation_4c1o5"),
+"RESET": SubResource("Animation_icigt")
+}
+
 [node name="overlay_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,6 +432,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_eryqm")
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -48,3 +449,271 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_sgnlk")
+
+[node name="IntroScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="Sprite2D" parent="IntroScreen"]
+position = Vector2(863, 491)
+rotation = 0.346633
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll3" type="Sprite2D" parent="IntroScreen"]
+position = Vector2(328, 141)
+rotation = -0.262255
+scale = Vector2(1, 1)
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll4" type="Sprite2D" parent="IntroScreen"]
+position = Vector2(971, 148)
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll2" type="Sprite2D" parent="IntroScreen"]
+position = Vector2(230, 518)
+rotation = -0.465849
+scale = Vector2(1, 1)
+texture = ExtResource("3_wcodv")
+
+[node name="TextureRect2" type="TextureRect" parent="IntroScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.5
+offset_top = -278.0
+offset_right = 406.5
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="Exorcist" type="TextureRect" parent="IntroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 566.5
+offset_top = 181.0
+offset_right = 697.5
+offset_bottom = 496.0
+texture = ExtResource("4_n0f6v")
+
+[node name="Lumberjack" type="TextureRect" parent="IntroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 368.5
+offset_top = 238.0
+offset_right = 522.5
+offset_bottom = 490.0
+texture = ExtResource("5_y4bbh")
+
+[node name="LumberjackMetamorphosed" type="TextureRect" parent="IntroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 124.5
+offset_top = 228.0
+offset_right = 340.5
+offset_bottom = 485.0
+texture = ExtResource("6_xdyly")
+
+[node name="GameplayScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlHelper" type="TextureRect" parent="GameplayScreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -549.0
+offset_top = -357.0
+offset_right = 264.0
+offset_bottom = 199.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="LumberjackMetamorphosed" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 243.0
+offset_right = 667.0
+offset_bottom = 500.0
+texture = ExtResource("6_xdyly")
+
+[node name="Skull" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 268.0
+offset_right = 283.0
+offset_bottom = 383.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_c28c4")
+
+[node name="MouseButtonLeft" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 68.0
+offset_right = 245.0
+offset_bottom = 153.0
+scale = Vector2(2, 2)
+texture = ExtResource("9_o00pu")
+
+[node name="MouseButtonRight" type="TextureRect" parent="GameplayScreen/ControlHelper"]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 68.0
+offset_right = 576.0
+offset_bottom = 153.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_uqyrj")
+
+[node name="ExorcistCounter" type="TextureRect" parent="GameplayScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -539.0
+offset_top = -191.0
+offset_right = 274.0
+offset_bottom = 365.0
+grow_horizontal = 0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="DeadExorcist" type="TextureRect" parent="GameplayScreen/ExorcistCounter"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 228.0
+offset_right = 404.0
+offset_bottom = 358.0
+texture = ExtResource("11_8c82g")
+
+[node name="Label" type="Label" parent="GameplayScreen/ExorcistCounter"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -110.0
+offset_right = -131.0
+offset_bottom = 98.0002
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(231, 104)
+text = "0/5"
+label_settings = SubResource("LabelSettings_w2apm")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OutroScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scroll" type="Sprite2D" parent="OutroScreen"]
+position = Vector2(863, 491)
+rotation = 0.346633
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll3" type="Sprite2D" parent="OutroScreen"]
+position = Vector2(328, 141)
+rotation = 6.02093
+scale = Vector2(1, 1)
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll4" type="Sprite2D" parent="OutroScreen"]
+position = Vector2(971, 148)
+texture = ExtResource("3_wcodv")
+
+[node name="Scroll2" type="Sprite2D" parent="OutroScreen"]
+position = Vector2(230, 518)
+rotation = 5.81734
+scale = Vector2(1, 1)
+texture = ExtResource("3_wcodv")
+
+[node name="TextureRect2" type="TextureRect" parent="OutroScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -406.5
+offset_top = -278.0
+offset_right = 406.5
+offset_bottom = 278.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(406, 278)
+texture = ExtResource("3_wcodv")
+
+[node name="Label" type="Label" parent="OutroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 77.5
+offset_top = 60.0
+offset_right = 739.5
+offset_bottom = 268.0
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_k25b8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="OutroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 160.5
+offset_top = 386.0
+offset_right = 329.5
+offset_bottom = 442.0
+text = "PLAY AGAIN"
+
+[node name="Button2" type="Button" parent="OutroScreen/TextureRect2"]
+layout_mode = 0
+offset_left = 482.5
+offset_top = 386.0
+offset_right = 651.5
+offset_bottom = 442.0
+text = "EXIT"
+
+[node name="Polygon2D" type="Polygon2D" parent="OutroScreen/TextureRect2"]
+color = Color(0.824342, 0.77199, 0.6424, 1)
+polygon = PackedVector2Array(212.5, 263, 649.5, 247, 646.5, 333, 211.5, 322)
+
+[node name="Label2" type="Label" parent="OutroScreen/TextureRect2/Polygon2D"]
+offset_left = 90.5
+offset_top = 189.0
+offset_right = 752.5
+offset_bottom = 397.0
+text = "You've been : Satanic"
+label_settings = SubResource("LabelSettings_rraa5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../IntroScreen")
+autoplay = "IdleIntro"
+libraries = {
+"": SubResource("AnimationLibrary_hgvx6")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
