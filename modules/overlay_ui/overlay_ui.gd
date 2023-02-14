@@ -1,23 +1,35 @@
 extends Control
 
+enum SCREEN_TYPE {Intro,Gameplay,Outro}
+
 @onready var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
+@onready var gameloop : Node2D = get_parent().get_parent().get_node("gameLoop")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var currentScreen : SCREEN_TYPE = SCREEN_TYPE.Intro
 
+func _onready():
+	gameloop.game_won.connect(_on_exit_gameplay)
+	gameloop.game_lost.connect(_on_exit_gameplay)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _input(event : InputEvent):
-	if event.is_action_released("curse"):
-		animationPlayer.play("EnterGameplay")
-	if event.is_action_released("metamorphose"):
-		animationPlayer.play_backwards("EnterGameplay")
+	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && currentScreen == SCREEN_TYPE.Intro:
+		currentScreen = SCREEN_TYPE.Gameplay
+		animationPlayer.play("ExitIntro")
+		gameloop.start_gameplay()
 
+func _on_exit_gameplay():	
+	currentScreen = SCREEN_TYPE.Outro
+	animationPlayer.play_backwards("EnterGameplay")
+	gameloop.on_exit_game()
+
+func _on_play_again_button_pressed():
+	currentScreen = SCREEN_TYPE.Gameplay
+	animationPlayer.play_back("EnterOutro")
+	gameloop.on_restart()
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "EnterGameplay" && animationPlayer.current_animation_position == 0.0:
-		animationPlayer.play("IdleIntro")
+	if anim_name == "ExitIntro" or (anim_name == "EnterOutro" and animationPlayer.current_animation_position == 0):
+		animationPlayer.play("EnterGameplay")
+	if anim_name == "EnterGameplay" && animationPlayer.current_animation_position == 0:
+		animationPlayer.play("EnterOutro")

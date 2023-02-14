@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=7 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
-[ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_7k12j"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="3_xawyk"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
 [ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="6_y0nix"]
@@ -12,8 +11,6 @@ font_size = 50
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wx0k4")
-
-[node name="World" parent="." instance=ExtResource("2_7k12j")]
 
 [node name="gameLoop" parent="." instance=ExtResource("5_56sbj")]
 

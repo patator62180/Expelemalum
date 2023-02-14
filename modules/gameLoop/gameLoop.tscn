@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4gqrkexrojo4"]
+[gd_scene load_steps=3 format=3 uid="uid://d4gqrkexrojo4"]
 
 [ext_resource type="Script" path="res://modules/gameLoop/gameLoop.gd" id="1_gm276"]
+[ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_ubpol"]
 
 [node name="gameLoop" type="Node2D"]
 script = ExtResource("1_gm276")
+world_scene = ExtResource("2_ubpol")
