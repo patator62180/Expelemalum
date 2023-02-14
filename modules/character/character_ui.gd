@@ -19,7 +19,7 @@ func _ready():
 	character.horizontal_direction_changed_to_right.connect(_on_character_horizontal_direction_changed_to_right)
 	character.horizontal_direction_changed_to_left.connect(_on_character_horizontal_direction_changed_to_left)
 
-func _on_character_killing(victim : Node2D):
+func _on_character_killing(vicstim : Node2D):
 	$AnimationPlayerKill.play("kill")
 	$AudioStreamPlayer2DKilling.play()
 

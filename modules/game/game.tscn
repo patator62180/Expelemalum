@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=7 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_7k12j"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="3_xawyk"]
-[ext_resource type="PackedScene" uid="uid://bcnnm4xbnojsq" path="res://modules/debug/debug.tscn" id="4_1eg8t"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
 [ext_resource type="Script" path="res://modules/gameLoop/EndGameLabel.gd" id="6_y0nix"]
 
@@ -15,33 +14,23 @@ script = ExtResource("1_wx0k4")
 
 [node name="World" parent="." instance=ExtResource("2_7k12j")]
 
-[node name="Debug" parent="." instance=ExtResource("4_1eg8t")]
-visible = false
-
 [node name="gameLoop" parent="." instance=ExtResource("5_56sbj")]
-
-[node name="EndGameLabel" type="Label" parent="gameLoop"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 176.0
-offset_top = 467.0
-offset_right = 321.0
-offset_bottom = 539.0
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_m05ri")
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-script = ExtResource("6_y0nix")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Narration" parent="CanvasLayer" instance=ExtResource("3_xawyk")]
 metadata/_edit_use_anchors_ = true
 
-[connection signal="game_lost" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_lost"]
-[connection signal="game_won" from="gameLoop" to="gameLoop/EndGameLabel" method="_on_game_loop_game_won"]
+[node name="EndGameLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_m05ri")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("6_y0nix")
+
+[connection signal="game_lost" from="gameLoop" to="CanvasLayer/EndGameLabel" method="_on_game_loop_game_lost"]
+[connection signal="game_won" from="gameLoop" to="CanvasLayer/EndGameLabel" method="_on_game_loop_game_won"]

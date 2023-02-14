@@ -5,7 +5,7 @@ extends "res://modules/character/character.gd"
 func _ready():
 	super._ready()
 	# GameState update
-	GameState.RemainingExorcistsCount += 1
+	GameState.remaining_exorcists_count += 1
 	if not Engine.is_editor_hint():
 		tree_exiting.connect(_on_tree_exiting_)
 
@@ -17,4 +17,4 @@ func _on_character_got_at_close_range(character : Node2D):
 		super._on_character_got_at_close_range(character)
 
 func _on_tree_exiting_():
-	GameState.RemainingExorcistsCount -= 1
+	GameState.remaining_exorcists_count -= 1

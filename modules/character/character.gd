@@ -7,6 +7,7 @@ signal killing(victim_character)
 signal killed(victim_character)
 signal dying(killer_character)
 signal died(killer_character)
+signal spawned(character)
 
 signal horizontal_direction_changed_to_right
 signal horizontal_direction_changed_to_left
@@ -31,7 +32,7 @@ signal horizontal_direction_changed_to_left
 			$Area2DVision/CollisionShape2D.shape.radius = RADIUS_VISION
 
 
-enum CHARACTER_TYPE { Lumberjack, Exorcist}
+enum CHARACTER_TYPE { Lumberjack, Exorcist }
 @export var character_type : CHARACTER_TYPE
 
 ## movement variables
@@ -66,6 +67,9 @@ func kill(victim_character : Node2D):
 		emit_signal("killing", victim)
 
 func _on_timer_kill_delay_timeout():
+	# game state update
+	GameState.on_kill(self, victim)
+	# core
 	victim.die(self)
 	emit_signal("killed", victim)
 	is_killing = false
@@ -99,6 +103,8 @@ func _on_timer_die_delay_timeout():
 func _ready():
 	set("RADIUS_BODY", RADIUS_BODY)
 	set("RADIUS_VISION", RADIUS_VISION)
+	# game state update
+	GameState.on_spawn(self)
 
 func _process(delta : float):
 	if not Engine.is_editor_hint():

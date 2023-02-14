@@ -5,9 +5,9 @@ signal game_won
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if GameState.RemainingExorcistsCount == 0:
+	if GameState.remaining_exorcists_count == 0:
 		_win()
-	if GameState.IsCurseAlive == false:
+	if GameState.is_curse_alive == false:
 		_lose()
 
 
