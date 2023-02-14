@@ -1,5 +1,8 @@
 extends Control
 
+const audio_source : String = "res://modules/narration/Audio/Audio - narrationDictionnary.csv"
+const subtitle_speed : float = 1.5
+
 var prompt_dict : Dictionary
 
 #Structure of indicators :
@@ -18,10 +21,14 @@ var indicators : Dictionary
 
 @onready
 var lastLineSpoken : Timer = $LastLineSpoken
+var queued_prompts : Array
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
 var narratorSubtitleLabel : Label = get_node("Label")
+@onready
+var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
+
 
 enum AUDIO_LINE {narration_timer_activity_high, narration_timer_activity_low, narration_timer_difficulty_high, narration_timer_difficulty_low, narration_timer_evilness_high, narration_timer_evilness_low, narration_timer_filler_1, narration_timer_filler_2, narration_timer_filler_3, narration_timer_progress_high, narration_timer_progress_low, narration_trigger_fewKills_exorcist, narration_trigger_fewKills_peasant, narration_trigger_firstKill_exorcist, narration_trigger_firstKill_peasant, narration_trigger_gameLaunch_1, narration_trigger_gameLaunch_2, narration_trigger_manaLack, narration_trigger_ww_intro}
 
@@ -40,9 +47,10 @@ func _ready():
 	# Connecting signals
 	GameState.updated_kill_count.connect(_on_game_state_kill)
 	GameState.updated_metamorphose_count.connect(_on_game_state_metamorphose)
+	GameState.updated_game_phase.connect(_on_game_change)
 	
 	# Init
-	prompt_dict = parse_csv_database("res://modules/narration/Audio/Audio - narrationDictionnary.csv")
+	prompt_dict = parse_csv_database(audio_source)
 	initiate_indicators() #with every indicator to 0 
 	indicators[INDICATORS.filler][0] = 0.2 #setting indicator value
 	
@@ -113,6 +121,9 @@ func parse_csv_database(
 
 				if value is String :
 					if toComputeIdentifier in column_headers[column_index] :
+						
+						assert(value != "","the file contains a blanck cell on a computed column : " + audio_source)
+						
 						var expression = Expression.new()
 						expression.parse(value)
 						value = expression.execute([], self)
@@ -128,8 +139,6 @@ func parse_csv_database(
 							value = true
 						elif value_lower == "false":
 							value = false
-				
-				
 				
 				entry[trimmed_headers[column_index]]	= value
 				if column_headers[column_index] == id_column:
@@ -154,7 +163,6 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 		$MonitorLabel.text = prefix + "\n" + monitor + suffix
 	else :
 		$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
-	
 
 func play_situation_line(
 	indicator : INDICATORS,
@@ -251,7 +259,6 @@ func update_indicators():
 	
 	
 	set_monitor("update indicator")
-	
 
 func change_indicators_remaining_prompts(
 	indicator : INDICATORS,
@@ -270,45 +277,66 @@ func get_indicators_remaining_prompts(
 # PLAYER MANAGEMENT
 ############################################################################
 
-func _play_line_str(lineNameStr : String) :
+func _play_line_str(lineNameStr : String) :	
+	if narratorStreamPlayer.playing :
+		queued_prompts.append(lineNameStr)
+		#idea : intégrer un priority accessible par le dico
+		# 1 = priorité faible : will not be queued up
+		# 2 = will be queued up
+		# 3 = will be played next (can discard or pop current queue)
+	else :
+		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
+		narratorStreamPlayer.stream = audioStream
+		narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
+		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
-	_play_line_checker()
-	
-	var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
-	narratorStreamPlayer.stream = audioStream
-	narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
-	$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
-	narratorStreamPlayer.play()
+		narratorStreamPlayer.play()
+		animationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
 
-func _play_line_checker() :
-	if narratorStreamPlayer.playing :
-		await get_tree().create_timer(5.0).timeout
-		_play_line_checker()
-
-
 func _on_audio_stream_player_finished():
-	lastLineSpoken.start()
 	narratorStreamPlayer.stop()
-	narratorSubtitleLabel.text = ""
-#	lastLineSpoken.stop()
+	narratorSubtitleLabel.text =" "
+	
+	if queued_prompts.size() > 0 :
+		await get_tree().create_timer(1.0).timeout
+		_play_line_str(queued_prompts.pop_front())
+	if GameState.current_game_phase == GameState.GAME_PHASE.Gameplay :
+		lastLineSpoken.start()
 
 #EVENT MANAGEMENT
 ############################################################################
 
 func _on_game_state_kill(killer : Node2D, victim : Node2D):
-	if victim.character_type == victim.CHARACTER_TYPE.Exorcist: # TODO: Check
-		lastLineSpoken.stop()
-		_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
-		
+	
+	if not(killer.character_type == killer.CHARACTER_TYPE.Exorcist) :
+		match victim.character_type :
+			victim.CHARACTER_TYPE.Exorcist: # TODO: Check
+				if GameState.exorcist_kill_count == 1 :
+					lastLineSpoken.stop()
+					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
+			victim.CHARACTER_TYPE.Lumberjack :
+				if GameState.peasant_kill_count == 1 :
+					lastLineSpoken.stop()
+					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_peasant)
+
 func _on_game_state_metamorphose(character : Node2D):
-	if character.character_type == character.CHARACTER_TYPE.Lumberjack:
+	if character.character_type == character.CHARACTER_TYPE.Lumberjack and GameState.metamorphose_count == 1:
 		lastLineSpoken.stop()
 		_play_line_direct(AUDIO_LINE.narration_trigger_ww_intro)
 
 func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
-	#play_best_line_by_indicator()
+	play_best_line_by_indicator()
+
+func _on_game_change(old, new) :
+	match new :
+		GameState.GAME_PHASE.Intro :
+			pass
+		GameState.GAME_PHASE.Gameplay :
+			lastLineSpoken.start()
+		GameState.GAME_PHASE.Outro :
+			lastLineSpoken.stop()
 

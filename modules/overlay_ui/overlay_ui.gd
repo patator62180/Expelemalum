@@ -1,51 +1,40 @@
 extends Control
 
-enum SCREEN_TYPE {Intro,Gameplay,Outro}
-
 @onready var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
 @onready var gameloop : Node2D = get_parent().get_parent().get_node("gameLoop")
 @onready var remaining_exorcists_label : Label = get_node("GameplayScreen/ExorcistCounter/Label")
 @onready var winning_label : Label = get_node("MenuScreen/Outro/Label")
 @onready var narration_state_label : Label = get_node("MenuScreen/Outro/Polygon2D/HBoxContainer/Label3")
 
-
-var currentScreen : SCREEN_TYPE = SCREEN_TYPE.Intro
-
 func _ready():
-	gameloop.game_won.connect(game_won)
-	gameloop.game_lost.connect(game_lost)
+	GameState.updated_game_phase.connect(_on_game_state_update)
+
+func _on_game_state_update(previousState):
+	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
+		_on_exit_gameplay()
 
 func _input(event : InputEvent):
-	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && currentScreen == SCREEN_TYPE.Intro:
+	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && GameState.current_game_phase == GameState.GAME_PHASE.Intro:
 		animationPlayer.play("ExitIntro")
 		gameloop.start_gameplay()
 
 func _on_enter_gameplay():
-	currentScreen = SCREEN_TYPE.Gameplay
 	animationPlayer.play("EnterGameplay")
 	GameState.updated_remaining_count.connect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.connect(_on_exorcist_killed)
 
-func game_won():
-	_on_exit_gameplay(true)
-
-func game_lost():
-	_on_exit_gameplay(false)
-
-func _on_exit_gameplay(winning : bool):
-	currentScreen = SCREEN_TYPE.Outro
+func _on_exit_gameplay():
 	animationPlayer.play_backwards("EnterGameplay")
 	GameState.updated_remaining_count.disconnect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.disconnect(_on_exorcist_killed)
 	
-	winning_label.text = "VICTORY" if winning else "DEFEAT"
+	winning_label.text = "VICTORY" if GameState.game_won else "DEFEAT"
 	narration_state_label.text = GameState.player_narration_state
 
 func _on_exit_game():
 	gameloop.on_exit_game()
 
 func _on_play_again_button_pressed():
-	currentScreen = SCREEN_TYPE.Gameplay
 	animationPlayer.play_backwards("EnterOutro")
 	gameloop.on_restart()
 

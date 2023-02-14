@@ -12,9 +12,9 @@ narration_timer_filler_1,"hm hm hm that’s nice stroll, don’t forget to take 
 narration_timer_filler_2,"I was thinking of having my horns trimmed, what do you think? ",INDICATORS.filler,PLAYTYPES.highIndicator,1
 narration_timer_filler_3,What a cute village *evil laugh*,INDICATORS.filler,PLAYTYPES.highIndicator,1
 narration_trigger_manaLack,You don't have enough mana yet,INDICATORS.filler,PLAYTYPES.lowIndicator,1
-narration_trigger_gameLaunch_1,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,1
+narration_trigger_gameLaunch_1,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,2
 narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,2
 narration_timer_progress_high,"Soon none will stand in your way, to Hell they come",INDICATORS.gameProgress,PLAYTYPES.highIndicator,1
 narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse",INDICATORS.gameProgress,PLAYTYPES.lowIndicator,1
 narration_trigger_firstKill_exorcist,Well you know who your enemies are… keep it up champ,INDICATORS.gameProgress,PLAYTYPES.noIndication,1
-narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,,,
+narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,INDICATORS.filler,PLAYTYPES.noIndication,1

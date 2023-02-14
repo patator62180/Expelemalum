@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=6 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="3_xawyk"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
-[ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="5_tacq0"]
+[ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://RessourcesDiverses/Medieval-song.mp3" id="5_dbt56"]
 [ext_resource type="PackedScene" uid="uid://cswujfrnarjpr" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_bsiwp"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_km8nl"]
-font = ExtResource("5_tacq0")
-font_size = 36
-font_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wx0k4")
@@ -23,11 +18,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
 
-[node name="Label" type="Label" parent="CanvasLayer/overlay_ui"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 276.0
-offset_right = 1519.0
-offset_bottom = 336.0
-text = "By Nathan Bernard, Rémi Monthiller and Samuel Terras-Viola"
-label_settings = SubResource("LabelSettings_km8nl")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dbt56")
+volume_db = 3.933
+autoplay = true
