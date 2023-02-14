@@ -25,10 +25,11 @@ var queued_prompts : Array
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 @onready
-var narratorSubtitleLabel : Label = get_node("Label")
+var narratorSubtitleLabel : Label = get_node("Scroll/Label")
 @onready
-var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
-
+var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
+@onready
+var subtitleAnimationPlayer : AnimationPlayer = get_node("SubtitleAnimationPlayer")
 
 enum AUDIO_LINE {narration_timer_activity_high, narration_timer_activity_low, narration_timer_difficulty_high, narration_timer_difficulty_low, narration_timer_evilness_high, narration_timer_evilness_low, narration_timer_filler_1, narration_timer_filler_2, narration_timer_filler_3, narration_timer_progress_high, narration_timer_progress_low, narration_trigger_fewKills_exorcist, narration_trigger_fewKills_peasant, narration_trigger_firstKill_exorcist, narration_trigger_firstKill_peasant, narration_trigger_gameLaunch_1, narration_trigger_gameLaunch_2, narration_trigger_manaLack, narration_trigger_ww_intro}
 
@@ -291,14 +292,15 @@ func _play_line_str(lineNameStr : String) :
 		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
 		narratorStreamPlayer.play()
-		animationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
+		subtitleAnimationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
+		scrollAnimationPlayer.play("ScrollIn")
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
 
 func _on_audio_stream_player_finished():
 	narratorStreamPlayer.stop()
-	narratorSubtitleLabel.text =" "
+	scrollAnimationPlayer.play_backwards("ScrollIn")
 	
 	if queued_prompts.size() > 0 :
 		await get_tree().create_timer(1.0).timeout
