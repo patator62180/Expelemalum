@@ -20,10 +20,8 @@ const curse_memory_duration : float = 20.0 # number of seconds to remember Event
 
 func get_updated_curse_events() -> Array:
 	var current_date : float = Time.get_ticks_msec()/1000.0
-	print(current_date)
-	if (curse_events.size() > 0) :
-		while(GameState.curse_events[0] < current_date - curse_memory_duration) :
-			GameState.curse_events.remove_at(0)
+	while(not curse_events.is_empty() and GameState.curse_events[0] < current_date - curse_memory_duration) :
+		curse_events.pop_front()
 	return curse_events
 
 # called somewhere else in the code
