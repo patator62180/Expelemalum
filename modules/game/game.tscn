@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=6 format=3 uid="uid://bots66vsqufk4"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="3_xawyk"]
 [ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
+[ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://RessourcesDiverses/Medieval-song.mp3" id="5_dbt56"]
 [ext_resource type="PackedScene" uid="uid://cswujfrnarjpr" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_bsiwp"]
 
 [node name="Game" type="Node"]
@@ -16,3 +17,8 @@ script = ExtResource("1_wx0k4")
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dbt56")
+volume_db = 3.933
+autoplay = true
