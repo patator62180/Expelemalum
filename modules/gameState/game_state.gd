@@ -3,12 +3,13 @@ extends Node
 signal updated_kill_count(killer, victim)
 signal updated_metamorphose_count(character)
 signal updated_remaining_count
-signal updated_game_phase(previous_phase, new_phase)
+signal updated_game_phase(previous_phase)
 
 signal curse_killed
 
 enum GAME_PHASE {Intro,Gameplay,Outro}
-var current_game_phase : GAME_PHASE
+var current_game_phase : GAME_PHASE = GAME_PHASE.Intro
+var game_won : bool = true
 
 # basic state tracking
 var peasant_kill_count : int = 0
@@ -31,14 +32,15 @@ func get_updated_curse_events() -> Array:
 	return curse_events
 
 # called somewhere else in the code
-func start_game():
+func start_gameplay():	
+	GameState.game_phase_update(GameState.GAME_PHASE.Gameplay)
 	remaining_exorcists_count = 0
 	exorcist_kill_count = 0
-	game_phase_update(GAME_PHASE.Gameplay)
 
-func game_phase_update(new_phase : GAME_PHASE) : #TODO CONNECT
-	emit_signal("updated_game_phase", current_game_phase, new_phase)
+func game_phase_update(new_phase : GAME_PHASE) :
+	var previous_game_phase = current_game_phase
 	current_game_phase = new_phase
+	emit_signal("updated_game_phase", previous_game_phase)
 
 func on_curse_killed():
 	is_curse_alive = false
@@ -55,7 +57,7 @@ func on_spawn(character : Node2D):
 			remaining_peasant_count += 1
 	emit_signal("updated_remaining_count")
 
-func on_kill(killer : Node2D, victim : Node2D): # TODO call on kill
+func on_kill(killer : Node2D, victim : Node2D):
 	match victim.character_type:
 		victim.CHARACTER_TYPE.Exorcist:
 			exorcist_kill_count += 1
@@ -66,7 +68,7 @@ func on_kill(killer : Node2D, victim : Node2D): # TODO call on kill
 	emit_signal("updated_kill_count", killer, victim)
 	emit_signal("updated_remaining_count")
 
-func on_metamorphose(character : Node2D): # TODO call on metamorphose
+func on_metamorphose(character : Node2D):
 	metamorphose_count += 1
 	emit_signal("updated_metamorphose_count", character)
 	emit_signal("updated_remaining_count")
