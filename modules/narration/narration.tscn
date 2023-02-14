@@ -4,21 +4,6 @@
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="2_42dyg"]
 [ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="2_cy3iu"]
 
-[sub_resource type="Animation" id="Animation_m4kxw"]
-resource_name = "SubtitleReveal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scroll/Label:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_qs274"]
 length = 0.001
 tracks/0/type = "value"
@@ -70,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(907, 609), Vector2(913, 454)]
+"values": [Vector2(885, 658), Vector2(883, 497)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -83,6 +68,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.00511, 1.49504]
+}
+
+[sub_resource type="Animation" id="Animation_m4kxw"]
+resource_name = "SubtitleReveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mu27e"]
@@ -135,9 +135,10 @@ libraries = {
 layout_mode = 0
 offset_left = 913.0
 offset_top = 454.0
-offset_right = 1726.0
-offset_bottom = 1254.0
+offset_right = 2489.0
+offset_bottom = 2596.0
 rotation = 1.49504
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_cy3iu")
 
 [node name="Label" type="Label" parent="Scroll"]
@@ -146,13 +147,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 29.7306
-offset_top = -68.652
-offset_right = -140.269
-offset_bottom = 81.348
+offset_left = 30.0
+offset_top = -69.0
+offset_right = -896.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = -1.5708
+scale = Vector2(3, 3)
 text = "Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
 label_settings = SubResource("LabelSettings_uweh6")
 horizontal_alignment = 1
