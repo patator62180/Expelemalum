@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cswujfrnarjpr"]
+[gd_scene load_steps=28 format=3 uid="uid://cswujfrnarjpr"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="5_y4bbh"]
 [ext_resource type="Texture2D" uid="uid://bw5y2a87ndhhu" path="res://modules/character/peasants/assets/lumberjack_metamorphosed.svg" id="6_xdyly"]
 [ext_resource type="Texture2D" uid="uid://cgscurj24myfj" path="res://modules/curse/assets/skull.svg" id="8_c28c4"]
+[ext_resource type="Texture2D" uid="uid://bkoclvjk1bg3t" path="res://modules/curse/assets/flame.svg" id="8_lorhp"]
+[ext_resource type="Texture2D" uid="uid://7rabgw76io5m" path="res://modules/curse/assets/arrow_down.svg" id="9_g5rgr"]
 [ext_resource type="Texture2D" uid="uid://bgpriigldnovo" path="res://modules/curse/assets/mouse_button_left.svg" id="9_o00pu"]
 [ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="10_uqyrj"]
+[ext_resource type="Texture2D" uid="uid://q0l5ncxtg3q8" path="res://modules/character/peasants/assets/scratch_small.svg" id="11_5qibv"]
 [ext_resource type="Texture2D" uid="uid://cucqy0i8cmyiy" path="res://modules/character/exorcists/assets/dead_exorcist.svg" id="11_8c82g"]
+[ext_resource type="Texture2D" uid="uid://b53pl41iuxhyw" path="res://modules/curse/assets/arrow_right.svg" id="13_65dyk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3vakr"]
 
@@ -33,6 +37,10 @@ shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
 size = Vector2(100, 100)
+
+[sub_resource type="Gradient" id="Gradient_2d3q6"]
+offsets = PackedFloat32Array(0, 0.555874, 1)
+colors = PackedColorArray(0.654902, 0.439216, 0.760784, 0, 0.654902, 0.439216, 0.760784, 0.784314, 0.654902, 0.439216, 0.760784, 0.784314)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
 font_size = 150
@@ -148,7 +156,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/path = NodePath("Tutorial:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -160,7 +168,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/path = NodePath("Tutorial:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -271,7 +279,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/path = NodePath("Tutorial:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -283,7 +291,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/path = NodePath("Tutorial:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -396,7 +404,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("TextureRect2:position")
+tracks/8/path = NodePath("Tutorial:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -408,7 +416,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("TextureRect2:rotation")
+tracks/9/path = NodePath("Tutorial:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -451,7 +459,6 @@ grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_sgnlk")
 
 [node name="IntroScreen" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -480,7 +487,7 @@ rotation = -0.465849
 scale = Vector2(1, 1)
 texture = ExtResource("3_wcodv")
 
-[node name="TextureRect2" type="TextureRect" parent="IntroScreen"]
+[node name="Tutorial" type="TextureRect" parent="IntroScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -496,31 +503,184 @@ grow_vertical = 2
 pivot_offset = Vector2(406, 278)
 texture = ExtResource("3_wcodv")
 
-[node name="Exorcist" type="TextureRect" parent="IntroScreen/TextureRect2"]
-layout_mode = 0
-offset_left = 566.5
-offset_top = 181.0
-offset_right = 697.5
-offset_bottom = 496.0
-texture = ExtResource("4_n0f6v")
+[node name="Curse_Tuto" type="Control" parent="IntroScreen/Tutorial"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.5
+offset_top = 13.0
+offset_right = 5.49951
+offset_bottom = 269.0
+grow_horizontal = 2
 
-[node name="Lumberjack" type="TextureRect" parent="IntroScreen/TextureRect2"]
+[node name="Lumberjack" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto"]
 layout_mode = 0
-offset_left = 368.5
-offset_top = 238.0
-offset_right = 522.5
-offset_bottom = 490.0
+offset_left = 210.5
+offset_top = 76.0
+offset_right = 364.5
+offset_bottom = 328.0
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_y4bbh")
 
-[node name="LumberjackMetamorphosed" type="TextureRect" parent="IntroScreen/TextureRect2"]
+[node name="Lumberjack2" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto"]
 layout_mode = 0
-offset_left = 124.5
-offset_top = 228.0
-offset_right = 340.5
-offset_bottom = 485.0
+offset_left = 543.0
+offset_top = 83.0
+offset_right = 697.0
+offset_bottom = 335.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_y4bbh")
+
+[node name="MouseButtonRight" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 108.0
+offset_right = 454.0
+offset_bottom = 193.0
+texture = ExtResource("9_o00pu")
+
+[node name="Line2D" type="Line2D" parent="IntroScreen/Tutorial/Curse_Tuto"]
+scale = Vector2(1.01872, 1.14598)
+points = PackedVector2Array(251.297, 44.5033, 307.249, 36.6498, 353.386, 27.051, 395.596, 22.688, 438.787, 20.9427, 490.814, 23.5606, 529.097, 27.9236, 569.344, 40.1402)
+width = 8.0
+default_color = Color(0.654902, 0.439216, 0.760784, 0.784314)
+gradient = SubResource("Gradient_2d3q6")
+
+[node name="Skull" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 8.0
+offset_right = 357.0
+offset_bottom = 123.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_c28c4")
+
+[node name="Flame" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto/Skull"]
+layout_mode = 0
+offset_left = -36.6667
+offset_top = 73.3333
+offset_right = 1.33331
+offset_bottom = 131.333
+texture = ExtResource("8_lorhp")
+
+[node name="Flame2" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto/Skull"]
+layout_mode = 0
+offset_left = -41.6667
+offset_top = -6.66666
+offset_right = -3.66669
+offset_bottom = 51.3333
+texture = ExtResource("8_lorhp")
+
+[node name="Flame3" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto/Skull"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = -21.6667
+offset_right = 203.0
+offset_bottom = 36.3333
+texture = ExtResource("8_lorhp")
+
+[node name="ArrowDown" type="TextureRect" parent="IntroScreen/Tutorial/Curse_Tuto"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 17.0
+offset_right = 623.0
+offset_bottom = 118.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_g5rgr")
+
+[node name="Transfo_Tuto" type="Control" parent="IntroScreen/Tutorial"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.5
+offset_top = -254.0
+offset_right = 2.49951
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Exorcist" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto"]
+layout_mode = 0
+offset_left = 540.5
+offset_top = 11.0
+offset_right = 671.5
+offset_bottom = 326.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_n0f6v")
+
+[node name="ScratchSmall" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto/Exorcist"]
+layout_mode = 0
+offset_left = 98.137
+offset_top = 98.3334
+offset_right = 116.137
+offset_bottom = 258.333
+rotation = 0.785397
+texture = ExtResource("11_5qibv")
+
+[node name="ScratchSmall2" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto/Exorcist"]
+layout_mode = 0
+offset_left = 118.137
+offset_top = 133.333
+offset_right = 136.137
+offset_bottom = 293.333
+rotation = 0.785397
+texture = ExtResource("11_5qibv")
+
+[node name="ScratchSmall3" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto/Exorcist"]
+layout_mode = 0
+offset_left = 138.137
+offset_top = 170.0
+offset_right = 156.137
+offset_bottom = 330.0
+rotation = 0.785397
+texture = ExtResource("11_5qibv")
+
+[node name="Lumberjack" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto"]
+layout_mode = 0
+offset_left = 195.5
+offset_top = 39.0
+offset_right = 349.5
+offset_bottom = 291.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_y4bbh")
+
+[node name="LumberjackMetamorphosed" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto"]
+layout_mode = 0
+offset_left = 388.5
+offset_top = 43.0
+offset_right = 604.5
+offset_bottom = 300.0
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_xdyly")
 
+[node name="ArrowRight" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto"]
+layout_mode = 0
+offset_left = 289.5
+offset_top = 82.0
+offset_right = 376.5
+offset_bottom = 145.0
+texture = ExtResource("13_65dyk")
+
+[node name="MouseButtonRight" type="TextureRect" parent="IntroScreen/Tutorial/Transfo_Tuto"]
+layout_mode = 0
+offset_left = 316.5
+offset_top = -8.0
+offset_right = 371.5
+offset_bottom = 77.0
+texture = ExtResource("10_uqyrj")
+
+[node name="Line2D" type="Line2D" parent="IntroScreen/Tutorial"]
+position = Vector2(3.5, 5)
+points = PackedVector2Array(41.5, 264, 776.5, 264)
+width = 5.0
+default_color = Color(0.647059, 0.572549, 0.396078, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="GameplayScreen" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
