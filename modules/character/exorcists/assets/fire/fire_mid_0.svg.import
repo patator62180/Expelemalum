@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc1xwfc52qkfg"
-path="res://.godot/imported/fire_ext_0.svg-351a4450b828d43e83a4098cbde86cbb.ctex"
+uid="uid://b28mw8odmmyt8"
+path="res://.godot/imported/fire_mid_0.svg-e1dbcdb8b60ddfcf745eeef5fc9c646b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/character/exorcists/assets/fire_ext_0.svg"
-dest_files=["res://.godot/imported/fire_ext_0.svg-351a4450b828d43e83a4098cbde86cbb.ctex"]
+source_file="res://modules/character/exorcists/assets/fire/fire_mid_0.svg"
+dest_files=["res://.godot/imported/fire_mid_0.svg-e1dbcdb8b60ddfcf745eeef5fc9c646b.ctex"]
 
 [params]
 

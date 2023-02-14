@@ -3,16 +3,14 @@ extends Node2D
 signal game_lost
 signal game_won
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if GameState.remaining_exorcists_count == 0:
-		_win()
-	if GameState.is_curse_alive == false:
-		_lose()
+func _ready():
+	GameState.curse_killed.connect(on_game_state_cursed_killed)
+	GameState.updated_remaining_count.connect(on_game_state_updated_remaining_count)
 
 
-func _win():
-	emit_signal("game_won")
+func on_game_state_updated_remaining_count():
+	if GameState.remaining_exorcists_count < 1:
+		emit_signal("game_won")
 	
-func _lose():
+func on_game_state_cursed_killed():
 	emit_signal("game_lost")

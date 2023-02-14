@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://chctg1fphq6d7"]
 
-[ext_resource type="Script" path="res://modules/character/peasants/droppables/axe.gd" id="1_yugem"]
+[ext_resource type="Script" path="res://modules/character/peasants/droppables/scratch.gd" id="1_gehwv"]
 [ext_resource type="Texture2D" uid="uid://b6xefjkeocw2s" path="res://modules/character/peasants/assets/scratch_small.svg" id="2_0ujs5"]
 [ext_resource type="Texture2D" uid="uid://cvo8mhjyqal45" path="res://modules/character/peasants/assets/scratch_big.svg" id="4_jqc0f"]
 
@@ -253,7 +253,7 @@ _data = {
 
 [node name="Scratch" type="Node2D"]
 top_level = true
-script = ExtResource("1_yugem")
+script = ExtResource("1_gehwv")
 
 [node name="Pivot" type="Node2D" parent="."]
 position = Vector2(0, -20)

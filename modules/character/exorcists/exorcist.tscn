@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvvjqxk0venb3"]
 
 [ext_resource type="PackedScene" uid="uid://bocfd3u5o522i" path="res://modules/character/character.tscn" id="1_tcyie"]
-[ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_4kv0o"]
+[ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_c2apt"]
 [ext_resource type="PackedScene" uid="uid://dvchtauv3t1em" path="res://modules/character/behavior/behavior_exorcist.tscn" id="3_cp1p4"]
 [ext_resource type="PackedScene" uid="uid://by6nurb5bfs35" path="res://modules/character/exorcists/exorcist_character_ui.tscn" id="4_q1y4m"]
 
@@ -10,9 +10,9 @@ resource_local_to_scene = true
 radius = 8.0
 
 [node name="Character" instance=ExtResource("1_tcyie")]
-script = ExtResource("2_4kv0o")
+script = ExtResource("2_c2apt")
 SUPICION_THRESHOLD_TO_KILL = 0.0
-RADIUS_VISION = 40.0
+SPEED = 50.0
 character_type = 1
 
 [node name="CollisionShape2D" parent="Area2DBody" index="0"]

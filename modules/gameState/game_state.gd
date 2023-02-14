@@ -58,9 +58,3 @@ func on_metamorphose(character : Node2D): # TODO call on metamorphose
 	metamorphose_count += 1
 	emit_signal("updated_metamorphose_count", character)
 	emit_signal("updated_remaining_count")
-
-# internal
-
-func _ready():
-	for character in get_tree().get_nodes_in_group("character"):
-		on_spawn(character)
