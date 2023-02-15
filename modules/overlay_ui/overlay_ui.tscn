@@ -582,9 +582,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -811.0
+offset_left = 341.0
 offset_top = -2.0
-offset_right = 2.0
+offset_right = 1154.0
 offset_bottom = 554.0
 grow_horizontal = 0
 scale = Vector2(0.3, 0.3)
@@ -657,10 +657,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -299.0
-offset_top = -559.0
-offset_right = -299.0
-offset_bottom = -559.0
+offset_left = 576.0
+offset_right = 576.0
 grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 
@@ -736,10 +734,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 660.0
-offset_top = -248.0
-offset_right = 2802.0
-offset_bottom = 1328.0
+offset_left = 1236.0
+offset_top = 76.0
+offset_right = 3378.0
+offset_bottom = 1652.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
@@ -758,19 +756,11 @@ vertical_alignment = 1
 
 [node name="PlayAgainButton" type="Button" parent="MenuScreen/Outro"]
 layout_mode = 0
-offset_left = 483.333
-offset_top = 980.0
-offset_right = 933.333
-offset_bottom = 1163.0
+offset_left = 706.667
+offset_top = 1050.0
+offset_right = 1403.67
+offset_bottom = 1233.0
 text = "PLAY AGAIN"
-
-[node name="ExitButton" type="Button" parent="MenuScreen/Outro"]
-layout_mode = 0
-offset_left = 1273.33
-offset_top = 973.333
-offset_right = 1723.33
-offset_bottom = 1156.33
-text = "EXIT"
 
 [node name="Polygon2D" type="Polygon2D" parent="MenuScreen/Outro"]
 position = Vector2(423.333, 396.667)
@@ -844,5 +834,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="MenuScreen/Outro/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="MenuScreen/Outro/ExitButton" to="." method="_on_exit_game"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
