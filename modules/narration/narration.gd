@@ -34,6 +34,7 @@ const play_style_default_threshold = 1.4
 #if all indicators' absolute value is under the filler threshold, 
 # a filling prompt will be played.
 const filler_threshold : float = 0.2
+const activity_threshold : float = 2.0 #mean duration of a swipe to get the max indicator of activity
 
 
 #INIT
@@ -264,12 +265,11 @@ func play_best_ending_by_indicator(game_won : bool):
 			selected_prompt_str = play_situation_line(selected_indic[1],PLAYTYPES.victoryLowIndicator)
 	
 	if selected_prompt_str == null or selected_prompt_str == "" :
+		set_monitor("Default ending prompt")
 		if game_won :
-			_play_line_direct(AUDIO_LINE.narration_trigger_default_victory)
-			selected_prompt_str = "narration_trigger_default_victory"
+			selected_prompt_str = play_situation_line(INDICATORS.filler, PLAYTYPES.victoryHighIndicator)
 		else :
-			_play_line_direct(AUDIO_LINE.narration_trigger_default_defeat)
-			selected_prompt_str = "narration_trigger_default_defeat"
+			selected_prompt_str = play_situation_line(INDICATORS.filler, PLAYTYPES.defeatHighIndicator)
 	
 	GameState.set_player_narration_state(prompt_dict[selected_prompt_str]["specialDisplay"])
 
@@ -288,17 +288,17 @@ func update_indicators():
 	if ((GameState.get_total_kill_count()) == 0) :
 		indicators[INDICATORS.curseEvilness][0] = 0.0
 	else :
-		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.peasant_kill_count / (GameState.get_total_kill_count())) - 1.0
+		indicators[INDICATORS.curseEvilness][0] = 2.0*(GameState.peasant_kill_count as float / (GameState.get_total_kill_count() as float)) - 1.0
 	
 	#DIFFICULTY
-	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.remaining_exorcists_count / (GameState.remaining_exorcists_count + GameState.remaining_peasant_count)) - 1.0 #can be zero if world not init
+	indicators[INDICATORS.currentDifficulty][0] = 2.0*(GameState.remaining_exorcists_count as float / (GameState.remaining_exorcists_count as float + GameState.remaining_peasant_count as float)) - 1.0 #can be zero if world not init
 	
 	#GAME PROGRESS
-	indicators[INDICATORS.gameProgress][0] = 2*(GameState.exorcist_kill_count / (GameState.exorcist_kill_count + GameState.remaining_exorcists_count)) - 1.0 #can be zero if world not init
+	indicators[INDICATORS.gameProgress][0] = 2.0*(GameState.exorcist_kill_count as float / (GameState.exorcist_kill_count as float + GameState.remaining_exorcists_count as float)) - 1.0 #can be zero if world not init
 	
 	#ACTIVITY
 	var number_of_swipes_done = GameState.get_updated_curse_events().size()
-	indicators[INDICATORS.curseActivity][0] = 2 *(GameState.curse_events.size() / GameState.curse_memory_duration) - 1.0
+	indicators[INDICATORS.curseActivity][0] = 2.0 *(activity_threshold * number_of_swipes_done as float / GameState.curse_memory_duration as float) - 1.0
 	
 	GameState.set_player_narration_state("yolo")
 	
@@ -400,7 +400,7 @@ func _on_game_change(old) :
 		GameState.GAME_PHASE.Intro :
 			pass
 		GameState.GAME_PHASE.Gameplay :
-#			initiate_indicators(true) #with every indicator to 0 except filler
+			initiate_indicators()
 			lastLineSpoken.start()
 		GameState.GAME_PHASE.Outro :
 			lastLineSpoken.stop()
