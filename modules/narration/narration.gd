@@ -28,14 +28,9 @@ var indicators : Dictionary
 #Each indicator value varies from -1 to 1. 0 is considered neutral 
 enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress, filler}
 enum PLAYTYPES {highIndicator, lowIndicator, noIndication, victoryLowIndicator, defeatLowIndicator, victoryHighIndicator, defeatHighIndicator}
-const play_style_matching : Dictionary = {
-	INDICATORS.curseActivity : {
-		
-	}
-	
-}
+
 const play_style_default = "Balanced"
-const play_style_default_threshold = 1.5
+const play_style_default_threshold = 1.4
 #if all indicators' absolute value is under the filler threshold, 
 # a filling prompt will be played.
 const filler_threshold : float = 0.2
