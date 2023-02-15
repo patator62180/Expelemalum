@@ -14,10 +14,9 @@ script = ExtResource("1_wx0k4")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Narration" parent="CanvasLayer" instance=ExtResource("3_xawyk")]
-metadata/_edit_use_anchors_ = true
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
-visible = false
+mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dbt56")

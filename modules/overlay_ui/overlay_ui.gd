@@ -13,18 +13,17 @@ func _on_game_state_update(previousState):
 	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
 		_on_exit_gameplay()
 
-func _input(event : InputEvent):
+func _unhandled_input(event : InputEvent):
 	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && GameState.current_game_phase == GameState.GAME_PHASE.Intro:
 		animationPlayer.play("ExitIntro")
 		gameloop.start_gameplay()
 
 func _on_enter_gameplay():
-	animationPlayer.play("EnterGameplay")
 	GameState.updated_remaining_count.connect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.connect(_on_exorcist_killed)
 
 func _on_exit_gameplay():
-	animationPlayer.play_backwards("EnterGameplay")
+	animationPlayer.play("EnterOutro")
 	GameState.updated_remaining_count.disconnect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.disconnect(_on_exorcist_killed)
 	
@@ -41,8 +40,6 @@ func _on_play_again_button_pressed():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "ExitIntro" or (anim_name == "EnterOutro" and animationPlayer.current_animation_position == 0):
 		_on_enter_gameplay()
-	if anim_name == "EnterGameplay" && animationPlayer.current_animation_position == 0:
-		animationPlayer.play("EnterOutro")
 	if anim_name == "EnterOutro" && animationPlayer.current_animation_position != 0:
 		gameloop.destroy_world()
 
