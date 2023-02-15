@@ -21,21 +21,16 @@ var subtitleAnimationPlayer : AnimationPlayer = get_node("SubtitleAnimationPlaye
 
 var prompt_dict : Dictionary
 var queued_prompts : Array
-enum AUDIO_LINE {narration_trigger_default_defeat, narration_trigger_default_victory, narration_trigger_gameLaunch_1, narration_trigger_firstKill_peasant, narration_trigger_manaLack, narration_trigger_firstKill_exorcist, narration_trigger_ww_intro}
+enum AUDIO_LINE {narration_trigger_gameLaunch_2, narration_trigger_default_defeat, narration_trigger_default_victory, narration_trigger_gameLaunch_1, narration_trigger_firstKill_peasant, narration_trigger_manaLack, narration_trigger_firstKill_exorcist, narration_trigger_ww_intro}
 
 #See initiate indicators for structure
 var indicators : Dictionary
 #Each indicator value varies from -1 to 1. 0 is considered neutral 
 enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress, filler}
 enum PLAYTYPES {highIndicator, lowIndicator, noIndication, victoryLowIndicator, defeatLowIndicator, victoryHighIndicator, defeatHighIndicator}
-const play_style_matching : Dictionary = {
-	INDICATORS.curseActivity : {
-		
-	}
-	
-}
+
 const play_style_default = "Balanced"
-const play_style_default_threshold = 1.5
+const play_style_default_threshold = 1.4
 #if all indicators' absolute value is under the filler threshold, 
 # a filling prompt will be played.
 const filler_threshold : float = 0.2
@@ -53,16 +48,21 @@ func _ready():
 	
 	# Init
 	prompt_dict = parse_csv_database(audio_source)
- #setting indicator value
+	initiate_indicators(true)
+		
+#	var choice = randi_range(0,1)
+#	if choice == 1 :
+#	_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_1)
+#	else :
+#		_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_2)
+	play_situation_line(INDICATORS.filler, PLAYTYPES.noIndication)
 	
-	# Début de la narration :
-#	lastLineSpoken.start() # Optionnel si play_line après
 	$MonitorLabel.text = ""
-	_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_1)
 
-func initiate_indicators() :
+func initiate_indicators(complete_reset : bool = false) :
 	
-	#Make empty dictionnary
+#	if complete_reset :
+		#Make empty dictionnary
 	indicators = {}
 	for indicator in INDICATORS :
 		# [indicator value, indicator id, playtype dictionnary containing prompts]
@@ -84,7 +84,7 @@ func initiate_indicators() :
 		var playtyp = prompt_array["playType"]
 		
 		if (indic != null and indic >= 0) and (playtyp != null and indic >= 0) :
-			register_asked_prompt(indic, playtyp, 1)
+			register_asked_prompt(indic, playtyp, -1)
 			var studied_array = indicators[indic][2][playtyp]["prompts_array"]
 			
 			if prompt_array["playOrderPriority"] > studied_array.size() :
@@ -164,6 +164,8 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 			monitor += str(INDICATORS.keys()[i]) + " val: " + str(indicators[i][0]) +" prompts : "
 			for t in PLAYTYPES :
 				monitor += str(get_indicators_remaining_prompts(i,PLAYTYPES[t]))
+				monitor += "-"
+				monitor += str(get_indicators_asked_prompts(i,PLAYTYPES[t]))
 				monitor += "|"
 			monitor += "\n"
 		$MonitorLabel.text = prefix + "\n" + monitor + suffix
@@ -283,10 +285,10 @@ func update_play_style():
 
 func update_indicators():
 	# EVILNESS
-	if ((GameState.peasant_kill_count + GameState.exorcist_kill_count) == 0) :
+	if ((GameState.get_total_kill_count()) == 0) :
 		indicators[INDICATORS.curseEvilness][0] = 0.0
 	else :
-		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.peasant_kill_count / (GameState.peasant_kill_count + GameState.exorcist_kill_count)) - 1.0
+		indicators[INDICATORS.curseEvilness][0] = 2*(GameState.peasant_kill_count / (GameState.get_total_kill_count())) - 1.0
 	
 	#DIFFICULTY
 	indicators[INDICATORS.currentDifficulty][0] = 2*(GameState.remaining_exorcists_count / (GameState.remaining_exorcists_count + GameState.remaining_peasant_count)) - 1.0 #can be zero if world not init
@@ -298,7 +300,6 @@ func update_indicators():
 	var number_of_swipes_done = GameState.get_updated_curse_events().size()
 	indicators[INDICATORS.curseActivity][0] = 2 *(GameState.curse_events.size() / GameState.curse_memory_duration) - 1.0
 	
-	
 	GameState.set_player_narration_state("yolo")
 	
 	#debug
@@ -307,13 +308,20 @@ func update_indicators():
 func register_asked_prompt(
 	indicator : INDICATORS,
 	playtype : PLAYTYPES,
-	delta : int = -1) :
+	delta : int = 1) :
 	
 	var studied_dict = indicators[indicator][2][playtype]
 	
-	if (delta < 0 and studied_dict["remaining_prompts"] > 0) or (delta > 0) :
-		studied_dict["remaining_prompts"] += delta
-	studied_dict["asked_prompts"] += delta
+	if (delta > 0) : #if a prompt is asked
+		
+		#consume what is available to consume
+		studied_dict["remaining_prompts"] = max (0 , studied_dict["remaining_prompts"] - delta)
+		
+		#register the asking
+		studied_dict["asked_prompts"] += delta
+		
+	else : #if a prompt is aded
+		studied_dict["remaining_prompts"] -= delta
 	
 func get_indicators_remaining_prompts(
 	indicator : INDICATORS,
@@ -367,14 +375,12 @@ func _on_audio_stream_player_finished():
 
 func _on_game_state_kill(killer : Node2D, victim : Node2D):
 	
-	if not(killer.character_type == killer.CHARACTER_TYPE.Exorcist) :
+	if not(killer.character_type == killer.CHARACTER_TYPE.Exorcist) and GameState.get_total_kill_count() == 1:
 		match victim.character_type :
-			victim.CHARACTER_TYPE.Exorcist: # TODO: Check
-				if GameState.exorcist_kill_count == 1 :
+			victim.CHARACTER_TYPE.Exorcist: 
 					lastLineSpoken.stop()
 					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_exorcist)
 			victim.CHARACTER_TYPE.Lumberjack :
-				if GameState.peasant_kill_count == 1 :
 					lastLineSpoken.stop()
 					_play_line_direct(AUDIO_LINE.narration_trigger_firstKill_peasant)
 
@@ -394,7 +400,7 @@ func _on_game_change(old) :
 		GameState.GAME_PHASE.Intro :
 			pass
 		GameState.GAME_PHASE.Gameplay :
-			initiate_indicators() #with every indicator to 0 except filler
+#			initiate_indicators(true) #with every indicator to 0 except filler
 			lastLineSpoken.start()
 		GameState.GAME_PHASE.Outro :
 			lastLineSpoken.stop()
