@@ -37,6 +37,8 @@ func get_updated_curse_events() -> Array:
 # called somewhere else in the code
 func start_gameplay():	
 	GameState.game_phase_update(GameState.GAME_PHASE.Gameplay)
+
+func reset_gamestate():
 	remaining_exorcists_count = 0
 	exorcist_kill_count = 0
 

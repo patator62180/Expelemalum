@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://khfvq1400jtw"]
+
+[ext_resource type="Script" path="res://modules/curse/curved_lines.gd" id="1_1tk34"]
+
+[node name="CurvedLines" type="Node2D"]
+script = ExtResource("1_1tk34")

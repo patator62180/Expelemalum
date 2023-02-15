@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv2hth1iqw21"
-path="res://.godot/imported/dead_curse.svg-b617a1ad47cdc416b7b653e0e4592ba4.ctex"
+uid="uid://dwpig08r1vr03"
+path="res://.godot/imported/tuto_curse.svg-84e580478b478c0b4c90ef38a0b6aee2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/curse/assets/dead_curse.svg"
-dest_files=["res://.godot/imported/dead_curse.svg-b617a1ad47cdc416b7b653e0e4592ba4.ctex"]
+source_file="res://modules/overlay_ui/assets/tuto_curse.svg"
+dest_files=["res://.godot/imported/tuto_curse.svg-84e580478b478c0b4c90ef38a0b6aee2.ctex"]
 
 [params]
 

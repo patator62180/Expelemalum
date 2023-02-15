@@ -19,12 +19,11 @@ func _input(event : InputEvent):
 		gameloop.start_gameplay()
 
 func _on_enter_gameplay():
-	animationPlayer.play("EnterGameplay")
 	GameState.updated_remaining_count.connect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.connect(_on_exorcist_killed)
 
 func _on_exit_gameplay():
-	animationPlayer.play_backwards("EnterGameplay")
+	animationPlayer.play("EnterOutro")
 	GameState.updated_remaining_count.disconnect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.disconnect(_on_exorcist_killed)
 	
@@ -41,8 +40,6 @@ func _on_play_again_button_pressed():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "ExitIntro" or (anim_name == "EnterOutro" and animationPlayer.current_animation_position == 0):
 		_on_enter_gameplay()
-	if anim_name == "EnterGameplay" && animationPlayer.current_animation_position == 0:
-		animationPlayer.play("EnterOutro")
 	if anim_name == "EnterOutro" && animationPlayer.current_animation_position != 0:
 		gameloop.destroy_world()
 

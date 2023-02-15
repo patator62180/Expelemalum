@@ -5,12 +5,18 @@ const subtitle_speed : float = 1.5
 @onready
 var lastLineSpoken : Timer = $LastLineSpoken
 @onready
-var narratorSubtitleLabel : Label = get_node("Label")
+var narratorSubtitleLabel : Label = get_node("Scroll/Label")
 @onready
+
 var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 const audio_source : String = "res://modules/narration/Audio/Audio - narrationDictionnary.csv"
+
+@onready
+var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
+@onready
+var subtitleAnimationPlayer : AnimationPlayer = get_node("SubtitleAnimationPlayer")
 
 
 var prompt_dict : Dictionary
@@ -340,14 +346,15 @@ func _play_line_str(lineNameStr : String) :
 		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
 		narratorStreamPlayer.play()
-		animationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
+		subtitleAnimationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
+		scrollAnimationPlayer.play("ScrollIn")
 
 func _play_line_direct(lineName : AUDIO_LINE) :
 	_play_line_str(AUDIO_LINE.keys()[lineName])
 
 func _on_audio_stream_player_finished():
 	narratorStreamPlayer.stop()
-	narratorSubtitleLabel.text =" "
+	scrollAnimationPlayer.play_backwards("ScrollIn")
 	
 	if queued_prompts.size() > 0 :
 		await get_tree().create_timer(1.0).timeout
