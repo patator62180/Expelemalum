@@ -17,6 +17,7 @@ script = ExtResource("1_wx0k4")
 metadata/_edit_use_anchors_ = true
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dbt56")
