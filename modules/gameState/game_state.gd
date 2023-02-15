@@ -28,6 +28,9 @@ var player_narration_state : String = "Quick Looser"
 func set_player_narration_state(new_state : String) :
 	player_narration_state = new_state
 
+func get_total_kill_count() -> int :
+	return peasant_kill_count + exorcist_kill_count
+
 func get_updated_curse_events() -> Array:
 	var current_date : float = Time.get_ticks_msec()/1000.0
 	while(not curse_events.is_empty() and GameState.curse_events[0] < current_date - curse_memory_duration) :
