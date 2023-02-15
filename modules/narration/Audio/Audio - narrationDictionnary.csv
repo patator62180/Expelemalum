@@ -1,20 +1,27 @@
-id,subtitle,computedOnIndicator,computedPlayType,computedPlayOrderPriority
-narration_timer_difficulty_high,"By god’s nails, don’t let those prayers beat us",INDICATORS.currentDifficulty,PLAYTYPES.highIndicator,1
-narration_timer_difficulty_low,"I know you’re a beginner, but I still think that it’s too easy",INDICATORS.currentDifficulty,PLAYTYPES.lowIndicator,1
-narration_timer_activity_high,"Jumping around like hell on wheels! Keep it cool, but not too much...",INDICATORS.curseActivity,PLAYTYPES.highIndicator,1
-narration_timer_activity_low,"Don’t get too attached to this poor soul, if you do well, none will be left.",INDICATORS.curseActivity,PLAYTYPES.lowIndicator,1
-narration_timer_evilness_high,"They had a family you know, the last one had a baby girl named Beatrice, nice",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,3
-narration_trigger_fewKills_peasant,"Well you are still alive, that’s something, maybe it’ll be easier to go on a rampage after killing the exorcists though",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,2
-narration_trigger_firstKill_peasant,Ahah! I like the spirit of a free kill… but does it help you?,INDICATORS.curseEvilness,PLAYTYPES.highIndicator,1
-narration_timer_evilness_low,Why so serious? Those priest deserved it but live a little! kill a lot,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,2
-narration_trigger_fewKills_exorcist,You’re doing good ! maybe a bit too good now that I think of it,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,1
-narration_timer_filler_1,"hm hm hm that’s nice stroll, don’t forget to take some time to yourself",INDICATORS.filler,PLAYTYPES.highIndicator,1
-narration_timer_filler_2,"I was thinking of having my horns trimmed, what do you think? ",INDICATORS.filler,PLAYTYPES.highIndicator,1
-narration_timer_filler_3,What a cute village *evil laugh*,INDICATORS.filler,PLAYTYPES.highIndicator,1
-narration_trigger_manaLack,You don't have enough mana yet,INDICATORS.filler,PLAYTYPES.lowIndicator,1
-narration_trigger_gameLaunch_1,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,2
-narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,2
-narration_timer_progress_high,"Soon none will stand in your way, to Hell they come",INDICATORS.gameProgress,PLAYTYPES.highIndicator,1
-narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse",INDICATORS.gameProgress,PLAYTYPES.lowIndicator,1
-narration_trigger_firstKill_exorcist,Well you know who your enemies are… keep it up champ,INDICATORS.gameProgress,PLAYTYPES.noIndication,1
-narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,INDICATORS.filler,PLAYTYPES.noIndication,1
+id,subtitle,computedOnIndicator,computedPlayType,computedPlayOrderPriority,specialDisplay
+narration_timer_difficulty_high,"By god’s nails, don’t let those prayers beat us",INDICATORS.currentDifficulty,PLAYTYPES.highIndicator,1,
+narration_timer_difficulty_low,"I know you’re a beginner, but I still think that it’s too easy",INDICATORS.currentDifficulty,PLAYTYPES.lowIndicator,1,
+narration_timer_activity_high,"Jumping around like hell on wheels! Keep it cool, but not too much...",INDICATORS.curseActivity,PLAYTYPES.highIndicator,1,
+narration_timer_activity_low,"Don’t get too attached to this poor soul, if you do well, none will be left.",INDICATORS.curseActivity,PLAYTYPES.lowIndicator,1,
+narration_timer_evilness_high,"They had a family you know, the last one had a baby girl named Beatrice, nice",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,2,
+narration_trigger_fewKills_peasant,"Well you are still alive, that’s something, maybe it’ll be easier to go on a rampage after killing the exorcists though",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,1,
+narration_trigger_firstKill_peasant,Ahah! I like the spirit of a free kill… but does it help you?,,,1,
+narration_timer_evilness_low,Why so serious? Those priest deserved it but live a little! kill a lot,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,2,
+narration_trigger_fewKills_exorcist,You’re doing good ! maybe a bit too good now that I think of it,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,1,
+narration_timer_filler_1,"hm hm hm that’s nice stroll, don’t forget to take some time to yourself",INDICATORS.filler,PLAYTYPES.highIndicator,1,
+narration_timer_filler_2,"I was thinking of having my horns trimmed, what do you think? ",INDICATORS.filler,PLAYTYPES.highIndicator,1,
+narration_timer_filler_3,What a cute village *evil laugh*,INDICATORS.filler,PLAYTYPES.highIndicator,1,
+narration_trigger_manaLack,You don't have enough mana yet,,,1,
+narration_trigger_gameLaunch_1,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,1,
+narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,1,
+narration_timer_progress_high,"Soon none will stand in your way, to Hell they come",INDICATORS.gameProgress,PLAYTYPES.highIndicator,1,
+narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse",INDICATORS.gameProgress,PLAYTYPES.lowIndicator,1,
+narration_trigger_firstKill_exorcist,Well you know who your enemies are… keep it up champ,,,1,
+narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,,,1,
+narration_trigger_default_victory,Sous titre à remplacer,,,,Balanced :)
+narration_trigger_default_defeat,Sous titre à remplacer,,,,Balanced but not good
+narration_trigger_evil_high_victory,Sous titre à remplacer,,,,EVIL >:D
+narration_trigger_evil_low_victory,Sous titre à remplacer,,,,Kind... but still won wtf
+narration_trigger_activity_low_victory,Sous titre à remplacer,,,,Lazy but...
+narration_trigger_activity_high_victory,Sous titre à remplacer,,,,Superactive
+narration_trigger_progress_high_victory,Sous titre à remplacer,,,,Super quick
