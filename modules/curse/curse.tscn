@@ -289,7 +289,7 @@ scale_amount_curve = SubResource("Curve_hsout")
 [node name="GPUParticles2DStraigthBack" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = -1
 position = Vector2(0, 50)
-amount = 40
+amount = 20
 lifetime = 0.8
 preprocess = 2.0
 fixed_fps = 30

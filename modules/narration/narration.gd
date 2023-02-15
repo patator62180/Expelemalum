@@ -168,9 +168,11 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 				monitor += str(get_indicators_asked_prompts(i,PLAYTYPES[t]))
 				monitor += "|"
 			monitor += "\n"
-		$MonitorLabel.text = prefix + "\n" + monitor + suffix
+		if OS.is_debug_build():
+			$MonitorLabel.text = prefix + "\n" + monitor + suffix
 	else :
-		$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
+		if OS.is_debug_build():
+			$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
 
 func play_situation_line(
 	indicator : INDICATORS,
