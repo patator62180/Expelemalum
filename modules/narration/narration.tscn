@@ -110,7 +110,6 @@ mouse_filter = 1
 script = ExtResource("1_kif28")
 
 [node name="MonitorLabel" type="Label" parent="."]
-visible = false
 z_index = 10
 layout_mode = 1
 offset_right = 452.0
