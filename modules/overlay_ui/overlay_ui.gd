@@ -13,7 +13,7 @@ func _on_game_state_update(previousState):
 	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
 		_on_exit_gameplay()
 
-func _unhandled_input(event : InputEvent):
+func _input(event : InputEvent):
 	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && GameState.current_game_phase == GameState.GAME_PHASE.Intro:
 		animationPlayer.play("ExitIntro")
 		gameloop.start_gameplay()

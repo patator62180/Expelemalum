@@ -668,7 +668,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("11_jww6w")
 
 [node name="Scroll2" type="Sprite2D" parent="MenuScreen"]
-position = Vector2(-374, 906)
+position = Vector2(-366, 918)
 rotation = -0.465849
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("11_jww6w")
