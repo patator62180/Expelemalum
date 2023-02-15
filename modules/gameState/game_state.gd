@@ -23,7 +23,10 @@ var metamorphose_count : int = 0
 var curse_events : Array = [] # updated with on_curse func, to link
 const curse_memory_duration : float = 20.0 # number of seconds to remember Events
 
-var player_narration_state : String = "Satanic"
+var player_narration_state : String = "Quick Looser"
+
+func set_player_narration_state(new_state : String) :
+	player_narration_state = new_state
 
 func get_updated_curse_events() -> Array:
 	var current_date : float = Time.get_ticks_msec()/1000.0
