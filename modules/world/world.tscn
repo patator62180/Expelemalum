@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
-[ext_resource type="Texture2D" uid="uid://byvwxg3rlhqyo" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
+[ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
 [ext_resource type="PackedScene" uid="uid://bvvjqxk0venb3" path="res://modules/character/exorcists/exorcist.tscn" id="4_n7ean"]
-[ext_resource type="PackedScene" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
-[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="6_d8eis"]
 [ext_resource type="PackedScene" uid="uid://jm02uma7ha5r" path="res://modules/camera/Camera2DFocus.tscn" id="7_m4srl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh02"]
@@ -149,9 +148,6 @@ position = Vector2(-67, -87)
 position = Vector2(-67.6522, 77.4629)
 
 [node name="Foreground" type="Node2D" parent="."]
-
-[node name="Curse" parent="Foreground" instance=ExtResource("6_d8eis")]
-INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Character")
 
 [node name="Camera2DFocus" parent="." instance=ExtResource("7_m4srl")]
 ZOOM_MIN = 1.0

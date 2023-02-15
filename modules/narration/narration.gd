@@ -19,6 +19,13 @@ var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
 var subtitleAnimationPlayer : AnimationPlayer = get_node("SubtitleAnimationPlayer")
 
 
+var narratorSubtitleLabel : Label = get_node("Scroll/Label")
+@onready
+var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
+@onready
+var subtitleAnimationPlayer : AnimationPlayer = get_node("SubtitleAnimationPlayer")
+
+
 var prompt_dict : Dictionary
 var queued_prompts : Array
 enum AUDIO_LINE {narration_trigger_default_defeat, narration_trigger_default_victory, narration_trigger_gameLaunch_1, narration_trigger_firstKill_peasant, narration_trigger_manaLack, narration_trigger_firstKill_exorcist, narration_trigger_ww_intro}

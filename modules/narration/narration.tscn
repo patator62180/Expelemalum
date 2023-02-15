@@ -1,28 +1,73 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=9 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="2_42dyg"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
-font = ExtResource("2_42dyg")
-font_size = 22
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 0.301961)
+[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="2_cy3iu"]
 
 [sub_resource type="Animation" id="Animation_qs274"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/path = NodePath("Scroll/Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(913, 454)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scroll:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.49504]
+}
+
+[sub_resource type="Animation" id="Animation_it6p1"]
+resource_name = "ScrollIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scroll:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(885, 658), Vector2(883, 497)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scroll:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.00511, 1.49504]
 }
 
 [sub_resource type="Animation" id="Animation_m4kxw"]
@@ -30,7 +75,7 @@ resource_name = "SubtitleReveal"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_ratio")
+tracks/0/path = NodePath("Scroll/Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,8 +88,16 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mu27e"]
 _data = {
 "RESET": SubResource("Animation_qs274"),
+"ScrollIn": SubResource("Animation_it6p1"),
 "SubtitleReveal": SubResource("Animation_m4kxw")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_uweh6"]
+font = ExtResource("2_42dyg")
+font_size = 22
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.301961)
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -53,31 +106,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_kif28")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 214.0
-offset_top = -93.0
-offset_right = -252.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
-label_settings = SubResource("LabelSettings_uweh6")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
-
 [node name="MonitorLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 offset_right = 452.0
 offset_bottom = 252.0
+mouse_filter = 1
 text = "yolo"
 autowrap_mode = 1
 
@@ -87,10 +124,46 @@ wait_time = 15.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 mix_target = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ScrollAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mu27e")
 }
+
+[node name="SubtitleAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mu27e")
+}
+
+[node name="Scroll" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 913.0
+offset_top = 454.0
+offset_right = 2489.0
+offset_bottom = 2596.0
+rotation = 1.49504
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_cy3iu")
+
+[node name="Label" type="Label" parent="Scroll"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -69.0
+offset_right = -896.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = -1.5708
+scale = Vector2(3, 3)
+mouse_filter = 1
+text = "Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
+label_settings = SubResource("LabelSettings_uweh6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="timeout" from="LastLineSpoken" to="." method="_on_last_line_spoken_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
