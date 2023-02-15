@@ -32,7 +32,7 @@ func _process(delta : float):
 						var x_propagation_distance : float = distance_to_other_other_character / other_character.RADIUS_VISION
 						var x_propagation_suspicion : float = behavior.memory[other_other_character]["suspicion"]
 						behavior.memory[other_character]["suspicion"] += SUSPECTING_SUSPICION_FUNC.sample_baked(x_suspicion) * SUPECTING_DISTANCE_FUNC.sample_baked(x_suspicion) * SUSPECTING_PROPAGATION_SUSPICION_FUNC.sample_baked(x_propagation_suspicion) * SUSPECTING_PROPAGATION_DISTANCE_FUNC.sample_baked(x_propagation_distance) * delta / TIME
-						behavior.memory[other_other_character]["suspicion"] -= SUSPECTING_SUSPICION_FUNC.sample_baked(x_suspicion) * SUPECTING_DISTANCE_FUNC.sample_baked(x_suspicion) * SUSPECTING_PROPAGATION_SUSPICION_FUNC.sample_baked(x_propagation_suspicion) * SUSPECTING_PROPAGATION_DISTANCE_FUNC.sample_baked(x_propagation_distance) * delta / TIME
+						# behavior.memory[other_other_character]["suspicion"] -= SUSPECTING_SUSPICION_FUNC.sample_baked(x_suspicion) * SUPECTING_DISTANCE_FUNC.sample_baked(x_suspicion) * SUSPECTING_PROPAGATION_SUSPICION_FUNC.sample_baked(x_propagation_suspicion) * SUSPECTING_PROPAGATION_DISTANCE_FUNC.sample_baked(x_propagation_distance) * delta / TIME
 				# forgetting suspicion
 				var x_suspicion : float = behavior.memory[other_character]["suspicion"]
 				behavior.memory[other_character]["suspicion"] -= FORGETTING_SUSPICION_FUNC.sample_baked(x_suspicion) * delta / TIME

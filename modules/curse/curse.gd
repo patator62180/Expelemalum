@@ -6,15 +6,15 @@ extends Node2D
 
 @onready var curse_area : Area2D = get_node("Area2D")
 @onready var curse_range : float = get_node("Area2D/CollisionShape2D").shape.radius
-@onready var line : Line2D = get_node("CurvedLine")
-@onready var arrow : Sprite2D = get_node("ArrowDown")
+@onready var line : Node2D = get_node("CurvedLines").get_child(0)
+@onready var pointer : Node2D = get_node("Pointer")
 @onready var skullPathFollow : Node2D = get_node("Path2D/PathFollow2D")
 
 #const var
 const target_angle_epsilon = 0.1* TAU
-const line_circle_radius = 10 #pixel
-const arrowSpeed = 10 #pixel/second
-const arrowOffset = Vector2(0,-30) #pixel
+const line_circle_radius = 30 #pixel
+const pointerSpeed = 10 #pixel/second
+const pointerOffset = Vector2(0,-30) #pixel
 const skullSpeed = 10 #pixel/second
 
 #ingame var
@@ -65,7 +65,7 @@ func _process(delta : float):
 
 func _update_Cursable_Character():
 	#if cursable go out of range, unhighlight
-	if cursable_character != null and not curse_area.overlaps_area(cursable_character.get_node("Area2DBody")):
+	if cursable_character != null and not cursable_character.is_dead and not curse_area.overlaps_area(cursable_character.get_node("Area2DBody")):
 		_freeCursableCharacter()
 
 	var inputVector : Vector2 = (get_global_mouse_position() - global_position)
@@ -119,16 +119,28 @@ func _get_input_vector() -> Vector2:
 	return (get_global_mouse_position()-global_position).normalized()
 
 func _update_line(delta : float):
-	arrow.global_position += (_get_arrow_target() - arrow.global_position) * delta * arrowSpeed
-	arrow.look_at(cursable_character.global_position if cursable_character else 2*arrow.global_position - skullPathFollow.global_position)
-	
+	# update pointer
+	pointer.global_position += (_get_pointer_target() - pointer.global_position) * delta * pointerSpeed
+	if cursable_character:
+		pointer.look_at(cursable_character.global_position)
+		if not $Pointer/HandOpen.visible:
+			$Pointer/HandOpen.show()
+		if $Pointer/HandPoint.visible:
+			$Pointer/HandPoint.hide()
+	else:
+		pointer.look_at(2*pointer.global_position - skullPathFollow.global_position)
+		if $Pointer/HandOpen.visible:
+			$Pointer/HandOpen.hide()
+		if not $Pointer/HandPoint.visible:
+			$Pointer/HandPoint.show()
+	# update line
 	line.points[0] = skullPathFollow.position
-	line.points[line.points.size()-1] = arrow.global_position - global_position
+	line.points[line.points.size()-1] = pointer.global_position - global_position + 6.0 * Vector2.LEFT.rotated(pointer.rotation)
 
-func _get_arrow_target():
+func _get_pointer_target():
 	if cursable_character and ((not cursable_character.is_dying) or (not cursable_character.is_dead)):
 			var sprite : Sprite2D = cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
-			return sprite.global_position + arrowOffset
+			return sprite.global_position + pointerOffset
 	else:
 		return _get_input_vector()*line_circle_radius + skullPathFollow.global_position
 
