@@ -12,6 +12,8 @@ extends Node
 
 @export var SPEED_FACTOR : float
 
+const BOUNDARY_MARGING : float = 10.0
+
 func get_character() -> Node2D:
 	return get_node(CHARACTER_PATH)
 
@@ -20,7 +22,7 @@ func get_moving_direction() -> Vector2:
 	var moving_direction : Vector2 = Vector2.ZERO
 	var character : Node2D = get_character()
 	# compute
-	if not character.containing_boundaries.is_empty() or not character.last_boundary:
+	if not character.inner_boundaries.is_empty() or not character.last_inner_boundary:
 		if character.visible_characters:
 			moving_direction = _get_moving_direction()
 			curiosity_direction = moving_direction
@@ -29,8 +31,8 @@ func get_moving_direction() -> Vector2:
 			$TimerCuriosity.start()
 			moving_direction = curiosity_direction
 	else:
-		boundary_exits.append({"position":character.global_position, "know":1.0})
-		moving_direction = (character.last_boundary.global_position - character.global_position).normalized()
+		boundary_exits.append({"position":character.global_position + BOUNDARY_MARGING * (character.global_position - character.last_inner_boundary.global_position).normalized(), "know":1.0})
+		moving_direction = (character.last_inner_boundary.global_position - character.global_position).normalized()
 		curiosity_direction = moving_direction
 		$TimerCuriosity.stop()
 	return moving_direction
@@ -55,6 +57,7 @@ func _ready():
 	var character : Node2D = get_character()
 	character.get_node("Area2DVision").area_entered.connect(_on_character_area_2d_vision_area_entered)
 	character.dying.connect(_on_character_dying)
+	character.entered_outer_boundary.connect(_on_character_entered_outer_boundary)
 
 func _process(delta : float):
 	# update boundary exits
@@ -90,6 +93,11 @@ func _get_moving_direction() -> Vector2:
 	return moving_direction.normalized()
 
 # signals
+
+func _on_character_entered_outer_boundary(outer_boundary : Area2D):
+	var character : Node2D = get_character()
+	boundary_exits.append({"position":character.global_position + BOUNDARY_MARGING * (outer_boundary.global_position - character.global_position).normalized(), "know":1.0})
+	$TimerCuriosity.stop()
 
 func _on_character_area_2d_vision_area_entered(area : Area2D):
 	if not area == get_character().get_node("Area2DBody"):

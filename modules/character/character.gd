@@ -12,6 +12,8 @@ signal spawned(character)
 signal horizontal_direction_changed_to_right
 signal horizontal_direction_changed_to_left
 
+signal entered_outer_boundary(outer_boundary)
+
 # testing interface (assuming this is only changed in the editor)
 @export var SPEED : float
 
@@ -52,8 +54,8 @@ var victim : Node2D = null
 var is_cursed : bool = false
 
 # boundary variables
-var containing_boundaries : Array
-var last_boundary : Area2D = null
+var inner_boundaries : Array
+var last_inner_boundary : Area2D = null
 
 ## vision variables
 var visible_characters : Array = []
@@ -150,12 +152,16 @@ func _on_area_2d_vision_area_exited(area : Area2D):
 		visible_characters.erase(character)
 
 func _on_area_2d_boundary_check_area_entered(area : Area2D):
-	containing_boundaries.append(area)
+	if area.is_inner:
+		inner_boundaries.append(area)
+	else:
+		emit_signal("entered_outer_boundary", area)
 
 func _on_area_2d_boundary_check_area_exited(area : Area2D):
-	containing_boundaries.erase(area)
-	if containing_boundaries.is_empty():
-		last_boundary = area
+	if area.is_inner:
+		inner_boundaries.erase(area)
+		if inner_boundaries.is_empty():
+			last_inner_boundary = area
 
 func _on_area_2d_close_range_area_entered(area : Area2D):
 	if not area == $Area2DBody:

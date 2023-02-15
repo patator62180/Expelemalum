@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo8d7kvyjb5qg"
-path="res://.godot/imported/circle_666.png-a32952cf0fe1ab993e4cc62d5edc44a0.ctex"
+uid="uid://dxeibka3obwu0"
+path="res://.godot/imported/rock_3.svg-e7c84fab77577bfc26bc50d390769627.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tools/circle_666.png"
-dest_files=["res://.godot/imported/circle_666.png-a32952cf0fe1ab993e4cc62d5edc44a0.ctex"]
+source_file="res://modules/world/terrain/assets/rock_3.svg"
+dest_files=["res://.godot/imported/rock_3.svg-e7c84fab77577bfc26bc50d390769627.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

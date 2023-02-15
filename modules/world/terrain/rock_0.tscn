@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi4brxdm0mcrj"]
+
+[ext_resource type="Texture2D" uid="uid://ddhqpd7nm1gyv" path="res://modules/world/terrain/assets/rock_0.svg" id="1_wxv4j"]
+
+[node name="Rock0" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_wxv4j")

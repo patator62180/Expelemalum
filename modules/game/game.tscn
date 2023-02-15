@@ -25,5 +25,5 @@ mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_dbt56")
-volume_db = 3.933
+volume_db = -9.0
 autoplay = true

@@ -1,11 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=17 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
 [ext_resource type="PackedScene" uid="uid://bvvjqxk0venb3" path="res://modules/character/exorcists/exorcist.tscn" id="4_n7ean"]
+[ext_resource type="PackedScene" uid="uid://bi4brxdm0mcrj" path="res://modules/world/terrain/rock_0.tscn" id="6_5ramq"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
 [ext_resource type="PackedScene" uid="uid://jm02uma7ha5r" path="res://modules/camera/Camera2DFocus.tscn" id="7_m4srl"]
+[ext_resource type="PackedScene" uid="uid://c2eepxct61jem" path="res://modules/world/terrain/rock_1.tscn" id="7_x1416"]
+[ext_resource type="PackedScene" uid="uid://cn8nefgupjg6h" path="res://modules/world/terrain/rock_2.tscn" id="8_miqfb"]
+[ext_resource type="PackedScene" uid="uid://ywl2d4fupae4" path="res://modules/world/terrain/rock_3.tscn" id="9_l4pl2"]
+[ext_resource type="PackedScene" uid="uid://r8bs7ksqcgw2" path="res://modules/world/terrain/grass_0.tscn" id="10_apeuq"]
+[ext_resource type="PackedScene" uid="uid://cdlicsmfyjgos" path="res://modules/world/terrain/grass_1.tscn" id="11_xy7lj"]
+[ext_resource type="PackedScene" uid="uid://b44k0c4irv6po" path="res://modules/world/obstacles/tree.tscn" id="12_hffvk"]
+[ext_resource type="Script" path="res://modules/character/boundary.gd" id="13_7dbwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh02"]
 size = Vector2(550, 350)
@@ -146,6 +154,397 @@ position = Vector2(-67, -87)
 
 [node name="@Character@72122" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-67.6522, 77.4629)
+
+[node name="Rock0" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(156.298, 136.245)
+
+[node name="@Rock0@33252" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(79.313, 11.3781)
+
+[node name="@Rock0@33253" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-124.756, -68.8067)
+
+[node name="@Rock0@33254" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(177.543, -11.5197)
+
+[node name="@Rock0@33255" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-13.5615, -80.6697)
+
+[node name="@Rock0@33256" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-43.7419, 91.1723)
+
+[node name="@Rock0@33257" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(192.588, 123.724)
+
+[node name="@Rock0@33258" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-36.4665, 31.2835)
+
+[node name="@Rock0@33259" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-86.0995, 40.1469)
+
+[node name="@Rock0@33260" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-30.4457, 68.4292)
+
+[node name="@Rock0@33261" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(143.755, 1.12853)
+
+[node name="@Rock0@33262" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-48.6335, -59.8414)
+
+[node name="@Rock0@33263" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(76.5091, -106.318)
+
+[node name="@Rock0@33264" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(247.58, 155.321)
+
+[node name="@Rock0@33265" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(42.6574, 43.2152)
+
+[node name="@Rock0@33266" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(104.187, -96.0015)
+
+[node name="@Rock0@33267" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-166.007, 43.7289)
+
+[node name="@Rock0@33268" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-137.766, -167.309)
+
+[node name="@Rock0@33269" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(217.828, 18.2297)
+
+[node name="@Rock0@33270" parent="Playground" instance=ExtResource("6_5ramq")]
+position = Vector2(-128.091, -115.99)
+
+[node name="Rock1" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(171.466, -166.539)
+
+[node name="@Rock1@54271" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-223.997, -137.869)
+
+[node name="@Rock1@54272" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-170.344, 61.78)
+
+[node name="@Rock1@54273" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-81.5224, 36.1594)
+
+[node name="@Rock1@54274" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(198.102, 23.3451)
+
+[node name="@Rock1@54275" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-12.9351, -114.839)
+
+[node name="@Rock1@54276" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(134.703, -27.921)
+
+[node name="@Rock1@54277" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-70.135, 45.5295)
+
+[node name="@Rock1@54278" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-175.809, 131.658)
+
+[node name="@Rock1@54279" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(72.7558, -166.451)
+
+[node name="@Rock1@54280" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(21.335, 151.552)
+
+[node name="@Rock1@54281" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(160.362, 123.701)
+
+[node name="@Rock1@54282" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(9.86619, -132.792)
+
+[node name="@Rock1@54283" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(186.649, 93.3136)
+
+[node name="@Rock1@54284" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(7.54486, 121.98)
+
+[node name="@Rock1@54285" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-56.5298, 117.898)
+
+[node name="@Rock1@54286" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(231.578, -167.015)
+
+[node name="@Rock1@54287" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(19.4604, 72.8687)
+
+[node name="@Rock1@54288" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(154.011, -26.7473)
+
+[node name="@Rock1@54289" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(24.115, -106.992)
+
+[node name="@Rock1@54290" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-254.86, -79.4456)
+
+[node name="@Rock1@54291" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-194.119, -51.2067)
+
+[node name="@Rock1@54292" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-58.1891, -30.8776)
+
+[node name="@Rock1@54293" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-206.916, 95.7681)
+
+[node name="@Rock1@54294" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(74.5487, 44.6829)
+
+[node name="@Rock1@54295" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(191.066, 61.624)
+
+[node name="@Rock1@54296" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-71.8887, -130.536)
+
+[node name="@Rock1@54297" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(-232.017, 29.7648)
+
+[node name="@Rock1@54298" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(168.244, 171.245)
+
+[node name="@Rock1@54299" parent="Playground" instance=ExtResource("7_x1416")]
+position = Vector2(3.31603, 155.119)
+
+[node name="Rock2" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(80.3996, -148.933)
+
+[node name="@Rock2@54576" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(-268.518, 70.2392)
+
+[node name="@Rock2@54577" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(33.3913, 38.4386)
+
+[node name="@Rock2@54578" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(-231.846, 63.6286)
+
+[node name="@Rock2@54579" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(255.78, 95.8158)
+
+[node name="@Rock2@54580" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(-146.235, 53.0248)
+
+[node name="@Rock2@54581" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(68.5818, -133.657)
+
+[node name="@Rock2@54582" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(213.934, -54.7535)
+
+[node name="@Rock2@54583" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(272.343, 114.111)
+
+[node name="@Rock2@54584" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(-192.192, 25.7181)
+
+[node name="@Rock2@54585" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(4.32758, -6.86812)
+
+[node name="@Rock2@54586" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(266.206, -11.7357)
+
+[node name="@Rock2@54587" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(242.994, -23.9803)
+
+[node name="@Rock2@54588" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(247.31, 115.246)
+
+[node name="@Rock2@54589" parent="Playground" instance=ExtResource("8_miqfb")]
+position = Vector2(176.053, 113.317)
+
+[node name="Rock3" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(86.6126, -11.8501)
+
+[node name="@Rock3@54866" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(-136.193, -81.1072)
+
+[node name="@Rock3@54867" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(185.568, -116.679)
+
+[node name="@Rock3@54868" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(-219.766, 41.9375)
+
+[node name="@Rock3@54869" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(10.1272, -48.9733)
+
+[node name="@Rock3@54870" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(128.959, -172.685)
+
+[node name="@Rock3@54871" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(-274.225, 140.018)
+
+[node name="@Rock3@54872" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(-5.79087, -25.85)
+
+[node name="@Rock3@54873" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(-181.342, 37.3456)
+
+[node name="@Rock3@54874" parent="Playground" instance=ExtResource("9_l4pl2")]
+position = Vector2(203.614, 155.501)
+
+[node name="Grass0" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(245.875, 53.2829)
+
+[node name="@Grass0@80410" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(1.81389, 67.3974)
+
+[node name="@Grass0@80411" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-96.2481, 167.371)
+
+[node name="@Grass0@80412" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(111.814, -1.62302)
+
+[node name="@Grass0@80413" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(223.322, -84.3507)
+
+[node name="@Grass0@80414" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-1.68538, -56.3776)
+
+[node name="@Grass0@80415" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(33.4388, -169.414)
+
+[node name="@Grass0@80416" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-57.6519, -54.2711)
+
+[node name="@Grass0@80417" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-78.5038, 126.791)
+
+[node name="@Grass0@80418" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(27.8993, 94.9659)
+
+[node name="@Grass0@80419" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-8.52991, 40.0383)
+
+[node name="@Grass0@80420" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(75.2996, 62.4029)
+
+[node name="@Grass0@80421" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-65.5619, -99.6524)
+
+[node name="@Grass0@80422" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-140.38, -4.02407)
+
+[node name="@Grass0@80423" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-78.4497, -62.0257)
+
+[node name="@Grass0@80424" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-1.87787, 145.509)
+
+[node name="@Grass0@80425" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(5.93514, -96.8283)
+
+[node name="@Grass0@80426" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(24.7269, 103.337)
+
+[node name="@Grass0@80427" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(267.41, -126.539)
+
+[node name="@Grass0@80428" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(70.536, 163.121)
+
+[node name="@Grass0@80429" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(14.9361, -95.5977)
+
+[node name="@Grass0@80430" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-127.247, -43.4851)
+
+[node name="@Grass0@80431" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(266.753, 57.5066)
+
+[node name="@Grass0@80432" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-259.649, -139.181)
+
+[node name="@Grass0@80433" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(103.328, -10.2302)
+
+[node name="@Grass0@80448" parent="Playground" instance=ExtResource("10_apeuq")]
+position = Vector2(-155.343, 141.108)
+
+[node name="Grass1" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-242.239, -134.738)
+
+[node name="@Grass1@83437" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-90.114, -31.051)
+
+[node name="@Grass1@83438" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-16.4134, -81.3941)
+
+[node name="@Grass1@83439" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(189.107, 68.5739)
+
+[node name="@Grass1@83440" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(70.9618, 94.7693)
+
+[node name="@Grass1@83441" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-121.412, 124.526)
+
+[node name="@Grass1@83442" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(68.2532, -3.77354)
+
+[node name="@Grass1@83443" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(92.4786, 131.908)
+
+[node name="@Grass1@83444" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(12.0497, 126.003)
+
+[node name="@Grass1@83445" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(12.9715, -144.727)
+
+[node name="@Grass1@83446" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-16.3757, -68.9882)
+
+[node name="@Grass1@83447" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-134.734, -12.9052)
+
+[node name="@Grass1@83448" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(86.7512, -43.8083)
+
+[node name="@Grass1@83449" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(81.9826, -39.1354)
+
+[node name="@Grass1@83450" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(127.044, -28.0679)
+
+[node name="@Grass1@83451" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(162.028, -127.734)
+
+[node name="@Grass1@83452" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(197.227, 74.7506)
+
+[node name="@Grass1@83453" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(1.63189, -157.056)
+
+[node name="@Grass1@83454" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(134.536, -81.1358)
+
+[node name="@Grass1@83455" parent="Playground" instance=ExtResource("11_xy7lj")]
+position = Vector2(-106.915, 37.9862)
+
+[node name="Tree" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+position = Vector2(175.408, 150.473)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("13_7dbwt")
+
+[node name="@Tree@106242" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+position = Vector2(-270.783, -131.647)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("13_7dbwt")
+
+[node name="@Tree@106243" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+position = Vector2(-10.6057, -13.1074)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("13_7dbwt")
+
+[node name="@Tree@106244" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+position = Vector2(104.238, 37.1396)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("13_7dbwt")
 
 [node name="Foreground" type="Node2D" parent="."]
 

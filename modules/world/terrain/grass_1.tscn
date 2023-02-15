@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdlicsmfyjgos"]
+
+[ext_resource type="Texture2D" uid="uid://b0nrvt73k20nk" path="res://modules/world/terrain/assets/grass_1.svg" id="1_smn5q"]
+
+[node name="Grass1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_smn5q")

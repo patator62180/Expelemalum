@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b44k0c4irv6po"]
+
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="1_h7wtl"]
+[ext_resource type="Texture2D" uid="uid://bio27fqm25h8m" path="res://modules/world/obstacles/assets/tree.svg" id="2_oc2ch"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbw2w"]
+radius = 3.0
+height = 18.0
+
+[node name="Tree" instance=ExtResource("1_h7wtl")]
+is_inner = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -31)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_oc2ch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, -7)
+shape = SubResource("CapsuleShape2D_kbw2w")

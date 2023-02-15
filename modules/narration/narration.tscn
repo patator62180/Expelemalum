@@ -122,6 +122,7 @@ autowrap_mode = 1
 wait_time = 15.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
 mix_target = 2
 
 [node name="ScrollAnimationPlayer" type="AnimationPlayer" parent="."]

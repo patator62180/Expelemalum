@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciypoavid6v6j"
-path="res://.godot/imported/circle_100.png-92e55f91a78df59210b5f15e926e1cd8.ctex"
+uid="uid://calvum81fwt0r"
+path="res://.godot/imported/grass_0.svg-cbfd05d52bab81480df677adcdfad2c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tools/circle_100.png"
-dest_files=["res://.godot/imported/circle_100.png-92e55f91a78df59210b5f15e926e1cd8.ctex"]
+source_file="res://modules/world/terrain/assets/grass_0.svg"
+dest_files=["res://.godot/imported/grass_0.svg-cbfd05d52bab81480df677adcdfad2c1.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
