@@ -16,7 +16,6 @@ func _on_game_state_update(previousState):
 func _input(event : InputEvent):
 	if (event.is_action_released("curse") or event.is_action_released("metamorphose")) && GameState.current_game_phase == GameState.GAME_PHASE.Intro:
 		animationPlayer.play("ExitIntro")
-		gameloop.start_gameplay()
 
 func _on_enter_gameplay():
 	GameState.updated_remaining_count.connect(_on_exorcist_count_changed)
@@ -38,7 +37,10 @@ func _on_play_again_button_pressed():
 	gameloop.on_restart()
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "ExitIntro" or (anim_name == "EnterOutro" and animationPlayer.current_animation_position == 0):
+	if anim_name == "ExitIntro":
+		gameloop.start_gameplay() # TODO: CHECK CONDITION
+		_on_enter_gameplay()
+	if anim_name == "EnterOutro" and animationPlayer.current_animation_position == 0:
 		_on_enter_gameplay()
 	if anim_name == "EnterOutro" && animationPlayer.current_animation_position != 0:
 		gameloop.destroy_world()

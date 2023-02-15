@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=16 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://r8bs7ksqcgw2" path="res://modules/world/terrain/grass_0.tscn" id="10_apeuq"]
 [ext_resource type="PackedScene" uid="uid://cdlicsmfyjgos" path="res://modules/world/terrain/grass_1.tscn" id="11_xy7lj"]
 [ext_resource type="PackedScene" uid="uid://b44k0c4irv6po" path="res://modules/world/obstacles/tree.tscn" id="12_hffvk"]
-[ext_resource type="Script" path="res://modules/character/boundary.gd" id="13_7dbwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh02"]
 size = Vector2(550, 350)
@@ -518,33 +517,17 @@ position = Vector2(134.536, -81.1358)
 [node name="@Grass1@83455" parent="Playground" instance=ExtResource("11_xy7lj")]
 position = Vector2(-106.915, 37.9862)
 
-[node name="Tree" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+[node name="Tree" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(175.408, 150.473)
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-script = ExtResource("13_7dbwt")
 
-[node name="@Tree@106242" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+[node name="@Tree@106242" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(-270.783, -131.647)
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-script = ExtResource("13_7dbwt")
 
-[node name="@Tree@106243" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+[node name="@Tree@106243" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(-10.6057, -13.1074)
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-script = ExtResource("13_7dbwt")
 
-[node name="@Tree@106244" type="Area2D" parent="Playground" groups=["character_boundary"] instance=ExtResource("12_hffvk")]
+[node name="@Tree@106244" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(104.238, 37.1396)
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-script = ExtResource("13_7dbwt")
 
 [node name="Foreground" type="Node2D" parent="."]
 

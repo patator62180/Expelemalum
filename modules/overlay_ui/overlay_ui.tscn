@@ -1,40 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://cswujfrnarjpr"]
+[gd_scene load_steps=20 format=3 uid="uid://cswujfrnarjpr"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
-[ext_resource type="Shader" path="res://modules/overlay_ui/vignette_curse.gdshader" id="2_7ijyp"]
-[ext_resource type="Texture2D" uid="uid://bhnby0t2crryr" path="res://modules/world/terrain/assets/scroll.svg" id="3_wcodv"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
 [ext_resource type="Texture2D" uid="uid://c60aomxhx7dpy" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
-[ext_resource type="Texture2D" uid="uid://cx78yxuiouol4" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
-[ext_resource type="Texture2D" uid="uid://boxk7iqy4lc82" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
+[ext_resource type="Texture2D" uid="uid://c7837t3ruslae" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
+[ext_resource type="Texture2D" uid="uid://s47idtmyg3e5" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="10_j3c3t"]
 [ext_resource type="Texture2D" uid="uid://dwcgneymh8lq" path="res://modules/world/terrain/assets/scroll_even_smaller.svg" id="11_gojho"]
 [ext_resource type="Texture2D" uid="uid://dd3k4mqekin66" path="res://modules/overlay_ui/assets/horizontal_scroll.svg" id="11_jww6w"]
 [ext_resource type="Texture2D" uid="uid://dwpig08r1vr03" path="res://modules/overlay_ui/assets/tuto_curse.svg" id="11_wk2pb"]
 [ext_resource type="Texture2D" uid="uid://dw6rrfkyiccxj" path="res://modules/overlay_ui/assets/tuto_metamorphose.svg" id="12_pewgm"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vakr"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a76or"]
-width = 2048
-height = 2048
-noise = SubResource("FastNoiseLite_3vakr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ljl8"]
-shader = ExtResource("2_7ijyp")
-shader_parameter/distortion = 2.024
-shader_parameter/zoom = 0.502
-shader_parameter/gooeyness = 1.154
-shader_parameter/wibble = -0.014
-shader_parameter/saturation = 1.976
-shader_parameter/primary_color = Color(0.721569, 0, 0.109804, 0.235294)
-shader_parameter/secondary_color = Color(0.301961, 0, 1, 0.501961)
-shader_parameter/speed = 0.2
-shader_parameter/noiseSampler = SubResource("NoiseTexture2D_a76or")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgnlk"]
-size = Vector2(100, 100)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
 font = ExtResource("10_j3c3t")
@@ -176,7 +152,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.9, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(277, -559), Vector2(277, -878), Vector2(277, -878)]
+"values": [Vector2(576, 0), Vector2(576, -400), Vector2(576, -400)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -532,7 +508,7 @@ tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(277, -559)]
+"values": [Vector2(576, 0)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -583,16 +559,6 @@ position = Vector2(574.5, 326)
 scale = Vector2(8.97656, 5.0625)
 texture = ExtResource("1_sq413")
 
-[node name="ShaderOverlay" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_0ljl8")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_sgnlk")
-
 [node name="GameplayScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -608,7 +574,7 @@ offset_left = -2.0
 offset_top = -1.0
 offset_right = 811.0
 offset_bottom = 555.0
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_5df4v")
 
 [node name="ExorcistCounter" type="TextureRect" parent="GameplayScreen"]
@@ -686,32 +652,43 @@ grow_vertical = 2
 pivot_offset = Vector2(406, 278)
 mouse_filter = 1
 
-[node name="Title" type="TextureRect" parent="MenuScreen/Intro"]
-layout_mode = 0
-offset_left = 277.0
+[node name="Title" type="Control" parent="MenuScreen/Intro"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -299.0
 offset_top = -559.0
-offset_right = 1853.0
-offset_bottom = 1583.0
+offset_right = -299.0
+offset_bottom = -559.0
+grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_wcodv")
 
 [node name="Credit" type="TextureRect" parent="MenuScreen/Intro/Title"]
-layout_mode = 0
-offset_left = 135.0
-offset_top = 1420.0
-offset_right = 1349.0
-offset_bottom = 1701.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -607.0
+offset_top = 542.5
+offset_right = 607.0
+offset_bottom = 823.5
+grow_horizontal = 2
 texture = ExtResource("9_kjx3s")
 
 [node name="Title" type="TextureRect" parent="MenuScreen/Intro/Title"]
-layout_mode = 0
-offset_left = 132.5
-offset_top = 1730.0
-offset_right = 1375.5
-offset_bottom = 2084.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -710.0
+offset_right = 710.0
+offset_bottom = 549.0
+grow_horizontal = 2
 texture = ExtResource("10_etjgf")
 
 [node name="LeftTuto" type="TextureRect" parent="MenuScreen/Intro"]
+visible = false
 layout_mode = 0
 offset_left = 75.0
 offset_top = 232.0
@@ -732,6 +709,7 @@ scale = Vector2(4.72343, 4.72343)
 texture = ExtResource("11_wk2pb")
 
 [node name="RightTuto" type="TextureRect" parent="MenuScreen/Intro"]
+visible = false
 layout_mode = 0
 offset_left = 837.0
 offset_top = 245.0
