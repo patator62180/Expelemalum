@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
-[ext_resource type="PackedScene" uid="uid://ddhnviwyjohqm" path="res://modules/curse/curse.tscn" id="2_ghruk"]
-[ext_resource type="Texture2D" uid="uid://dc2o4dgfcyuke" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
+[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="2_ghruk"]
+[ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
 [ext_resource type="PackedScene" uid="uid://bvvjqxk0venb3" path="res://modules/character/exorcists/exorcist.tscn" id="4_n7ean"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
 [ext_resource type="PackedScene" uid="uid://duro6yranibfi" path="res://modules/character/peasants/lumberjack.tscn" id="6_c61lt"]
