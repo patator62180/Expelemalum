@@ -106,12 +106,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_kif28")
 
 [node name="MonitorLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 offset_right = 452.0
 offset_bottom = 252.0
+mouse_filter = 1
 text = "yolo"
 autowrap_mode = 1
 
@@ -155,6 +158,7 @@ grow_horizontal = 2
 grow_vertical = 0
 rotation = -1.5708
 scale = Vector2(3, 3)
+mouse_filter = 1
 text = "Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, give them Hell!"
 label_settings = SubResource("LabelSettings_uweh6")
 horizontal_alignment = 1
