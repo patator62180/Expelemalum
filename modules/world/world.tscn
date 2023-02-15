@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=9 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
-[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="2_ghruk"]
 [ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
 [ext_resource type="PackedScene" uid="uid://bvvjqxk0venb3" path="res://modules/character/exorcists/exorcist.tscn" id="4_n7ean"]
 [ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="6_bg6cy"]
@@ -149,9 +148,6 @@ position = Vector2(-67, -87)
 position = Vector2(-67.6522, 77.4629)
 
 [node name="Foreground" type="Node2D" parent="."]
-
-[node name="Curse" parent="Foreground" instance=ExtResource("2_ghruk")]
-INITIALLY_CURSED_CHARACTER = NodePath("../../Playground/Character")
 
 [node name="Camera2DFocus" parent="." instance=ExtResource("7_m4srl")]
 ZOOM_MIN = 1.0
