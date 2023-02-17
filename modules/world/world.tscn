@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://utlxqfpsr0mb"]
+[gd_scene load_steps=18 format=3 uid="uid://utlxqfpsr0mb"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://dqdu3i5pi8wxx" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" path="res://modules/world/terrain/grass_0.tscn" id="10_apeuq"]
 [ext_resource type="PackedScene" path="res://modules/world/terrain/grass_1.tscn" id="11_xy7lj"]
 [ext_resource type="PackedScene" uid="uid://b44k0c4irv6po" path="res://modules/world/obstacles/tree.tscn" id="12_hffvk"]
+[ext_resource type="PackedScene" uid="uid://dqcuv87q35ybb" path="res://modules/world/obstacles/church.tscn" id="13_ijp87"]
+[ext_resource type="PackedScene" uid="uid://v5ri5f0ihbc6" path="res://modules/world/obstacles/shed.tscn" id="14_1llj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh02"]
 size = Vector2(550, 350)
@@ -38,6 +40,8 @@ script = ExtResource("1_cquyq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
 shape = SubResource("RectangleShape2D_2hh02")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -46,32 +50,41 @@ position = Vector2(-190, -130)
 scale = Vector2(0.15, 0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
 texture = ExtResource("3_6f13q")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Border2" type="MeshInstance2D" parent="Background"]
 position = Vector2(190, -130)
 scale = Vector2(-0.15, 0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
 texture = ExtResource("3_6f13q")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Border3" type="MeshInstance2D" parent="Background"]
 position = Vector2(190, 130)
 scale = Vector2(-0.15, -0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
 texture = ExtResource("3_6f13q")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Border4" type="MeshInstance2D" parent="Background"]
 position = Vector2(-190, 130)
 scale = Vector2(0.15, -0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
 texture = ExtResource("3_6f13q")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Playground" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Character" parent="Playground" instance=ExtResource("6_c61lt")]
+position = Vector2(28, -7)
 
 [node name="@Character@53534" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(209.223, 126.226)
+position = Vector2(225, 125)
 
 [node name="@Character@53535" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(55.0959, -47.0099)
@@ -80,7 +93,7 @@ position = Vector2(55.0959, -47.0099)
 position = Vector2(27.0884, 51.2459)
 
 [node name="@Character@53537" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(-118.027, -46.0485)
+position = Vector2(-162, -32)
 
 [node name="@Character@53538" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(133.264, -49.3292)
@@ -92,25 +105,25 @@ position = Vector2(-115.827, 146.755)
 position = Vector2(-132.652, -48.2674)
 
 [node name="@Character@53541" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(120.944, -164.477)
+position = Vector2(131, -135)
 
 [node name="@Character@53542" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-227.413, -68.3355)
 
 [node name="@Character@53543" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(163.721, 116.514)
+position = Vector2(168, 100)
 
 [node name="@Character@53544" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(-269.912, 77.4523)
+position = Vector2(-252, 60)
 
 [node name="@Character@53545" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(31.1628, 92.7865)
+position = Vector2(52, 113)
 
 [node name="@Character@53546" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-13.286, -92.3673)
 
 [node name="@Character@53547" parent="Playground" instance=ExtResource("6_c61lt")]
-position = Vector2(-145.325, -162.751)
+position = Vector2(-166, -150)
 
 [node name="@Character@53548" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-55.5597, 147.927)
@@ -154,9 +167,6 @@ position = Vector2(-67, -87)
 [node name="@Character@72122" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-67.6522, 77.4629)
 
-[node name="Rock0" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(156.298, 136.245)
-
 [node name="@Rock0@33252" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(79.313, 11.3781)
 
@@ -169,9 +179,6 @@ position = Vector2(177.543, -11.5197)
 [node name="@Rock0@33255" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(-13.5615, -80.6697)
 
-[node name="@Rock0@33256" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(-43.7419, 91.1723)
-
 [node name="@Rock0@33257" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(192.588, 123.724)
 
@@ -181,29 +188,17 @@ position = Vector2(-36.4665, 31.2835)
 [node name="@Rock0@33259" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(-86.0995, 40.1469)
 
-[node name="@Rock0@33260" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(-30.4457, 68.4292)
-
 [node name="@Rock0@33261" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(143.755, 1.12853)
 
 [node name="@Rock0@33262" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(-48.6335, -59.8414)
 
-[node name="@Rock0@33263" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(76.5091, -106.318)
-
 [node name="@Rock0@33264" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(247.58, 155.321)
 
 [node name="@Rock0@33265" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(42.6574, 43.2152)
-
-[node name="@Rock0@33266" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(104.187, -96.0015)
-
-[node name="@Rock0@33267" parent="Playground" instance=ExtResource("6_5ramq")]
-position = Vector2(-166.007, 43.7289)
 
 [node name="@Rock0@33268" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(-137.766, -167.309)
@@ -219,9 +214,6 @@ position = Vector2(171.466, -166.539)
 
 [node name="@Rock1@54271" parent="Playground" instance=ExtResource("7_x1416")]
 position = Vector2(-223.997, -137.869)
-
-[node name="@Rock1@54272" parent="Playground" instance=ExtResource("7_x1416")]
-position = Vector2(-170.344, 61.78)
 
 [node name="@Rock1@54273" parent="Playground" instance=ExtResource("7_x1416")]
 position = Vector2(-81.5224, 36.1594)
@@ -247,17 +239,8 @@ position = Vector2(72.7558, -166.451)
 [node name="@Rock1@54280" parent="Playground" instance=ExtResource("7_x1416")]
 position = Vector2(21.335, 151.552)
 
-[node name="@Rock1@54281" parent="Playground" instance=ExtResource("7_x1416")]
-position = Vector2(160.362, 123.701)
-
 [node name="@Rock1@54282" parent="Playground" instance=ExtResource("7_x1416")]
 position = Vector2(9.86619, -132.792)
-
-[node name="@Rock1@54283" parent="Playground" instance=ExtResource("7_x1416")]
-position = Vector2(186.649, 93.3136)
-
-[node name="@Rock1@54284" parent="Playground" instance=ExtResource("7_x1416")]
-position = Vector2(7.54486, 121.98)
 
 [node name="@Rock1@54285" parent="Playground" instance=ExtResource("7_x1416")]
 position = Vector2(-56.5298, 117.898)
@@ -322,9 +305,6 @@ position = Vector2(255.78, 95.8158)
 [node name="@Rock2@54580" parent="Playground" instance=ExtResource("8_miqfb")]
 position = Vector2(-146.235, 53.0248)
 
-[node name="@Rock2@54581" parent="Playground" instance=ExtResource("8_miqfb")]
-position = Vector2(68.5818, -133.657)
-
 [node name="@Rock2@54582" parent="Playground" instance=ExtResource("8_miqfb")]
 position = Vector2(213.934, -54.7535)
 
@@ -345,9 +325,6 @@ position = Vector2(242.994, -23.9803)
 
 [node name="@Rock2@54588" parent="Playground" instance=ExtResource("8_miqfb")]
 position = Vector2(247.31, 115.246)
-
-[node name="@Rock2@54589" parent="Playground" instance=ExtResource("8_miqfb")]
-position = Vector2(176.053, 113.317)
 
 [node name="Rock3" parent="Playground" instance=ExtResource("9_l4pl2")]
 position = Vector2(86.6126, -11.8501)
@@ -373,9 +350,6 @@ position = Vector2(-274.225, 140.018)
 [node name="@Rock3@54872" parent="Playground" instance=ExtResource("9_l4pl2")]
 position = Vector2(-5.79087, -25.85)
 
-[node name="@Rock3@54873" parent="Playground" instance=ExtResource("9_l4pl2")]
-position = Vector2(-181.342, 37.3456)
-
 [node name="@Rock3@54874" parent="Playground" instance=ExtResource("9_l4pl2")]
 position = Vector2(203.614, 155.501)
 
@@ -390,9 +364,6 @@ position = Vector2(-96.2481, 167.371)
 
 [node name="@Grass0@80412" parent="Playground" instance=ExtResource("10_apeuq")]
 position = Vector2(111.814, -1.62302)
-
-[node name="@Grass0@80413" parent="Playground" instance=ExtResource("10_apeuq")]
-position = Vector2(223.322, -84.3507)
 
 [node name="@Grass0@80414" parent="Playground" instance=ExtResource("10_apeuq")]
 position = Vector2(-1.68538, -56.3776)
@@ -411,9 +382,6 @@ position = Vector2(27.8993, 94.9659)
 
 [node name="@Grass0@80419" parent="Playground" instance=ExtResource("10_apeuq")]
 position = Vector2(-8.52991, 40.0383)
-
-[node name="@Grass0@80420" parent="Playground" instance=ExtResource("10_apeuq")]
-position = Vector2(75.2996, 62.4029)
 
 [node name="@Grass0@80421" parent="Playground" instance=ExtResource("10_apeuq")]
 position = Vector2(-65.5619, -99.6524)
@@ -521,13 +489,43 @@ position = Vector2(-106.915, 37.9862)
 position = Vector2(175.408, 150.473)
 
 [node name="@Tree@106242" parent="Playground" instance=ExtResource("12_hffvk")]
-position = Vector2(-270.783, -131.647)
+position = Vector2(-221, -155)
 
 [node name="@Tree@106243" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(-10.6057, -13.1074)
 
+[node name="Tree106243" parent="Playground" instance=ExtResource("12_hffvk")]
+position = Vector2(202, -130)
+
+[node name="Tree106245" parent="Playground" instance=ExtResource("12_hffvk")]
+position = Vector2(-154, 140)
+
 [node name="@Tree@106244" parent="Playground" instance=ExtResource("12_hffvk")]
 position = Vector2(104.238, 37.1396)
+
+[node name="Tree106244" parent="Playground" instance=ExtResource("12_hffvk")]
+position = Vector2(-214, 47)
+
+[node name="Church" parent="Playground" instance=ExtResource("13_ijp87")]
+position = Vector2(-72, 7)
+
+[node name="Shed" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(-20, 117)
+
+[node name="Shed2" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(-177, -85)
+
+[node name="Shed3" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(71, -86)
+
+[node name="Shed4" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(-186, 85)
+
+[node name="Shed5" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(114, 88)
+
+[node name="Shed6" parent="Playground" instance=ExtResource("14_1llj3")]
+position = Vector2(231, -61)
 
 [node name="Foreground" type="Node2D" parent="."]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://v5ri5f0ihbc6"]
+
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="1_u3uvx"]
+[ext_resource type="Texture2D" uid="uid://b84m78u5gl1t3" path="res://modules/world/obstacles/assets/shed.svg" id="2_o7pig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n7eo"]
+size = Vector2(60, 31)
+
+[node name="Shed" instance=ExtResource("1_u3uvx")]
+is_inner = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -24)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_o7pig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, -16.5)
+shape = SubResource("RectangleShape2D_8n7eo")
