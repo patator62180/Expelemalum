@@ -1,20 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bots66vsqufk4"]
+[gd_scene load_steps=6 format=3 uid="uid://cj83sv127ju1g"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
-[ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_224ad"]
-[ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="3_xawyk"]
-[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="4_u34af"]
-[ext_resource type="PackedScene" uid="uid://d4gqrkexrojo4" path="res://modules/gameLoop/gameLoop.tscn" id="5_56sbj"]
-[ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://RessourcesDiverses/Medieval-song.mp3" id="5_dbt56"]
-[ext_resource type="PackedScene" uid="uid://cswujfrnarjpr" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_bsiwp"]
+[ext_resource type="PackedScene" path="res://modules/world/world.tscn" id="2_224ad"]
+[ext_resource type="PackedScene" path="res://modules/narration/narration.tscn" id="3_xawyk"]
+[ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://assets/medieval_song.mp3" id="5_aavhi"]
+[ext_resource type="PackedScene" uid="uid://qgsawqr22xjy" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_bsiwp"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wx0k4")
 
 [node name="World" parent="." instance=ExtResource("2_224ad")]
-
-[node name="gameLoop" parent="." instance=ExtResource("5_56sbj")]
-curse_scene = ExtResource("4_u34af")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -24,6 +19,6 @@ curse_scene = ExtResource("4_u34af")
 mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_dbt56")
+stream = ExtResource("5_aavhi")
 volume_db = -9.0
 autoplay = true

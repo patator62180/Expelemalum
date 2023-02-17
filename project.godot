@@ -10,20 +10,20 @@ config_version=5
 
 [application]
 
-config/name="gdwj_54"
+config/name="Expelemalum"
 run/main_scene="res://modules/game/game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://RessourcesDiverses/icon.png"
+config/icon="res://assets/icon.png"
 
 [autoload]
 
-GameState="*res://modules/gameState/game_state.tscn"
+GameState="*res://modules/game_state/game_state.tscn"
 CharacterCenter="*res://modules/character/character_center.tscn"
 
 [display]
 
 window/size/mode=2
-mouse_cursor/custom_image="res://RessourcesDiverses/cursor.png"
+mouse_cursor/custom_image="res://assets/cursor.png"
 window/stretch/mode="canvas_items"
 
 [input]

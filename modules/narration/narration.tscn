@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
 [ext_resource type="Texture2D" uid="uid://dad7lvlcorpou" path="res://modules/overlay_ui/assets/dialog.svg" id="2_5aimg"]
-[ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="2_42dyg"]
+[ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="2_42dyg"]
 
 [sub_resource type="Animation" id="Animation_qs274"]
 length = 0.001

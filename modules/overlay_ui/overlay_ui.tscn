@@ -1,13 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://cswujfrnarjpr"]
+[gd_scene load_steps=19 format=3 uid="uid://qgsawqr22xjy"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
-[ext_resource type="Texture2D" uid="uid://c4jacjb53boa7" path="res://icon.svg" id="1_sq413"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
-[ext_resource type="Texture2D" uid="uid://c60aomxhx7dpy" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
+[ext_resource type="Texture2D" uid="uid://b52fg0crlh4j2" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
 [ext_resource type="Texture2D" uid="uid://c7837t3ruslae" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
 [ext_resource type="Texture2D" uid="uid://s47idtmyg3e5" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
-[ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://RessourcesDiverses/Avara.ttf" id="10_j3c3t"]
-[ext_resource type="Texture2D" uid="uid://dwcgneymh8lq" path="res://modules/world/terrain/assets/scroll_even_smaller.svg" id="11_gojho"]
+[ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="10_j3c3t"]
+[ext_resource type="Texture2D" uid="uid://kavmdk7hlkrx" path="res://modules/world/terrain/assets/scroll_even_smaller.svg" id="11_gojho"]
 [ext_resource type="Texture2D" uid="uid://dd3k4mqekin66" path="res://modules/overlay_ui/assets/horizontal_scroll.svg" id="11_jww6w"]
 [ext_resource type="Texture2D" uid="uid://dwpig08r1vr03" path="res://modules/overlay_ui/assets/tuto_curse.svg" id="11_wk2pb"]
 [ext_resource type="Texture2D" uid="uid://dw6rrfkyiccxj" path="res://modules/overlay_ui/assets/tuto_metamorphose.svg" id="12_pewgm"]
@@ -553,12 +552,6 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_eryqm")
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(574.5, 326)
-scale = Vector2(8.97656, 5.0625)
-texture = ExtResource("1_sq413")
-
 [node name="GameplayScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -657,10 +650,6 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -299.0
-offset_top = -559.0
-offset_right = -299.0
-offset_bottom = -559.0
 grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 

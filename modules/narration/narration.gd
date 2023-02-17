@@ -6,12 +6,10 @@ const subtitle_speed : float = 1.5
 var lastLineSpoken : Timer = $LastLineSpoken
 @onready
 var narratorSubtitleLabel : Label = get_node("Scroll/Label")
-@onready
 
-var animationPlayer : AnimationPlayer = get_node("AnimationPlayer")
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
-const audio_source : String = "res://modules/narration/Audio/Audio - narrationDictionnary.csv"
+const audio_source : String = "res://modules/narration/audio/audio_narration_dictionnary.csv"
 
 @onready
 var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
@@ -348,7 +346,7 @@ func _play_line_str(lineNameStr : String) :
 		# 2 = will be queued up
 		# 3 = will be played next (can discard or pop current queue)
 	else :
-		var audioStream = load("res://modules/narration/Audio/AudioSource/"+lineNameStr+".mp3")
+		var audioStream = load("res://modules/narration/audio/audio_source/"+lineNameStr+".mp3")
 		narratorStreamPlayer.stream = audioStream
 		narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
 		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"

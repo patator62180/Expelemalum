@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf1xdcm02sonr"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://modules/character/character_ui.gd" id="1_k0rah"]
 [ext_resource type="Texture2D" uid="uid://r1n4inbt3ouc" path="res://modules/character/peasants/assets/lumberjack.svg" id="2_3ioxj"]
 [ext_resource type="AudioStream" uid="uid://cdgp50hwm0ahs" path="res://modules/character/assets/audio/sfx_peasant_death_torn_1.mp3" id="4_n8vf6"]
 [ext_resource type="AudioStream" uid="uid://6vahmv2ttxee" path="res://modules/character/assets/audio/sfx_peasant_death_simple_1.mp3" id="7_t60di"]
-[ext_resource type="AudioStream" uid="uid://tlguti2mme82" path="res://modules/character/assets/audio/sfx_cursed_werewolf_killAction.mp3" id="8_se80v"]
+[ext_resource type="AudioStream" uid="uid://tlguti2mme82" path="res://modules/character/assets/audio/sfx_cursed_werewolf_kill_action.mp3" id="8_se80v"]
 
 [sub_resource type="Animation" id="Animation_cukwf"]
 length = 0.001
