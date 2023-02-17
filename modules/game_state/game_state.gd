@@ -63,6 +63,7 @@ func on_spawn(character : Node2D):
 			remaining_exorcists_count += 1
 		_:
 			remaining_peasant_count += 1
+	prints("spawn", remaining_exorcists_count)
 	emit_signal("updated_remaining_count")
 
 func on_kill(killer : Node2D, victim : Node2D):
@@ -73,16 +74,13 @@ func on_kill(killer : Node2D, victim : Node2D):
 		_:
 			peasant_kill_count += 1
 			remaining_peasant_count -= 1
+	prints("kill", remaining_exorcists_count)
 	emit_signal("updated_kill_count", killer, victim)
 	emit_signal("updated_remaining_count")
 
 func on_metamorphose(character : Node2D):
 	metamorphose_count += 1
 	emit_signal("updated_metamorphose_count", character)
-	emit_signal("updated_remaining_count")
-
-
-	
 
 func _input(event : InputEvent):
 	if event is InputEventKey:

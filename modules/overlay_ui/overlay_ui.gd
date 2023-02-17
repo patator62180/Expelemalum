@@ -8,6 +8,7 @@ extends Control
 
 func _ready():
 	GameState.updated_game_phase.connect(_on_game_state_update)
+	_on_exorcist_count_changed()
 
 func _on_game_state_update(previousState):
 	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
@@ -50,4 +51,3 @@ func _on_exorcist_killed(killer, victim):
 
 func _on_exorcist_count_changed():
 	remaining_exorcists_label.text = str(GameState.exorcist_kill_count) + "/" + str(GameState.remaining_exorcists_count+GameState.exorcist_kill_count)
-	pass
