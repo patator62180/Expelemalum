@@ -392,8 +392,6 @@ func _on_last_line_spoken_timeout():
 	play_best_line_by_indicator()
 
 func _on_game_change(old) :
-	
-	print("game phase change to ", GameState.current_game_phase)
 	match GameState.current_game_phase :
 		GameState.GAME_PHASE.Intro :
 			pass
