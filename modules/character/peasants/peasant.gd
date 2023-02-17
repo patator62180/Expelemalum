@@ -13,10 +13,15 @@ signal cursed
 
 # interface
 
+func kill(victim : Node2D):
+	if not is_metamorphosing:
+		super.kill(victim)
+
 func metamorphose():
-	is_metamorphosing = true
-	$TimerMetamorphose.start()
-	emit_signal("metamorphosing")
+	if not is_dead and not is_dying:
+		is_metamorphosing = true
+		$TimerMetamorphose.start()
+		emit_signal("metamorphosing")
 
 func _on_timer_metamorphose_timeout():
 	is_metamorphosing = false
@@ -29,9 +34,10 @@ func _on_timer_metamorphose_timeout():
 	emit_signal("metamorphosed")
 
 func unmetamorphose():
-	is_metamorphosing = true
-	$TimerUnmetamorphose.start()
-	emit_signal("unmetamorphosing")
+	if not is_dead and not is_dying:
+		is_metamorphosing = true
+		$TimerUnmetamorphose.start()
+		emit_signal("unmetamorphosing")
 
 func _on_timer_unmetamorphose_timeout():
 	is_metamorphosing = false
@@ -39,6 +45,14 @@ func _on_timer_unmetamorphose_timeout():
 	if not has_metamorphosed:
 		has_metamorphosed = true
 	emit_signal("unmetamorphosed")
+
+func die(killer_character : Node2D):
+	super.die(killer_character)
+	$TimerMetamorphose.stop()
+	$TimerUnmetamorphose.stop()
+	$TimerMetamorphosisDuration.stop()
+
+# internal
 
 func _on_character_got_at_close_range(character : Node2D):
 	if is_metamorphosed:

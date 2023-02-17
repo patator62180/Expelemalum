@@ -14,24 +14,31 @@ func _ready():
 	$AnimationPlayerMove.seek(character.get_node("Behavior/AnimationPlayerMove").current_animation_position)
 	$AnimationPlayerMove.speed_scale = character.get_node("Behavior/AnimationPlayerMove").speed_scale
 	# connect
-	character.killing.connect(_on_character_killing)
-	character.dying.connect(_on_character_dying)
 	character.horizontal_direction_changed_to_right.connect(_on_character_horizontal_direction_changed_to_right)
 	character.horizontal_direction_changed_to_left.connect(_on_character_horizontal_direction_changed_to_left)
+	character.killing.connect(_on_character_killing)
+	character.killed.connect(_on_character_killed)
+	character.dying.connect(_on_character_dying)
 
-func _on_character_killing(vicstim : Node2D):
+func _on_character_killing(victim : Node2D):
+	$AnimationPlayerMove.pause()
+	$AnimationPlayerKill.play("kill")
+	$AudioStreamPlayer2DKilling.play()
+
+func _on_character_killed(victim : Node2D):
+	$AnimationPlayerMove.play()
 	$AnimationPlayerKill.play("kill")
 	$AudioStreamPlayer2DKilling.play()
 
 func _on_character_dying(killer : Node2D):
+	$AnimationPlayerMove.stop()
+	$AnimationPlayerKill.stop()
 	var character : Node2D = get_character()
 	match killer.character_type:
 		character.CHARACTER_TYPE.Exorcist:
-			$AnimationPlayerMove.stop()
 			$AnimationPlayerDie.play("die_exorcist")
 			$AudioStreamPlayer2DDyingExorcist.play()
 		_:
-			$AnimationPlayerMove.stop()
 			$AnimationPlayerDie.play("die")
 			$AudioStreamPlayer2DDyingDefault.play()
 

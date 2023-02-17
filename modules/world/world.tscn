@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=18 format=3 uid="uid://bodqa34xehsml"]
 
 [ext_resource type="Script" path="res://modules/world/world.gd" id="1_cquyq"]
 [ext_resource type="Texture2D" uid="uid://byvwxg3rlhqyo" path="res://modules/world/terrain/assets/border.svg" id="3_6f13q"]
@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://r8bs7ksqcgw2" path="res://modules/world/terrain/grass_0.tscn" id="10_apeuq"]
 [ext_resource type="PackedScene" uid="uid://cdlicsmfyjgos" path="res://modules/world/terrain/grass_1.tscn" id="11_xy7lj"]
 [ext_resource type="PackedScene" uid="uid://b44k0c4irv6po" path="res://modules/world/obstacles/tree.tscn" id="12_hffvk"]
-[ext_resource type="PackedScene" uid="uid://dqcuv87q35ybb" path="res://modules/world/obstacles/church.tscn" id="13_ijp87"]
-[ext_resource type="PackedScene" uid="uid://v5ri5f0ihbc6" path="res://modules/world/obstacles/shed.tscn" id="14_1llj3"]
+[ext_resource type="PackedScene" path="res://modules/world/obstacles/church.tscn" id="13_ijp87"]
+[ext_resource type="PackedScene" path="res://modules/world/obstacles/shed.tscn" id="14_1llj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hh02"]
 size = Vector2(550, 350)

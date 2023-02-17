@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://52qqxqhococ"]
 
 [ext_resource type="Script" path="res://modules/game_loop/game_loop.gd" id="1_gm276"]
-[ext_resource type="PackedScene" uid="uid://utlxqfpsr0mb" path="res://modules/world/world.tscn" id="2_ubpol"]
+[ext_resource type="PackedScene" uid="uid://bodqa34xehsml" path="res://modules/world/world.tscn" id="2_ubpol"]
+[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="3_d7dko"]
 
 [node name="gameLoop" type="Node2D"]
 script = ExtResource("1_gm276")
 world_scene = ExtResource("2_ubpol")
+curse_scene = ExtResource("3_d7dko")

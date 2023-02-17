@@ -63,11 +63,13 @@ var visible_characters : Array = []
 # interface
 
 func kill(victim_character : Node2D):
-	if not is_killing and (victim_character != null) and (not victim_character.is_queued_for_deletion()):
-		is_killing = true
-		victim = victim_character
-		$TimerKillDelay.start()
-		emit_signal("killing", victim)
+	if not is_dead and not is_dying and not is_killing:
+		if (victim_character != null) and (not victim_character.is_queued_for_deletion()):
+			if not victim_character.is_dead and not victim_character.is_dying:
+				is_killing = true
+				victim = victim_character
+				$TimerKillDelay.start()
+				emit_signal("killing", victim)
 
 func _on_timer_kill_delay_timeout():
 	# game state update
@@ -77,9 +79,13 @@ func _on_timer_kill_delay_timeout():
 	emit_signal("killed", victim)
 	is_killing = false
 	victim = null
+	# update characters at range
+	for area in $Area2DCloseRange.get_overlapping_areas():
+		if area != $Area2DBody:
+			_on_character_got_at_close_range(area.get_parent())
 
 func die(killer_character : Node2D):
-	if not is_dying:
+	if not is_dead and not is_dying:
 		is_dying = true
 		killer = killer_character
 		match killer.character_type:
@@ -87,6 +93,7 @@ func die(killer_character : Node2D):
 				$TimerDieDelay.wait_time = 1.5
 			_:
 				$TimerDieDelay.wait_time = 0.5
+		$TimerKillDelay.stop()
 		$TimerDieDelay.start()
 		emit_signal("dying", killer)
 

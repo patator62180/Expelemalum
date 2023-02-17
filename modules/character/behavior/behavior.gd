@@ -56,8 +56,10 @@ func _ready():
 	# connect
 	var character : Node2D = get_character()
 	character.get_node("Area2DVision").area_entered.connect(_on_character_area_2d_vision_area_entered)
-	character.dying.connect(_on_character_dying)
 	character.entered_outer_boundary.connect(_on_character_entered_outer_boundary)
+	character.dying.connect(_on_character_dying)
+	character.killing.connect(_on_character_killing)
+	character.killed.connect(_on_character_killed)
 
 func _process(delta : float):
 	# update boundary exits
@@ -109,6 +111,12 @@ func _on_character_area_2d_vision_area_entered(area : Area2D):
 
 func _on_character_dying(killer : Node2D):
 	$AnimationPlayerMove.stop()
+
+func _on_character_killing(victim : Node2D):
+	$AnimationPlayerMove.pause()
+
+func _on_character_killed(victim : Node2D):
+	$AnimationPlayerMove.play()
 
 func _on_timer_curiosity_timeout():
 	curiosity_direction = (CharacterCenter.global_position - get_character().global_position).rotated(0.1 * TAU * randf_range(-1.0, 1.0))
