@@ -10,6 +10,8 @@ var narratorSubtitleLabel : Label = get_node("Scroll/Label")
 @onready
 var narratorStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
 const audio_source : String = "res://modules/narration/audio/audio_narration_dictionnary.csv"
+@onready
+var musicStreamPlayer : AudioStreamPlayer = get_node("ThemeMusicStreamPlayer")
 
 @onready
 var scrollAnimationPlayer : AnimationPlayer = get_node("ScrollAnimationPlayer")
@@ -167,9 +169,11 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 				monitor += str(get_indicators_asked_prompts(i,PLAYTYPES[t]))
 				monitor += "|"
 			monitor += "\n"
-		$MonitorLabel.text = prefix + "\n" + monitor + suffix
+		if OS.is_debug_build():
+			$MonitorLabel.text = prefix + "\n" + monitor + suffix
 	else :
-		$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
+		if OS.is_debug_build():
+			$MonitorLabel.text = prefix + "\n" + $MonitorLabel.text + "\n" + suffix
 
 func play_situation_line(
 	indicator : INDICATORS,
@@ -349,9 +353,11 @@ func _play_line_str(lineNameStr : String) :
 		var audioStream = load("res://modules/narration/audio/audio_source/"+lineNameStr+".mp3")
 		narratorStreamPlayer.stream = audioStream
 		narratorSubtitleLabel.text = prompt_dict[lineNameStr]["subtitle"]
-		$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
+		if OS.is_debug_build():
+			$MonitorLabel.text += "last clip: " + str(lineNameStr) + "\n"
 	
 		narratorStreamPlayer.play()
+		musicStreamPlayer.toggle_down_volume(true)
 		subtitleAnimationPlayer.play("SubtitleReveal",-1, subtitle_speed/audioStream.get_length())
 		scrollAnimationPlayer.play("ScrollIn")
 
@@ -360,6 +366,7 @@ func _play_line_direct(lineName : AUDIO_LINE) :
 
 func _on_audio_stream_player_finished():
 	narratorStreamPlayer.stop()
+	musicStreamPlayer.toggle_down_volume(false)
 	scrollAnimationPlayer.play_backwards("ScrollIn")
 	
 	if queued_prompts.size() > 0 :

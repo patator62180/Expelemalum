@@ -3,3 +3,6 @@
 
 # vscode support
 .vscode/
+
+# build
+builds/

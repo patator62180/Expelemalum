@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cj83sv127ju1g"]
+[gd_scene load_steps=7 format=3 uid="uid://j44eo5b0as8t"]
 
 [ext_resource type="Script" path="res://modules/game/game.gd" id="1_wx0k4"]
 [ext_resource type="PackedScene" uid="uid://bodqa34xehsml" path="res://modules/world/world.tscn" id="2_224ad"]
 [ext_resource type="PackedScene" uid="uid://52qqxqhococ" path="res://modules/game_loop/game_loop.tscn" id="3_d0scc"]
-[ext_resource type="PackedScene" uid="uid://dcrw7dxyftkd7" path="res://modules/narration/narration.tscn" id="3_xawyk"]
+[ext_resource type="PackedScene" uid="uid://dq1n7aidps3bf" path="res://modules/narration/narration.tscn" id="4_jh435"]
 [ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://assets/medieval_song.mp3" id="5_aavhi"]
 [ext_resource type="PackedScene" uid="uid://qgsawqr22xjy" path="res://modules/overlay_ui/overlay_ui.tscn" id="7_bsiwp"]
 
@@ -16,10 +16,9 @@ script = ExtResource("1_wx0k4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Narration" parent="CanvasLayer" instance=ExtResource("3_xawyk")]
+[node name="Narration" parent="CanvasLayer" instance=ExtResource("4_jh435")]
 
 [node name="overlay_ui" parent="CanvasLayer" instance=ExtResource("7_bsiwp")]
-mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_aavhi")
