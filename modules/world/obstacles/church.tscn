@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqcuv87q35ybb"]
+
+[ext_resource type="PackedScene" uid="uid://dlef87rcej5ca" path="res://modules/character/boundary.tscn" id="1_wkrin"]
+[ext_resource type="Texture2D" uid="uid://b5xyujwjpq6jr" path="res://modules/world/obstacles/assets/church.svg" id="2_g7fxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvvqp"]
+size = Vector2(59, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0calu"]
+size = Vector2(21, 88)
+
+[node name="Church" instance=ExtResource("1_wkrin")]
+is_inner = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -74)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_g7fxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(11.5, -27.5)
+shape = SubResource("RectangleShape2D_hvvqp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-28.5, -42)
+shape = SubResource("RectangleShape2D_0calu")
