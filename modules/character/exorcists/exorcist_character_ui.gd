@@ -66,6 +66,6 @@ func _on_character_killing(victim : Node2D):
 	fire.global_position.y += 1
 
 func _on_animation_die_red_specific():
-	var character : Node2D = get_character()
+	var _character : Node2D = get_character()
 	$AnimRoot/Sprite2D.texture = preload("res://modules/character/exorcists/assets/dead_exorcist.svg")
 	$AnimRoot/Sprite2D.rotation = 0.5 * PI

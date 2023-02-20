@@ -8,7 +8,7 @@ signal curse_killed
 
 enum GAME_PHASE {Intro,Gameplay,Outro}
 
-const curse_memory_duration : float = 20.0 # number of seconds to remember Events
+const CURSE_MEMORY_DURATION : float = 20.0 # number of seconds to remember Events
 
 var current_game_phase : GAME_PHASE = GAME_PHASE.Intro
 var game_won : bool = true
@@ -40,7 +40,7 @@ func game_phase_update(new_phase : GAME_PHASE) :
 func on_curse_killed():
 	emit_signal("curse_killed")
 
-func on_curse(character : Node2D):
+func on_curse(_character : Node2D):
 	_curse_events.append(Time.get_ticks_msec()/1000.0)
 
 func on_spawn(character : Node2D):
@@ -74,7 +74,7 @@ func get_total_kill_count() -> int :
 
 func get_updated_curse_events() -> Array:
 	var current_date : float = Time.get_ticks_msec()/1000.0
-	while(not _curse_events.is_empty() and GameState._curse_events[0] < current_date - curse_memory_duration) :
+	while(not _curse_events.is_empty() and GameState._curse_events[0] < current_date - CURSE_MEMORY_DURATION) :
 		_curse_events.pop_front()
 	return _curse_events
 

@@ -25,7 +25,7 @@ func _process(delta : float):
 				# suspicion diffusion
 				for other_other_character in other_character.visible_characters:
 					var distance_to_other_character : float = (other_character.global_position - character.global_position).length()
-					var x_distance : float = distance_to_other_character / character.RADIUS_VISION
+					var _x_distance : float = distance_to_other_character / character.RADIUS_VISION
 					var x_suspicion : float = behavior.memory[other_character]["suspicion"]
 					if other_other_character in character.visible_characters:
 						var distance_to_other_other_character : float = (other_other_character.global_position - other_character.global_position).length()

@@ -60,7 +60,7 @@ func _ready():
 	
 	$MonitorLabel.text = ""
 
-func initiate_indicators(complete_reset : bool = false) :
+func initiate_indicators(_complete_reset : bool = false) :
 	
 #	if complete_reset :
 		#Make empty dictionnary
@@ -79,7 +79,7 @@ func initiate_indicators(complete_reset : bool = false) :
 	#fill it with prompt_dict computed values
 	for prompt in prompt_dict :
 		var prompt_array = prompt_dict[prompt]
-		var prompts_array = []
+		var _prompts_array = []
 		
 		var indic = prompt_array["onIndicator"]
 		var playtyp = prompt_array["playType"]
@@ -178,13 +178,13 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 func play_situation_line(
 	indicator : INDICATORS,
 	playType : PLAYTYPES,
-	prompt_id : int = -1 #if -1 the func takes the highest priority at random
+	_prompt_id : int = -1 #if -1 the func takes the highest priority at random
 	) -> String :
 	
 	set_monitor("play line", false,"chosen situation :" + INDICATORS.keys()[indicator] + 	" - " + PLAYTYPES.keys()[playType] + "\n")
 
 	var prompt_str : String
-	var enough_prompt_remaining : bool
+	var _enough_prompt_remaining : bool = false
 	
 	if get_indicators_remaining_prompts(indicator, playType) > 0 :
 		var prompts_array : Array = indicators[indicator][2][playType]["prompts_array"]
@@ -197,11 +197,8 @@ func play_situation_line(
 			prompts_array.erase(prompt_str)
 			
 		_play_line_str(prompt_str)
-		enough_prompt_remaining = true
-		
-	else :
-		enough_prompt_remaining = false
-		
+		_enough_prompt_remaining = true
+	
 	register_asked_prompt(indicator,playType)
 	
 	return prompt_str
@@ -277,8 +274,8 @@ func play_best_ending_by_indicator(game_won : bool):
 
 
 func update_play_style():
-	var indicator_instance_count : int = 0
-	var instance_count_array : Array = []
+	var _indicator_instance_count : int = 0
+	var _instance_count_array : Array = []
 	
 	for i in INDICATORS :
 		for p in PLAYTYPES :
@@ -398,7 +395,7 @@ func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
 	play_best_line_by_indicator()
 
-func _on_game_change(old) :
+func _on_game_change(_old) :
 	match GameState.current_game_phase :
 		GameState.GAME_PHASE.Intro :
 			pass

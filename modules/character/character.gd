@@ -130,7 +130,7 @@ func _ready():
 	# game state update
 	GameState.on_spawn(self)
 
-func _process(delta : float):
+func _process(_delta : float):
 	if not Engine.is_editor_hint():
 		moving_direction = $Behavior.get_moving_direction()
 		# animation
@@ -143,7 +143,7 @@ func _process(delta : float):
 				emit_signal("horizontal_direction_changed_to_left")
 			is_moving_to_the_right = false
 
-func _on_character_got_at_close_range(character : Node2D):
+func _on_character_got_at_close_range(_character : Node2D):
 	pass # TO BE OVERLOADED
 
 # signals
