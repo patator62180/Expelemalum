@@ -1,6 +1,6 @@
 extends "res://modules/character/peasants/peasant_character_ui.gd"
 
-func _process(delta : float):
+func _process(_delta : float):
 	var character : Node2D = get_character()
 	if character.is_killing and character.victim != null and not character.victim.is_queued_for_deletion():
 		$Scratch.global_position = character.victim.global_position

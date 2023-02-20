@@ -109,13 +109,13 @@ func _on_character_area_2d_vision_area_entered(area : Area2D):
 			for behavior_rule in $MemoryRules.get_children():
 				memory[character][behavior_rule.NAME] = 0.0
 
-func _on_character_dying(killer : Node2D):
+func _on_character_dying(_killer : Node2D):
 	$AnimationPlayerMove.stop()
 
-func _on_character_killing(victim : Node2D):
+func _on_character_killing(_victim : Node2D):
 	$AnimationPlayerMove.pause()
 
-func _on_character_killed(victim : Node2D):
+func _on_character_killed(_victim : Node2D):
 	$AnimationPlayerMove.play()
 
 func _on_timer_curiosity_timeout():

@@ -12,7 +12,7 @@ func _ready():
 	play_again_button.pressed.connect(_on_play_again_button_pressed)
 	_on_exorcist_count_changed()
 
-func _on_game_state_update(previousState):
+func _on_game_state_update(_previousState):
 	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
 		_on_exit_gameplay()
 
@@ -48,7 +48,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "EnterOutro" && $AnimationPlayer.current_animation_position != 0:
 		gameloop.destroy_world()
 
-func _on_exorcist_killed(killer, victim):
+func _on_exorcist_killed(_killer, _victim):
 	_on_exorcist_count_changed()
 
 func _on_exorcist_count_changed():

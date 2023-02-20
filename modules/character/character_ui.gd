@@ -20,12 +20,12 @@ func _ready():
 	character.killed.connect(_on_character_killed)
 	character.dying.connect(_on_character_dying)
 
-func _on_character_killing(victim : Node2D):
+func _on_character_killing(_victim : Node2D):
 	$AnimationPlayerMove.pause()
 	$AnimationPlayerKill.play("kill")
 	$AudioStreamPlayer2DKilling.play()
 
-func _on_character_killed(victim : Node2D):
+func _on_character_killed(_victim : Node2D):
 	$AnimationPlayerMove.play()
 	$AnimationPlayerKill.play("kill")
 	$AudioStreamPlayer2DKilling.play()

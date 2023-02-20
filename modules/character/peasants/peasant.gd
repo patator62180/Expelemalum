@@ -13,9 +13,9 @@ signal cursed
 
 # interface
 
-func kill(victim : Node2D):
+func kill(victim_target : Node2D):
 	if not is_metamorphosing:
-		super.kill(victim)
+		super.kill(victim_target)
 
 func metamorphose():
 	if not is_dead and not is_dying:
@@ -60,7 +60,7 @@ func _on_character_got_at_close_range(character : Node2D):
 	else:
 		super._on_character_got_at_close_range(character)
 
-func _on_character_got_at_close_range_metamorphosed(character : Node2D):
+func _on_character_got_at_close_range_metamorphosed(_character : Node2D):
 	assert(false, "this method should be overloaded")
 
 func _on_timer_metamorphosis_duration_timeout():

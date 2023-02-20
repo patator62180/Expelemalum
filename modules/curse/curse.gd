@@ -88,7 +88,7 @@ func _update_cursable_character():
 		inputVector = inputVector.normalized()
 	
 	var overlapping_areas = $CurseArea.get_overlapping_areas()
-	var cursable_candidates : Array
+	var cursable_candidates : Array = Array()
 	for area in overlapping_areas:
 		var character : Node2D = area.get_parent()
 		if character != _cursed_character:
