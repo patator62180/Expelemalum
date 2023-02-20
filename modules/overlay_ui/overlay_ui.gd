@@ -27,15 +27,8 @@ func _on_exit_gameplay():
 	GameState.updated_remaining_count.disconnect(_on_exorcist_count_changed)
 	GameState.updated_kill_count.disconnect(_on_exorcist_killed)
 	
-	winning_label.text = "VICTORY" if GameState.game_won else "DEFEAT"
+	winning_label.text = "Victory" if GameState.game_won else "Defeat"
 	narration_state_label.text = GameState.player_narration_state
-
-func _on_exit_game():
-	gameloop.on_exit_game()
-
-func _on_play_again_button_pressed():
-	animationPlayer.play_backwards("EnterOutro")
-	gameloop.on_restart()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "ExitIntro":
@@ -51,3 +44,10 @@ func _on_exorcist_killed(killer, victim):
 
 func _on_exorcist_count_changed():
 	remaining_exorcists_label.text = str(GameState.exorcist_kill_count) + "/" + str(GameState.remaining_exorcists_count+GameState.exorcist_kill_count)
+
+func _on_texture_button_play_exit_pressed():
+	gameloop.on_exit_game()
+
+func _on_texture_button_play_again_pressed():
+	animationPlayer.play_backwards("EnterOutro")
+	gameloop.on_restart()

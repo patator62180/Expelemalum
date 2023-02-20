@@ -1,530 +1,39 @@
-[gd_scene load_steps=20 format=3 uid="uid://qgsawqr22xjy"]
+[gd_scene load_steps=13 format=3 uid="uid://qgsawqr22xjy"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
 [ext_resource type="Texture2D" uid="uid://b52fg0crlh4j2" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
+[ext_resource type="Texture2D" uid="uid://cpmpwdbm2laq4" path="res://modules/overlay_ui/assets/defeat.svg" id="7_pqv1n"]
+[ext_resource type="Texture2D" uid="uid://8jqrbax2qnod" path="res://modules/overlay_ui/assets/victory.svg" id="8_r8h0l"]
 [ext_resource type="Texture2D" uid="uid://c7837t3ruslae" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
 [ext_resource type="Texture2D" uid="uid://s47idtmyg3e5" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="10_j3c3t"]
-[ext_resource type="Texture2D" uid="uid://kavmdk7hlkrx" path="res://modules/world/terrain/assets/scroll_even_smaller.svg" id="11_gojho"]
-[ext_resource type="Texture2D" uid="uid://dd3k4mqekin66" path="res://modules/overlay_ui/assets/horizontal_scroll.svg" id="11_jww6w"]
-[ext_resource type="Texture2D" uid="uid://dwpig08r1vr03" path="res://modules/overlay_ui/assets/tuto_curse.svg" id="11_wk2pb"]
-[ext_resource type="Texture2D" uid="uid://dw6rrfkyiccxj" path="res://modules/overlay_ui/assets/tuto_metamorphose.svg" id="12_pewgm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8w875"]
 font = ExtResource("10_j3c3t")
 font_size = 128
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.768627, 0.686275, 0.658824, 1)
 outline_size = 4
 outline_color = Color(0.760784, 0.439216, 0.439216, 1)
 shadow_size = 10
 shadow_color = Color(0.654902, 0.439216, 0.760784, 1)
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="LabelSettings" id="LabelSettings_k25b8"]
+[sub_resource type="LabelSettings" id="LabelSettings_lhjf2"]
 font = ExtResource("10_j3c3t")
-font_size = 325
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_rraa5"]
-font = ExtResource("10_j3c3t")
-font_size = 40
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w2apm"]
-font = ExtResource("10_j3c3t")
-font_size = 180
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_fjbho"]
-resource_name = "EnterOutro"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scroll:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1571, 843), Vector2(863, 491), Vector2(863, 491)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Scroll2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-422, 865), Vector2(230, 518), Vector2(230, 518)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scroll3:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-81, -328), Vector2(328, 141), Vector2(328, 141)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scroll4:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1337, -340), Vector2(971, 148), Vector2(971, 148)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Outro:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1209, 76), Vector2(1209, 76), Vector2(239, 76)]
-}
-
-[sub_resource type="Animation" id="Animation_c2bns"]
-resource_name = "ExitIntro"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scroll:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1551, 837), Vector2(1551, 837)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Scroll2:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-398, 860), Vector2(-398, 860)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scroll3:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-113, -325), Vector2(-113, -325)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scroll4:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1329, -328), Vector2(1329, -328)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Intro/Title:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(576, 0), Vector2(576, -400), Vector2(576, -400)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Intro/LeftTuto:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(75, 232), Vector2(-284, 692), Vector2(-284, 692)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Intro/RightTuto:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(837, 245), Vector2(1242, 658), Vector2(1242, 658)]
-}
-
-[sub_resource type="Animation" id="Animation_4c1o5"]
-resource_name = "IdleIntro"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scroll:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(863, 491), Vector2(846, 487)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Scroll:rotation")
-tracks/1/interp = 4
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.346633, 0.219285]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scroll2:rotation")
-tracks/2/interp = 4
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.465849, -0.199583]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scroll3:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(328, 141), Vector2(332, 162)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Scroll2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(230, 518), Vector2(178, 557)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Scroll3:rotation")
-tracks/5/interp = 4
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.262255, -0.105399]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Scroll4:rotation")
-tracks/6/interp = 4
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -0.20606]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Scroll4:position")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(971, 148), Vector2(1008, 91)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Scroll:rotation")
-tracks/8/interp = 4
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.346633, 0.219285]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Scroll3:rotation")
-tracks/9/interp = 4
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.262255, -0.105399]
-}
+font_size = 48
+font_color = Color(0.768627, 0.686275, 0.658824, 1)
+outline_size = 4
+outline_color = Color(0.760784, 0.439216, 0.439216, 1)
+shadow_size = 10
+shadow_color = Color(0.654902, 0.439216, 0.760784, 1)
+shadow_offset = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_icigt"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scroll:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1596, 854)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Scroll:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.346633]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Scroll3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-72, -328)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Scroll3:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.262255]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Scroll4:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1546, -353)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Scroll2:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.465849]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Scroll4:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Scroll2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-374, 906)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Scroll:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.346633]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Scroll3:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.262255]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Scroll4:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Scroll2:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.465849]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Intro:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Outro:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1236, 76)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Intro/Title:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(576, 0)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Intro/LeftTuto:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(75, 232)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Intro/RightTuto:position")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(837, 245)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgvx6"]
 _data = {
-"EnterOutro": SubResource("Animation_fjbho"),
-"ExitIntro": SubResource("Animation_c2bns"),
-"IdleIntro": SubResource("Animation_4c1o5"),
 "RESET": SubResource("Animation_icigt")
 }
 
@@ -598,216 +107,111 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Scroll" type="Sprite2D" parent="MenuScreen"]
-position = Vector2(1596, 854)
-rotation = 0.346633
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_jww6w")
-
-[node name="Scroll3" type="Sprite2D" parent="MenuScreen"]
-position = Vector2(-72, -328)
-rotation = -0.262255
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_jww6w")
-
-[node name="Scroll4" type="Sprite2D" parent="MenuScreen"]
-position = Vector2(1546, -353)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_jww6w")
-
-[node name="Scroll2" type="Sprite2D" parent="MenuScreen"]
-position = Vector2(-374, 906)
-rotation = -0.465849
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("11_jww6w")
-
-[node name="Intro" type="Control" parent="MenuScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(406, 278)
-mouse_filter = 1
-
-[node name="Title" type="Control" parent="MenuScreen/Intro"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-scale = Vector2(0.4, 0.4)
-
-[node name="Credit" type="TextureRect" parent="MenuScreen/Intro/Title"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -607.0
-offset_top = 542.5
-offset_right = 607.0
-offset_bottom = 823.5
-grow_horizontal = 2
-texture = ExtResource("9_kjx3s")
-
-[node name="Title" type="TextureRect" parent="MenuScreen/Intro/Title"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -710.0
-offset_right = 710.0
-offset_bottom = 549.0
-grow_horizontal = 2
-texture = ExtResource("10_etjgf")
-
-[node name="LeftTuto" type="TextureRect" parent="MenuScreen/Intro"]
-visible = false
-layout_mode = 0
-offset_left = 75.0
-offset_top = 232.0
-offset_right = 1651.0
-offset_bottom = 2374.0
-rotation = -0.256863
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_gojho")
-
-[node name="TutoCurse" type="TextureRect" parent="MenuScreen/Intro/LeftTuto"]
-layout_mode = 0
-offset_left = 382.449
-offset_top = 65.9921
-offset_right = 643.449
-offset_bottom = 447.992
-rotation = 0.21698
-scale = Vector2(4.72343, 4.72343)
-texture = ExtResource("11_wk2pb")
-
-[node name="RightTuto" type="TextureRect" parent="MenuScreen/Intro"]
-visible = false
-layout_mode = 0
-offset_left = 837.0
-offset_top = 245.0
-offset_right = 2413.0
-offset_bottom = 2387.0
-rotation = 0.162371
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("11_gojho")
-
-[node name="TutoMetamorphose" type="TextureRect" parent="MenuScreen/Intro/RightTuto"]
-layout_mode = 0
-offset_left = 97.7842
-offset_top = 308.247
-offset_right = 358.784
-offset_bottom = 690.247
-rotation = -0.139955
-scale = Vector2(4.49727, 4.49727)
-texture = ExtResource("12_pewgm")
-
-[node name="Outro" type="TextureRect" parent="MenuScreen"]
+[node name="Title" type="Control" parent="MenuScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 660.0
-offset_top = -248.0
-offset_right = 2802.0
-offset_bottom = 1328.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("11_jww6w")
+scale = Vector2(0.4, 0.4)
 
-[node name="Label" type="Label" parent="MenuScreen/Outro"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 360.0
-offset_right = 1844.0
-offset_bottom = 740.0
-text = "VICTORY"
-label_settings = SubResource("LabelSettings_k25b8")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Credit" type="TextureRect" parent="MenuScreen/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1155.5
+offset_top = -385.0
+offset_right = 1155.5
+offset_bottom = -85.9999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_kjx3s")
 
-[node name="PlayAgainButton" type="Button" parent="MenuScreen/Outro"]
-layout_mode = 0
-offset_left = 483.333
-offset_top = 980.0
-offset_right = 933.333
-offset_bottom = 1163.0
-text = "PLAY AGAIN"
+[node name="Title" type="TextureRect" parent="MenuScreen/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -710.0
+offset_top = -810.0
+offset_right = 710.0
+offset_bottom = -261.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_etjgf")
 
-[node name="ExitButton" type="Button" parent="MenuScreen/Outro"]
-layout_mode = 0
-offset_left = 1273.33
-offset_top = 973.333
-offset_right = 1723.33
-offset_bottom = 1156.33
-text = "EXIT"
+[node name="MenuEnd" type="Control" parent="MenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Polygon2D" type="Polygon2D" parent="MenuScreen/Outro"]
-position = Vector2(423.333, 396.667)
-scale = Vector2(1.5, 1.5)
-color = Color(0.824342, 0.77199, 0.6424, 1)
-polygon = PackedVector2Array(212.5, 263, 649.5, 247, 646.5, 333, 211.5, 322)
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen/MenuEnd"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -95.9999
+offset_right = 2005.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen/Outro/Polygon2D"]
-offset_left = 221.0
-offset_top = 263.0
-offset_right = 629.0
-offset_bottom = 321.0
+[node name="TextureButtonPlayExit" type="TextureButton" parent="MenuScreen/MenuEnd/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_r8h0l")
+
+[node name="MessageDisplay" type="TextureRect" parent="MenuScreen/MenuEnd/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_pqv1n")
+
+[node name="TextureButtonPlayAgain" type="TextureButton" parent="MenuScreen/MenuEnd/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_r8h0l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = 136.0
+offset_right = 185.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Label2" type="Label" parent="MenuScreen/Outro/Polygon2D/HBoxContainer"]
+[node name="Label2" type="Label" parent="MenuScreen/HBoxContainer"]
 layout_mode = 2
 text = "You've been : "
-label_settings = SubResource("LabelSettings_rraa5")
+label_settings = SubResource("LabelSettings_lhjf2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="MenuScreen/Outro/Polygon2D/HBoxContainer"]
+[node name="Label3" type="Label" parent="MenuScreen/HBoxContainer"]
 layout_mode = 2
 text = "Michel"
-label_settings = SubResource("LabelSettings_rraa5")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Credit" type="TextureRect" parent="MenuScreen/Outro"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -715.334
-offset_top = -330.0
-offset_right = 1426.67
-offset_bottom = 1246.0
-grow_horizontal = 0
-rotation = 0.197272
-scale = Vector2(0.315308, 0.315308)
-pivot_offset = Vector2(406, 278)
-texture = ExtResource("11_jww6w")
-
-[node name="Label" type="Label" parent="MenuScreen/Outro/Credit"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -2103.81
-offset_top = -419.235
-offset_right = -104.813
-offset_bottom = 520.765
-grow_horizontal = 0
-grow_vertical = 2
-pivot_offset = Vector2(480, 280)
-text = "Credit:
-Nathan Bernard
-Remi Monthiller
-Samuel Terras-Viola"
-label_settings = SubResource("LabelSettings_w2apm")
+label_settings = SubResource("LabelSettings_lhjf2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -818,6 +222,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hgvx6")
 }
 
-[connection signal="pressed" from="MenuScreen/Outro/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="MenuScreen/Outro/ExitButton" to="." method="_on_exit_game"]
+[connection signal="pressed" from="MenuScreen/MenuEnd/HBoxContainer/TextureButtonPlayExit" to="." method="_on_texture_button_play_exit_pressed"]
+[connection signal="pressed" from="MenuScreen/MenuEnd/HBoxContainer/TextureButtonPlayAgain" to="." method="_on_texture_button_play_again_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
