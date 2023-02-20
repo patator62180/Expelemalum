@@ -35,3 +35,5 @@ Various rules:
 
 -@export var is uppercase if it's only modified in editor (if possible)
 
+-Node Names in editor in CamelCase
+
