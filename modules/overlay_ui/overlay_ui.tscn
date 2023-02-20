@@ -575,9 +575,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 341.0
+offset_left = -811.0
 offset_top = -2.0
-offset_right = 1154.0
+offset_right = 2.0
 offset_bottom = 554.0
 grow_horizontal = 0
 scale = Vector2(0.3, 0.3)
@@ -650,8 +650,6 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 576.0
-offset_right = 576.0
 grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 
@@ -727,10 +725,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1236.0
-offset_top = 76.0
-offset_right = 3378.0
-offset_bottom = 1652.0
+offset_left = 660.0
+offset_top = -248.0
+offset_right = 2802.0
+offset_bottom = 1328.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
@@ -825,6 +823,3 @@ autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_hgvx6")
 }
-
-[connection signal="pressed" from="MenuScreen/Outro/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
