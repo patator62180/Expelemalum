@@ -297,7 +297,7 @@ func update_indicators():
 	
 	#ACTIVITY
 	var number_of_swipes_done = GameState.get_updated_curse_events().size()
-	indicators[INDICATORS.curseActivity][0] = 2.0 *(activity_threshold * number_of_swipes_done as float / GameState.curse_memory_duration as float) - 1.0
+	indicators[INDICATORS.curseActivity][0] = 2.0 *(activity_threshold * number_of_swipes_done as float / GameState.CURSE_MEMORY_DURATION as float) - 1.0
 	
 	GameState.set_player_narration_state("yolo")
 	
