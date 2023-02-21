@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://qgsawqr22xjy"]
+[gd_scene load_steps=18 format=3 uid="uid://qgsawqr22xjy"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
 [ext_resource type="Texture2D" uid="uid://b52fg0crlh4j2" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
+[ext_resource type="Texture2D" uid="uid://r56v8f4ko8gf" path="res://modules/overlay_ui/assets/play_again.svg" id="7_kat48"]
 [ext_resource type="Texture2D" uid="uid://cpmpwdbm2laq4" path="res://modules/overlay_ui/assets/defeat.svg" id="7_pqv1n"]
-[ext_resource type="Texture2D" uid="uid://8jqrbax2qnod" path="res://modules/overlay_ui/assets/victory.svg" id="8_r8h0l"]
+[ext_resource type="Texture2D" uid="uid://c5k4j5gpvutbd" path="res://modules/overlay_ui/assets/play_again_hover.svg" id="8_tjq5h"]
+[ext_resource type="Texture2D" uid="uid://yhwms1wq1y44" path="res://modules/overlay_ui/assets/exit.svg" id="9_0n7ep"]
 [ext_resource type="Texture2D" uid="uid://c7837t3ruslae" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
+[ext_resource type="Texture2D" uid="uid://b18hl16d6xh1i" path="res://modules/overlay_ui/assets/exit_hover.svg" id="10_dtw0i"]
 [ext_resource type="Texture2D" uid="uid://s47idtmyg3e5" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="10_j3c3t"]
 
@@ -31,10 +34,174 @@ shadow_offset = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_icigt"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameplayScreen/ControlHelper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, -212)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GameplayScreen/ExorcistCounter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(552, -207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuEnd:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 770)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainerAchievement:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(315, 869)]
+}
+
+[sub_resource type="Animation" id="Animation_xf3j7"]
+resource_name = "exit_intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 324), Vector2(576, 28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameplayScreen/ControlHelper:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-220, -212), Vector2(-20, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GameplayScreen/ExorcistCounter:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(552, -207), Vector2(352, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_kcc5p"]
+resource_name = "enter_outro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 28), Vector2(576, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameplayScreen/ControlHelper:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-20, -12), Vector2(-220, -212)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GameplayScreen/ExorcistCounter:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(352, -7), Vector2(552, -207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MenuEnd:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 770), Vector2(576, 360)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainerAchievement:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(315, 869), Vector2(315, 459)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgvx6"]
 _data = {
-"RESET": SubResource("Animation_icigt")
+"RESET": SubResource("Animation_icigt"),
+"enter_outro": SubResource("Animation_kcc5p"),
+"exit_intro": SubResource("Animation_xf3j7")
 }
 
 [node name="overlay_ui" type="Control"]
@@ -58,10 +225,10 @@ mouse_filter = 1
 
 [node name="ControlHelper" type="TextureRect" parent="GameplayScreen"]
 layout_mode = 1
-offset_left = -20.0
-offset_top = -12.0
-offset_right = 808.0
-offset_bottom = 549.0
+offset_left = -220.0
+offset_top = -212.0
+offset_right = 608.0
+offset_bottom = 349.0
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_5df4v")
 
@@ -70,10 +237,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -800.0
-offset_top = -7.0
-offset_right = 13.0
-offset_bottom = 582.0
+offset_left = 552.0
+offset_top = -207.0
+offset_right = 1365.0
+offset_bottom = 382.0
 grow_horizontal = 0
 scale = Vector2(0.3, 0.3)
 pivot_offset = Vector2(813, 0)
@@ -114,6 +281,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
@@ -155,60 +326,86 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen/MenuEnd"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -95.9999
-offset_right = 2005.0
-offset_bottom = 484.0
+offset_left = 576.0
+offset_top = 770.0
+offset_right = 576.0
+offset_bottom = 770.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
-alignment = 1
 
-[node name="TextureButtonPlayExit" type="TextureButton" parent="MenuScreen/MenuEnd/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("8_r8h0l")
-
-[node name="MessageDisplay" type="TextureRect" parent="MenuScreen/MenuEnd/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("7_pqv1n")
-
-[node name="TextureButtonPlayAgain" type="TextureButton" parent="MenuScreen/MenuEnd/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("8_r8h0l")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuScreen"]
+[node name="TextureButtonExit" type="TextureButton" parent="MenuScreen/MenuEnd"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -223.0
-offset_top = 136.0
-offset_right = 185.0
-offset_bottom = 194.0
+offset_left = -1252.5
+offset_top = -151.5
+offset_right = -767.5
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("9_0n7ep")
+texture_hover = ExtResource("10_dtw0i")
+stretch_mode = 3
+
+[node name="TextureButtonPlayAgain" type="TextureButton" parent="MenuScreen/MenuEnd"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = -200.0
+offset_right = 1340.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_kat48")
+texture_hover = ExtResource("8_tjq5h")
+stretch_mode = 3
+
+[node name="MessageDisplay" type="TextureRect" parent="MenuScreen/MenuEnd"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -655.0
+offset_top = -290.0
+offset_right = 246.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pqv1n")
+
+[node name="HBoxContainerAchievement" type="HBoxContainer" parent="MenuScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = 869.0
+offset_right = 799.0
+offset_bottom = 929.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Label2" type="Label" parent="MenuScreen/HBoxContainer"]
+[node name="LabelDescription" type="Label" parent="MenuScreen/HBoxContainerAchievement"]
 layout_mode = 2
 text = "You've been : "
 label_settings = SubResource("LabelSettings_lhjf2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="MenuScreen/HBoxContainer"]
+[node name="LabelValue" type="Label" parent="MenuScreen/HBoxContainerAchievement"]
 layout_mode = 2
 text = "Michel"
 label_settings = SubResource("LabelSettings_lhjf2")
@@ -222,6 +419,6 @@ libraries = {
 "": SubResource("AnimationLibrary_hgvx6")
 }
 
-[connection signal="pressed" from="MenuScreen/MenuEnd/HBoxContainer/TextureButtonPlayExit" to="." method="_on_texture_button_play_exit_pressed"]
-[connection signal="pressed" from="MenuScreen/MenuEnd/HBoxContainer/TextureButtonPlayAgain" to="." method="_on_texture_button_play_again_pressed"]
+[connection signal="pressed" from="MenuScreen/MenuEnd/TextureButtonExit" to="." method="_on_texture_button_play_exit_pressed"]
+[connection signal="pressed" from="MenuScreen/MenuEnd/TextureButtonPlayAgain" to="." method="_on_texture_button_play_again_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
