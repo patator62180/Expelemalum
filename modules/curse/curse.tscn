@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ksgsq2s4txvo"]
+[gd_scene load_steps=29 format=3 uid="uid://bl6jkmtd7u1j4"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="PackedScene" uid="uid://khfvq1400jtw" path="res://modules/curse/curved_lines.tscn" id="2_ie7se"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="9_pp52w"]
 [ext_resource type="AudioStream" uid="uid://b7mvkak62ln5t" path="res://modules/curse/assets/audio/sfx_curse_transform_forbidden.mp3" id="9_r8p68"]
 [ext_resource type="Script" path="res://modules/curse/Area2DMouse.gd" id="13_h67jy"]
+[ext_resource type="Texture2D" uid="uid://bv2hth1iqw21" path="res://modules/curse/assets/dead_curse.svg" id="14_pd1mb"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
 _data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
@@ -67,6 +68,90 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2DFront:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2DBack:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2DStraigthBack:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../DeadCurse:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_cxsjx"]
 resource_name = "Skull_Idle"
@@ -86,10 +171,116 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_gqdhi"]
+resource_name = "skull_intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(254, -138), Vector2(-58, -46), Vector2(47, -23), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ba7l6"]
+resource_name = "skull_outro"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2DFront:emitting")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2DBack:emitting")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2DStraigthBack:emitting")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-14, 5), Vector2(17, 14), Vector2(0, 28)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.126988, -0.318642, 0.306797]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../../DeadCurse:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f32hy"]
 _data = {
 "RESET": SubResource("Animation_24j2i"),
-"Skull_Idle": SubResource("Animation_cxsjx")
+"Skull_Idle": SubResource("Animation_cxsjx"),
+"skull_intro": SubResource("Animation_gqdhi"),
+"skull_outro": SubResource("Animation_ba7l6")
 }
 
 [sub_resource type="Curve2D" id="Curve2D_34fca"]
@@ -236,7 +427,7 @@ shape = SubResource("CircleShape2D_d4kpx")
 
 [node name="AnimationPlayerSkull" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Path2D/PathFollow2D/Skull")
-autoplay = "Skull_Idle"
+autoplay = "skull_intro"
 speed_scale = 0.6
 libraries = {
 "": SubResource("AnimationLibrary_f32hy")
@@ -254,7 +445,7 @@ z_index = 1
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_s5wb8")
 
-[node name="GPUParticles2DBack" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+[node name="CPUParticles2DBack" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = -1
 amount = 2
 lifetime = 10.0
@@ -272,7 +463,7 @@ radial_accel_min = -69.37
 radial_accel_max = -69.37
 scale_amount_curve = SubResource("Curve_hsout")
 
-[node name="GPUParticles2DFront" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+[node name="CPUParticles2DFront" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = 1
 amount = 2
 lifetime = 10.0
@@ -290,7 +481,7 @@ radial_accel_min = -69.37
 radial_accel_max = -69.37
 scale_amount_curve = SubResource("Curve_hsout")
 
-[node name="GPUParticles2DStraigthBack" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
+[node name="CPUParticles2DStraigthBack" type="CPUParticles2D" parent="Path2D/PathFollow2D/Skull"]
 z_index = -1
 position = Vector2(0, 50)
 amount = 20
@@ -354,3 +545,9 @@ script = ExtResource("13_h67jy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMouse"]
 shape = SubResource("CapsuleShape2D_6td0a")
+[node name="DeadCurse" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -6)
+rotation = 0.307178
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("14_pd1mb")
