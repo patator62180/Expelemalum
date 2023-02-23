@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfhf55vkq8ila"]
+[gd_scene load_steps=7 format=3 uid="uid://dfhf55vkq8ila"]
 
-[ext_resource type="PackedScene" uid="uid://dfq7j8wlgk670" path="res://modules/character/peasants/peasant_character_ui.tscn" id="1_cmj1x"]
+[ext_resource type="PackedScene" uid="uid://cq1d1d1w2g8do" path="res://modules/character/peasants/peasant_character_ui.tscn" id="1_cmj1x"]
 [ext_resource type="Script" path="res://modules/character/peasants/lumberjack_character_ui.gd" id="2_yb8dt"]
 [ext_resource type="AudioStream" uid="uid://bc8y1m5id1lyq" path="res://modules/curse/assets/audio/sfx_curse_jump_enter.mp3" id="3_aisb1"]
 [ext_resource type="AudioStream" uid="uid://dt5rn50rdyki3" path="res://modules/curse/assets/audio/sfx_curse_jump_forbidden.mp3" id="5_br7ar"]
 [ext_resource type="PackedScene" uid="uid://chctg1fphq6d7" path="res://modules/character/peasants/droppables/scratch.tscn" id="5_nrr2e"]
+[ext_resource type="Texture2D" uid="uid://dw3t4et6sxrgs" path="res://modules/curse/assets/circle.svg" id="6_uyvkk"]
 
 [node name="CharacterUI" instance=ExtResource("1_cmj1x")]
 script = ExtResource("2_yb8dt")
@@ -17,3 +18,10 @@ stream = ExtResource("5_br7ar")
 
 [node name="Scratch" parent="." index="12" instance=ExtResource("5_nrr2e")]
 visible = false
+
+[node name="Circle" type="Sprite2D" parent="." index="13"]
+visible = false
+z_index = -1
+position = Vector2(0, 3)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_uyvkk")
