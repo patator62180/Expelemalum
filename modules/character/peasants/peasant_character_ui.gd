@@ -9,6 +9,8 @@ func _ready():
 	character.unmetamorphosing.connect(_on_character_unmetamorphosing)
 	character.metamorphosed.connect(_on_character_metamorphosed)
 	character.unmetamorphosed.connect(_on_character_unmetamorphosed)
+	character.cursed.connect(_on_character_cursed)
+	character.uncursed.connect(_on_character_uncursed)
 
 func _on_character_metamorphosing():
 	$AnimationPlayerMove.stop()
@@ -32,4 +34,10 @@ func _on_metamorphosed_sprite_changed():
 	pass
 
 func _on_unmetamorphosed_sprite_changed():
+	pass
+
+func _on_character_cursed():
+	pass
+
+func _on_character_uncursed():
 	pass

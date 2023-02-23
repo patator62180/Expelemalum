@@ -19,7 +19,7 @@ var _cursable_character : Node2D = null
 var _controller_enabled : bool = false
 
 @onready var line : Node2D = get_node("CurvedLines").get_child(0)
-@onready var skullPathFollow : Node2D = get_node("Path2D/PathFollow2D")
+@onready var skull_sprite : Node2D = get_node("Path2D/PathFollow2D/Skull")
 
 func enable_controller(enable : bool, play_anim : bool = true):
 	_controller_enabled = enable
@@ -64,11 +64,11 @@ func _on_tree_exiting():
 
 func _curse(character : Node2D):
 	if _cursed_character != null:
-		_cursed_character.is_cursed = false
+		_cursed_character.uncurse()
 		_cursed_character.tree_exiting.disconnect(_on_cursed_character_dead)
 	_cursed_character = character
 	_cursed_character.tree_exiting.connect(_on_cursed_character_dead)
-	_cursed_character.is_cursed = true
+	_cursed_character.curse()
 	_free_cursable_character()
 	$Sfx/AudioStreamPlayer2DJump.play()
 
@@ -143,13 +143,13 @@ func _update_line(delta : float):
 		if $Pointer/HandPoint.visible:
 			$Pointer/HandPoint.hide()
 	else:
-		$Pointer.look_at(2*$Pointer.global_position - skullPathFollow.global_position)
+		$Pointer.look_at(2*$Pointer.global_position - skull_sprite.global_position)
 		if $Pointer/HandOpen.visible:
 			$Pointer/HandOpen.hide()
 		if not $Pointer/HandPoint.visible:
 			$Pointer/HandPoint.show()
 	# update line
-	line.points[0] = skullPathFollow.position
+	line.points[0] = skull_sprite.global_position - global_position
 	line.points[line.points.size()-1] = $Pointer.global_position - global_position + 6.0 * Vector2.LEFT.rotated($Pointer.rotation)
 
 func _get_pointer_target():
@@ -157,7 +157,7 @@ func _get_pointer_target():
 			var sprite : Sprite2D = _cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
 			return sprite.global_position + POINTER_OFFSET
 	else:
-		return _get_input_vector()*LINE_CIRCLE_RADIUS + skullPathFollow.global_position
+		return _get_input_vector()*LINE_CIRCLE_RADIUS + skull_sprite.global_position
 
 func _update_position(delta : float):
 	if _cursed_character:
