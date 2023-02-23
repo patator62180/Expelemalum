@@ -2,9 +2,6 @@ extends Node2D
 
 #const var
 const TARGET_ANGLE_EPSILON = 0.1* TAU
-const LINE_CIRCLE_RADIUS = 30 #pixel
-const POINTER_SPEED = 10 #pixel/second
-const POINTER_OFFSET = Vector2(0,-30) #pixel
 const SKULL_SPEED = 10 #pixel/second
 
 const ANIM_IDLE = "Skull_Idle"
@@ -18,7 +15,6 @@ var _cursed_character : Node2D = null
 var _cursable_character : Node2D = null
 var _controller_enabled : bool = false
 
-@onready var line : Node2D = get_node("CurvedLines").get_child(0)
 @onready var skull_sprite : Node2D = get_node("Path2D/PathFollow2D/Skull")
 
 func enable_controller(enable : bool, play_anim : bool = true):
@@ -36,11 +32,12 @@ func _ready():
 	_curse(get_node(INITIALLY_CURSED_CHARACTER))
 	tree_exiting.connect(_on_tree_exiting)
 	$AnimationPlayerSkull.connect("animation_finished", _on_curse_animation_finished)
+	$CurvedLines.origin = skull_sprite
+	$CurvedLines.target = $Pointer
 
 func _process(delta : float):
 	if _controller_enabled:
 		_update_cursable_character()
-		_update_line(delta)
 	_update_position(delta)
 
 func _input(event : InputEvent):
@@ -85,23 +82,25 @@ func _try_curse(character : Node2D):
 func _highlight_cursable_character(character : Node2D):
 	_free_cursable_character()
 	_cursable_character = character
+	
 	if _cursable_character != null:
 		if _cursable_character.is_queued_for_deletion():
 			_cursable_character = null
+	
+	$Pointer.target = _cursable_character
 
 func _free_cursable_character():
 	if _cursable_character != null:
 		if _cursable_character.is_queued_for_deletion():
 			_cursable_character = null
+	$Pointer.target = null
 
 func _update_cursable_character():
 	#if cursable go out of range, unhighlight
 	if _cursable_character != null and not _cursable_character.is_dead and not $CurseArea.overlaps_area(_cursable_character.get_node("Area2DBody")):
 		_free_cursable_character()
 
-	var inputVector : Vector2 = (get_global_mouse_position() - global_position)
-	if inputVector != Vector2.ZERO:
-		inputVector = inputVector.normalized()
+	var inputVector : Vector2 = _get_input_vector()
 	
 	var overlapping_areas = $CurseArea.get_overlapping_areas()
 	var cursable_candidates : Array = Array()
@@ -131,33 +130,10 @@ func _get_closest_character(characters : Array) -> Node2D:
 	return closest_character
 	
 func _get_input_vector() -> Vector2:
-	return (get_global_mouse_position()-global_position).normalized()
-
-func _update_line(delta : float):
-	# update Pointer
-	$Pointer.global_position += (_get_pointer_target() - $Pointer.global_position) * delta * POINTER_SPEED
-	if _cursable_character:
-		$Pointer.look_at(_cursable_character.global_position)
-		if not $Pointer/HandOpen.visible:
-			$Pointer/HandOpen.show()
-		if $Pointer/HandPoint.visible:
-			$Pointer/HandPoint.hide()
-	else:
-		$Pointer.look_at(2*$Pointer.global_position - skull_sprite.global_position)
-		if $Pointer/HandOpen.visible:
-			$Pointer/HandOpen.hide()
-		if not $Pointer/HandPoint.visible:
-			$Pointer/HandPoint.show()
-	# update line
-	line.points[0] = skull_sprite.global_position - global_position
-	line.points[line.points.size()-1] = $Pointer.global_position - global_position + 6.0 * Vector2.LEFT.rotated($Pointer.rotation)
-
-func _get_pointer_target():
-	if _cursable_character and ((not _cursable_character.is_dying) or (not _cursable_character.is_dead)):
-			var sprite : Sprite2D = _cursable_character.get_node("CharacterUI/AnimRoot/Sprite2D")
-			return sprite.global_position + POINTER_OFFSET
-	else:
-		return _get_input_vector()*LINE_CIRCLE_RADIUS + skull_sprite.global_position
+	var inputVector = (get_global_mouse_position()-skull_sprite.global_position)
+	if inputVector == Vector2.ZERO:
+		return inputVector
+	return inputVector.normalized()
 
 func _update_position(delta : float):
 	if _cursed_character:
