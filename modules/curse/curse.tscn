@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bl6jkmtd7u1j4"]
+[gd_scene load_steps=30 format=3 uid="uid://bl6jkmtd7u1j4"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="PackedScene" uid="uid://khfvq1400jtw" path="res://modules/curse/curved_lines.tscn" id="2_ie7se"]
@@ -15,41 +15,9 @@
 [ext_resource type="Script" path="res://modules/curse/Area2DMouse.gd" id="13_h67jy"]
 [ext_resource type="Texture2D" uid="uid://bv2hth1iqw21" path="res://modules/curse/assets/dead_curse.svg" id="14_pd1mb"]
 
-[sub_resource type="Curve" id="Curve_56xj1"]
-_data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_228wp"]
-curve = SubResource("Curve_56xj1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rwft5"]
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 1.0
-emission_ring_radius = 15.0
-emission_ring_inner_radius = 5.0
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 0.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 25.0
-initial_velocity_max = 50.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-tangential_accel_min = -100.0
-tangential_accel_max = 100.0
-angle_min = -5.0
-angle_max = 5.0
-scale_min = 0.1
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_228wp")
-color = Color(1, 1, 1, 0.784314)
-turbulence_noise_strength = 13.31
-turbulence_noise_speed_random = 4.5
-turbulence_influence_min = 0.04
-turbulence_influence_max = 0.31
-turbulence_initial_displacement_min = -15.8
-turbulence_initial_displacement_max = 22.3
+[sub_resource type="Curve" id="Curve_p6h6e"]
+_data = [Vector2(0, 0), 0.0, 3.95946, 0, 1, Vector2(0.25256, 1), 0.0, 0.0, 0, 0, Vector2(0.754266, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.06944, 0.0, 1, 0]
+point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
 radius = 100.0
@@ -484,12 +452,28 @@ position = Vector2(-6.66669, -6.66666)
 rotation = -1.5708
 texture = ExtResource("4_5gwmd")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 visible = false
+z_index = -1
+position = Vector2(0, -10)
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_rwft5")
-texture = ExtResource("4_liph5")
+lifetime = 0.5
 preprocess = 2.0
+local_coords = true
+texture = ExtResource("4_liph5")
+emission_shape = 3
+emission_rect_extents = Vector2(15, 20)
+direction = Vector2(0, -1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -20.0
+angle_max = 20.0
+scale_amount_min = 0.1
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_p6h6e")
+color = Color(1, 1, 1, 0.588235)
 
 [node name="CurseArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -500,6 +484,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_d4kpx")
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -10)
 curve = SubResource("Curve2D_34fca")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]

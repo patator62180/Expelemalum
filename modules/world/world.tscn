@@ -46,6 +46,7 @@ metadata/_edit_group_ = true
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Border" type="MeshInstance2D" parent="Background"]
+z_index = -1
 position = Vector2(-190, -130)
 scale = Vector2(0.15, 0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
@@ -54,6 +55,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Border2" type="MeshInstance2D" parent="Background"]
+z_index = -1
 position = Vector2(190, -130)
 scale = Vector2(-0.15, 0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
@@ -62,6 +64,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Border3" type="MeshInstance2D" parent="Background"]
+z_index = -1
 position = Vector2(190, 130)
 scale = Vector2(-0.15, -0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
@@ -70,6 +73,7 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Border4" type="MeshInstance2D" parent="Background"]
+z_index = -1
 position = Vector2(-190, 130)
 scale = Vector2(0.15, -0.15)
 mesh = SubResource("ArrayMesh_4ffwo")
