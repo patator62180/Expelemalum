@@ -25,6 +25,14 @@ func enable_controller(enable : bool, play_anim : bool = true):
 		else:
 			$AnimationPlayerPointer.play_backwards("line_in")
 
+func enable_controller(enable : bool, play_anim : bool = true):
+	_controller_enabled = enable
+	if play_anim:
+		if enable:
+			$AnimationPlayerPointer.play("line_in") 
+		else:
+			$AnimationPlayerPointer.play_backwards("line_in")
+
 # built-in internal
 
 func _ready():
