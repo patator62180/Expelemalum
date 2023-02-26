@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ps33cxe1r2ry"]
+
+[ext_resource type="Script" path="res://modules/game/narrationState.gd" id="1_dykgn"]
+
+[node name="narrationState" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dykgn")

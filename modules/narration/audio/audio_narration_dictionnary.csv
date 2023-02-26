@@ -1,27 +1,27 @@
-id,subtitle,computedOnIndicator,computedPlayType,computedPlayOrderPriority,specialDisplay
-narration_timer_activity_high,Jumping around like hell on wheels! Keep it cool... but not too much !,INDICATORS.curseActivity,PLAYTYPES.highIndicator,1,
-narration_timer_activity_low,"Don’t get too attached to this poor soul, if you do well, none will be left.",INDICATORS.curseActivity,PLAYTYPES.lowIndicator,1,
-narration_timer_difficulty_high,By god’s nails! Don’t let those prayers beat us!,INDICATORS.currentDifficulty,PLAYTYPES.highIndicator,1,
-narration_timer_difficulty_low,"I know you’re a beginner, but I still think that it’s too easy",INDICATORS.currentDifficulty,PLAYTYPES.lowIndicator,1,
-narration_timer_evilness_high,"They had a family you know, the last one had a baby girl named Beatrice, nice",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,2,
-narration_timer_evilness_low,"Why so serious? Those priests deserved it, yes... but live a little, kill a lot!",INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,2,
-narration_timer_filler_1,"*humming* That’s a nice stroll, don’t forget to take some time to yourself",INDICATORS.filler,PLAYTYPES.highIndicator,1,
-narration_timer_filler_2,I wonder... should I trim my horns? What do you think? ,INDICATORS.filler,PLAYTYPES.highIndicator,1,
-narration_timer_filler_3,"What a cute village, for now at least *evil laugh*",INDICATORS.filler,PLAYTYPES.highIndicator,1,
-narration_timer_progress_high,"Soon none will stand in our way, to Hell they come",INDICATORS.gameProgress,PLAYTYPES.highIndicator,1,
-narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse",INDICATORS.gameProgress,PLAYTYPES.lowIndicator,1,
-narration_trigger_activity_high_victory,"Congratulation, you certainly spared no efforts for this",INDICATORS.curseActivity,PLAYTYPES.victoryHighIndicator,1,Superactive
-narration_trigger_activity_low_victory,"Winning while sleeping, in a way i'm impressed",INDICATORS.curseActivity,PLAYTYPES.victoryLowIndicator,1,Pretty chill
-narration_trigger_default_defeat,"You'll do better next time, after all, a damned soul has all the time in the world",INDICATORS.filler,PLAYTYPES.defeatHighIndicator,1,Balanced
-narration_trigger_default_victory,"You won fair and square, or shoud I say pentagram *laughing*",INDICATORS.filler,PLAYTYPES.victoryHighIndicator,1,Balanced
-narration_trigger_evil_high_victory,"No one was spaired, it'll be crowded down there *laughing*. Even Beatrice's Dad is here!",INDICATORS.curseEvilness,PLAYTYPES.victoryHighIndicator,1,EVIL >:D
-narration_trigger_evil_low_victory,"Yes you reached the goal, but i'm still craving some souls...",INDICATORS.curseEvilness,PLAYTYPES.victoryLowIndicator,1,Kind... 
-narration_trigger_fewKills_exorcist,You’re doing good ! But maybe a bit too good now that I think of it,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,1,
-narration_trigger_fewKills_peasant,"Well you are still alive, that’s something, but maybe it’ll be easier to go on a rampage after killing the exorcists",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,1,
-narration_trigger_firstKill_exorcist,You certainly know who your enemies are… keep it up champ,,,1,
-narration_trigger_firstKill_peasant,Ahah! I like the spirit of a free kill… but does it help you?,,,1,
-narration_trigger_gameLaunch_1,"Welcome to the Village, a proper place to prove your worth dear curse. The church is on high alert, so give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,1,
-narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, so give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,1,
-narration_trigger_manaLack,You don't have enough mana yet.,,,1,
-narration_trigger_progress_high_victory,They did not see that coming ! You are learning fast dear curse.,INDICATORS.gameProgress,PLAYTYPES.victoryHighIndicator,1,Super effective
-narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,,,1,
+id,subtitle,computedOnIndicator,computedPlayType,computedPlayPhase,computedPlayOrderPriority,specialDisplay
+narration_timer_activity_high,Jumping around like hell on wheels! Keep it cool... but not too much !,INDICATORS.curseActivity,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_activity_low,"Don’t get too attached to this poor soul, if you do well, none will be left.",INDICATORS.curseActivity,PLAYTYPES.lowIndicator,PLAYPHASE.onGame,1,
+narration_timer_difficulty_high,By god’s nails! Don’t let those prayers beat us!,INDICATORS.currentDifficulty,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_difficulty_low,"I know you’re a beginner, but I still think that it’s too easy",INDICATORS.currentDifficulty,PLAYTYPES.lowIndicator,PLAYPHASE.onGame,1,
+narration_timer_evilness_high,"They had a family you know, the last one had a baby girl named Beatrice, nice",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,PLAYPHASE.onGame,2,
+narration_timer_evilness_low,"Why so serious? Those priests deserved it, yes... but live a little, kill a lot!",INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,PLAYPHASE.onGame,2,
+narration_timer_filler_1,"*humming* That’s a nice stroll, don’t forget to take some time to yourself",INDICATORS.filler,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_filler_2,I wonder... should I trim my horns? What do you think? ,INDICATORS.filler,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_filler_3,"What a cute village, for now at least *evil laugh*",INDICATORS.filler,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_progress_high,"Soon none will stand in our way, to Hell they come",INDICATORS.gameProgress,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_timer_progress_low,"Don’t be such a blue devil, you still have a lot to curse",INDICATORS.gameProgress,PLAYTYPES.lowIndicator,PLAYPHASE.onGame,1,
+narration_trigger_activity_high_victory,"Congratulation, you certainly spared no efforts for this",INDICATORS.curseActivity,PLAYTYPES.highIndicator,PLAYPHASE.onVictory,1,Superactive
+narration_trigger_activity_low_victory,"Winning while sleeping, in a way i'm impressed",INDICATORS.curseActivity,PLAYTYPES.lowIndicator,PLAYPHASE.onVictory,1,Pretty chill
+narration_trigger_default_defeat,"You'll do better next time, after all, a damned soul has all the time in the world",INDICATORS.filler,PLAYTYPES.highIndicator,PLAYPHASE.onDefeat,1,Balanced
+narration_trigger_default_victory,"You won fair and square, or shoud I say pentagram *laughing*",INDICATORS.filler,PLAYTYPES.highIndicator,PLAYPHASE.onVictory,1,Balanced
+narration_trigger_evil_high_victory,"No one was spaired, it'll be crowded down there *laughing*. Even Beatrice's Dad is here!",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,PLAYPHASE.onVictory,1,EVIL >:D
+narration_trigger_evil_low_victory,"Yes you reached the goal, but i'm still craving some souls...",INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,PLAYPHASE.onVictory,1,Kind... 
+narration_trigger_fewKills_exorcist,You’re doing good ! But maybe a bit too good now that I think of it,INDICATORS.curseEvilness,PLAYTYPES.lowIndicator,PLAYPHASE.onGame,1,
+narration_trigger_fewKills_peasant,"Well you are still alive, that’s something, but maybe it’ll be easier to go on a rampage after killing the exorcists",INDICATORS.curseEvilness,PLAYTYPES.highIndicator,PLAYPHASE.onGame,1,
+narration_trigger_firstKill_exorcist,You certainly know who your enemies are… keep it up champ,,,,1,
+narration_trigger_firstKill_peasant,Ahah! I like the spirit of a free kill… but does it help you?,,,,1,
+narration_trigger_gameLaunch_1,"Welcome to the Village, a proper place to prove your worth dear curse. The church is on high alert, so give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,PLAYPHASE.onIntro,1,
+narration_trigger_gameLaunch_2,"Welcome to your first assignement as a curse, the Village. Not the easiest time, the church is on high alert, so give them Hell!",INDICATORS.filler,PLAYTYPES.noIndication,PLAYPHASE.onIntro,1,
+narration_trigger_manaLack,You don't have enough mana yet.,,,,1,
+narration_trigger_progress_high_victory,They did not see that coming ! You are learning fast dear curse.,INDICATORS.gameProgress,PLAYTYPES.highIndicator,PLAYPHASE.onVictory,1,Super effective
+narration_trigger_ww_intro,Do you feel this tingle in your nose? I think its your hair growing. ,,,,1,

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b3n0sxex7yklp"
+
+[deps]
+
+files=["res://modules/narration/audio/Audio - narrationDictionnary.subtitle.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedOnIndicator.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayType.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayPhase.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayOrderPriority.translation", "res://modules/narration/audio/Audio - narrationDictionnary.specialDisplay.translation"]
+
+source_file="res://modules/narration/audio/Audio - narrationDictionnary.csv"
+dest_files=["res://modules/narration/audio/Audio - narrationDictionnary.subtitle.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedOnIndicator.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayType.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayPhase.translation", "res://modules/narration/audio/Audio - narrationDictionnary.computedPlayOrderPriority.translation", "res://modules/narration/audio/Audio - narrationDictionnary.specialDisplay.translation"]
+
+[params]
+
+compress=true
+delimiter=0

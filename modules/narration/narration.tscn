@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq1n7aidps3bf"]
+[gd_scene load_steps=12 format=3 uid="uid://dq1n7aidps3bf"]
 
 [ext_resource type="Script" path="res://modules/narration/narration.gd" id="1_kif28"]
 [ext_resource type="Texture2D" uid="uid://dad7lvlcorpou" path="res://modules/overlay_ui/assets/dialog.svg" id="2_5aimg"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="2_42dyg"]
 [ext_resource type="AudioStream" uid="uid://bd1fvxfbko288" path="res://assets/medieval_song.mp3" id="2_fenhd"]
 [ext_resource type="Script" path="res://modules/game/ThemeMusicStreamPlayer.gd" id="3_uti42"]
+[ext_resource type="Script" path="res://modules/narration/NarrationState.gd" id="6_nqfoq"]
 
 [sub_resource type="Animation" id="Animation_qs274"]
 length = 0.001
@@ -172,6 +173,12 @@ mouse_filter = 1
 text = "--"
 label_settings = SubResource("LabelSettings_uweh6")
 autowrap_mode = 3
+
+[node name="NarrationState" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_nqfoq")
 
 [connection signal="timeout" from="LastLineSpoken" to="." method="_on_last_line_spoken_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

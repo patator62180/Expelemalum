@@ -23,11 +23,14 @@ var prompt_dict : Dictionary
 var queued_prompts : Array
 enum AUDIO_LINE {narration_trigger_gameLaunch_2, narration_trigger_default_defeat, narration_trigger_default_victory, narration_trigger_gameLaunch_1, narration_trigger_firstKill_peasant, narration_trigger_manaLack, narration_trigger_firstKill_exorcist, narration_trigger_ww_intro}
 
-#See initiate indicators for structure
+#See initiate prompts_scenar for structure
+var prompts_scenar : Dictionary
 var indicators : Dictionary
+
 #Each indicator value varies from -1 to 1. 0 is considered neutral 
 enum INDICATORS {curseActivity, curseEvilness, currentDifficulty, gameProgress, filler}
 enum PLAYTYPES {highIndicator, lowIndicator, noIndication, victoryLowIndicator, defeatLowIndicator, victoryHighIndicator, defeatHighIndicator}
+enum PLAYPHASE {onIntro, onGame, onVictory, onDefeat}
 
 const play_style_default = "Balanced"
 const play_style_default_threshold = 1.4
@@ -49,33 +52,38 @@ func _ready():
 	
 	# Init
 	prompt_dict = parse_csv_database(audio_source)
-	initiate_indicators(true)
+	initiate_prompts_scenar(true)
+	initiate_indicators()
 		
-#	var choice = randi_range(0,1)
-#	if choice == 1 :
-#	_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_1)
-#	else :
-#		_play_line_direct(AUDIO_LINE.narration_trigger_gameLaunch_2)
-	play_situation_line(INDICATORS.filler, PLAYTYPES.noIndication)
+	play_situation_line(INDICATORS.filler, PLAYTYPES.noIndication, PLAYPHASE.onIntro)
 	
 	$MonitorLabel.text = ""
 
-func initiate_indicators(complete_reset : bool = false) :
+func initiate_prompts_scenar(complete_reset : bool = true) :
 	
-#	if complete_reset :
-		#Make empty dictionnary
-	indicators = {}
-	for indicator in INDICATORS :
-		# [indicator value, indicator id, playtype dictionnary containing prompts]
-		indicators[INDICATORS[indicator]] = [0.0, INDICATORS[indicator], {}]
+	if complete_reset :
+
+		prompts_scenar = {}
 		
-		for playType in PLAYTYPES :
-			indicators[INDICATORS[indicator]][2][PLAYTYPES[playType]] = {
-				"remaining_prompts" : 0,
-				"asked_prompts" : 0,
-				"prompts_array" : [[]]
-				}
+		for playPhase in PLAYPHASE :
 			
+			prompts_scenar[PLAYPHASE[playPhase]] = {}
+			
+			for indicator in INDICATORS :
+				# [indicator value, indicator id, playtype dictionnary containing prompts]
+				prompts_scenar[PLAYPHASE[playPhase]][INDICATORS[indicator]] = {}
+				
+				for playType in PLAYTYPES :
+					
+					prompts_scenar[PLAYPHASE[playPhase]][INDICATORS[indicator]][PLAYTYPES[playType]] = {
+					"remaining_prompts" : 0,
+					"asked_prompts" : 0,
+					"prompts_array" : [[]]
+					}
+	else :
+		assert(false)
+		
+					
 	#fill it with prompt_dict computed values
 	for prompt in prompt_dict :
 		var prompt_array = prompt_dict[prompt]
@@ -83,10 +91,11 @@ func initiate_indicators(complete_reset : bool = false) :
 		
 		var indic = prompt_array["onIndicator"]
 		var playtyp = prompt_array["playType"]
+		var playph = prompt_array["playPhase"]
 		
-		if (indic != null and indic >= 0) and (playtyp != null and indic >= 0) :
-			register_asked_prompt(indic, playtyp, -1)
-			var studied_array = indicators[indic][2][playtyp]["prompts_array"]
+		if (indic != null and indic >= 0) and (playtyp != null and indic >= 0) and (playph != null and indic >= 0) :
+			register_asked_prompt(indic, playtyp, playph, -1)
+			var studied_array = prompts_scenar[playph][indic][playtyp]["prompts_array"]
 			
 			if prompt_array["playOrderPriority"] > studied_array.size() :
 				studied_array.resize(prompt_array["playOrderPriority"])
@@ -94,9 +103,29 @@ func initiate_indicators(complete_reset : bool = false) :
 				studied_array[prompt_array["playOrderPriority"]-1] = []
 			studied_array[prompt_array["playOrderPriority"]-1].append(prompt)
 	
-	#Set the filler threshold
-	indicators[INDICATORS.filler][0] = filler_threshold
 
+func initiate_indicators(complete_reset : bool = true) :
+	
+	if complete_reset :
+	
+		indicators = {}
+		for i in INDICATORS :
+			indicators[INDICATORS[i]] = {
+				"value" : 0.0,
+				"indic_id" : INDICATORS[i],
+				"level_tendancy" : 0.0,
+				"global_tendancy" : 0.0
+				}
+		
+		indicators[INDICATORS.filler]["value"] = filler_threshold
+	
+	else :
+		
+		for i in INDICATORS :
+			indicators[INDICATORS[i]]["global_tendancy"] += indicators[INDICATORS[i]]["value"]
+			indicators[INDICATORS[i]]["value"] = 0.0
+			indicators[INDICATORS[i]]["level_tendancy"] = 0.0
+	
 func parse_csv_database(
 	filename : String,
 	id_column: String = "id",
@@ -161,12 +190,12 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 	
 	if reset :
 		var monitor : String = ""
-		for i in indicators :
-			monitor += str(INDICATORS.keys()[i]) + " val: " + str(indicators[i][0]) +" prompts : "
+		for i in prompts_scenar[PLAYPHASE.onGame] :
+			monitor += str(INDICATORS.keys()[i]) + " val: " + str(indicators[i]["value"]) +" prompts : "
 			for t in PLAYTYPES :
-				monitor += str(get_indicators_remaining_prompts(i,PLAYTYPES[t]))
+				monitor += str(get_remaining_prompts(i,PLAYTYPES[t]))
 				monitor += "-"
-				monitor += str(get_indicators_asked_prompts(i,PLAYTYPES[t]))
+				monitor += str(get_asked_prompts(i,PLAYTYPES[t]))
 				monitor += "|"
 			monitor += "\n"
 		if OS.is_debug_build():
@@ -178,6 +207,7 @@ func set_monitor(prefix : String = "", reset : bool = true, suffix : String = ""
 func play_situation_line(
 	indicator : INDICATORS,
 	playType : PLAYTYPES,
+	playPhase : PLAYPHASE = PLAYPHASE.onGame,
 	prompt_id : int = -1 #if -1 the func takes the highest priority at random
 	) -> String :
 	
@@ -186,8 +216,8 @@ func play_situation_line(
 	var prompt_str : String
 	var enough_prompt_remaining : bool
 	
-	if get_indicators_remaining_prompts(indicator, playType) > 0 :
-		var prompts_array : Array = indicators[indicator][2][playType]["prompts_array"]
+	if get_remaining_prompts(indicator, playType, playPhase) > 0 :
+		var prompts_array : Array = prompts_scenar[playPhase][indicator][playType]["prompts_array"]
 		
 		if prompts_array[0].size() == 1 :
 			prompt_str = prompts_array[0][0]
@@ -202,78 +232,72 @@ func play_situation_line(
 	else :
 		enough_prompt_remaining = false
 		
-	register_asked_prompt(indicator,playType)
+	register_asked_prompt(indicator,playType,playPhase)
 	
 	return prompt_str
 
-func play_best_line_by_indicator() -> bool:
+func play_best_line(playPh : PLAYPHASE = PLAYPHASE.onGame) -> String:
 	
 	update_indicators()
 	
 	var indicators_values = indicators.values()
-	indicators_values.sort_custom(func(a,b): return abs(a[0]) > abs(b[0]) )
+	var indication : String
 	
-	var prompt_found : bool = false
-	var error : bool = false
+	match playPh :
+		PLAYPHASE.onGame :
+			indication = "value"
+		PLAYPHASE.onVictory :
+			indication = "level_tendancy"
+		PLAYPHASE.onDefeat :
+			indication = "level_tendancy"
+		PLAYPHASE.onIntro :
+			indication = "global_tendancy"
+	
+	indicators_values.sort_custom(func(a,b): return abs(a[indication]) > abs(b[indication]))
+	
+	var found_prompt 
 	var iterator : int = 0
-	var studied_array : Array
-#	[value, INDICATOR, {PLAYTYPES, prompt_remaining_count}]
 	
-	while (not(prompt_found or iterator >= indicators_values.size())) : # et fin du tableau pas trouvée 
+	var studied_playtyp : PLAYTYPES = PLAYTYPES.noIndication
+	var studied_indicator : Dictionary
+	
+	while ( (found_prompt==null or found_prompt =="") and iterator < indicators_values.size() ) : # et fin du tableau pas trouvée 
 		
-		studied_array = indicators_values[iterator] 
+		studied_indicator = indicators_values[iterator] 
 		
-		if (studied_array[0] > 0) :
-			if studied_array[2][PLAYTYPES.highIndicator]["remaining_prompts"] > 0 :
-				error = (play_situation_line(studied_array[1],PLAYTYPES.highIndicator) == null)
-				prompt_found = true
-				
-			else :
-				register_asked_prompt(studied_array[1],PLAYTYPES.highIndicator)
+		if (studied_indicator[indication] >= 0.0) :
+			studied_playtyp = PLAYTYPES.highIndicator
 		else :
-			if studied_array[2][PLAYTYPES.lowIndicator]["remaining_prompts"] > 0 :
-				error = (play_situation_line(studied_array[1],PLAYTYPES.lowIndicator) == null)
-				prompt_found = true
-	
-			else :
-				register_asked_prompt(studied_array[1],PLAYTYPES.lowIndicator)
-				
+			studied_playtyp = PLAYTYPES.lowIndicator
+		
+		#if it fails, it is because there is no prompt left to say in this situation, and it returns null
+		found_prompt = play_situation_line(studied_indicator["indic_id"],studied_playtyp,playPh)
+		
+		if found_prompt == null :
+			#register even if nothing is said. play_situation_line already registers the asked prompt.
+			register_asked_prompt(studied_indicator["indic_id"],studied_playtyp,playPh)
+		
 		iterator += 1
 
-	return prompt_found and not(error)
 
+	return found_prompt	
 
-func play_best_ending_by_indicator(game_won : bool):
+func play_ending(game_won : bool): 
 	
-	var indicators_values = indicators.values()
-	indicators_values.sort_custom(
-		func(a,b): 
-			return max(a[2][PLAYTYPES.highIndicator]["asked_prompts"],a[2][PLAYTYPES.lowIndicator]["asked_prompts"]) > max(b[2][PLAYTYPES.highIndicator]["asked_prompts"],b[2][PLAYTYPES.lowIndicator]["asked_prompts"]) 
-	)
-	var selected_indic = indicators_values[0]
-	var selected_prompt_str : String
-	
-	if selected_indic[2][PLAYTYPES.highIndicator]["asked_prompts"] > play_style_default_threshold * selected_indic[2][PLAYTYPES.lowIndicator]["asked_prompts"] :
-		# High indicator !
-		if game_won :
-			selected_prompt_str = play_situation_line(selected_indic[1],PLAYTYPES.victoryHighIndicator)
-		else :
-			selected_prompt_str = play_situation_line(selected_indic[1],PLAYTYPES.defeatHighIndicator)
-	elif selected_indic[2][PLAYTYPES.lowIndicator]["asked_prompts"] > play_style_default_threshold * selected_indic[2][PLAYTYPES.highIndicator]["asked_prompts"] :
-		# Low indicator !
-		if game_won :
-			selected_prompt_str = play_situation_line(selected_indic[1],PLAYTYPES.victoryLowIndicator)
-		else :
-			selected_prompt_str = play_situation_line(selected_indic[1],PLAYTYPES.victoryLowIndicator)
-	
-	if selected_prompt_str == null or selected_prompt_str == "" :
-		set_monitor("Default ending prompt")
-		if game_won :
-			selected_prompt_str = play_situation_line(INDICATORS.filler, PLAYTYPES.victoryHighIndicator)
-		else :
-			selected_prompt_str = play_situation_line(INDICATORS.filler, PLAYTYPES.defeatHighIndicator)
-	
-	GameState.set_player_narration_state(prompt_dict[selected_prompt_str]["specialDisplay"])
+	queued_prompts.clear()
+			
+	var final_text : String
+			
+	if game_won :
+		final_text = play_best_line(PLAYPHASE.onVictory)
+	else :
+		final_text = play_best_line(PLAYPHASE.onDefeat)
+			
+	if final_text != null :
+		GameState.set_player_narration_state(prompt_dict[final_text]["specialDisplay"])
+	else :
+		GameState.set_player_narration_state("Super Fast Looser")
+
 
 
 func update_play_style():
@@ -282,25 +306,25 @@ func update_play_style():
 	
 	for i in INDICATORS :
 		for p in PLAYTYPES :
-			get_indicators_asked_prompts(INDICATORS[i], PLAYTYPES[p])
+			get_asked_prompts(INDICATORS[i], PLAYTYPES[p])
 			
 
 func update_indicators():
 	# EVILNESS
 	if ((GameState.get_total_kill_count()) == 0) :
-		indicators[INDICATORS.curseEvilness][0] = 0.0
+		indicators[INDICATORS.curseEvilness]["value"] = 0.0
 	else :
-		indicators[INDICATORS.curseEvilness][0] = 2.0*(GameState.peasant_kill_count as float / (GameState.get_total_kill_count() as float)) - 1.0
+		indicators[INDICATORS.curseEvilness]["value"] = 2.0*(GameState.peasant_kill_count as float / (GameState.get_total_kill_count() as float)) - 1.0
 	
 	#DIFFICULTY
-	indicators[INDICATORS.currentDifficulty][0] = 2.0*(GameState.remaining_exorcists_count as float / (GameState.remaining_exorcists_count as float + GameState.remaining_peasant_count as float)) - 1.0 #can be zero if world not init
+	indicators[INDICATORS.currentDifficulty]["value"]= 2.0*(GameState.remaining_exorcists_count as float / (GameState.remaining_exorcists_count as float + GameState.remaining_peasant_count as float)) - 1.0 #can be zero if world not init
 	
 	#GAME PROGRESS
-	indicators[INDICATORS.gameProgress][0] = 2.0*(GameState.exorcist_kill_count as float / (GameState.exorcist_kill_count as float + GameState.remaining_exorcists_count as float)) - 1.0 #can be zero if world not init
+	indicators[INDICATORS.gameProgress]["value"] = 2.0*(GameState.exorcist_kill_count as float / (GameState.exorcist_kill_count as float + GameState.remaining_exorcists_count as float)) - 1.0 #can be zero if world not init
 	
 	#ACTIVITY
 	var number_of_swipes_done = GameState.get_updated_curse_events().size()
-	indicators[INDICATORS.curseActivity][0] = 2.0 *(activity_threshold * number_of_swipes_done as float / GameState.curse_memory_duration as float) - 1.0
+	indicators[INDICATORS.curseActivity]["value"] = 2.0 *(activity_threshold * number_of_swipes_done as float / GameState.curse_memory_duration as float) - 1.0
 	
 	GameState.set_player_narration_state("yolo")
 	
@@ -310,9 +334,11 @@ func update_indicators():
 func register_asked_prompt(
 	indicator : INDICATORS,
 	playtype : PLAYTYPES,
-	delta : int = 1) :
+	phase : PLAYPHASE = PLAYPHASE.onGame,
+	delta : int = 1,
+	) :
 	
-	var studied_dict = indicators[indicator][2][playtype]
+	var studied_dict = prompts_scenar[phase][indicator][playtype]
 	
 	if (delta > 0) : #if a prompt is asked
 		
@@ -322,22 +348,35 @@ func register_asked_prompt(
 		#register the asking
 		studied_dict["asked_prompts"] += delta
 		
+		if phase == PLAYPHASE.onGame :
+			if playtype == PLAYTYPES.highIndicator :
+				indicators[indicator]["level_tendancy"] += delta 
+			elif playtype == PLAYTYPES.lowIndicator :
+				indicators[indicator]["level_tendancy"] -= delta 
+		
 	else : #if a prompt is aded
 		studied_dict["remaining_prompts"] -= delta
 	
-func get_indicators_remaining_prompts(
+	
+	
+	
+func get_remaining_prompts(
 	indicator : INDICATORS,
-	playtype : PLAYTYPES
+	playtype : PLAYTYPES,
+	playph : PLAYPHASE = PLAYPHASE.onGame
 	) -> int :
-			
-	return indicators[indicator][2][playtype]["remaining_prompts"]
+	
+	
+	
+	return prompts_scenar[playph][indicator][playtype]["remaining_prompts"]
 
-func get_indicators_asked_prompts(
+func get_asked_prompts(
 	indicator : INDICATORS,
-	playtype : PLAYTYPES
+	playtype : PLAYTYPES,
+	playph : PLAYPHASE = PLAYPHASE.onGame
 	) -> int :
 		
-	return indicators[indicator][2][playtype]["asked_prompts"]
+	return prompts_scenar[playph][indicator][playtype]["asked_prompts"]
 
 # PLAYER MANAGEMENT
 ############################################################################
@@ -396,17 +435,19 @@ func _on_game_state_metamorphose(character : Node2D):
 
 func _on_last_line_spoken_timeout():
 	lastLineSpoken.stop()
-	play_best_line_by_indicator()
+	play_best_line(PLAYPHASE.onGame)
 
 func _on_game_change(old) :
 	match GameState.current_game_phase :
+		
 		GameState.GAME_PHASE.Intro :
 			pass
 		GameState.GAME_PHASE.Gameplay :
-			initiate_indicators()
+			
+			initiate_prompts_scenar()
 			lastLineSpoken.start()
 		GameState.GAME_PHASE.Outro :
+			
 			lastLineSpoken.stop()
-			queued_prompts.clear()
-			play_best_ending_by_indicator(GameState.game_won)
-
+			play_ending(GameState.game_won)
+			initiate_indicators(false)
