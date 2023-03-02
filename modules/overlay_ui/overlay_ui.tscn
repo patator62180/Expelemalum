@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://qgsawqr22xjy"]
+[gd_scene load_steps=20 format=3 uid="uid://qgsawqr22xjy"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
+[ext_resource type="Texture2D" uid="uid://cjmk41ihy7cmj" path="res://modules/overlay_ui/assets/tuto_mobile.svg" id="2_x14o4"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
 [ext_resource type="Texture2D" uid="uid://b52fg0crlh4j2" path="res://modules/overlay_ui/assets/remaining_exorcist_count.svg" id="5_him70"]
 [ext_resource type="Texture2D" uid="uid://c7837t3ruslae" path="res://modules/overlay_ui/assets/credits.svg" id="9_kjx3s"]
@@ -551,6 +552,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_eryqm")
+MOBILE_CONTROL_HELPER = ExtResource("2_x14o4")
 
 [node name="GameplayScreen" type="Control" parent="."]
 layout_mode = 1

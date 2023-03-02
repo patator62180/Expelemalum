@@ -29,9 +29,9 @@ func _process(delta : float):
 	_update_skull(delta)
 
 func _input(event : InputEvent):
-	if event.is_action_released("curse"):
+	if event.is_action_released("curse") and not $Area2DMouse.mouse_in:
 		_try_curse(_cursable_character)
-	if event.is_action_released("metamorphose"):
+	if event.is_action_released("metamorphose") or event.is_action_released("curse") and $Area2DMouse.mouse_in:
 		if not _cursed_character.is_metamorphosed and not _cursed_character.is_metamorphosing:
 			GameState.on_metamorphose(_cursed_character)
 			_cursed_character.metamorphose()
