@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bl6jkmtd7u1j4"]
+[gd_scene load_steps=28 format=3 uid="uid://ksgsq2s4txvo"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="PackedScene" uid="uid://khfvq1400jtw" path="res://modules/curse/curved_lines.tscn" id="2_ie7se"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cncp24qpoxjxw" path="res://modules/curse/assets/forbidden.svg" id="9_kgp4y"]
 [ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="9_pp52w"]
 [ext_resource type="AudioStream" uid="uid://b7mvkak62ln5t" path="res://modules/curse/assets/audio/sfx_curse_transform_forbidden.mp3" id="9_r8p68"]
+[ext_resource type="Script" path="res://modules/curse/Area2DMouse.gd" id="13_h67jy"]
 
 [sub_resource type="Curve" id="Curve_56xj1"]
 _data = [Vector2(0, 0), 0.0, 18.1709, 0, 0, Vector2(0.148289, 0.990909), 0.0, 0.0, 0, 0, Vector2(0.992395, 0.0181818), -1.73135, 0.0, 0, 0]
@@ -165,6 +166,9 @@ _data = {
 "RESET": SubResource("Animation_pn3hd"),
 "forbidden": SubResource("Animation_f32is")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6td0a"]
+height = 40.0
 
 [node name="Curse" type="Node2D"]
 script = ExtResource("1_cbkdp")
@@ -341,3 +345,12 @@ stream = ExtResource("9_r8p68")
 libraries = {
 "": SubResource("AnimationLibrary_uplu4")
 }
+
+[node name="Area2DMouse" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("13_h67jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMouse"]
+shape = SubResource("CapsuleShape2D_6td0a")
