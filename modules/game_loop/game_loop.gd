@@ -25,6 +25,12 @@ func _ready():
 	GameState.curse_killed.connect(_on_game_state_cursed_killed)
 	GameState.updated_remaining_count.connect(_on_game_state_updated_remaining_count)
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		GameState.curse_killed.disconnect(_on_game_state_cursed_killed)
+		GameState.updated_remaining_count.disconnect(_on_game_state_updated_remaining_count)
+		get_tree().quit()
+
 func _on_game_state_updated_remaining_count():
 	if GameState.remaining_exorcists_count < 1:
 		GameState.game_won = true
