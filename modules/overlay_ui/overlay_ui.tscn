@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://qgsawqr22xjy"]
+[gd_scene load_steps=19 format=3 uid="uid://qgsawqr22xjy"]
 
 [ext_resource type="Script" path="res://modules/overlay_ui/overlay_ui.gd" id="1_eryqm"]
 [ext_resource type="Texture2D" uid="uid://bll8736vf7trb" path="res://modules/overlay_ui/assets/tuto.svg" id="4_5df4v"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b18hl16d6xh1i" path="res://modules/overlay_ui/assets/exit_hover.svg" id="10_dtw0i"]
 [ext_resource type="Texture2D" uid="uid://s47idtmyg3e5" path="res://modules/overlay_ui/assets/title.svg" id="10_etjgf"]
 [ext_resource type="FontFile" uid="uid://dvj6ydvnxdxy6" path="res://assets/avara.ttf" id="10_j3c3t"]
+[ext_resource type="Texture2D" uid="uid://ceoverjd1tm80" path="res://modules/overlay_ui/assets/message_back.svg" id="12_6ro2c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8w875"]
 font = ExtResource("10_j3c3t")
@@ -85,53 +86,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainerAchievement:position")
+tracks/4/path = NodePath("EndMessage:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(315, 869)]
-}
-
-[sub_resource type="Animation" id="Animation_xf3j7"]
-resource_name = "exit_intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(576, 324), Vector2(576, 28)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../GameplayScreen/ControlHelper:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-220, -212), Vector2(-20, -12)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../GameplayScreen/ExorcistCounter:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(552, -207), Vector2(352, -7)]
+"values": [Vector2(520, 1157)]
 }
 
 [sub_resource type="Animation" id="Animation_kcc5p"]
@@ -176,7 +138,7 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("MenuEnd:position")
-tracks/3/interp = 1
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
@@ -187,14 +149,53 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainerAchievement:position")
+tracks/4/path = NodePath("EndMessage:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(315, 869), Vector2(315, 459)]
+"values": [Vector2(520, 1157), Vector2(520, 471)]
+}
+
+[sub_resource type="Animation" id="Animation_xf3j7"]
+resource_name = "exit_intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 324), Vector2(576, 28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameplayScreen/ControlHelper:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-220, -212), Vector2(-20, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GameplayScreen/ExorcistCounter:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(552, -207), Vector2(352, -7)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hgvx6"]
@@ -237,9 +238,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 552.0
+offset_left = -600.0
 offset_top = -207.0
-offset_right = 1365.0
+offset_right = 213.0
 offset_bottom = 382.0
 grow_horizontal = 0
 scale = Vector2(0.3, 0.3)
@@ -281,10 +282,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 576.0
-offset_top = 324.0
-offset_right = 576.0
-offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
@@ -319,6 +316,58 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_etjgf")
 
+[node name="EndMessage" type="Control" parent="MenuScreen"]
+anchors_preset = 0
+offset_left = 520.0
+offset_top = 1157.0
+offset_right = 560.0
+offset_bottom = 1197.0
+
+[node name="TextureRect" type="TextureRect" parent="MenuScreen/EndMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -77.0
+offset_right = 1142.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_6ro2c")
+
+[node name="HBoxContainerAchievement" type="HBoxContainer" parent="MenuScreen/EndMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -33.0
+offset_right = 252.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="LabelDescription" type="Label" parent="MenuScreen/EndMessage/HBoxContainerAchievement"]
+layout_mode = 2
+text = "You've been : "
+label_settings = SubResource("LabelSettings_lhjf2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelValue" type="Label" parent="MenuScreen/EndMessage/HBoxContainerAchievement"]
+layout_mode = 2
+text = "Michel"
+label_settings = SubResource("LabelSettings_lhjf2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MenuEnd" type="Control" parent="MenuScreen"]
 layout_mode = 1
 anchors_preset = 8
@@ -326,10 +375,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 576.0
-offset_top = 770.0
-offset_right = 576.0
-offset_bottom = 770.0
+offset_top = 446.0
+offset_bottom = 446.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
@@ -382,35 +429,6 @@ offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_pqv1n")
-
-[node name="HBoxContainerAchievement" type="HBoxContainer" parent="MenuScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 315.0
-offset_top = 869.0
-offset_right = 799.0
-offset_bottom = 929.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="LabelDescription" type="Label" parent="MenuScreen/HBoxContainerAchievement"]
-layout_mode = 2
-text = "You've been : "
-label_settings = SubResource("LabelSettings_lhjf2")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelValue" type="Label" parent="MenuScreen/HBoxContainerAchievement"]
-layout_mode = 2
-text = "Michel"
-label_settings = SubResource("LabelSettings_lhjf2")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../MenuScreen")

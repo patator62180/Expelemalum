@@ -14,7 +14,6 @@ script = ExtResource("1_dknqd")
 SPEED = 40.0
 RADIUS_BODY = 8.0
 RADIUS_VISION = 100.0
-character_type = 0
 
 [node name="Area2DVision" type="Area2D" parent="."]
 visible = false
