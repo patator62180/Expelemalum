@@ -6,5 +6,5 @@ extends Node
 func get_behavior() -> Node:
 	return get_node(BEHAVIOR_PATH)
 
-func _process(delta : float):
+func _process(_delta : float):
 	assert(false, "this function should be overloaded")

@@ -1,6 +1,6 @@
 extends "res://modules/character/peasants/peasant_character_ui.gd"
 
-func _process(delta : float):
+func _process(_delta : float):
 	var character : Node2D = get_character()
 	if character.is_killing and character.victim != null and not character.victim.is_queued_for_deletion():
 		$Scratch.global_position = character.victim.global_position
@@ -38,3 +38,11 @@ func _on_animation_die_red_specific():
 	else:
 		$AnimRoot/Sprite2D.texture = load("res://modules/character/peasants/assets/dead_lumberjack.svg")
 	$AnimRoot/Sprite2D.rotation = 0.5 * PI
+
+func _on_character_cursed():
+	super._on_character_cursed()
+	$Circle.visible = true
+
+func _on_character_uncursed():
+	super._on_character_uncursed()
+	$Circle.visible = false

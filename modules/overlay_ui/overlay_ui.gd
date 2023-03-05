@@ -1,12 +1,21 @@
 extends Control
 
-@onready var game_loop : Node2D = get_tree().root.get_node("Game/gameLoop")
+@export var MOBILE_CONTROL_HELPER : Texture2D
+
+@onready var _gameloop : Node2D = get_parent().get_parent().get_node("GameLoop")
+@onready var _control_helper : TextureRect = get_node("GameplayScreen/ControlHelper")
 
 func _ready():
 	GameState.updated_game_phase.connect(_on_game_state_update)
+	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+	$MenuScreen/MenuEnd/TextureButtonExit.pressed.connect(_on_texture_button_exit_pressed)
+	$MenuScreen/MenuEnd/TextureButtonPlayAgain.pressed.connect(_on_texture_button_play_again_pressed)
 	_on_exorcist_count_changed()
+	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+		_control_helper.texture = MOBILE_CONTROL_HELPER
+		
 
-func _on_game_state_update(previousState):
+func _on_game_state_update(_previousState):
 	if GameState.current_game_phase == GameState.GAME_PHASE.Outro:
 		_on_exit_gameplay()
 
@@ -26,25 +35,28 @@ func _on_exit_gameplay():
 		$MenuScreen/MenuEnd/MessageDisplay.texture = preload("res://modules/overlay_ui/assets/victory.svg")
 	else:
 		$MenuScreen/MenuEnd/MessageDisplay.texture = preload("res://modules/overlay_ui/assets/defeat.svg")
-	$MenuScreen/HBoxContainerAchievement/LabelValue.text = GameState.player_narration_state
+	$MenuScreen/EndMessage/HBoxContainerAchievement/LabelValue.text = GameState.player_narration_state
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "exit_intro":
-		game_loop.start_gameplay()
+		_gameloop.start_gameplay()
 		_on_enter_gameplay()
-	if anim_name == "enter_outro" and $AnimationPlayer.current_animation_position == 0:
-		game_loop.destroy_world()
-		_on_enter_gameplay()
+	elif anim_name == "enter_outro":
+		if $AnimationPlayer.current_animation_position == 0:
+			_on_enter_gameplay()
+		else:
+			_gameloop.destroy_world()
+			
 
-func _on_exorcist_killed(killer, victim):
+func _on_exorcist_killed(_killer, _victim):
 	_on_exorcist_count_changed()
 
 func _on_exorcist_count_changed():
 	$GameplayScreen/ExorcistCounter/Label.text = str(GameState.exorcist_kill_count) + "/" + str(GameState.remaining_exorcists_count+GameState.exorcist_kill_count)
 
-func _on_texture_button_play_exit_pressed():
-	game_loop.on_exit_game()
+func _on_texture_button_exit_pressed():
+	_gameloop.on_exit_game()
 
 func _on_texture_button_play_again_pressed():
+	_gameloop.on_restart()
 	$AnimationPlayer.play_backwards("enter_outro")
-	game_loop.on_restart()

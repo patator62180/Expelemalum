@@ -20,6 +20,10 @@ config/icon="res://assets/icon.png"
 GameState="*res://modules/game_state/game_state.tscn"
 CharacterCenter="*res://modules/character/character_center.tscn"
 
+[debug]
+
+gdscript/warnings/assert_always_false=0
+
 [display]
 
 window/size/mode=2

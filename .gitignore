@@ -3,3 +3,9 @@
 
 # vscode support
 .vscode/
+
+# build
+builds/
+
+#android
+android/
