@@ -21,7 +21,7 @@ _data = [Vector2(0, 0), 0.0, 3.95946, 0, 1, Vector2(0.25256, 1), 0.0, 0.0, 0, 0,
 point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d4kpx"]
-radius = 100.0
+radius = 150.0
 
 [sub_resource type="Curve2D" id="Curve2D_34fca"]
 bake_interval = 100.0
