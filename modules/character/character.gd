@@ -16,6 +16,7 @@ signal entered_outer_boundary(outer_boundary)
 
 # testing interface (assuming this is only changed in the editor)
 @export var SPEED : float
+@export var SPEED_RANDOMNESS : float
 
 @export var RADIUS_BODY : float:
 	get:

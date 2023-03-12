@@ -4,10 +4,12 @@ extends "res://modules/character/behavior/behavior_peasant.gd"
 
 func _on_character_metamorphosed():
 	$AnimationPlayerMove.speed_scale *= 1.5
+	speed_factor *= 1.5
 	super._on_character_metamorphosed()
 
 func _on_character_unmetamorphosed():
 	$AnimationPlayerMove.speed_scale /= 1.5
+	speed_factor /= 1.5
 	super._on_character_unmetamorphosed()
 
 func _get_moving_direction_metamorphosed():
