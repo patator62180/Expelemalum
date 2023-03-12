@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bocfd3u5o522i" path="res://modules/character/character.tscn" id="1_tcyie"]
 [ext_resource type="Script" path="res://modules/character/exorcists/exorcist.gd" id="2_c2apt"]
 [ext_resource type="PackedScene" uid="uid://dvchtauv3t1em" path="res://modules/character/behavior/behavior_exorcist.tscn" id="3_cp1p4"]
-[ext_resource type="PackedScene" uid="uid://by6nurb5bfs35" path="res://modules/character/exorcists/exorcist_character_ui.tscn" id="4_q1y4m"]
+[ext_resource type="PackedScene" uid="uid://c5sd8xrv75w4n" path="res://modules/character/exorcists/exorcist_character_ui.tscn" id="4_q1y4m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0wtw"]
 resource_local_to_scene = true

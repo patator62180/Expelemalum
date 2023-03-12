@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bl6jkmtd7u1j4"]
+[gd_scene load_steps=33 format=3 uid="uid://b2d21vofg151p"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
-[ext_resource type="PackedScene" uid="uid://khfvq1400jtw" path="res://modules/curse/curved_lines.tscn" id="2_ie7se"]
+[ext_resource type="PackedScene" path="res://modules/curved_lines/curved_lines.tscn" id="2_ie7se"]
 [ext_resource type="Script" path="res://modules/curse/pointer.gd" id="3_4jwbh"]
 [ext_resource type="Texture2D" uid="uid://rhpgdwihfaqw" path="res://modules/curse/assets/hand_point.svg" id="3_fpo1w"]
 [ext_resource type="Texture2D" uid="uid://c2aaepu5r8ikg" path="res://modules/curse/assets/skull.svg" id="3_s5wb8"]
