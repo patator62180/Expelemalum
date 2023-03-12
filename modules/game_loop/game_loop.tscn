@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://modules/game_loop/game_loop.gd" id="1_gm276"]
 [ext_resource type="PackedScene" uid="uid://bodqa34xehsml" path="res://modules/world/world.tscn" id="2_ubpol"]
-[ext_resource type="PackedScene" uid="uid://bl6jkmtd7u1j4" path="res://modules/curse/curse.tscn" id="3_d7dko"]
+[ext_resource type="PackedScene" uid="uid://b2d21vofg151p" path="res://modules/curse/curse.tscn" id="3_d7dko"]
 
 [node name="gameLoop" type="Node2D"]
 script = ExtResource("1_gm276")

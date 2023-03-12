@@ -1,19 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://by6nurb5bfs35"]
+[gd_scene load_steps=11 format=3 uid="uid://c5sd8xrv75w4n"]
 
-[ext_resource type="PackedScene" uid="uid://bf1xdcm02sonr" path="res://modules/character/character_ui.tscn" id="1_k242c"]
+[ext_resource type="PackedScene" uid="uid://yu43duhtpdbj" path="res://modules/character/character_ui.tscn" id="1_k242c"]
 [ext_resource type="Script" path="res://modules/character/exorcists/exorcist_character_ui.gd" id="2_thek2"]
 [ext_resource type="Texture2D" uid="uid://cxniwignt2188" path="res://modules/character/exorcists/assets/exorcist.svg" id="3_y7b08"]
 [ext_resource type="AudioStream" uid="uid://do1m1tbw78v41" path="res://modules/character/assets/audio/sfx_exorcist_killAction.mp3" id="4_7dsqo"]
 [ext_resource type="AudioStream" uid="uid://lwdho1ggofk5" path="res://modules/character/assets/audio/sfx_exorcist_death.mp3" id="4_opr7g"]
-[ext_resource type="PackedScene" uid="uid://khfvq1400jtw" path="res://modules/curse/curved_lines.tscn" id="6_i1if5"]
-[ext_resource type="Texture2D" uid="uid://bnn8od3awsnks" path="res://modules/character/exorcists/assets/hand_point.svg" id="7_rhssp"]
-[ext_resource type="Texture2D" uid="uid://dkpxoafyqaci2" path="res://modules/character/exorcists/assets/interrogation.svg" id="8_lfqlj"]
-[ext_resource type="Texture2D" uid="uid://6r11181rdsjp" path="res://modules/character/exorcists/assets/exclamation.svg" id="9_git6x"]
+[ext_resource type="PackedScene" path="res://modules/curved_lines/curved_lines.tscn" id="6_i1if5"]
+[ext_resource type="Texture2D" uid="uid://bkw8871j0ojqc" path="res://modules/character/exorcists/assets/hand_point.svg" id="7_rhssp"]
+[ext_resource type="Texture2D" uid="uid://b75nbse00n4vb" path="res://modules/character/exorcists/assets/interrogation.svg" id="8_lfqlj"]
+[ext_resource type="Texture2D" uid="uid://dylqql540or4h" path="res://modules/character/exorcists/assets/exclamation.svg" id="9_git6x"]
 
 [sub_resource type="Gradient" id="Gradient_amofh"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.25, 1)
-colors = PackedColorArray(0.901961, 0.819608, 0.6, 0, 0.901961, 0.819608, 0.6, 0.0784314, 0.9, 0.82, 0.6, 0.5)
+colors = PackedColorArray(0.901961, 0.819608, 0.6, 0, 0.901961, 0.819608, 0.603922, 0.196078, 0.901961, 0.819608, 0.6, 1)
 
 [node name="CharacterUI" instance=ExtResource("1_k242c")]
 script = ExtResource("2_thek2")
@@ -36,7 +36,7 @@ z_index = 1
 
 [node name="Line2D" type="Line2D" parent="CurvedLines" index="0"]
 points = PackedVector2Array(0, 0, 30, 32)
-width = 1.5
+width = 3.0
 default_color = Color(0.901961, 0.819608, 0.6, 1)
 gradient = SubResource("Gradient_amofh")
 joint_mode = 2
@@ -49,6 +49,9 @@ z_index = 1
 position = Vector2(24, -5)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("7_rhssp")
+
+[node name="Marker2D" type="Marker2D" parent="Pointer" index="0"]
+position = Vector2(-46.6667, 6.66667)
 
 [node name="Info" type="Node2D" parent="." index="9"]
 z_index = 1

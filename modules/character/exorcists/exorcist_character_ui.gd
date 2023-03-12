@@ -38,8 +38,8 @@ func _process(delta : float):
 	$Info.global_position = pointer.global_position + Vector2.UP * 10.0
 	$Info.modulate.a = pointer.modulate.a
 	# update line
-	$CurvedLines/Line2D.points[0] = (character.global_position - global_position) + (pointer.global_position - character.global_position).normalized() * pointer_offset
-	$CurvedLines/Line2D.points[$CurvedLines/Line2D.points.size()-1] = pointer.global_position - global_position
+	$CurvedLines.origin = character
+	$CurvedLines.target = $Pointer/Marker2D
 	# killing
 	if character.is_killing:
 		fire.global_position = character.victim.get_node("CharacterUI/AnimRoot").global_position
