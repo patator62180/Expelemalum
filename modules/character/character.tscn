@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://modules/character/character.gd" id="1_dknqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e645k"]
-radius = 100.0
+radius = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbmoq"]
 resource_local_to_scene = true
@@ -12,8 +12,9 @@ radius = 8.0
 [node name="Character" type="Node2D" groups=["character"]]
 script = ExtResource("1_dknqd")
 SPEED = 40.0
+SPEED_RANDOMNESS = 0.25
 RADIUS_BODY = 8.0
-RADIUS_VISION = 100.0
+RADIUS_VISION = 200.0
 
 [node name="Area2DVision" type="Area2D" parent="."]
 visible = false

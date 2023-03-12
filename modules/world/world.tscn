@@ -86,90 +86,119 @@ y_sort_enabled = true
 
 [node name="Character" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(28, -7)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53534" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(225, 125)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53535" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(55.0959, -47.0099)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53536" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(27.0884, 51.2459)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53537" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-162, -32)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53538" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(133.264, -49.3292)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53539" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-115.827, 146.755)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53540" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-132.652, -48.2674)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53541" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(131, -135)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53542" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-227.413, -68.3355)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53543" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(168, 100)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53544" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-252, 60)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53545" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(52, 113)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53546" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-13.286, -92.3673)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53547" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-166, -150)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53548" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-55.5597, 147.927)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53549" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(116.787, 3.40046)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53550" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(178.989, -17.6673)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53552" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(193.23, 51.6585)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53553" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(79.0845, -127.107)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53554" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(244.552, -13.1335)
+RADIUS_VISION = 100.0
 
 [node name="Character72119" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(173, -89)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53556" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(230.811, 73.9424)
+RADIUS_VISION = 100.0
 
 [node name="@Character@53557" parent="Playground" instance=ExtResource("6_c61lt")]
 position = Vector2(-209.296, -27.8288)
+RADIUS_VISION = 100.0
 
 [node name="@Character@72116" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-152.553, 33.6016)
+RADIUS_VISION = 100.0
 
 [node name="@Character@72119" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-206.896, 122.447)
+RADIUS_VISION = 100.0
 
 [node name="@Character@72121" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(26.6797, 168.083)
+RADIUS_VISION = 100.0
 
 [node name="Character72121" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-67, -87)
+RADIUS_VISION = 100.0
 
 [node name="@Character@72122" parent="Playground" instance=ExtResource("4_n7ean")]
 position = Vector2(-67.6522, 77.4629)
+RADIUS_VISION = 100.0
 
 [node name="@Rock0@33252" parent="Playground" instance=ExtResource("6_5ramq")]
 position = Vector2(79.313, 11.3781)

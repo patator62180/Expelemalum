@@ -5,3 +5,4 @@
 
 [node name="Behavior" instance=ExtResource("1_t525t")]
 script = ExtResource("1_lj0v1")
+CHARACTER_PATH = NodePath("..")

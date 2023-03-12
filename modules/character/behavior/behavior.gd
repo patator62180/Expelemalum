@@ -10,7 +10,8 @@ extends Node
 @export var TIMER_CURIOSITY_WAIT_TIME : float
 @export_range(0.0, 1.0) var TIMER_CURIOSITY_WAIT_TIME_RANDOM : float
 
-@export var SPEED_FACTOR : float
+@export var SPEED_FACTOR : float # USED FOR ANIMATION
+var speed_factor : float = 1.0
 
 const BOUNDARY_MARGING : float = 10.0
 
@@ -48,6 +49,8 @@ var boundary_exits : Array = []
 var curiosity_direction : Vector2 = Vector2.RIGHT.rotated(randf_range(0.0, TAU))
 var memory : Dictionary
 
+var character_speed : float
+
 func _ready():
 	# randomize moving animation
 	$AnimationPlayerMove.seek(randf_range(0, 1))
@@ -60,6 +63,7 @@ func _ready():
 	character.dying.connect(_on_character_dying)
 	character.killing.connect(_on_character_killing)
 	character.killed.connect(_on_character_killed)
+	character_speed = character.SPEED * (1.0 + randf_range(-character.SPEED_RANDOMNESS, character.SPEED_RANDOMNESS))
 
 func _process(delta : float):
 	# update boundary exits
@@ -69,7 +73,7 @@ func _process(delta : float):
 			boundary_exits.erase(boundary_exit)
 	# movement
 	var character : Node2D = get_character()
-	character.position += (character.SPEED * SPEED_FACTOR) * character.moving_direction * delta
+	character.position += (speed_factor * character_speed * SPEED_FACTOR) * character.moving_direction * delta
 
 func _get_moving_direction() -> Vector2:
 	# init
