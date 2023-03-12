@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b2d21vofg151p"]
+[gd_scene load_steps=34 format=3 uid="uid://b2d21vofg151p"]
 
 [ext_resource type="Script" path="res://modules/curse/curse.gd" id="1_cbkdp"]
 [ext_resource type="PackedScene" path="res://modules/curved_lines/curved_lines.tscn" id="2_ie7se"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://clx6fdxmdros8" path="res://modules/curse/assets/mouse_button_right.svg" id="9_pp52w"]
 [ext_resource type="AudioStream" uid="uid://b7mvkak62ln5t" path="res://modules/curse/assets/audio/sfx_curse_transform_forbidden.mp3" id="9_r8p68"]
 [ext_resource type="Script" path="res://modules/curse/Area2DMouse.gd" id="13_h67jy"]
+[ext_resource type="AudioStream" uid="uid://dt5rn50rdyki3" path="res://modules/curse/assets/audio/sfx_curse_jump_forbidden.mp3" id="14_2fxtx"]
 [ext_resource type="Texture2D" uid="uid://bv2hth1iqw21" path="res://modules/curse/assets/dead_curse.svg" id="14_pd1mb"]
 
 [sub_resource type="Curve" id="Curve_p6h6e"]
@@ -592,7 +593,7 @@ texture = ExtResource("14_pd1mb")
 stream = ExtResource("8_sivdo")
 
 [node name="AudioStreamPlayerJumpForbidden" type="AudioStreamPlayer" parent="Sfx"]
-stream = ExtResource("8_sivdo")
+stream = ExtResource("14_2fxtx")
 
 [node name="AudioStreamPlayerTransformForbidden" type="AudioStreamPlayer" parent="Sfx"]
 stream = ExtResource("9_r8p68")
