@@ -63,7 +63,7 @@ func _input(event : InputEvent):
 		if event.is_action_released("curse") and not $Area2DMouse.mouse_in:
 			_try_curse(cursable_character)
 		if event.is_action_released("metamorphose") or event.is_action_released("curse") and $Area2DMouse.mouse_in:
-			if not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
+			if is_instance_valid(cursed_character) and not cursed_character.is_dying and not cursed_character.is_dead and not cursed_character.is_metamorphosed and not cursed_character.is_metamorphosing:
 				GameState.on_metamorphose(cursed_character)
 				cursed_character.metamorphose()
 			else:
@@ -78,7 +78,7 @@ func _on_tree_exiting():
 # internal
 
 func _try_curse(character : Node2D):
-	if character != null:
+	if is_instance_valid(cursed_character) and not cursed_character.is_dying and not cursed_character.is_dead and is_instance_valid(character):
 		cursed_character = character
 	else:
 		$AnimationPlayerForbidden.play("forbidden")
