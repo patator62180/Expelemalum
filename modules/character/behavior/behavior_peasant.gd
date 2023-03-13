@@ -11,14 +11,14 @@ func _ready():
 
 func _on_character_metamorphosing():
 	$AnimationPlayerMove.stop()
-	SPEED_FACTOR = 0.0
+	ANIMATION_SPEED_FACTOR = 0.0
 
 func _on_character_metamorphosed():
 	$AnimationPlayerMove.play("move")
 
 func _on_character_unmetamorphosing():
 	$AnimationPlayerMove.stop()
-	SPEED_FACTOR = 0.0
+	ANIMATION_SPEED_FACTOR = 0.0
 
 func _on_character_unmetamorphosed():
 	$AnimationPlayerMove.play("move")
