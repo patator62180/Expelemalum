@@ -88,7 +88,7 @@ func _try_curse(character : Node2D):
 
 func _update_cursable_character():
 	#if cursable go out of range, unhighlight
-	if cursable_character != null and not cursable_character.is_queued_for_deletion() and not cursable_character.is_dead and not $CurseArea.overlaps_area(cursable_character.get_node("Area2DBody")):
+	if cursable_character != null and not cursable_character.is_queued_for_deletion() and not cursable_character.is_dead and not not cursable_character.is_dying and not $CurseArea.overlaps_area(cursable_character.get_node("Area2DBody")):
 		cursable_character = null
 
 	var inputVector : Vector2 = _get_input_vector()
