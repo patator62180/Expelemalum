@@ -10,7 +10,7 @@ extends Node
 @export var TIMER_CURIOSITY_WAIT_TIME : float
 @export_range(0.0, 1.0) var TIMER_CURIOSITY_WAIT_TIME_RANDOM : float
 
-@export var SPEED_FACTOR : float # USED FOR ANIMATION
+@export var ANIMATION_SPEED_FACTOR : float
 var speed_factor : float = 1.0
 
 const BOUNDARY_MARGING : float = 10.0
@@ -73,7 +73,7 @@ func _process(delta : float):
 			boundary_exits.erase(boundary_exit)
 	# movement
 	var character : Node2D = get_character()
-	character.position += (speed_factor * character_speed * SPEED_FACTOR) * character.moving_direction * delta
+	character.position += (speed_factor * character_speed * ANIMATION_SPEED_FACTOR) * character.moving_direction * delta
 
 func _get_moving_direction() -> Vector2:
 	# init
